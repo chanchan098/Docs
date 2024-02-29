@@ -1,4 +1,4 @@
-# cmp-11-redis.md
+# db-4-redis.md
 
 # Introduction to Redis 
 

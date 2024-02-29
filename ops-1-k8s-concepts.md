@@ -1,11 +1,11 @@
-# cmp-1-k8s-concepts.md
-- [cmp-1-k8s-concepts.md](#cmp-1-k8s-conceptsmd)
+# ops-1-k8s-concepts.md
+- [ops-1-k8s-concepts.md](#ops-1-k8s-conceptsmd)
+- [Overview](#overview)
 - [Objects in kubernetes-Overview](#objects-in-kubernetes-overview)
   - [Understanding Kubernetes objects](#understanding-kubernetes-objects)
     - [Object spec and status](#object-spec-and-status)
     - [Describing a Kubernetes object](#describing-a-kubernetes-object)
     - [Required fields](#required-fields)
-  - [Server side field validation](#server-side-field-validation)
 - [Kubernetes Object Management-Objects in kubernetes-Overview](#kubernetes-object-management-objects-in-kubernetes-overview)
   - [Management techniques](#management-techniques)
 - [Object Names and IDs-Objects in kubernetes-Overview](#object-names-and-ids-objects-in-kubernetes-overview)
@@ -43,33 +43,65 @@
   - [Leases](#leases)
 - [Workloads](#workloads)
   - [pods](#pods)
-- [Workload Management](#workload-management)
-  - [built-in APIs:](#built-in-apis)
+- [Workload Management-Workloads](#workload-management-workloads)
   - [Deployment](#deployment)
+  - [ReplicaSet](#replicaset)
   - [StatefulSet](#statefulset)
   - [DaemonSet](#daemonset)
+  - [Jobs](#jobs)
+  - [CronJob](#cronjob)
 - [Services, Load Balancing, and Networking](#services-load-balancing-and-networking)
-  - [Service](#service)
-    - [Services in Kubernetes](#services-in-kubernetes)
-    - [Defining a Service](#defining-a-service)
-      - [Port definitions](#port-definitions)
+- [Service-Services, Load Balancing, and Networking](#service-services-load-balancing-and-networking)
+  - [Services in Kubernetes](#services-in-kubernetes)
+  - [Defining a Service](#defining-a-service)
+    - [Port definitions](#port-definitions)
+    - [Services without selectors](#services-without-selectors)
+    - [EndpointSlices](#endpointslices)
     - [Endpoints](#endpoints)
-  - [Ingress](#ingress)
+    - [Multi-port Services](#multi-port-services)
+  - [Service type](#service-type)
+  - [Headless Services](#headless-services)
+  - [Discovering services](#discovering-services)
+- [~~Ingress~~-Services, Load Balancing, and Networking](#ingress-services-load-balancing-and-networking)
     - [Terminology](#terminology)
-  - [Ingress Controllers](#ingress-controllers)
-  - [Gateway API](#gateway-api)
+- [~~Ingress Controllers~~-Services, Load Balancing, and Networking](#ingress-controllers-services-load-balancing-and-networking)
+- [Gateway API-Services, Load Balancing, and Networking](#gateway-api-services-load-balancing-and-networking)
     - [Resource model](#resource-model)
-  - [EndpointSlices](#endpointslices)
+  - [EndpointSlices](#endpointslices-1)
     - [EndpointSlice API](#endpointslice-api)
-- [Api references](#api-references)
+- [DNS for Services and Pods - Services, Load Balancing, and Networking](#dns-for-services-and-pods---services-load-balancing-and-networking)
+  - [Services](#services)
+    - [A/AAAA records](#aaaaa-records)
+    - [SRV records](#srv-records)
+- [ConfigMaps - Configuration](#configmaps---configuration)
+- [Security](#security)
+- [Controlling Access to the Kubernetes API-Security](#controlling-access-to-the-kubernetes-api-security)
+  - [Transport security](#transport-security)
+  - [Authentication](#authentication)
+  - [Authorization](#authorization)
+  - [Admission control](#admission-control)
+- [Role Based Access Control Good Practices-Security](#role-based-access-control-good-practices-security)
   - [API Overview](#api-overview)
 - [Reference](#reference)
-  - [API Overview](#api-overview-1)
-  - [Command line tool (kubectl)](#command-line-tool-kubectl)
-- [Workload Resources-Kubernetes API-Reference](#workload-resources-kubernetes-api-reference)
+- [API Overview - Reference](#api-overview---reference)
+- [API Access Control - Reference](#api-access-control---reference)
+- [Using RBAC Authorization - API Access Control - Reference](#using-rbac-authorization---api-access-control---reference)
+- [Command line tool (kubectl) - Reference](#command-line-tool-kubectl---reference)
+- [Workload Resources - Kubernetes API - Reference](#workload-resources---kubernetes-api---reference)
+  - [Pod](#pod)
   - [PodTemplate](#podtemplate)
+  - [ReplicationController](#replicationcontroller)
+  - [Deployment](#deployment-1)
+  - [ReplicaSet](#replicaset-1)
+- [Service Resources - Kubernetes API - Reference](#service-resources---kubernetes-api---reference)
+  - [Service](#service)
+- [Common Definitions - Kubernetes API - Reference](#common-definitions---kubernetes-api---reference)
+  - [ObjectMeta](#objectmeta)
+- [-------------------------------------------------](#-------------------------------------------------)
+- [Api references](#api-references)
 
 
+# Overview
 
 
 # Objects in kubernetes-Overview
@@ -79,7 +111,7 @@
 ## Understanding Kubernetes objects
 
 Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes uses these  
-entities **to represent the state of your cluster**.
+entities <mark>to represent the state of your cluster</mark>.
 
 To work with Kubernetes objects—whether to create, modify, or delete them—you'll need to use  
 the **Kubernetes API**. 
@@ -97,17 +129,17 @@ The `status` describes the **current state** of the object, supplied and updated
 
 ### Required fields
 
-- apiVersion - Which version of the Kubernetes API you're using to create this object
-- kind - What kind of object you want to create
-- metadata - Data that helps uniquely identify the object, including a name string, UID, and optional namespace
-- spec - What state you desire for **the object**
+- apiVersion   
+  Which version of the Kubernetes API you're using to create this object
+- kind   
+  What kind of object you want to create
+- metadata   
+  Data that helps uniquely identify the object, including a name string, UID, and optional namespace
+- spec  
+  What state you desire for **the object**
 
 
 The [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/) can help you find the **spec format** for all of the objects you can create using Kubernetes.
-
-
-## Server side field validation 
-
 
 # Kubernetes Object Management-Objects in kubernetes-Overview
 
@@ -140,23 +172,16 @@ Declarative object configuration | Directories of files	| Production projects	  
 
 - Labels are *key/value pairs*.  
   Valid label keys have two segments: **an optional prefix and name**, separated by a slash (/).  
-
-  The name segment is required and must be 63 characters or less.  
-  beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.)  
-
+  
   ---
 
   The prefix is optional. If specified, the prefix must be a DNS subdomain:  
-  a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/).
-
 
 - If the prefix is omitted  
   the label Key is presumed to be private to the user.  
 
   Automated system components (e.g. kube-scheduler, kube-controller-manager, kube-apiserver, kubectl, or other third-party automation) which add labels to end-user objects **must** specify a prefix.  
   
-
-
 For example, here's a manifest for a Pod that has two labels environment: production and app: nginx:
 
 ```yaml
@@ -236,7 +261,7 @@ partition
 ### kube-apiserver
 
 * The API server is a component of the Kubernetes control plane   
-  **that exposes the Kubernetes API**.  
+  *that exposes the Kubernetes API*.  
   The API server is the front end for the Kubernetes control plane.
 
 ### etcd
@@ -364,45 +389,187 @@ as kubeadm, which in turn use the API. However, you can also access the API dire
     the Pod object is deleted, the Pod is evicted for lack of resources,  
     or the node fails.
 
-# Workload Management
+# Workload Management-Workloads
 
 [link](https://kubernetes.io/docs/concepts/workloads/controllers/)
 
-## built-in APIs:
 ## Deployment
 - A Deployment provides declarative updates for Pods and ReplicaSets.
+
+## ReplicaSet
+A ReplicaSet's purpose is to maintain `a stable set of replica Pods` running at any given time.  
+As such, it is often used to guarantee the availability of a specified number of identical Pods.
 
 ## StatefulSet
 
 ## DaemonSet
 
+## Jobs
+
+- **Do what**  
+  A Job *creates* one or more Pods and will continue to retry execution of the Pods  
+  until a specified number of them successfully terminate. 
+
+- **When completed**  
+  As pods successfully complete, the Job *tracks* the successful completions.  
+  When a specified number of successful completions is reached, the task (ie, Job) is complete.  
+  Deleting a Job will clean up the Pods it created.
+
+- **Resume**  
+  Suspending a Job will delete its `active Pods` until the Job is resumed again.
+
+
+## CronJob
+
+A *CronJob* creates Jobs on a repeating schedule.
+
+
+
+
 # Services, Load Balancing, and Networking
 
 [link](https://kubernetes.io/docs/concepts/services-networking/)
 
-## Service
+# Service-Services, Load Balancing, and Networking
 
-- a Service is a method for **exposing a network application**  
+- a `Service` is a method for **exposing a network application**  
   that is running as one or more Pods in your cluster.
 
-### Services in Kubernetes 
+## Services in Kubernetes 
 
 - The Service API, part of Kubernetes, is an abstraction to help you  
-  expose groups of Pods over a network. Each Service object defines  
+  *expose groups of Pods* over a network. Each Service object defines  
   a logical set of endpoints (usually these endpoints are Pods) along  
   with a policy about how to make those pods accessible.
 
-### Defining a Service
+## Defining a Service
 
-#### Port definitions
-Port definitions in Pods have names, and you can reference these names in the targetPort attribute of a Service.
+### Port definitions
+
+Port definitions in Pods have names, and you can reference these names in the `targetPort` attribute of a Service.
+
+For example  
+we can bind the targetPort of the Service to the Pod port in the following way:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app.kubernetes.io/name: proxy
+spec:
+  containers:
+  - name: nginx
+    image: nginx:stable
+    ports:
+      - containerPort: 80
+        name: http-web-svc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app.kubernetes.io/name: proxy
+  ports:
+  - name: name-of-service-port
+    protocol: TCP
+    port: 80
+    targetPort: http-web-svc
+``` 
+
+
+### Services without selectors 
+
+when used with a corresponding set of *EndpointSlices* objects and without a selector,  
+the Service can abstract other kinds of backends,  
+including ones that run outside the cluster.
+
+
+<span style='font-size: 15px;'>**Reference external service**</span>  
+- You want to have an external database cluster in production, but in your test environment you use your own databases.
+- You want to point your Service to a Service in *a different Namespace* or on *another cluster*.
+- You are migrating a workload to Kubernetes. While evaluating the approach, you run only *a portion of your backends* in Kubernetes.
+
+
+### EndpointSlices 
+
+EndpointSlices are objects that represent a subset (a slice) of *the backing network endpoints* for a Service.
 
 ### Endpoints
 
 In the Kubernetes API, an Endpoints (the resource kind is plural) defines a list of network endpoints,  
 typically referenced by a Service to define which Pods the traffic can be sent to.
 
-## Ingress
+### Multi-port Services 
+
+When using multiple ports for a Service, you must give all of your ports names so that these are unambiguous.  
+
+For example:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9376
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 9377
+```
+
+## Service type
+
+For some parts of your application (for example, frontends)  
+you may want to expose a Service onto `an external IP address`,  
+one that's accessible from outside of your cluster.
+
+available type values:
+
+<span style='font-size: 15px;'>**ClusterIP**</span>  
+Exposes the Service on a cluster-internal IP.  
+This is the `default` that is used if you don't explicitly specify a type for a Service. 
+
+You can expose the Service to the public internet using an Ingress or a Gateway.
+ 
+<span style='font-size: 15px;'>**NodePort**</span>  
+Exposes the Service on each Node's IP at a static port (the NodePort).
+
+
+<span style='font-size: 15px;'>**LoadBalancer**</span>  
+Exposes the Service externally using an external load balancer.  
+Kubernetes does not directly offer a load balancing component;  
+you must provide one, or you can integrate your Kubernetes cluster with a cloud provider.
+
+<span style='font-size: 15px;'>**ExternalName**</span>  
+Maps the Service to the contents of the externalName field (for example, to the hostname api.foo.bar.example).  
+The mapping configures your cluster's DNS server to return a CNAME record with that external hostname value.  
+No proxying of any kind is set up.
+
+
+## Headless Services 
+
+Sometimes you don't need load-balancing and a single Service IP. In this case, you can create what are  
+termed headless Services, by explicitly specifying "None" for the cluster IP address (.spec.clusterIP).
+
+## Discovering services 
+
+For clients running *inside* your cluster, Kubernetes supports two primary modes of finding a Service:  
+`environment variables` and `DNS`
+
+
+
+
+# ~~Ingress~~-Services, Load Balancing, and Networking
 
 - An API object that manages external access to the services in a cluster, typically HTTP.
 
@@ -414,12 +581,12 @@ typically referenced by a Service to define which Pods the traffic can be sent t
 - Service: that identifies a set of Pods using label selectors.
 
 
-## Ingress Controllers
+# ~~Ingress Controllers~~-Services, Load Balancing, and Networking
 
 In order for the Ingress resource to work, the cluster must have an ingress controller running.
 
 
-## Gateway API
+# Gateway API-Services, Load Balancing, and Networking
 
 Make network services available by using an extensible, role-oriented, protocol-aware configuration  
 mechanism. Gateway API is an add-on containing API kinds that provide dynamic infrastructure  
@@ -429,12 +596,15 @@ provisioning and advanced traffic routing.
 - 
 ### Resource model 
 
-- GatewayClass: Defines a set of gateways with common configuration and managed by a controller that  
+- GatewayClass:  
+  Defines a set of gateways with common configuration and managed by a controller that  
   implements the class.
 
-- Gateway: Defines an instance of traffic handling infrastructure, such as cloud load balancer.
+- Gateway:  
+  Defines an instance of traffic handling infrastructure, such as cloud load balancer.
 
-- HTTPRoute: Defines HTTP-specific rules for mapping traffic from a Gateway listener to a representation  
+- HTTPRoute:  
+  Defines HTTP-specific rules for mapping traffic from a Gateway listener to a representation  
   of backend network endpoints. These endpoints are often represented as a Service.
 
 
@@ -448,11 +618,81 @@ EndpointSlices offer a more scalable and extensible alternative to Endpoints.
 
 an EndpointSlice contains references to a set of network endpoints. 
 
-# Api references
+# DNS for Services and Pods - Services, Load Balancing, and Networking
 
-[doc](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#api-overview)
+Kubernetes creates DNS records for Services and Pods. You can contact Services with consistent ***DNS names*** instead of IP addresses.
 
-Kubernetes resources and "records of intent" are all stored as **API objects**.
+Kubelet configures Pods' DNS so that running containers can lookup Services by name rather than IP.
+
+Services defined in the cluster are assigned DNS names. By default, a client Pod's DNS search list includes the Pod's own namespace and the cluster's default domain.
+
+## Services 
+
+### A/AAAA records 
+
+### SRV records
+
+SRV Records are created for named ports that are part of normal or headless services.
+
+the SRV record has the form `_port-name._port-protocol.my-svc.my-namespace.svc.cluster-domain.example`
+
+
+# ConfigMaps - Configuration
+
+A ConfigMap is an API object used to store non-confidential data in key-value pairs.  
+Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+
+# Security 
+
+<https://kubernetes.io/docs/concepts/security/>
+
+# Controlling Access to the Kubernetes API-Security
+
+Both human users and Kubernetes service accounts can be authorized for API access.  
+When a request reaches the API, it goes through several stages,  
+illustrated in the following diagram
+
+<details>
+<summary>Diagram </summary>
+
+![alt](https://kubernetes.io/images/docs/admin/access-control-overview.svg)
+
+</details>
+
+## Transport security 
+
+using `TLS`.
+
+## Authentication
+
+configures the API server to run one or more Authenticator modules.  
+Authenticators are described in more detail in [Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/).
+
+<span style='font-size: 15px;font-weight: bold;'>Authentication modules include</span>
+- client certificates
+- password
+- and plain tokens
+- bootstrap tokens
+- and JSON Web Tokens (used for service accounts).
+
+<span style='font-size: 15px;'>**Multiple authentication modules**</span>  
+
+can be specified, in which case each one is tried in sequence, until one of them succeeds.
+
+## Authorization
+
+The request is authorized if an existing policy declares that the user has permissions to complete the requested action.
+
+## Admission control 
+
+Admission Control modules are software modules that can modify or reject requests. 
+
+# Role Based Access Control Good Practices-Security
+
+Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles.
+
+
+
 
 
 ## API Overview
@@ -462,24 +702,99 @@ You can use the Kubernetes API **to read and write Kubernetes resource objects**
 
 # Reference
 
-## API Overview
+# API Overview - Reference
+
 [link](https://kubernetes.io/docs/reference/using-api/)
 
 The REST API is the fundamental fabric of Kubernetes. All operations and communications between components, and  
 external user commands are REST API calls that the API Server handles. Consequently, everything in the Kubernetes  
 platform is treated as an API object and has a corresponding entry in the API.
 
-## Command line tool (kubectl)
+# API Access Control - Reference
+
+
+# Using RBAC Authorization - API Access Control - Reference
+
+
+# Command line tool (kubectl) - Reference
 
 [link](https://kubernetes.io/docs/reference/kubectl/)
 
 
-# Workload Resources-Kubernetes API-Reference
+
+
+# Workload Resources - Kubernetes API - Reference
 
 <https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/>
+
+
+## Pod
+
+Pod is a collection of containers that can run on a host. This resource is created by clients and scheduled onto hosts.
+
+`spec (PodSpec)`
+- [Containers](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#containers)
+  - containers ([]Container), required
+    - List of containers belonging to the pod. at least one
 
 ## PodTemplate
 
 PodTemplate describes a template for creating copies of a predefined pod.
 
+`template (PodTemplateSpec) > spec (PodSpec)`
 
+## ReplicationController
+
+ReplicationController represents the configuration of a replication controller.
+
+`spec (ReplicationControllerSpec) > template (PodTemplateSpec)`
+
+## Deployment 
+
+Deployment enables declarative updates for Pods and ReplicaSets.
+
+`spec (DeploymentSpec) > template (PodTemplateSpec)`
+
+## ReplicaSet
+
+ReplicaSet ensures that a specified number of pod replicas are running at any given time.
+
+`spec (ReplicaSetSpec) > template (PodTemplateSpec)`
+
+
+# Service Resources - Kubernetes API - Reference
+
+<https://kubernetes.io/docs/reference/kubernetes-api/service-resources/>
+
+
+## Service
+
+Service is `a named abstraction of software service` (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy.
+
+`spec (ServiceSpec)
+- ports ([]ServicePort)
+  - ports.port (int32), required
+
+
+A middle line in front of an item start, marking it and with followers as an item of an array.
+```yaml
+- port: 80
+  protocol: TCP
+  targetPort: 8080
+```
+
+# Common Definitions - Kubernetes API - Reference
+
+[doc](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/)
+
+## ObjectMeta
+
+ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+
+# -------------------------------------------------
+
+# Api references
+
+[doc](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#api-overview)
+
+Kubernetes resources and "records of intent" are all stored as **API objects**.

@@ -1,4 +1,9 @@
-# cmp-2.2-gateway-istio.md
+# ops-2.2-gateway-controller.md
+
+# Gateway API Specification
+
+<https://gateway-api.sigs.k8s.io/reference/spec/#gateway.networking.k8s.io/v1alpha2.Gateway>
+
 
 # Walkthrough
 

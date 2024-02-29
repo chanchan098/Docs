@@ -1,9 +1,9 @@
 # conf-0-tool.md
 
-## postman 
+## linux
 
-postman `joey4567@gmail.com`  
-delete p3 p4
+[env](https://blog.csdn.net/weixin_36296538/article/details/83044639)
+
 
 ## mermaid chart
 
@@ -19,6 +19,26 @@ open settings as json
     }
 ```
 
+## markdown customized style
+
+using `tags` and inner `style`
+```html
+<span style="">text</span>
+```
+
+## postman 
+
+postman `joey4567@gmail.com`  
+delete p3 p4
+
+## ssh 
+<https://blog.csdn.net/john1337/article/details/109465781>
+
+root  
+<https://blog.csdn.net/dmedaa/article/details/107992159>
+
+## smargit 18.2.9 on Windows 
+
 ## tabby
 
 ### font jaggedness on light theme
@@ -28,12 +48,9 @@ open settings as json
 
 <https://ubuntu.com/server/docs/network-configuration>
 
-## ssh 
-<https://blog.csdn.net/john1337/article/details/109465781>
 
-root  
-<https://blog.csdn.net/dmedaa/article/details/107992159>
+## windows
 
-## linux
+### Boot app when launched
 
-[env](https://blog.csdn.net/weixin_36296538/article/details/83044639)
+`%appdata%\Microsoft\Windows\Start Menu\Programs\Startup`

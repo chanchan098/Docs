@@ -1,4 +1,4 @@
-# cmp-2.0-image-proxy.md
+# ops-2.0-image-proxy.md
 
 ## Containerd
 <https://stackoverflow.com/questions/77318225/how-to-configure-proxy-in-kubernetes-to-pull-images>

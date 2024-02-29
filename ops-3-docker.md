@@ -1,10 +1,10 @@
-# cmp-3-docker.md
+# ops-3-docker.md
 
 # Overview
 
 [doc](https://docs.docker.com/get-started/overview/)
 
-Docker is an open platform for developing, shipping, and running applicat.ions.  
+Docker is an open platform for developing, shipping, and running applications.  
 
 Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.  
 
@@ -80,3 +80,65 @@ to create the image and run it.
 
 A container is a runnable instance of an image.  
 You can create, start, stop, move, or delete a container using **the Docker API or CLI**.
+
+# Getting started guide
+
+<https://docs.docker.com/get-started/>
+
+# Containerize an application - Getting started guide
+
+
+## Always remember that <mark>network problems</mark>.
+
+- <span style='font-size: 15px;'>**run**</span>  
+  `docker run -dp 127.0.0.1:3000:3000 getting-started`  
+
+  `docker run -dp 0.0.0.0:3000:3000 getting-started`  
+  - host and port `0.0.0.0:3000`
+  - container port `3000` 
+
+
+- <span style='font-size: 15px;'>**set proxy for pulling dependencies.**</span>  
+  ```docker
+  FROM node:18-alpine
+  WORKDIR /app
+  COPY . .
+  + RUN yarn config set proxy http://192.168.0.116:10809
+  + RUN yarn config set https-proxy http://192.168.0.116:10809
+  RUN yarn install --production
+  CMD ["node", "src/index.js"]
+  EXPOSE 3000
+  ```
+
+
+# Update the application - Getting started guide
+
+Stop and remove the previous `container` before run `new one`.
+
+```shell
+docker ps
+docker stop <the-container-id>
+docker rm <the-container-id>
+```
+
+# Persist the DB - Getting started guide
+
+## Container volumes
+
+Volumes provide the ability to connect specific filesystem paths of the container `back to the host machine`.  
+
+
+
+# Use Docker Compose - Getting started guide 
+
+Docker Compose is a tool that helps you define and share *multi-container applications*.  
+With Compose, you can create a YAML file to define the services and with a single command,  
+you can spin everything up or tear it all down.
+
+# Docker registry
+
+<https://distribution.github.io/distribution/>
+
+# Reference
+
+<https://docs.docker.com/reference/>

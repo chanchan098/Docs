@@ -1,4 +1,4 @@
-# cmp-2-k8s-cmds.md
+# ops-2-k8s-cmds.md
 
 
 

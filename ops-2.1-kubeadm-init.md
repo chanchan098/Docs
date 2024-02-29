@@ -1,5 +1,5 @@
-# cmp-2.1-kubeadm-init.md
-- [cmp-2.1-kubeadm-init.md](#cmp-21-kubeadm-initmd)
+# ops-2.1-kubeadm-init.md
+- [ops-2.1-kubeadm-init.md](#ops-21-kubeadm-initmd)
 - [The versions and network are a snake hole!!!](#the-versions-and-network-are-a-snake-hole)
 - [Crictl proxy](#crictl-proxy)
 - [Kubeadm cluster setup](#kubeadm-cluster-setup)
