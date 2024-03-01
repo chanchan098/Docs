@@ -72,6 +72,7 @@ C:\Users\Administrator\.jenkins\secrets\initialAdminPassword
 # kubernetes
 
 ## Turn off swap
+
 swapoff -a
 
  sudo vim /etc/fstab
@@ -88,9 +89,6 @@ crictl pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.3
 https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
 ctr -n k8s.io image tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.6 registry.k8s.io/pause:3.6
 --apiserver-advertise-address=10.0.2.15
-
-
-
 
 kubeadm config images list
 crictl images

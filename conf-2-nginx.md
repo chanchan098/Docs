@@ -20,10 +20,6 @@ http {
 <details>
 <summary>Example</summary>
 
-
-
-
-
 ```
 http {
     include       mime.types;

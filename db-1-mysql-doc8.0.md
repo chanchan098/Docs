@@ -1,88 +1,76 @@
 # db-1-mysql-doc8.0.md
 
-# Install
 
-## Windows 10 (8.0.35)
-
-[tutorial](https://blog.csdn.net/weixin_55629817/article/details/134381183)
-
-[download zip](https://downloads.mysql.com/archives/community/)
-
-### my.ini
-```ini
-[mysqld]
-port=3306
-basedir=D:\Java\mysql-8.0.35-winx64
-datadir=D:\Java\mysql-8.0.35-winx64\data
-max_connections=200
-max_connect_errors=10
-character-set-server=utf8mb4
-default-storage-engine=INNODB
-default_authentication_plugin=mysql_native_password
-[mysql]
-default-character-set=utf8mb4
-
-[client]
-port=3306
-default-character-set=utf8mb4
-
-```
-
-### Initialization
-
-`cd mysql/bin`
-
-init `mysqld --initialize --console`
-
-install service `mysqld --install mysql`
-
-start service `net start mysql`
-
-connect to `mysql -uroot -p`
-
-set new pwd `ALTER USER 'root'@'localhost' IDENTIFIED BY '新的密码';`
-
-### Remote connection
-
-my.ini
-```ini
-[mysqld]
-bind-address = 0.0.0.0
-```
-
-OR
-
-`update user set host = ’%’ where user = ’root’;`
-
-
-## Ubuntu Server 22.04 (8.0.35)
-
-[tutorial](https://blog.csdn.net/qq_42108074/article/details/133000359)
-
-[mysql-server_8.0.35-1ubuntu22.04_amd64.deb-bundle.tar](https://downloads.mysql.com/archives/community/)
-
-
-`tar -xf mysql-server_8.0.35-1ubuntu22.04_amd64.deb-bundle.tar`
-
-install commands, to be modified.
-```shell
-sudo dpkg -i /mysql8/mysql-community-client-plugins_8.0.31-1ubuntu20.04_amd64.deb
-sudo dpkg -i  /mysql8/mysql-community-client-core_8.0.31-1ubuntu20.04_amd64.deb
-sudo dpkg -i  /mysql8/mysql-common_8.0.31-1ubuntu20.04_amd64.deb
-sudo dpkg -i  /mysql8/mysql-community-client_8.0.31-1ubuntu20.04_amd64.deb
-sudo dpkg -i /mysql8/libmysqlclient21_8.0.31-1ubuntu20.04_amd64.deb
-sudo dpkg -i /mysql8/libmysqlclient-dev_8.0.31-1ubuntu20.04_amd64.deb
-sudo apt install -y libmecab2
-sudo dpkg -i /mysql8/mysql-community-server-core_8.0.31-1ubuntu20.04_amd64.deb
-sudo dpkg -i /mysql8/mysql-client_8.0.31-1ubuntu20.04_amd64.deb
-sudo dpkg -i /mysql8/mysql-community-server_8.0.31-1ubuntu20.04_amd64.deb
-# 需要输入密码
-
-```
 
 # 5 MySQL Server Administration
 
-# 17 Replication 
+# 13 Data Types
+
+<span style='font-size: 15px;'>**Numeric Data Types**</span>  
+- Numeric Data Types  
+  - Integer Types (Exact Value) 
+    - INTEGER
+    - INT
+    - SMALLINT
+    - TINYINT
+    - MEDIUMINT
+    - BIGINT  
+
+  - Fixed-Point Types (Exact Value) 
+    - DECIMAL
+    - NUMERIC  
+
+  - Floating-Point Types (Approximate Value) 
+    - FLOAT
+    - DOUBLE  
+
+  - Bit-Value Type 
+    - BIT  
+
+- Date and Time Data Types  
+  - DATE
+  - DATETIME
+  - TIMESTAMP Types  
+  - TIME Type  
+  - YEAR Type  
+
+- String Data Types  
+  - CHAR and VARCHAR Types  
+  - BINARY and VARBINARY Types  
+  - BLOB and TEXT Types  
+  - ENUM Type  
+  - SET Type  
+
+- The JSON Data Type
+
+
+# 12 The JSON Data Type
+
+# 17 The InnoDB Storage Engine
+
+## 17.1 Introduction to InnoDB
+
+### d-Key Advantages of InnoDB
+
+## d-17.2 InnoDB and the ACID Model
+
+## d-17.7.2.1 Transaction Isolation Levels
+
+## 17.7.2.3 Consistent Nonlocking Reads
+
+A consistent read means that InnoDB uses multi-versioning to present to a query a snapshot of the
+database at a point in time.
+
+
+## d-17.3 InnoDB Multi-Versioning
+
+InnoDB is a multi-version storage engine. It keeps information about `old versions of changed rows` to
+support transactional features such as **concurrency** and **rollback**.
+
+
+
+
+# 19 Replication 
 
 [tutorial](https://blog.csdn.net/liuhenghui5201/article/details/113567248)
 
@@ -196,3 +184,132 @@ committed on the server of origin (the source).
 1. Settings at `my.ini` 
 2. Create relationship between source and replicas 
 3. Check it out by `SHOW SLAVE STATUS;`
+
+
+
+# 25 Stored Objects
+
+<span style='font-size: 15px;'>**Stored procedure**</span>  
+A procedure does not have a return value but can modify its parameters for later
+inspection by the caller. It can also generate result sets to be returned to the client program.
+
+<span style='font-size: 15px;'>**Stored function**</span>  
+used much like a built-in function.  
+You invoke it in an expression and it returns a value during expression evaluation.
+
+<span style='font-size: 15px;'>**Trigger**</span>  
+A trigger is activated when a particular event occurs for the table, such as an `insert` or `update`.
+
+<span style='font-size: 15px;'>**Event**</span>  
+An object created with CREATE EVENT and invoked by the server according to schedule.
+
+<span style='font-size: 15px;'>**View**</span>  
+when referenced produces a result set. A view acts as a virtual table.
+
+
+
+## 25.2 Using Stored Routines
+
+MySQL supports stored routines (procedures and functions). 
+A stored routine is a set of SQL statements that can be stored in the server.  
+Once this has been done, clients don't need to keep reissuing the individual statements but can refer to the stored routine instead.
+
+## 25.3 Using Triggers
+
+A trigger is a named database object that is associated with a table, and that activates when a
+particular event occurs for the table. 
+
+
+# MySQL Glossary
+
+### consistent read
+
+A read operation that uses snapshot information to present query results based on a point in time,
+regardless of changes performed by other transactions running at the same time.  
+
+If queried data has been changed by another transaction, the original data is reconstructed based on the contents of the *undo log*.
+
+### MVCC
+
+Acronym for “multiversion concurrency control”. This technique lets InnoDB transactions **with certain
+isolation levels** perform consistent read operations; that is, to query rows that are being updated by other transactions, and see the values from before those updates occurred. 
+
+# Install
+
+## Windows 10 (8.0.35)
+
+[tutorial](https://blog.csdn.net/weixin_55629817/article/details/134381183)
+
+[download zip](https://downloads.mysql.com/archives/community/)
+
+### my.ini
+```ini
+[mysqld]
+port=3306
+basedir=D:\Java\mysql-8.0.35-winx64
+datadir=D:\Java\mysql-8.0.35-winx64\data
+max_connections=200
+max_connect_errors=10
+character-set-server=utf8mb4
+default-storage-engine=INNODB
+default_authentication_plugin=mysql_native_password
+[mysql]
+default-character-set=utf8mb4
+
+[client]
+port=3306
+default-character-set=utf8mb4
+
+```
+
+### Initialization
+
+`cd mysql/bin`
+
+init `mysqld --initialize --console`
+
+install service `mysqld --install mysql`
+
+start service `net start mysql`
+
+connect to `mysql -uroot -p`
+
+set new pwd `ALTER USER 'root'@'localhost' IDENTIFIED BY '新的密码';`
+
+### Remote connection
+
+my.ini
+```ini
+[mysqld]
+bind-address = 0.0.0.0
+```
+
+OR
+
+`update user set host = ’%’ where user = ’root’;`
+
+
+## Ubuntu Server 22.04 (8.0.35)
+
+[tutorial](https://blog.csdn.net/qq_42108074/article/details/133000359)
+
+[mysql-server_8.0.35-1ubuntu22.04_amd64.deb-bundle.tar](https://downloads.mysql.com/archives/community/)
+
+
+`tar -xf mysql-server_8.0.35-1ubuntu22.04_amd64.deb-bundle.tar`
+
+install commands, to be modified.
+```shell
+sudo dpkg -i /mysql8/mysql-community-client-plugins_8.0.31-1ubuntu20.04_amd64.deb
+sudo dpkg -i  /mysql8/mysql-community-client-core_8.0.31-1ubuntu20.04_amd64.deb
+sudo dpkg -i  /mysql8/mysql-common_8.0.31-1ubuntu20.04_amd64.deb
+sudo dpkg -i  /mysql8/mysql-community-client_8.0.31-1ubuntu20.04_amd64.deb
+sudo dpkg -i /mysql8/libmysqlclient21_8.0.31-1ubuntu20.04_amd64.deb
+sudo dpkg -i /mysql8/libmysqlclient-dev_8.0.31-1ubuntu20.04_amd64.deb
+sudo apt install -y libmecab2
+sudo dpkg -i /mysql8/mysql-community-server-core_8.0.31-1ubuntu20.04_amd64.deb
+sudo dpkg -i /mysql8/mysql-client_8.0.31-1ubuntu20.04_amd64.deb
+sudo dpkg -i /mysql8/mysql-community-server_8.0.31-1ubuntu20.04_amd64.deb
+# 需要输入密码
+
+```

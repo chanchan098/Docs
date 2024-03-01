@@ -1,3 +1,6 @@
+# conf-1-ide-snippets.md
+
+```json
 {
 	// Place your snippets for markdown here. Each snippet is defined under a snippet name and has a prefix, body and 
 	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
@@ -63,6 +66,15 @@
 			"```",			
 		],
 		"description": "code block docker"
+	},	
+	"code block html": {
+		"prefix": "coh",
+		"body": [
+			"```html",
+			"$1",
+			"```",			
+		],
+		"description": "code block html"
 	},
 	"code block shell": {
 		"prefix": "cosh",
@@ -109,6 +121,15 @@
 			"```",			
 		],
 		"description": "code block mermaid"
+	},
+	"code block vue": {
+		"prefix": "cov",
+		"body": [
+			"```vue",
+			"$1",
+			"```",			
+		],
+		"description": "code block vue"
 	},
 	"code block xml": {
 		"prefix": "cox",
@@ -177,8 +198,8 @@
 	"sub heading unordered": {
 		"prefix": "shu",
 		"body": [
-			"**$1**  ",
-			"  $2"
+			"<span style='font-size: 15px;'>**$1**</span>  ",
+			"-$2"
 		],
 		"description": "sub heading unordered"
 	},
@@ -198,3 +219,4 @@
 	}
 
 }
+```

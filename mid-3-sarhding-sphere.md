@@ -5,6 +5,43 @@
 <https://github1s.com/yudiandemingzi/spring-boot-sharding-sphere>  
 <https://github.com/yudiandemingzi/spring-boot-sharding-sphere>
 
+# Datasource config
+
+## Old
+
+<https://github1s.com/yudiandemingzi/spring-boot-sharding-sphere/blob/HEAD/db-read-write/src/main/resources/application.properties>
+
+```yaml
+spring:
+  shardingsphere:
+    datasource:
+      slave0:
+        - type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://local:3306/slave?characterEncoding=utf-8
+        username: root
+        password: root
+```
+
+
+## New 
+
+<https://shardingsphere.apache.org/document/current/en/user-manual/shardingsphere-jdbc/yaml-config/data-source/#sample>
+
+```yaml
+spring:
+  shardingsphere:
+    dataSources:
+      ds_1:
+        + dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://localhost:3306/ds_1
+        username: root
+        password:      
+  # Configure other data sources
+```
+
+
 # Overview
 
 <https://shardingsphere.apache.org/document/current/en/overview/>
@@ -153,3 +190,8 @@ Example: If the order primary key in the order table is sharded by **modulo**, t
 In addition to the support for single-sharding fields, Apache ShardingSphere also supports sharding based on **multiple fields**.
 
 ### Automatic Sharding Algorithm
+
+# Spring Boot
+
+<https://shardingsphere.apache.org/document/current/en/user-manual/shardingsphere-jdbc/yaml-config/jdbc-driver/spring-boot/>
+

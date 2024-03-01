@@ -1,5 +1,11 @@
 # conf-0-tool.md
 
+## chrome tools
+
+- AdBlock — 最佳广告拦截工具
+- Dark Reader
+- 知乎去除登录提示
+
 ## linux
 
 [env](https://blog.csdn.net/weixin_36296538/article/details/83044639)
@@ -25,6 +31,10 @@ using `tags` and inner `style`
 ```html
 <span style="">text</span>
 ```
+
+## office 
+
+https://zhuanlan.zhihu.com/p/629538463
 
 ## postman 
 

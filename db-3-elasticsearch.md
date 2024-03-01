@@ -1,5 +1,7 @@
 # db-3-elasticsearch.md
 
+# Testing data see also project `labs\elasticsearch`
+
 # elasticsearch(8.12)
 
 # What is elasticsearch

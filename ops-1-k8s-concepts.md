@@ -62,6 +62,7 @@
   - [Service type](#service-type)
   - [Headless Services](#headless-services)
   - [Discovering services](#discovering-services)
+    - [DNS](#dns-1)
 - [~~Ingress~~-Services, Load Balancing, and Networking](#ingress-services-load-balancing-and-networking)
     - [Terminology](#terminology)
 - [~~Ingress Controllers~~-Services, Load Balancing, and Networking](#ingress-controllers-services-load-balancing-and-networking)
@@ -567,6 +568,11 @@ For clients running *inside* your cluster, Kubernetes supports two primary modes
 `environment variables` and `DNS`
 
 
+### DNS
+
+If DNS has been enabled throughout your cluster then all Pods should automatically be able to resolve Services by their `DNS name`.
+
+The Kubernetes DNS server is the only way to access `ExternalName` Services. 
 
 
 # ~~Ingress~~-Services, Load Balancing, and Networking
