@@ -108,14 +108,41 @@ The use of this queue interacts with pool sizing:
 Provides a framework for implementing blocking locks and related synchronizers (semaphores, events, etc)  
 that rely on **first-in-first-out** (FIFO) wait queues.  
 This class is designed to be a useful basis for most kinds of synchronizers that rely on a single atomic  
-int value to represent state.
+**int value** to represent state.
 
-This class is designed to be a useful basis for most kinds of synchronizers that rely on **a single atomic  
-int value** to represent state.
 
 This class supports either or both a default **exclusive mode and a shared mode**.  
 When acquired in **exclusive mode**, attempted acquires by other threads cannot succeed.
 **Shared mode** acquires by multiple threads may (but need not) succeed.
+
+
+### Blocks a thread(node)
+
+```mermaid
+sequenceDiagram    
+    activate Semaphor
+    Semaphor-->>Semaphor: acquire()
+    Semaphor-->>Semaphor.Sync: acquireSharedInterruptibly(1)
+    deactivate Semaphor
+
+    activate Semaphor.Sync
+    Semaphor.Sync-->>AQS: doAcquireSharedInterruptibly()
+    deactivate Semaphor.Sync
+    
+    activate AQS
+    AQS-->>AQS: parkAndCheckInterrupt()
+    AQS-->>LockSupport: park()
+    deactivate AQS
+
+    activate LockSupport
+    LockSupport-->>LockSupport: setBlocker()
+    LockSupport-->>Unsafe: park(boolean, long)
+    deactivate LockSupport
+```
+
+
+AbstractQueuedSynchronizer.java#parkAndCheckInterrupt()
+
 
 ## ScheduledThreadPoolExecutor
 ```mermaid

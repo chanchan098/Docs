@@ -32,6 +32,9 @@ using `tags` and inner `style`
 <span style="">text</span>
 ```
 
+## mardown emoji cheat sheet
+<https://github.com/ikatyang/emoji-cheat-sheet>
+
 ## office 
 
 https://zhuanlan.zhihu.com/p/629538463

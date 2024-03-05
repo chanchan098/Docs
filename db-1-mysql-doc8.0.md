@@ -167,7 +167,7 @@ Relay_Master_Log_File: binlog.000003
 
 
 **After** configure this.  
-If the both states of `Slave_IO_Running` and `Slave_SQL_Running` of replicas are `No`,  
+If the both states `Slave_IO_Running` and `Slave_SQL_Running` of replicas are `No`,  
 try to restart replicas.
 
 
@@ -246,20 +246,28 @@ isolation levels** perform consistent read operations; that is, to query rows th
 ```ini
 [mysqld]
 port=3306
-basedir=D:\Java\mysql-8.0.35-winx64
-datadir=D:\Java\mysql-8.0.35-winx64\data
+basedir=F:\Program Files\mysql-8.0.35-winx64-3306\
+datadir=F:\Program Files\mysql-8.0.35-winx64-3306\data
 max_connections=200
 max_connect_errors=10
 character-set-server=utf8mb4
 default-storage-engine=INNODB
 default_authentication_plugin=mysql_native_password
+
+server-id=9
+gtid_mode=ON
+enforce-gtid-consistency=ON
+
+binlog-ignore-db=mysql
+binlog-ignore-db=performance_schema
+binlog-ignore-db=information_schema
+
 [mysql]
 default-character-set=utf8mb4
 
 [client]
 port=3306
 default-character-set=utf8mb4
-
 ```
 
 ### Initialization

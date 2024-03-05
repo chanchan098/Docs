@@ -1,4 +1,82 @@
 # cmp-14-vue3.md
+- [cmp-14-vue3.md](#cmp-14-vue3md)
+- [Scaffold](#scaffold)
+  - [nodejs](#nodejs)
+  - [debugger](#debugger)
+  - [Ts](#ts)
+  - [npm](#npm)
+  - [sass](#sass)
+  - [vue cli](#vue-cli)
+  - [vite](#vite)
+  - [vue router 4.x](#vue-router-4x)
+  - [vue3](#vue3)
+    - [modularization thought](#modularization-thought)
+    - [api ref](#api-ref)
+    - [single file component](#single-file-component)
+    - [watcher](#watcher)
+    - [props](#props)
+    - [slot](#slot)
+      - [custom events](#custom-events)
+    - [custom components](#custom-components)
+    - [element ui plus](#element-ui-plus)
+- [-Essentials](#-essentials)
+- [Template Syntax](#template-syntax)
+  - [Text Interpolation](#text-interpolation)
+  - [Raw HTML](#raw-html)
+  - [Attribute Bindings](#attribute-bindings)
+    - [Shorthand](#shorthand)
+    - [Same-name Shorthand `3.4+`](#same-name-shorthand-34)
+    - [Boolean Attributes](#boolean-attributes)
+    - [Dynamically Binding Multiple Attributes](#dynamically-binding-multiple-attributes)
+  - [Using JavaScript Expressions](#using-javascript-expressions)
+    - [Calling Functions](#calling-functions)
+    - [Restricted Globals Access](#restricted-globals-access)
+  - [Directives](#directives)
+    - [Arguments](#arguments)
+    - [Dynamic Arguments](#dynamic-arguments)
+    - [Dynamic Argument Value Constraints](#dynamic-argument-value-constraints)
+    - [doc-Dynamic Argument Syntax Constraints](#doc-dynamic-argument-syntax-constraints)
+  - [Modifiers](#modifiers)
+- [🚴‍♂️ Reactivity Fundamentals](#️-reactivity-fundamentals)
+  - [`ref()` - Declaring Reactive State](#ref---declaring-reactive-state)
+  - [`<script setup>` - Declaring Reactive State](#script-setup---declaring-reactive-state)
+  - [reactive()](#reactive)
+  - [📖 Additional Ref Unwrapping Details](#-additional-ref-unwrapping-details)
+- [Computed Properties](#computed-properties)
+  - [Basic Example](#basic-example)
+  - [Computed Caching vs. Methods](#computed-caching-vs-methods)
+  - [Writable Computed](#writable-computed)
+- [Class and Style Bindings](#class-and-style-bindings)
+  - [Binding HTML Classes](#binding-html-classes)
+    - [Binding to Objects](#binding-to-objects)
+    - [Binding to Arrays](#binding-to-arrays)
+    - [With Components](#with-components)
+  - [Binding Inline Styles](#binding-inline-styles)
+    - [Binding to Objects](#binding-to-objects-1)
+- [Conditional Rendering](#conditional-rendering)
+  - [v-if](#v-if)
+  - [v-else](#v-else)
+  - [v-else-if](#v-else-if)
+  - [v-if on \<template\>](#v-if-on-template)
+  - [v-show](#v-show)
+- [List Rendering](#list-rendering)
+  - [v-for](#v-for)
+  - [📖 `v-for` with an Object](#-v-for-with-an-object)
+- [Event Handling](#event-handling)
+  - [Listening to Events](#listening-to-events)
+    - [handler categories](#handler-categories)
+  - [Inline Handlers](#inline-handlers)
+  - [Method Handlers](#method-handlers)
+  - [Calling Methods in Inline Handlers](#calling-methods-in-inline-handlers)
+  - [Accessing Event Argument in Inline Handlers](#accessing-event-argument-in-inline-handlers)
+  - [Event Modifiers](#event-modifiers)
+- [Lifecycle Hooks](#lifecycle-hooks)
+- [Watchers](#watchers)
+- [-Scaling Up](#-scaling-up)
+- [Single-File Components](#single-file-components)
+  - [Introduction](#introduction)
+- [Appendix](#appendix)
+  - [API Ref](#api-ref-1)
 
 # Scaffold
 
@@ -78,7 +156,7 @@
 
 ### [element ui plus](https://element-plus.org/zh-CN/guide/design.html)
 
-# Essentials
+# -Essentials
 
 # Template Syntax
 
@@ -252,10 +330,366 @@ For example, the `.prevent` modifier tells the `v-on` directive to call `event.p
 <form @submit.prevent="onSubmit">...</form>
 ```
 
+# 🚴‍♂️ Reactivity Fundamentals
+
+## `ref()` - Declaring Reactive State
+
+using the ref() function:
+```html
+import { ref } from 'vue'
+
+const count = ref(0)
+```
+
+<span style='font-size: 15px;'>**To access refs in a component's template**</span>  
+```js
+import { ref } from 'vue'
+
+export default {
+  // `setup` is a special hook dedicated for the Composition API.
+  setup() {
+    const count = ref(0)
+
+    // expose the ref to the template
+    return {
+      count
+    }
+  }
+}
+```
+
+```html
+<div>{{ count }}</div>
+```
+
+
+mutate a ref directly in event handlers:
+```html
+<button @click="count++">
+  {{ count }}
+</button>
+```
+
+## `<script setup>` - Declaring Reactive State
+
+We can simplify the usage with `<script setup>`:
+```html
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0)
+
+function increment() {
+  count.value++
+}
+</script>
+
+<template>
+  <button @click="increment">
+    {{ count }}
+  </button>
+</template>
+```
+
+
+
+## reactive()
+
+Unlike a ref which wraps the inner value in a special object, `reactive()` makes an object itself reactive:
+
+## 📖 Additional Ref Unwrapping Details
+
+
+
+# Computed Properties
+
+## Basic Example
+
+A convince for repeated calculations.
+
+from 
+```html
+const author = reactive({
+  name: 'John Doe',
+  books: [
+    'Vue 2 - Advanced Guide',
+    'Vue 3 - Basic Guide',
+    'Vue 4 - The Mystery'
+  ]
+})
+
+<p>Has published books:</p>
+<span>{{ author.books.length > 0 ? 'Yes' : 'No' }}</span>
+```
+
+to
+```html
+// a computed ref
+const publishedBooksMessage = computed(() => {
+  return author.books.length > 0 ? 'Yes' : 'No'
+})
+</script>
+
+<template>
+  <p>Has published books:</p>
+  <span>{{ publishedBooksMessage }}</span>
+</template>
+```
+
+## Computed Caching vs. Methods
+
+computed properties are cached based on their reactive dependencies.
+
+## Writable Computed
+
+can create one by providing both a getter and a setter
+```html
+<script setup>
+import { ref, computed } from 'vue'
+
+const firstName = ref('John')
+const lastName = ref('Doe')
+
+const fullName = computed({
+  // getter
+  get() {
+    return firstName.value + ' ' + lastName.value
+  },
+  // setter
+  set(newValue) {
+    // Note: we are using destructuring assignment syntax here.
+    [firstName.value, lastName.value] = newValue.split(' ')
+  }
+})
+</script>
+```
+
+Now when you run `fullName.value = 'John Doe'`, the setter will be invoked and firstName and lastName will be updated accordingly.
+
+# Class and Style Bindings
+
+provides special enhancements when v-bind is used with class and style. In addition to strings, the expressions can also evaluate to objects or arrays.
+
+## Binding HTML Classes
+
+### Binding to Objects
+```html
+<div :class="{ active: isActive }"></div>
+```
+The above syntax means the presence of the `active` class will be determined by the truthiness of the data property `isActive`.
+
+---
+
+multiple classes  
+In addition, the `:class` directive can also co-exist with the plain class attribute.
+
+```html
+const isActive = ref(true)
+const hasError = ref(false)
+
+<div class="static" :class="{ active: isActive, 'text-danger': hasError }"></div>
+```
+It will render:
+```html
+<div class="static active"></div>
+```
+
+<span style='font-size: 15px;'>**Independent object**</span>  
+The bound object doesn't have to be inline:
+```html
+const classObject = reactive({
+  active: true,
+  'text-danger': false
+})
+
+<div :class="classObject"></div>
+```
+
+This will render:
+```html
+<div class="active"></div>
+```
+
+<span style='font-size: 15px;'>**Bind to a computed property**</span>  
+We can also bind to a computed property that returns an object. This is a common and powerful pattern:
+```html
+const isActive = ref(true)
+const error = ref(null)
+
+const classObject = computed(() => ({
+  active: isActive.value && !error.value,
+  'text-danger': error.value && error.value.type === 'fatal'
+}))
+
+<div :class="classObject"></div>
+```
+
+### Binding to Arrays
+
+### With Components
+
+
+## Binding Inline Styles
+
+### Binding to Objects
+
+
+# Conditional Rendering
+
+## v-if
+
+The block will only be rendered if the directive's expression returns a truthy value.
+```html
+<h1 v-if="awesome">Vue is awesome!</h1>
+```
+
+## v-else
+
+You can use the `v-else` directive to indicate an "else block" for `v-if`:
+```html
+<button @click="awesome = !awesome">Toggle</button>
+
+<h1 v-if="awesome">Vue is awesome!</h1>
+<h1 v-else>Oh no 😢</h1>
+```
+
+## v-else-if
+
+## v-if on \<template\>
+
+## v-show
+
+
+# List Rendering
+
+## v-for
+
+template expressions have access to all parent scope properties.
+
+```html
+const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+
+<li v-for="item in items">
+  {{ item.message }}
+</li>
+```
+
+with index 
+```html
+const parentMessage = ref('Parent')
+const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+
+<li v-for="(item, index) in items">
+  {{ parentMessage }} - {{ index }} - {{ item.message }}
+</li>
+```
+
+nested `v-for`
+```html
+<li v-for="item in items">
+  <span v-for="childItem in item.children">
+    {{ item.message }} {{ childItem }}
+  </span>
+</li>
+```
+
+`of` as the delimiter
+```html
+<div v-for="item of items"></div>
+```
+
+## 📖 `v-for` with an Object
+
+
+# Event Handling
+
+## Listening to Events
+
+The usage would be `v-on:click="handler"` or with the shortcut, `@click="handler"`.  
+
+### handler categories 
+
+- inline handlers
+- method handlers
+
+## Inline Handlers
+
+```html
+const count = ref(0)
+
+<button @click="count++">Add 1</button>
+<p>Count is: {{ count }}</p>
+```
+
+## Method Handlers
+
+```html
+const name = ref('Vue.js')
+
+function greet(event) {
+  alert(`Hello ${name.value}!`)
+  // `event` is the native DOM event
+  if (event) {
+    alert(event.target.tagName)
+  }
+}
+<!-- `greet` is the name of the method defined above -->
+<button @click="greet">Greet</button>
+```
+
+## Calling Methods in Inline Handlers
+
+```html
+function say(message) {
+  alert(message)
+}
+<button @click="say('hello')">Say hello</button>
+<button @click="say('bye')">Say bye</button>
+```
+
+## Accessing Event Argument in Inline Handlers
+
+You can pass it into a method using the special `$event` variable, or use an inline arrow function:
+```html
+<!-- using $event special variable -->
+<button @click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+
+<!-- using inline arrow function -->
+<button @click="(event) => warn('Form cannot be submitted yet.', event)">
+  Submit
+</button>
+```
+```javascript
+function warn(message, event) {
+  // now we have access to the native event
+  if (event) {
+    event.preventDefault()
+  }
+  alert(message)
+}
+```
+
+## Event Modifiers
+
+
+
+
 # Lifecycle Hooks
 
+<details>
+<summary>picture</summary>
 
-# Scaling Up
+![alt](https://vuejs.org/assets/lifecycle.DLmSwRQE.png)
+
+</details>
+
+[Ref](https://vuejs.org/api/composition-api-lifecycle.html#onmounted)
+
+# Watchers
+
+# -Scaling Up
 
 # Single-File Components
 
@@ -285,3 +719,8 @@ const greeting = ref('Hello World!')
 
 The full syntax is defined in the [SFC Syntax Specification](https://vuejs.org/api/sfc-spec.html).
 
+# Appendix
+
+## API Ref
+
+[Ref](https://vuejs.org/api/composition-api-lifecycle.html)
