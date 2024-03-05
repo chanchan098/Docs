@@ -69,9 +69,32 @@
   - [Method Handlers](#method-handlers)
   - [Calling Methods in Inline Handlers](#calling-methods-in-inline-handlers)
   - [Accessing Event Argument in Inline Handlers](#accessing-event-argument-in-inline-handlers)
-  - [Event Modifiers](#event-modifiers)
+  - [📖Event Modifiers](#event-modifiers)
+  - [📖Key Modifiers](#key-modifiers)
+  - [📖Mouse Button Modifiers](#mouse-button-modifiers)
+- [Form Input Bindings](#form-input-bindings)
+  - [Basic Usage](#basic-usage)
+    - [Text](#text)
+    - [Multiline text](#multiline-text)
+    - [Checkbox](#checkbox)
+    - [Radio](#radio)
+    - [Select](#select)
+  - [📖Modifiers](#modifiers-1)
+    - [`.lazy`](#lazy)
+    - [`.number`](#number)
+    - [`.trim`](#trim)
+  - [`v-model` with Components](#v-model-with-components)
 - [Lifecycle Hooks](#lifecycle-hooks)
 - [Watchers](#watchers)
+  - [Basic example](#basic-example-1)
+    - [📖Watch Source Types](#watch-source-types)
+    - [watch a object - Watch Source Types](#watch-a-object---watch-source-types)
+  - [Deep Watchers](#deep-watchers)
+  - [Eager Watchers](#eager-watchers)
+  - [Once Watchers `3.4+`](#once-watchers-34)
+  - [watchEffect()](#watcheffect)
+    - [`watch` vs. `watchEffect`](#watch-vs-watcheffect)
+  - [Stopping a Watcher](#stopping-a-watcher)
 - [-Scaling Up](#-scaling-up)
 - [Single-File Components](#single-file-components)
   - [Introduction](#introduction)
@@ -116,6 +139,25 @@
 ## [vue3](https://cn.vuejs.org/guide/introduction.html)
 
 ### modularization thought
+
+```mermaid
+mindmap
+id((Widget))
+    Wa
+      Wax
+    Wb
+      id)Wbx(
+      Wbn
+```
+---
+```mermaid
+mindmap
+id)Wbx(
+    Wk
+      Wkx
+      Wky
+    Wi
+```
 
 ```
         R                   C
@@ -671,8 +713,89 @@ function warn(message, event) {
 }
 ```
 
-## Event Modifiers
+## 📖Event Modifiers
 
+## 📖Key Modifiers
+
+When listening for keyboard events, we often need to check for specific keys. 
+
+## 📖Mouse Button Modifiers
+
+# Form Input Bindings
+
+It can be cumbersome to manually wire up value bindings and change event listeners:
+```html
+<input
+  :value="text"
+  @input="event => text = event.target.value">  
+```
+
+to
+```html
+<input v-model="text">
+```
+
+## Basic Usage
+
+### Text
+
+```html
+<p>Message is: {{ message }}</p>
+<input v-model="message" placeholder="edit me" />
+```
+
+### Multiline text
+
+```html
+<span>Multiline message is:</span>
+<p style="white-space: pre-line;">{{ message }}</p>
+<textarea v-model="message" placeholder="add multiple lines"></textarea>
+```
+
+### Checkbox
+
+```html
+<input type="checkbox" id="checkbox" v-model="checked" />
+<label for="checkbox">{{ checked }}</label>
+```
+
+### Radio
+
+```html
+<div>Picked: {{ picked }}</div>
+
+<input type="radio" id="one" value="One" v-model="picked" />
+<label for="one">One</label>
+
+<input type="radio" id="two" value="Two" v-model="picked" />
+<label for="two">Two</label>
+```
+
+### Select
+
+```html
+<div>Selected: {{ selected }}</div>
+
+<select v-model="selected">
+  <option disabled value="">Please select one</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+```
+
+## 📖Modifiers
+
+### `.lazy`
+
+By default, v-model syncs the input with the data after each input event.  
+You can add the lazy modifier to instead sync after change events:
+
+### `.number`
+
+### `.trim`
+
+## `v-model` with Components
 
 
 
@@ -688,6 +811,232 @@ function warn(message, event) {
 [Ref](https://vuejs.org/api/composition-api-lifecycle.html#onmounted)
 
 # Watchers
+
+see also [Computed Properties](#computed-properties)
+
+## Basic example
+
+<u>"side effects" in reaction to state changes</u>
+
+With Composition API, we can use the watch function to trigger a callback whenever a piece of reactive state changes:
+
+```html
+<script setup>
+import { ref, watch } from 'vue'
+
+const question = ref('')
+const answer = ref('Questions usually contain a question mark. ;-)')
+const loading = ref(false)
+
+// watch works directly on a ref
+watch(question, async (newQuestion, oldQuestion) => {
+  if (newQuestion.includes('?')) {
+    loading.value = true
+    answer.value = 'Thinking...'
+    try {
+      const res = await fetch('https://yesno.wtf/api')
+      answer.value = (await res.json()).answer
+    } catch (error) {
+      answer.value = 'Error! Could not reach the API. ' + error
+    } finally {
+      loading.value = false
+    }
+  }
+})
+</script>
+
+<template>
+  <p>
+    Ask a yes/no question:
+    <input v-model="question" :disabled="loading" />
+  </p>
+  <p>{{ answer }}</p>
+</template>
+```
+
+### 📖Watch Source Types  
+
+`watch`'s first argument can be different types of reactive "sources":  
+it can be a ref (including computed refs), a reactive object, a getter function, or an array of multiple sources:
+```js
+const x = ref(0)
+const y = ref(0)
+
+// single ref
+watch(x, (newX) => {
+  console.log(`x is ${newX}`)
+})
+
+// getter
+watch(
+  () => x.value + y.value,
+  (sum) => {
+    console.log(`sum of x + y is: ${sum}`)
+  }
+)
+
+// array of multiple sources
+watch([x, () => y.value], ([newX, newY]) => {
+  console.log(`x is ${newX} and y is ${newY}`)
+})
+```
+
+
+
+### watch a object - Watch Source Types 
+
+Do note that you can't watch a property of a reactive object like this:
+
+```js
+const obj = reactive({ count: 0 })
+
+// this won't work because we are passing a number to watch()
+watch(obj.count, (count) => {
+  console.log(`count is: ${count}`)
+})
+```
+
+instead, use a getter:
+```js
+// instead, use a getter:
+watch(
+  () => obj.count,
+  (count) => {
+    console.log(`count is: ${count}`)
+  }
+)
+```
+
+## Deep Watchers
+
+When you call `watch()` directly on a reactive object, it will implicitly create *a deep watcher* - the callback will be triggered on all nested mutations:
+```javascript
+const obj = reactive({ count: 0 })
+
+watch(obj, (newValue, oldValue) => {
+  // fires on nested property mutations
+  // Note: `newValue` will be equal to `oldValue` here
+  // because they both point to the same object!
+})
+
+obj.count++
+```
+
+## Eager Watchers
+
+<span style='font-size: 15px;'>**watch is lazy by default**</span>  
+the callback won't be called until the watched source has changed.
+
+<span style='font-size: 15px;'>**eagerly to get initial**</span>  
+But in some cases we may want the same callback logic to be run eagerly - for example, we may want to fetch some initial data, and then re-fetch the data whenever relevant state changes.
+
+<span style='font-size: 15px;'>**immediately**</span>  
+We can force a watcher's callback to be executed immediately by passing the immediate: true option:
+```javascript
+watch(
+  source,
+  (newValue, oldValue) => {
+    // executed immediately, then again when `source` changes
+  },
+  { immediate: true }
+)
+```
+
+## Once Watchers `3.4+`
+
+use the `once: true` option.
+```javascript
+watch(
+  source,
+  (newValue, oldValue) => {
+    // when `source` changes, triggers only once
+  },
+  { once: true }
+)
+```
+
+## watchEffect()
+
+`watchEffect()` allows us to track the callback's reactive dependencies automatically.
+
+from
+```javascript
+const todoId = ref(1)
+const data = ref(null)
+
+watch(
+  todoId,
+  async () => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+    )
+    data.value = await response.json()
+  },
+  { immediate: true }
+)
+```
+
+to
+```javascript
+watchEffect(async () => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
+  data.value = await response.json()
+})
+```
+
+
+### `watch` vs. `watchEffect`
+
+Their main difference is the way they track their reactive dependencies:
+
+- `watch` only tracks the explicitly watched source.
+- `watchEffect`, combines *dependency tracking* and *side effect* into one phase.  
+  It automatically tracks every reactive property accessed during its synchronous execution.
+
+
+## Stopping a Watcher
+
+if the watcher is created in *an async callback*, it won't be bound to the owner component and must be stopped manually to avoid memory leaks.  
+
+Here's an example:
+```html
+<script setup>
+import { watchEffect } from 'vue'
+
+// this one will be automatically stopped
+watchEffect(() => {})
+
+// ...this one will not!
+setTimeout(() => {
+  watchEffect(() => {})
+}, 100)
+</script>
+```
+
+<span style='font-size: 15px;'>**To manually stop a watcher**</span>  
+use the returned handle function.  
+This works for both watch and watchEffect:
+```javascript
+const unwatch = watchEffect(() => {})
+
+// ...later, when no longer needed
+unwatch()
+```
+
+<span style='font-size: 15px;'>**conditional watch**</span>  
+If you need to wait for some async data, you can make your watch logic conditional instead:
+```javascript
+// data to be loaded asynchronously
+const data = ref(null)
+
+watchEffect(() => {
+  if (data.value) {
+    // do something when data is loaded
+  }
+})
+```
 
 # -Scaling Up
 

@@ -35,10 +35,6 @@ using `tags` and inner `style`
 ## mardown emoji cheat sheet
 <https://github.com/ikatyang/emoji-cheat-sheet>
 
-## office 
-
-https://zhuanlan.zhihu.com/p/629538463
-
 ## postman 
 
 postman `joey4567@gmail.com`  
@@ -62,8 +58,34 @@ root
 <https://ubuntu.com/server/docs/network-configuration>
 
 
+## vscode plugins
+
+### code tour
+
+### drawio
+
+### markdown emoji
+
+### mermaid
+
+### markdown all in one
+
+### markdown preview enhanced 
+
+
+
 ## windows
 
 ### Boot app when launched
 
 `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup`
+
+### wegestures
+
+### everythingy
+
+### huorong
+
+### office 
+
+https://zhuanlan.zhihu.com/p/629538463
