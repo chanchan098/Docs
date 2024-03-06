@@ -95,6 +95,15 @@
   - [watchEffect()](#watcheffect)
     - [`watch` vs. `watchEffect`](#watch-vs-watcheffect)
   - [Stopping a Watcher](#stopping-a-watcher)
+- [📖 Template Refs](#-template-refs)
+  - [Accessing the Refs](#accessing-the-refs)
+  - [Refs inside v-for](#refs-inside-v-for)
+  - [Function Refs](#function-refs)
+  - [Ref on Component](#ref-on-component)
+- [Components Basics](#components-basics)
+  - [Defining a Component](#defining-a-component)
+  - [Using a Component](#using-a-component)
+  - [Passing Props](#passing-props)
 - [-Scaling Up](#-scaling-up)
 - [Single-File Components](#single-file-components)
   - [Introduction](#introduction)
@@ -1037,6 +1046,111 @@ watchEffect(() => {
   }
 })
 ```
+
+# 📖 Template Refs
+
+where we need direct access to the underlying DOM elements.  
+To achieve this, we can use the special ref attribute:
+```html
+<input ref="input">
+```
+
+## Accessing the Refs
+
+## Refs inside v-for
+
+## Function Refs
+
+## Ref on Component
+
+
+# Components Basics
+
+Components allow us to split the UI into independent and reusable pieces, and think about each piece in isolation. 
+
+![alt](https://vuejs.org/assets/components.dSWW39P2.png)
+
+## Defining a Component
+
+we typically define each Vue component in a dedicated file using the `.vue`  
+- known as a Single-File Component (SFC for short):
+```html
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">You clicked me {{ count }} times.</button>
+</template>
+```
+
+can be defined as a plain JavaScript object containing Vue-specific options:
+```js
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const count = ref(0)
+    return { count }
+  },
+  template: `
+    <button @click="count++">
+      You clicked me {{ count }} times.
+    </button>`
+  // Can also target an in-DOM template:
+  // template: '#my-template-element'
+}
+```
+
+## Using a Component
+
+To use a child component, we need to import it in the parent component. 
+```html
+<script setup>
+import ButtonCounter from './ButtonCounter.vue'
+</script>
+
+<template>
+  <h1>Here is a child component!</h1>
+  <ButtonCounter />
+</template>
+```
+
+## Passing Props
+
+Props are custom attributes you can register on a component.  
+```html
+<!-- BlogPost.vue -->
+<script setup>
+defineProps(['title'])
+</script>
+
+<template>
+  <h4>{{ title }}</h4>
+</template>
+```
+
+Declared props are automatically exposed to the template.  
+`defineProps` also returns an object that contains all the props passed to the component,  
+so that we can access them in JavaScript if needed:
+```javascript
+const props = defineProps(['title'])
+console.log(props.title)
+```
+
+If you are not using `<script setup>`, props should be declared using the props option,  
+and the props object will be passed to `setup()` as the first argument:
+```javascript
+export default {
+  props: ['title'],
+  setup(props) {
+    console.log(props.title)
+  }
+}
+```
+
 
 # -Scaling Up
 
