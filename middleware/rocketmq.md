@@ -1,4 +1,4 @@
-# mid-1-rocketmq.md
+# rocketmq.md
 
 # infos
 | component         | info                           |

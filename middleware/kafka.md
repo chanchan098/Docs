@@ -1,4 +1,4 @@
-# mid-2-kafka.md
+# kafka.md
 
 # Introduction
 

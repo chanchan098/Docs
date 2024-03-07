@@ -1,6 +1,85 @@
 # maven.md
 
-# Introduction to the Dependency Mechanism
+# -User Centre/Getting Started Guide
+
+*User Centre/Getting Started Guide*
+# Naming Conventions
+
+- **groupId** uniquely identifies your project across all projects.
+  -  A group ID should follow Java's package name rules. 
+  -  This means it starts with a reversed domain name you control. 
+  -  For example, `org.apache.maven`, `org.apache.commons`.
+  -  **subject groupId**       
+      -  You can create as many subgroups as you want. A good way to determine the granularity of the groupId is to use the project structure. That is, if the current project is a multiple module project, it should append a new identifier to the parent's groupId.  
+      -  For example,org.apache.maven, org.apache.maven.plugins, org.apache.maven.reporting            
+- **artifactId** is the name of the jar without version.
+- **version**
+
+*User Centre/Getting Started Guide*
+# The Build Lifecycle
+
+## Build Lifecycle Basics
+
+three built-in build lifecycles:
+- The `default` lifecycle handles your project deployment,  
+- the `clean` lifecycle handles project cleaning,  
+- the `site` lifecycle handles the creation of your project's web site.
+
+## 📖A Build Lifecycle is Made Up of Phases
+
+[doc](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#a-build-lifecycle-is-made-up-of-phases)
+
+## A Build Phase is Made Up of Plugin Goals
+
+A plugin goal represents a specific task (finer than a build phase) which contributes to the building and managing of a project. It may be bound to zero or more build phases.
+
+
+
+# The POM
+
+## What is a POM?
+
+<u>A Project Object Model or POM is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project.</u>
+
+<span style='font-size: 15px;'>**default values for most projects:**</span>  
+- `target` is the build directory
+- `src/main/java` is the source directory
+- `src/test/java` is the test source directory
+- ...
+
+
+
+## 📖 Super POM
+
+## Minimal POM
+
+- `project` root
+- `modelVersion` - should be set to 4.0.0
+- `groupId` - the id of the project's group.
+- `artifactId` - the id of the artifact (project)
+- `version` - the version of the artifact under the specified group
+
+```xml
+<project>
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <version>1</version>
+</project>
+```
+
+## 📝to be continued 
+
+## Project Inheritance
+
+*User Centre/Getting Started Guide*
+# Profiles
+
+
+
+*User Centre/Getting Started Guide*
+# Dependency Mechanism
 
 ## Dependency Management
 

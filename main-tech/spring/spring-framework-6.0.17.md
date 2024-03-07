@@ -3,7 +3,8 @@
 - [doc](https://docs.spring.io/spring-framework/reference/6.0/index.html)  
 - [spring repo](https://mvnrepository.com/artifact/org.springframework)
 
-# The IoC Container - Core Technologies
+*Core Technologies*
+# The IoC Container
 
 ## Introduction to the Spring IoC Container and Beans
 
@@ -56,12 +57,13 @@ which relies on `bytecode metadata` for wiring up components
 
 ## Java-based Container Configuration
 
-
-# Spring Expression Language (SpEL) - Core Technologies
+*Core Technologies*
+# Spring Expression Language (SpEL)
 
 is a powerful expression language that supports querying and manipulating an object graph at runtime.
 
-# Aspect Oriented Programming with Spring - Core Technologies
+*Core Technologies*
+# Aspect Oriented Programming with Spring
 
 [docs](https://docs.spring.io/spring-framework/reference/core/aop.html)
 
@@ -139,11 +141,14 @@ Introductions (known as inter-type declarations in AspectJ) enable an aspect to 
 
 
 
+# -Web on Servlet Stack
 
-# Spring Web MVC - Web on Servlet Stack
+# Spring Web MVC
 
 [doc](https://docs.spring.io/spring-framework/reference/6.0/web.html)  
 
+
+*Web on Servlet Stack/Spring Web MVC*
 # DispatcherServlet 
 - Spring Web MVC - Web on Servlet Stack
 
@@ -168,16 +173,19 @@ functionality:
 
 ## Context Hierarchy
 
-# Annotated Controllers - 
+*Web on Servlet Stack/Spring Web MVC*
+# Annotated Controllers
+
 Spring Web MVC - Web on Servlet Stack
 
 Spring MVC provides an annotation-based programming model where `@Controller` and `@RestController` components use annotations to express request mappings, request input, exception handling, and more.
 
-# Declaration(xml means) - 
-Annotated Controllers - Spring Web MVC - Web on Servlet Stack
 
-# Request Mapping - 
-Annotated Controllers - Spring Web MVC - Web on Servlet Stack
+*Web on Servlet Stack/Spring Web MVC/Annotated Controllers*
+# Declaration(xml means)
+
+*Web on Servlet Stack/Spring Web MVC/Annotated Controllers*
+# Request Mapping 
 
 You can use the `@RequestMapping` annotation to map requests to controllers methods.  
 It has various attributes to match by URL, HTTP method, request parameters, headers, and media types.
@@ -210,4 +218,9 @@ public class MyConfig {
 
 `@RequestMapping` handler methods have a flexible signature and can choose from a range of supported  
 controller method arguments and return values.
+
+*[Web on Servlet Stack/Spring Web MVC/MVC Config/Message Converters](https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-config/message-converters.html)*
+# Message Converters
+
+In a Spring Boot application, the `WebMvcAutoConfiguration` adds any `HttpMessageConverter` beans it detects, in addition to default converters.
 

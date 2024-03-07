@@ -1,5 +1,6 @@
-# cmp-14-vue3.md
-- [cmp-14-vue3.md](#cmp-14-vue3md)
+# vue3.md
+
+- [vue3.md](#vue3md)
 - [Scaffold](#scaffold)
   - [nodejs](#nodejs)
   - [debugger](#debugger)
@@ -19,6 +20,8 @@
       - [custom events](#custom-events)
     - [custom components](#custom-components)
     - [element ui plus](#element-ui-plus)
+- [-Getting Started](#-getting-started)
+- [Introduction](#introduction)
 - [-Essentials](#-essentials)
 - [Template Syntax](#template-syntax)
   - [Text Interpolation](#text-interpolation)
@@ -121,11 +124,19 @@
 - [Events](#events)
   - [📖 Emitting and Listening to Events](#-emitting-and-listening-to-events)
   - [📖 Declaring Emitted Events](#-declaring-emitted-events)
+  - [Events Validation](#events-validation)
+- [Component v-model](#component-v-model)
+  - [Basic Usage](#basic-usage-1)
 - [-Reusability](#-reusability)
 - [Custom Directives](#custom-directives)
 - [-Scaling Up](#-scaling-up)
 - [Single-File Components](#single-file-components)
-  - [Introduction](#introduction)
+  - [Introduction](#introduction-1)
+- [State Management](#state-management)
+- [Server-Side Rendering (SSR)](#server-side-rendering-ssr)
+  - [Overview](#overview)
+    - [What is SSR?](#what-is-ssr)
+- [---](#---)
 - [Appendix](#appendix)
   - [API Ref](#api-ref-1)
 
@@ -225,6 +236,12 @@ id)Wbx(
 * [doc](https://cn.vitejs.dev/guide/env-and-mode.html)
 
 ### [element ui plus](https://element-plus.org/zh-CN/guide/design.html)
+
+# -Getting Started
+
+# Introduction
+
+https://vuejs.org/guide/introduction.html
 
 # -Essentials
 
@@ -1527,7 +1544,7 @@ defineProps({
 ## 📖 Declaring Emitted Events
 
 <span style='font-size: 15px;'>**defineEmits**</span>  
-```javascript
+```html
 <script setup>
 defineEmits(['inFocus', 'submit'])
 </script>
@@ -1561,6 +1578,41 @@ export default {
   }
 }
 ```
+
+## Events Validation
+
+To add validation, the event is assigned a function that receives the arguments passed to the emit call and returns a boolean to indicate whether the event is valid or not.
+
+```javascript
+<script setup>
+const emit = defineEmits({
+  // No validation
+  click: null,
+
+  // Validate submit event
+  submit: ({ email, password }) => {
+    if (email && password) {
+      return true
+    } else {
+      console.warn('Invalid submit event payload!')
+      return false
+    }
+  }
+})
+
+function submitForm(email, password) {
+  emit('submit', { email, password })
+}
+</script>
+```
+
+# Component v-model
+
+## Basic Usage
+
+`v-model` can be used on a component to implement *a two-way binding*.
+
+
 
 # -Reusability  
 
@@ -1597,6 +1649,21 @@ const greeting = ref('Hello World!')
 ```
 
 The full syntax is defined in the [SFC Syntax Specification](https://vuejs.org/api/sfc-spec.html).
+
+# State Management 
+
+
+
+# Server-Side Rendering (SSR)
+
+## Overview
+
+### What is SSR?
+
+it is also possible to render the same components into HTML strings on the server, send them directly to the browser, and finally "hydrate" the static markup into a fully interactive app on the client.
+
+
+# ---
 
 # Appendix
 

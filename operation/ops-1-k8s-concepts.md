@@ -16,7 +16,7 @@
   - [Label selectors](#label-selectors)
     - [Equality-based requirement](#equality-based-requirement)
     - [Set-based requirement](#set-based-requirement)
-- [Kubernetes-components-Overview](#kubernetes-components-overview)
+- [Kubernetes Components-Overview](#kubernetes-components-overview)
   - [Control panel components](#control-panel-components)
     - [kube-apiserver](#kube-apiserver)
     - [etcd](#etcd)
@@ -50,8 +50,8 @@
   - [DaemonSet](#daemonset)
   - [Jobs](#jobs)
   - [CronJob](#cronjob)
-- [Services, Load Balancing, and Networking](#services-load-balancing-and-networking)
-- [Service-Services, Load Balancing, and Networking](#service-services-load-balancing-and-networking)
+- [-Services, Load Balancing, and Networking](#-services-load-balancing-and-networking)
+- [Service](#service)
   - [Services in Kubernetes](#services-in-kubernetes)
   - [Defining a Service](#defining-a-service)
     - [Port definitions](#port-definitions)
@@ -63,40 +63,41 @@
   - [Headless Services](#headless-services)
   - [Discovering services](#discovering-services)
     - [DNS](#dns-1)
-- [~~Ingress~~-Services, Load Balancing, and Networking](#ingress-services-load-balancing-and-networking)
+- [~~Ingress~~](#ingress)
     - [Terminology](#terminology)
-- [~~Ingress Controllers~~-Services, Load Balancing, and Networking](#ingress-controllers-services-load-balancing-and-networking)
-- [Gateway API-Services, Load Balancing, and Networking](#gateway-api-services-load-balancing-and-networking)
+- [~~Ingress Controllers~~](#ingress-controllers)
+- [Gateway API](#gateway-api)
     - [Resource model](#resource-model)
   - [EndpointSlices](#endpointslices-1)
     - [EndpointSlice API](#endpointslice-api)
-- [DNS for Services and Pods - Services, Load Balancing, and Networking](#dns-for-services-and-pods---services-load-balancing-and-networking)
+- [DNS for Services and Pods](#dns-for-services-and-pods)
   - [Services](#services)
     - [A/AAAA records](#aaaaa-records)
     - [SRV records](#srv-records)
-- [ConfigMaps - Configuration](#configmaps---configuration)
-- [Security](#security)
-- [Controlling Access to the Kubernetes API-Security](#controlling-access-to-the-kubernetes-api-security)
+- [-Configuration](#-configuration)
+- [ConfigMaps](#configmaps)
+- [-Security](#-security)
+- [Controlling Access to the Kubernetes API](#controlling-access-to-the-kubernetes-api)
   - [Transport security](#transport-security)
   - [Authentication](#authentication)
   - [Authorization](#authorization)
   - [Admission control](#admission-control)
-- [Role Based Access Control Good Practices-Security](#role-based-access-control-good-practices-security)
+- [Role Based Access Control Good Practices](#role-based-access-control-good-practices)
   - [API Overview](#api-overview)
-- [Reference](#reference)
-- [API Overview - Reference](#api-overview---reference)
-- [API Access Control - Reference](#api-access-control---reference)
-- [Using RBAC Authorization - API Access Control - Reference](#using-rbac-authorization---api-access-control---reference)
-- [Command line tool (kubectl) - Reference](#command-line-tool-kubectl---reference)
-- [Workload Resources - Kubernetes API - Reference](#workload-resources---kubernetes-api---reference)
+- [-Reference](#-reference)
+- [API Overview](#api-overview-1)
+- [API Access Control](#api-access-control)
+- [Using RBAC Authorization](#using-rbac-authorization)
+- [Command line tool (kubectl)](#command-line-tool-kubectl)
+- [Workload Resources](#workload-resources)
   - [Pod](#pod)
   - [PodTemplate](#podtemplate)
   - [ReplicationController](#replicationcontroller)
   - [Deployment](#deployment-1)
   - [ReplicaSet](#replicaset-1)
-- [Service Resources - Kubernetes API - Reference](#service-resources---kubernetes-api---reference)
-  - [Service](#service)
-- [Common Definitions - Kubernetes API - Reference](#common-definitions---kubernetes-api---reference)
+- [Service Resources](#service-resources)
+  - [Service](#service-1)
+- [Common Definitions](#common-definitions)
   - [ObjectMeta](#objectmeta)
 - [-------------------------------------------------](#-------------------------------------------------)
 - [Api references](#api-references)
@@ -247,7 +248,7 @@ partition
 - The third example selects all resources including a label with key `partition`; no values are checked.
 - The fourth example selects all resources without a label with key `partition`; no values are checked.
 
-# Kubernetes-components-Overview
+# Kubernetes Components-Overview
 [doc](https://kubernetes.io/docs/concepts/overview/components/)
 
 ![components](https://kubernetes.io/images/docs/components-of-kubernetes.svg)
@@ -335,6 +336,10 @@ flowchart BT
 ```
 
 ### DNS
+
+Cluster DNS is a DNS server, in addition to the other DNS server(s) in your environment, which serves `DNS records` for Kubernetes services.
+
+Containers started by Kubernetes automatically include this DNS server in their DNS searches.
 
 ### Web UI (Dashboard) 
 
@@ -427,11 +432,12 @@ A *CronJob* creates Jobs on a repeating schedule.
 
 
 
-# Services, Load Balancing, and Networking
+# -Services, Load Balancing, and Networking
 
 [link](https://kubernetes.io/docs/concepts/services-networking/)
 
-# Service-Services, Load Balancing, and Networking
+*Services, Load Balancing, and Networking/concepts*
+# Service
 
 - a `Service` is a method for **exposing a network application**  
   that is running as one or more Pods in your cluster.
@@ -574,8 +580,8 @@ If DNS has been enabled throughout your cluster then all Pods should automatical
 
 The Kubernetes DNS server is the only way to access `ExternalName` Services. 
 
-
-# ~~Ingress~~-Services, Load Balancing, and Networking
+*Services, Load Balancing, and Networking/concepts*
+# ~~Ingress~~
 
 - An API object that manages external access to the services in a cluster, typically HTTP.
 
@@ -586,13 +592,13 @@ The Kubernetes DNS server is the only way to access `ExternalName` Services.
 - Cluster network
 - Service: that identifies a set of Pods using label selectors.
 
-
-# ~~Ingress Controllers~~-Services, Load Balancing, and Networking
+*Services, Load Balancing, and Networking/concepts*
+# ~~Ingress Controllers~~
 
 In order for the Ingress resource to work, the cluster must have an ingress controller running.
 
-
-# Gateway API-Services, Load Balancing, and Networking
+*Services, Load Balancing, and Networking/concepts*
+# Gateway API
 
 Make network services available by using an extensible, role-oriented, protocol-aware configuration  
 mechanism. Gateway API is an add-on containing API kinds that provide dynamic infrastructure  
@@ -624,11 +630,12 @@ EndpointSlices offer a more scalable and extensible alternative to Endpoints.
 
 an EndpointSlice contains references to a set of network endpoints. 
 
-# DNS for Services and Pods - Services, Load Balancing, and Networking
+*Services, Load Balancing, and Networking/concepts*
+# DNS for Services and Pods
 
 Kubernetes creates DNS records for Services and Pods. You can contact Services with consistent ***DNS names*** instead of IP addresses.
 
-Kubelet configures Pods' DNS so that running containers can lookup Services by name rather than IP.
+Kubelet configures Pods' DNS so that *running containers* can lookup Services by name rather than IP.
 
 Services defined in the cluster are assigned DNS names. By default, a client Pod's DNS search list includes the Pod's own namespace and the cluster's default domain.
 
@@ -642,17 +649,20 @@ SRV Records are created for named ports that are part of normal or headless serv
 
 the SRV record has the form `_port-name._port-protocol.my-svc.my-namespace.svc.cluster-domain.example`
 
+# -Configuration
 
-# ConfigMaps - Configuration
+*Configuration/concepts*
+# ConfigMaps
 
 A ConfigMap is an API object used to store non-confidential data in key-value pairs.  
 Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
 
-# Security 
+# -Security 
 
 <https://kubernetes.io/docs/concepts/security/>
 
-# Controlling Access to the Kubernetes API-Security
+*concepts/Security*
+# Controlling Access to the Kubernetes API
 
 Both human users and Kubernetes service accounts can be authorized for API access.  
 When a request reaches the API, it goes through several stages,  
@@ -693,12 +703,10 @@ The request is authorized if an existing policy declares that the user has permi
 
 Admission Control modules are software modules that can modify or reject requests. 
 
-# Role Based Access Control Good Practices-Security
+*concepts/Security*
+# Role Based Access Control Good Practices
 
 Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles.
-
-
-
 
 
 ## API Overview
@@ -706,9 +714,10 @@ Kubernetes RBAC is a key security control to ensure that cluster users and workl
 You can use the Kubernetes API **to read and write Kubernetes resource objects** via a Kubernetes API endpoint.
 
 
-# Reference
+# -Reference
 
-# API Overview - Reference
+*Reference/*
+# API Overview
 
 [link](https://kubernetes.io/docs/reference/using-api/)
 
@@ -716,20 +725,21 @@ The REST API is the fundamental fabric of Kubernetes. All operations and communi
 external user commands are REST API calls that the API Server handles. Consequently, everything in the Kubernetes  
 platform is treated as an API object and has a corresponding entry in the API.
 
-# API Access Control - Reference
+*Reference/*
+# API Access Control
 
+*Reference/API Access Control*
+# Using RBAC Authorization
 
-# Using RBAC Authorization - API Access Control - Reference
-
-
-# Command line tool (kubectl) - Reference
+*Reference/*
+# Command line tool (kubectl) 
 
 [link](https://kubernetes.io/docs/reference/kubectl/)
 
 
 
-
-# Workload Resources - Kubernetes API - Reference
+*Reference/Kubernetes API*
+# Workload Resources
 
 <https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/>
 
@@ -767,8 +777,8 @@ ReplicaSet ensures that a specified number of pod replicas are running at any gi
 
 `spec (ReplicaSetSpec) > template (PodTemplateSpec)`
 
-
-# Service Resources - Kubernetes API - Reference
+*Reference/Kubernetes API*
+# Service Resources
 
 <https://kubernetes.io/docs/reference/kubernetes-api/service-resources/>
 
@@ -789,7 +799,8 @@ A middle line in front of an item start, marking it and with followers as an ite
   targetPort: 8080
 ```
 
-# Common Definitions - Kubernetes API - Reference
+*Reference/Kubernetes API*
+# Common Definitions
 
 [doc](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/)
 

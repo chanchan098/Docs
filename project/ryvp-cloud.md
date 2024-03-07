@@ -48,6 +48,13 @@ see also [0-build-maven.md](0-build-maven.md)
 
 issuing `refresh token` and `access token`
 
+## Data validation
+
+- [feral tutorial](https://www.iocoder.cn/Spring-Boot/Validation)
+- [spring| java bean validation](https://docs.spring.io/spring-framework/reference/6.0/core/validation/beanvalidation.html)
+
+
+
 ## OAuth2
   
 ### 三方授权调试
