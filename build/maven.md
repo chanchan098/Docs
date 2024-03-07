@@ -1,4 +1,4 @@
-# build-0-maven.md
+# maven.md
 
 # Introduction to the Dependency Mechanism
 

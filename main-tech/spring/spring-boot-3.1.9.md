@@ -1,4 +1,4 @@
-# cmp-9.2-spring-boot.md
+# spring-boot.md
 
 - [doc](https://docs.spring.io/spring-boot/docs/3.1.9/reference/html/)
 - [doc with appendix](https://docs.spring.io/spring-boot/docs/3.1.9/reference/html/index.html)

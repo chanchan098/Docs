@@ -1,4 +1,4 @@
-# cmp-13-spring-cloud.md
+# spring-cloud.md
 
 <https://docs.spring.io/spring-cloud/docs/2022.0.5/reference/html/>
 

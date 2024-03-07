@@ -1,4 +1,4 @@
-# proj-ryvp-cloud.md
+# ryvp-cloud.md
 
 ## Dependencies management
 
@@ -10,11 +10,22 @@ see also [0-build-maven.md](0-build-maven.md)
 
 ## Module structure
 
-- yudao-dependencies
-- yudao-framework`(packed components and configs with spring style)`
+- yudao-dependencies`unified dependencies management, see also Maven`
+- yudao-framework`packed components and configs with spring boot style`
   - yudao-spring-boot-starter-xxx
 - yudao-gateway
 - yudao-module-xxx`business components`
+  - yudao-module-xxx-api`exposed to other modules`
+  - yudao-module-xxx-biz`business logic`
+    - api`for external`
+    - controller`api interfaces`
+    - convert`data security`
+    - dal`a.k.a data access layer`
+      - dataobject`entities mapping to tables` 
+      - mysql`mapper to db`
+      - redis
+    - framework`configs to framework` 
+    - service`call mapper and do business logic`
 
 ## starter-security
 

@@ -1,4 +1,4 @@
-# cmp-9-spring-app-rpc.md
+# spring-app-rpc.md
 
 # OpenFeign (spring boot)
 

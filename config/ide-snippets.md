@@ -1,4 +1,4 @@
-# conf-1-ide-snippets.md
+# ide-snippets.md
 
 ```json
 {
@@ -27,7 +27,8 @@
 		"body": [
 			"```",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block"
 	},
@@ -36,7 +37,8 @@
 		"body": [
 			"```ini",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block ini"
 	},
@@ -45,7 +47,8 @@
 		"body": [
 			"```javascript",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block JavaScript"
 	},
@@ -54,7 +57,8 @@
 		"body": [
 			"```java",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block Java"
 	},
@@ -63,7 +67,8 @@
 		"body": [
 			"```docker",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block docker"
 	},	
@@ -72,7 +77,8 @@
 		"body": [
 			"```html",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block html"
 	},
@@ -81,7 +87,8 @@
 		"body": [
 			"```shell",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block shell"
 	},
@@ -90,7 +97,8 @@
 		"body": [
 			"```sql",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block sql"
 	},
@@ -99,7 +107,8 @@
 		"body": [
 			"```nginx",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block nginx"
 	},
@@ -109,7 +118,8 @@
 		"body": [
 			"```yaml",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block nginx"
 	},
@@ -118,7 +128,8 @@
 		"body": [
 			"```mermaid",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block mermaid"
 	},
@@ -127,7 +138,8 @@
 		"body": [
 			"```vue",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block vue"
 	},
@@ -136,7 +148,8 @@
 		"body": [
 			"```xml",
 			"$1",
-			"```",			
+			"```",
+			"",			
 		],
 		"description": "code block xml"
 	},
@@ -163,6 +176,13 @@
 			"</details>",			
 		],
 		"description": "diagram collapsed block"
+	},	
+	"doc mark": {
+		"prefix": "book",
+		"body": [
+			"📖"
+		],
+		"description": "doc mark"
 	},
 	"key concept": {
 		"prefix": "k",
@@ -171,6 +191,28 @@
 			"  $2"
 		],
 		"description": "key concept"
+	},
+	"left and right blocks": {
+		"prefix": "lr",
+		"body": [
+		"<div style=\"display: flex;\">",
+        "  <div style=\"flex: 1; padding-right: 20px;\">",
+		"",
+		"  <p><b>$1 &nbsp;</b></p>",
+        "",
+        "  $2",
+        "",
+        "  </div>",
+        "  <div style=\"flex: 1;\">",
+        "",
+		"  <p><b>$3 &nbsp;</b></p>",
+		""
+        "  $4",
+        "",
+        "  </div>",
+      	"</div>"
+		],
+		"description": "left and right blocks"
 	},
 	"mark": {
 		"prefix": "m",
@@ -216,6 +258,13 @@
 			"- [x] $1",		
 		],
 		"description": "task done"
+	},
+	"under line": {
+		"prefix": "ul",
+		"body": [
+			"<u>$1</u>",
+		],
+		"description": "under line"
 	}
 
 }
