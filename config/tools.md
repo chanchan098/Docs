@@ -1,4 +1,4 @@
-# conf-0-tool.md
+# tools.md
 
 ## chrome tools
 
@@ -47,6 +47,14 @@ root
 <https://blog.csdn.net/dmedaa/article/details/107992159>
 
 ## smargit 18.2.9 on Windows 
+
+## sqlite update string
+
+```sql
+UPDATE users
+SET email = REPLACE(email, '@example.com', '@newdomain.com')
+WHERE email LIKE '%@example.com';
+```
 
 ## tabby
 

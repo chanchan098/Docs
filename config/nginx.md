@@ -1,4 +1,5 @@
-# conf-2-nginx.md
+# nginx.md
+
 # Windows
 
 At *nginx/conf/nginx.conf*

@@ -1,4 +1,5 @@
-# cmp-7-grpc.md
+# grpc.md
+
 # Intro
 
 [Intro](https://grpc.io/docs/what-is-grpc/introduction/)

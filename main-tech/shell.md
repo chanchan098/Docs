@@ -1,4 +1,4 @@
-# cmp-10-shell.md
+# shell.md
 
 ```shell
 

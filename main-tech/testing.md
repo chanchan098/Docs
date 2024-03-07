@@ -1,4 +1,4 @@
-# cmp-1-testing.md
+# testing.md
 
 # Generating testing values
 
