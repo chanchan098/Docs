@@ -104,6 +104,25 @@
   - [Defining a Component](#defining-a-component)
   - [Using a Component](#using-a-component)
   - [Passing Props](#passing-props)
+  - [Listening to Events](#listening-to-events-1)
+  - [Content Distribution with Slots](#content-distribution-with-slots)
+  - [Dynamic Components](#dynamic-components)
+- [-Components In-Depth](#-components-in-depth)
+- [Registration](#registration)
+  - [Global Registration](#global-registration)
+  - [Local Registration](#local-registration)
+  - [Component Name Casing](#component-name-casing)
+- [Props](#props-1)
+  - [📖 Props Declaration](#-props-declaration)
+  - [📖 Prop Passing Details](#-prop-passing-details)
+  - [One-Way Data Flow](#one-way-data-flow)
+  - [📖 Prop Validation](#-prop-validation)
+  - [📖 Boolean Casting](#-boolean-casting)
+- [Events](#events)
+  - [📖 Emitting and Listening to Events](#-emitting-and-listening-to-events)
+  - [📖 Declaring Emitted Events](#-declaring-emitted-events)
+- [-Reusability](#-reusability)
+- [Custom Directives](#custom-directives)
 - [-Scaling Up](#-scaling-up)
 - [Single-File Components](#single-file-components)
   - [Introduction](#introduction)
@@ -1063,7 +1082,6 @@ To achieve this, we can use the special ref attribute:
 
 ## Ref on Component
 
-
 # Components Basics
 
 Components allow us to split the UI into independent and reusable pieces, and think about each piece in isolation. 
@@ -1134,13 +1152,15 @@ defineProps(['title'])
 
 Declared props are automatically exposed to the template.  
 `defineProps` also returns an object that contains all the props passed to the component,  
+
 so that we can access them in JavaScript if needed:
 ```javascript
 const props = defineProps(['title'])
 console.log(props.title)
 ```
 
-If you are not using `<script setup>`, props should be declared using the props option,  
+<span style='font-size: 15px;'>**no script setup**</span>  
+props should be declared using the props option,  
 and the props object will be passed to `setup()` as the first argument:
 ```javascript
 export default {
@@ -1150,6 +1170,402 @@ export default {
   }
 }
 ```
+
+## Listening to Events
+
+<span style='font-size: 15px;'>**custom events system**</span>  
+to listen to any event on the child component
+```html
+<BlogPost
+  ...
+  @enlarge-text="postFontSize += 0.1"
+ />
+```
+
+the child component can emit an event on itself
+```html
+<!-- BlogPost.vue, omitting <script> -->
+<template>
+  <div class="blog-post">
+    <h4>{{ title }}</h4>
+    <button @click="$emit('enlarge-text')">Enlarge text</button>
+  </div>
+</template>
+```
+
+<span style='font-size: 15px;'>**defineEmits**</span>  
+We can optionally declare emitted events using the `defineEmits` macro:
+```html
+<!-- BlogPost.vue -->
+<script setup>
+defineProps(['title'])
+defineEmits(['enlarge-text'])
+</script>
+```
+
+<span style='font-size: 15px;'>**ref of defineEmits**</span>  
+It returns an emit function that is equivalent to the `$emit` method. It can be used to emit events in the `<script setup>` section of a component, where `$emit` isn't directly accessible:
+```html
+<script setup>
+const emit = defineEmits(['enlarge-text'])
+
+emit('enlarge-text')
+</script>
+```
+
+<span style='font-size: 15px;'>**not using `<script setup>`**</span>  
+```js
+export default {
+  emits: ['enlarge-text'],
+  setup(props, ctx) {
+    ctx.emit('enlarge-text')
+  }
+}
+```
+
+## Content Distribution with Slots
+
+<span style='font-size: 15px;'>**`<slot>` element:**</span>  
+```html
+<template>
+  <div class="alert-box">
+    <strong>This is an Error for Demo Purposes</strong>
+    <slot />
+  </div>
+</template>
+
+<style scoped>
+.alert-box {
+  /* ... */
+}
+</style>
+```
+
+As you'll see above, we use the <slot> as a placeholder where we want the content to go – and that's it.
+
+## Dynamic Components
+
+Sometimes, it's useful to dynamically switch between components, like in a tabbed interface:
+
+can access value by variable name string.
+
+<div style="display: flex;">
+  <div style="flex: 1; padding-right: 20px;">    
+  
+  <p><b>equals to &nbsp;</b></p>
+
+  ```javascript
+  const tabs = {
+    Home,
+    Posts,
+    Archive
+  }
+  ```
+
+  </div>  
+  <div style="flex: 1;">
+  
+  <p><b> &nbsp;</b></p>
+
+  ```javascript
+  const tabs = {
+    'Home': Home,
+    'Posts': Posts,
+    'Archive': Archive
+  }
+  ```
+
+  </div>
+</div>
+
+accessed by `tabs['Home'|'Posts'|'Archive']`
+
+<span style='font-size: 15px;'>**Example**</span>  
+```html
+<script setup>
+import Home from './Home.vue'
+import Posts from './Posts.vue'
+import Archive from './Archive.vue'
+import { ref } from 'vue'
+ 
+const currentTab = ref('Home')
+
+const tabs = {
+  Home,
+  Posts,
+  Archive
+}
+</script>
+
+<template>
+  <div class="demo">
+    <button
+       v-for="(_, tab) in tabs"
+       :key="tab"
+       :class="['tab-button', { active: currentTab === tab }]"
+       @click="currentTab = tab"
+     >
+      {{ tab }}
+    </button>
+	  <component :is="tabs[currentTab]" class="tab"></component>
+  </div>
+</template>
+```
+
+# -Components In-Depth
+
+# Registration
+
+## Global Registration
+
+We can make components available globally in the current Vue application using the `.component()` method:  
+
+If using SFCs, you will be registering the imported `.vue` files:
+
+
+<div style="display: flex;">
+  <div style="flex: 1; padding-right: 20px;">
+
+  <p><b>use SFC &nbsp;</b></p>
+
+  ```javascript
+  import MyComponent from './App.vue'
+
+  app.component('MyComponent', MyComponent)
+  ```
+  
+  </div>
+  <div style="flex: 1;">
+  <p><b>no SFC &nbsp;</b></p>
+
+  ```javascript
+  import { createApp } from 'vue'
+
+  const app = createApp({})
+
+  app.component(
+    // the registered name
+    'MyComponent',
+    // the implementation
+    {
+      /* ... */
+    }
+  )
+  ```
+
+  </div>
+</div>
+
+---
+
+<span style='font-size: 15px;'>**chained**</span>  
+```javascript
+app
+  .component('ComponentA', ComponentA)
+  .component('ComponentB', ComponentB)
+  .component('ComponentC', ComponentC)
+```
+
+## Local Registration
+
+<span style='font-size: 15px;'>**global registration drawbacks**</span>  
+- prevents build systems from removing unused components  
+- makes dependency relationships *less explicit* in large applications.
+
+<span style='font-size: 15px;'>**Local registration**</span>  
+Local registration scopes the availability of the registered components to the `current component` only.  
+
+It makes the dependency relationship more explicit, and is more tree-shaking friendly.
+
+<span style='font-size: 15px;'>**used in SFC and non-SFC**</span>  
+imported components can be locally used without registration  
+In non-`<script setup>`, you will need to use the components option
+
+
+<div style="display: flex;">
+  <div style="flex: 1; padding-right: 20px;">
+
+  <p><b>Used in SFC &nbsp;</b></p>
+
+  ```html
+  <script setup>
+  import ComponentA from './ComponentA.vue'
+  </script>
+
+  <template>
+    <ComponentA />
+  </template>
+  ```
+
+  </div>
+  <div style="flex: 1;">
+
+  <p><b>non-script setup &nbsp;</b></p>
+
+  ```javascript
+  import ComponentA from './ComponentA.js'
+
+export default {
+  components: {
+    ComponentA
+  },
+  setup() {
+    // ...
+  }
+}
+  ```
+  
+
+  </div>
+</div>
+
+## Component Name Casing
+
+because  
+- PascalCase names are valid JavaScript identifiers.
+- `<PascalCase />` makes it more obvious that this is a Vue component instead of a native HTML element in templates.
+
+# Props
+
+## 📖 Props Declaration
+
+## 📖 Prop Passing Details
+
+## One-Way Data Flow
+
+when the parent property updates, it will flow down to the child, but not the other way around. 
+
+should not attempt to mutate a prop inside a child component. 
+```javascript
+const props = defineProps(['foo'])
+
+// ❌ warning, props are readonly!
+props.foo = 'bar'
+```
+
+<span style='font-size: 15px;'>**to mutate a prop**</span>  
+- mediately by `ref()`  
+  The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards.
+  ```javascript
+  const props = defineProps(['initialCounter'])
+
+  // counter only uses props.initialCounter as the initial value;
+  // it is disconnected from future prop updates.
+  const counter = ref(props.initialCounter)
+  ```
+- by `computed properties`  
+  The prop is passed in as a raw value that needs to be transformed.
+  ```javascript
+  const props = defineProps(['size'])
+
+  // computed property that auto-updates when the prop changes
+  const normalizedSize = computed(() => props.size.trim().toLowerCase())
+  ```
+
+<span style='font-size: 15px;'>**📖 Mutating Object / Array Props**</span>  
+When objects and arrays are passed as props, while the child component cannot mutate the prop binding, it will be able to mutate the object or array's nested properties. 
+
+## 📖 Prop Validation
+
+Components can specify requirements for their props, such as the types.  
+If a requirement is not met, Vue will warn you in the browser's JavaScript console.
+
+To specify prop validations
+```javascript
+defineProps({
+  // Basic type check
+  //  (`null` and `undefined` values will allow any type)
+  propA: Number,
+  // Multiple possible types
+  propB: [String, Number],
+  // Required string
+  propC: {
+    type: String,
+    required: true
+  },
+  // Number with a default value
+  propD: {
+    type: Number,
+    default: 100
+  },
+  // Object with a default value
+  propE: {
+    type: Object,
+    // Object or array defaults must be returned from
+    // a factory function. The function receives the raw
+    // props received by the component as the argument.
+    default(rawProps) {
+      return { message: 'hello' }
+    }
+  },
+  // Custom validator function
+  // full props passed as 2nd argument in 3.4+
+  propF: {
+    validator(value, props) {
+      // The value must match one of these strings
+      return ['success', 'warning', 'danger'].includes(value)
+    }
+  },
+  // Function with a default value
+  propG: {
+    type: Function,
+    // Unlike object or array default, this is not a factory 
+    // function - this is a function to serve as a default value
+    default() {
+      return 'Default function'
+    }
+  }
+})
+```
+
+## 📖 Boolean Casting
+
+# Events
+
+## 📖 Emitting and Listening to Events
+
+## 📖 Declaring Emitted Events
+
+<span style='font-size: 15px;'>**defineEmits**</span>  
+```javascript
+<script setup>
+defineEmits(['inFocus', 'submit'])
+</script>
+```
+
+<span style='font-size: 15px;'>**emitted in scripts**</span>  
+The `$emit` method that we used in the `<template>`  
+isn't accessible within the `<script setup>` section of a component  
+but `defineEmits()` returns an equivalent function that we can use instead:  
+```js
+<script setup>
+const emit = defineEmits(['inFocus', 'submit'])
+
+function buttonClick() {
+  emit('submit')
+}
+</script>
+```
+The `defineEmits()` macro cannot be used inside *a function*,  
+it must be placed directly within `<script setup>`,  
+as in the example above.
+
+<span style='font-size: 15px;'>**used in explicit `setup` function**</span>  
+
+define events
+```javascript
+export default {
+  emits: ['inFocus', 'submit'],
+  setup(props, ctx) {
+    ctx.emit('submit')
+  }
+}
+```
+
+# -Reusability  
+
+# Custom Directives
+
 
 
 # -Scaling Up

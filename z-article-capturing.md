@@ -18,35 +18,36 @@
 
 ### Folder structure 
 
-```json
-[
-    {
-        "folder":"",
-        "files":[
-            {
-                "url":"",
-                "filename":"",
-                "resFolder":"",
-                "resFiles":[
-                    {
-                        "filename":"",
-                        "url":""
-                    }
-                ]
-            }
-        ]
-    }
-]
+```yaml
+folder
+    files(pdf)
+        resFolder
+            resFiles
 ```
+
+### Chain of responsibility by pyautogui
+
+<span style='font-size: 15px;'>**Save pdf chain**</span>  
+```mermaid
+flowchart LR
+    id[Ctrl + p] --> id2[selection to save pdf] --> id3[click save] --> id4[input folder and filename] --> id5[final saving]
+```
+
+<span style='font-size: 15px;'>**Save res file chain**</span>  
+```mermaid
+flowchart LR
+    id[click download btn] --> id4[input folder and filename] --> id5[final saving]
+```
+
 
 ### Diagram 
 
 ```mermaid
 sequenceDiagram    
     activate UrlCapturing
-    UrlCapturing-->>UrlCapturing: builds folders and filenames
     UrlCapturing-->>UrlCapturing: gets urls to articles
     UrlCapturing-->>UrlCapturing: gets urls to files(db, code, etc)
+    UrlCapturing-->>UrlCapturing: builds folders and filenames
     UrlCapturing-->>PyAutoGui: starts saving file
     deactivate UrlCapturing
 
@@ -71,21 +72,21 @@ sequenceDiagram
 
 |comp|version|description
 |---:|:---|---|
-|python||script|
-|firefox||logining & reuse page|
-|selenium||open controlled browser|
-|pyautogui||automation|
-|coordination got||screen position|
-|fscapture||scrolling capture|
+|python             |   |script                 |
+|firefox            |   |logining & reuse page  |
+|selenium           |   |open controlled browser|
+|pyautogui          |   |automation             |
+|coordination got   |   |screen position        |
+|fscapture          |   |scrolling capture      |
 
 ### Diagram 
 
 ```mermaid
 sequenceDiagram    
     activate UrlCapturing
-        UrlCapturing-->>UrlCapturing: builds folders and filenames
         UrlCapturing-->>UrlCapturing: gets urls to articles
         UrlCapturing-->>UrlCapturing: gets urls to files(db, code, etc)
+        UrlCapturing-->>UrlCapturing: builds folders and filenames
         UrlCapturing-->>PyAutoGui: starts saving picture
     deactivate UrlCapturing
 
@@ -98,7 +99,9 @@ sequenceDiagram
     
         FSCapture-->>FSCapture: starts scrolling
 
+        loop for window popped up
         Python-->>FSCapture: listens whether done
+        end
         activate Python
             deactivate FSCapture
             Python-->>Python: if done
@@ -111,9 +114,9 @@ sequenceDiagram
             Python-->>PyAutoGui: shortcut: ctrl + w, close picture or window 
         deactivate Python
         
-        opt
+        opt resource file 
             activate PyAutoGui
-                PyAutoGui-->>PyAutoGui: downloads res files or by python
+                PyAutoGui-->>PyAutoGui: click download on browser or by python
                 PyAutoGui-->>PyAutoGui: inputs foler & filename
                 PyAutoGui-->>PyAutoGui: saves
             deactivate PyAutoGui
