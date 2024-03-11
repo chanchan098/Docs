@@ -2,12 +2,12 @@
 
 - [vue3.md](#vue3md)
 - [Scaffold](#scaffold)
-  - [nodejs](#nodejs)
   - [debugger](#debugger)
+  - [nodejs](#nodejs)
   - [Ts](#ts)
   - [npm](#npm)
   - [sass](#sass)
-  - [vue cli](#vue-cli)
+  - [vue cli\]](#vue-cli)
   - [vite](#vite)
   - [vue router 4.x](#vue-router-4x)
   - [vue3](#vue3)
@@ -127,12 +127,20 @@
   - [Events Validation](#events-validation)
 - [Component v-model](#component-v-model)
   - [Basic Usage](#basic-usage-1)
+    - [Under the Hood](#under-the-hood)
+  - [`v-model` arguments](#v-model-arguments)
+  - [Multiple `v-model` bindings](#multiple-v-model-bindings)
+  - [📖Handling v-model modifiers](#handling-v-model-modifiers)
+- [Fallthrough Attributes](#fallthrough-attributes)
+  - [Attribute Inheritance](#attribute-inheritance)
 - [-Reusability](#-reusability)
 - [Custom Directives](#custom-directives)
 - [-Scaling Up](#-scaling-up)
 - [Single-File Components](#single-file-components)
   - [Introduction](#introduction-1)
 - [State Management](#state-management)
+  - [What is State Management?](#what-is-state-management)
+  - [Pinia](#pinia)
 - [Server-Side Rendering (SSR)](#server-side-rendering-ssr)
   - [Overview](#overview)
     - [What is SSR?](#what-is-ssr)
@@ -142,12 +150,12 @@
 
 # Scaffold
 
-## nodejs
-
 ## debugger
 
 * vscode 
-* chrome extension of vue.js devtools
+* chrome extension developer
+  
+## nodejs
 
 ## Ts
 
@@ -169,34 +177,25 @@
 
 * [doc](https://sass-lang.com/documentation/syntax/)
 
-## [vue cli](https://cli.vuejs.org/zh/guide/)
+## vue cli]
 
-## [vite](https://cn.vitejs.dev/guide)
+* [vue cli](https://cli.vuejs.org/zh/guide/)
 
-## [vue router 4.x](https://router.vuejs.org/zh/guide/)
+## vite 
 
-## [vue3](https://cn.vuejs.org/guide/introduction.html)
+- [vite](https://cn.vitejs.dev/guide)
+ 
+## vue router 4.x
+
+- [vue router 4.x](https://router.vuejs.org/zh/guide/)
+
+## vue3
+
+- [vue3](https://cn.vuejs.org/guide/introduction.html)
 
 ### modularization thought
 
-```mermaid
-mindmap
-id((Widget))
-    Wa
-      Wax
-    Wb
-      id)Wbx(
-      Wbn
-```
----
-```mermaid
-mindmap
-id)Wbx(
-    Wk
-      Wkx
-      Wky
-    Wi
-```
+![alt](https://vuejs.org/assets/components.dSWW39P2.png)
 
 ```
         R                   C
@@ -205,7 +204,6 @@ id)Wbx(
     /  \   \            /   \     
    □    C   □          Y     X
 ```
-
 
 ### [api ref](https://cn.vuejs.org/api/)
 
@@ -230,8 +228,6 @@ id)Wbx(
 * [doc](https://cn.vuejs.org/guide/essentials/component-basics.html#listening-to-events)
 
 ### [custom components](src\components)
-
-
 
 * [doc](https://cn.vitejs.dev/guide/env-and-mode.html)
 
@@ -954,7 +950,7 @@ watch(
 
 ## Deep Watchers
 
-When you call `watch()` directly on a reactive object, it will implicitly create *a deep watcher* - the callback will be triggered on all nested mutations:
+When you call `watch()` directly on a reactive object, it will implicitly create *a deep watcher* - the callback will be triggered on *all nested mutations*:
 ```javascript
 const obj = reactive({ count: 0 })
 
@@ -1612,6 +1608,111 @@ function submitForm(email, password) {
 
 `v-model` can be used on a component to implement *a two-way binding*.
 
+<span style='font-size: 15px;'>**defineModel()**</span>  
+Starting in Vue 3.4, the recommended approach to achieve this is using the `defineModel()` macro:
+```html
+<!-- Child.vue -->
+<script setup>
+const model = defineModel()
+
+function update() {
+  model.value++
+}
+</script>
+
+<template>
+  <div>parent bound v-model is: {{ model }}</div>
+</template>
+```
+  
+The parent can then bind a value with v-model:
+```html
+<!-- Parent.vue -->
+<Child v-model="count" />
+```
+
+The value returned by `defineModel()` is a ref.
+
+It can be accessed and mutated like any other ref,  
+except that it acts as a two-way binding between a parent value and a local one:
+- Its `.value` is synced with the value bound by the parent v-model;
+- When it is mutated by the child, it causes the parent bound value to be updated as well.
+
+### Under the Hood
+
+`defineModel` is a convenience macro. The compiler expands it to the following:
+- A prop named `modelValue`, which the local ref's value is synced with;
+- An event named `update:modelValue`, which is emitted when the local ref's value is mutated.
+
+```html
+<script setup>
+const props = defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
+</script>
+
+<template>
+  <input
+    :value="props.modelValue"
+    @input="emit('update:modelValue', $event.target.value)"
+  />
+</template>
+```
+
+
+## `v-model` arguments
+
+`v-model` on a component can also accept an argument:
+
+```html
+<MyComponent v-model:title="bookTitle" />
+```
+
+In the child component, we can support the corresponding argument by passing a string to `defineModel()` as its first argument:
+```html
+<!-- MyComponent.vue -->
+<script setup>
+const title = defineModel('title')
+</script>
+
+<template>
+  <input type="text" v-model="title" />
+</template>
+```
+
+If prop options are also needed, they should be passed after the model name:
+```javascript
+const title = defineModel('title', { required: true })
+```
+
+## Multiple `v-model` bindings
+
+Each `v-model` will sync to a different prop, without the need for extra options in the component:
+```html
+<UserName
+  v-model:first-name="first"
+  v-model:last-name="last"
+/>
+```
+```html
+<script setup>
+const firstName = defineModel('firstName')
+const lastName = defineModel('lastName')
+</script>
+
+<template>
+  <input type="text" v-model="firstName" />
+  <input type="text" v-model="lastName" />
+</template>
+```
+
+## 📖Handling v-model modifiers
+
+# Fallthrough Attributes
+
+## Attribute Inheritance
+
+A "fallthrough attribute" is an attribute or v-on event listener that is passed to a component
+
 
 
 # -Reusability  
@@ -1651,6 +1752,12 @@ const greeting = ref('Hello World!')
 The full syntax is defined in the [SFC Syntax Specification](https://vuejs.org/api/sfc-spec.html).
 
 # State Management 
+
+## What is State Management?
+
+A simpler and more straightforward solution is to extract the shared state out of the components, and manage it in a global singleton.
+
+## Pinia
 
 
 

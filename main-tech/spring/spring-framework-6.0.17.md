@@ -1,7 +1,46 @@
 # spring-framework.md
 
-- [doc](https://docs.spring.io/spring-framework/reference/6.0/index.html)  
-- [spring repo](https://mvnrepository.com/artifact/org.springframework)
+- [spring-framework.md](#spring-frameworkmd)
+- [-Core Technologies](#-core-technologies)
+- [The IoC Container](#the-ioc-container)
+  - [Introduction to the Spring IoC Container and Beans](#introduction-to-the-spring-ioc-container-and-beans)
+  - [Container Overview](#container-overview)
+    - [Configuration Metadata](#configuration-metadata)
+  - [Bean Overview](#bean-overview)
+  - [Annotation-based Container Configuration](#annotation-based-container-configuration)
+  - [Java-based Container Configuration](#java-based-container-configuration)
+- [Java Bean Validation](#java-bean-validation)
+    - [Configuring Custom Constraints](#configuring-custom-constraints)
+- [Spring Expression Language (SpEL)](#spring-expression-language-spel)
+- [Aspect Oriented Programming with Spring](#aspect-oriented-programming-with-spring)
+  - [AOP Concepts](#aop-concepts)
+  - [@AspectJ support](#aspectj-support)
+  - [Enabling @AspectJ Support - @AspectJ support](#enabling-aspectj-support---aspectj-support)
+  - [Declaring an Aspect - @AspectJ support](#declaring-an-aspect---aspectj-support)
+  - [Introductions - @AspectJ support](#introductions---aspectj-support)
+- [Proxying Mechanisms](#proxying-mechanisms)
+  - [Understanding AOP Proxies](#understanding-aop-proxies)
+- [-Data Access](#-data-access)
+- [Transaction Management](#transaction-management)
+- [Advantages of the Spring Framework’s Transaction Support Model](#advantages-of-the-spring-frameworks-transaction-support-model)
+  - [Global Transactions](#global-transactions)
+  - [Local Transactions](#local-transactions)
+- [Understanding the Spring Framework Transaction Abstraction](#understanding-the-spring-framework-transaction-abstraction)
+- [Understanding the Spring Framework’s Declarative Transaction Implementation](#understanding-the-spring-frameworks-declarative-transaction-implementation)
+- [Using `@Transactional`](#using-transactional)
+- [-Web on Servlet Stack](#-web-on-servlet-stack)
+- [Spring Web MVC](#spring-web-mvc)
+- [DispatcherServlet](#dispatcherservlet)
+  - [Context Hierarchy](#context-hierarchy)
+- [Annotated Controllers](#annotated-controllers)
+- [Declaration(xml means)](#declarationxml-means)
+- [Request Mapping](#request-mapping)
+  - [Explicit Registrations](#explicit-registrations)
+  - [Handler Methods](#handler-methods)
+- [Message Converters](#message-converters)
+- [MVC Config API](#mvc-config-api)
+
+# -Core Technologies
 
 *Core Technologies*
 # The IoC Container
@@ -56,6 +95,18 @@ For information about using other forms of metadata with the Spring container, s
 which relies on `bytecode metadata` for wiring up components 
 
 ## Java-based Container Configuration
+
+
+*[Core Technologies/Validation, Data Binding, and Type Conversion](https://docs.spring.io/spring-framework/reference/6.0/core/validation/beanvalidation.html)*
+# Java Bean Validation
+
+- [tutorial](https://www.iocoder.cn/Spring-Boot/Validation/?fuck)
+- [spec](https://beanvalidation.org/)
+- [Hibernate Validator](https://hibernate.org/validator/)
+
+### Configuring Custom Constraints
+  
+
 
 *Core Technologies*
 # Spring Expression Language (SpEL)
@@ -138,6 +189,60 @@ public class NotVeryUsefulAspect {
 
 Introductions (known as inter-type declarations in AspectJ) enable an aspect to declare that advised objects implement *a given interface*, and to provide `an implementation` of that interface on behalf of those objects.
 
+*Core Technologies/Aspect Oriented Programming with Spring*
+# Proxying Mechanisms
+
+## Understanding AOP Proxies
+
+
+# -Data Access
+
+# Transaction Management
+
+*Data Access/Transaction Management*
+# Advantages of the Spring Framework’s Transaction Support Model
+
+## Global Transactions
+
+Global transactions let you work with multiple transactional resources, typically relational databases and message queues.
+
+## Local Transactions
+
+*Data Access/Transaction Management*
+# Understanding the Spring Framework Transaction Abstraction
+
+[docs](https://docs.spring.io/spring-framework/reference/6.0/data-access/transaction/strategies.html)
+
+Local transactions are resource-specific, such as a transaction associated with a JDBC connection. 
+
+imperative transaction management by `org.springframework.transaction  PlatformTransactionManager`  
+reactive transaction management by `org.springframework.transaction.ReactiveTransactionManager`
+
+<span style='font-size: 15px;'>**a service provider interface (SPI)**</span>  
+```java
+public interface PlatformTransactionManager extends TransactionManager {
+
+	TransactionStatus getTransaction(TransactionDefinition definition) throws TransactionException;
+
+	void commit(TransactionStatus status) throws TransactionException;
+
+	void rollback(TransactionStatus status) throws TransactionException;
+}
+```
+
+*Data Access/Transaction Management/Declarative Transaction Management*
+# Understanding the Spring Framework’s Declarative Transaction Implementation
+
+[doc ](https://docs.spring.io/spring-framework/reference/6.0/data-access/transaction/declarative/tx-decl-explained.html)
+
+Spring Framework’s declarative transaction support are that this support is enabled via AOP proxies and that the transactional advice is driven by metadata (currently XML- or annotation-based).  
+The combination of AOP with transactional metadata <mark>yields</mark> an AOP proxy that uses a `TransactionInterceptor` in conjunction with an appropriate `TransactionManager` implementation to drive transactions around method invocations.
+
+![alt](https://docs.spring.io/spring-framework/reference/6.0/_images/tx.png)
+
+
+*Data Access/Transaction Management/Declarative Transaction Management*
+# Using `@Transactional`
 
 
 
@@ -224,3 +329,7 @@ controller method arguments and return values.
 
 In a Spring Boot application, the `WebMvcAutoConfiguration` adds any `HttpMessageConverter` beans it detects, in addition to default converters.
 
+[Web on Servlet Stack/Spring Web MVC/MVC Config/MVC Config API](https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-config/customize.html)
+# MVC Config API
+
+to customize mvc configs

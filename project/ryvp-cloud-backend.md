@@ -10,8 +10,8 @@ see also [0-build-maven.md](0-build-maven.md)
 
 ## Module structure
 
-- yudao-dependencies`unified dependencies management, see also Maven`
-- yudao-framework`packed components and configs with spring boot style`
+- yudao-dependencies`unified dependencies management, see also `[`Maven`](../build/maven.md)
+- yudao-framework`packed components and configs with spring boot style `[`other staters`](https://mvnrepository.com/artifact/org.springframework.boot)
   - yudao-spring-boot-starter-xxx
 - yudao-gateway
 - yudao-module-xxx`business components`
