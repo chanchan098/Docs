@@ -134,13 +134,24 @@
 - [Fallthrough Attributes](#fallthrough-attributes)
   - [Attribute Inheritance](#attribute-inheritance)
 - [-Reusability](#-reusability)
+- [Composables](#composables)
+  - [What is a "Composable"?](#what-is-a-composable)
+  - [Mouse Tracker Example](#mouse-tracker-example)
+  - [Async State Example](#async-state-example)
+    - [Accepting Reactive State](#accepting-reactive-state)
 - [Custom Directives](#custom-directives)
 - [-Scaling Up](#-scaling-up)
 - [Single-File Components](#single-file-components)
   - [Introduction](#introduction-1)
+- [🛠️ Tooling](#️-tooling)
+  - [Try It Online](#try-it-online)
+  - [Project Scaffolding](#project-scaffolding)
+  - [Browser Devtools](#browser-devtools)
 - [State Management](#state-management)
   - [What is State Management?](#what-is-state-management)
   - [Pinia](#pinia)
+- [📖 Testing](#-testing)
+  - [Why Test?](#why-test)
 - [Server-Side Rendering (SSR)](#server-side-rendering-ssr)
   - [Overview](#overview)
     - [What is SSR?](#what-is-ssr)
@@ -1687,13 +1698,25 @@ const title = defineModel('title', { required: true })
 ## Multiple `v-model` bindings
 
 Each `v-model` will sync to a different prop, without the need for extra options in the component:
-```html
-<UserName
-  v-model:first-name="first"
-  v-model:last-name="last"
-/>
-```
-```html
+
+<div style="display: flex;">
+  <div style="flex: 1; padding-right: 20px;">
+
+  <p><b>used &nbsp;</b></p>
+
+  ```html
+  <UserName
+    v-model:first-name="first"
+    v-model:last-name="last"
+  />
+  ```
+
+  </div>
+  <div style="flex: 1;">
+
+  <p><b>defined &nbsp;</b></p>
+
+  ```html
 <script setup>
 const firstName = defineModel('firstName')
 const lastName = defineModel('lastName')
@@ -1705,6 +1728,9 @@ const lastName = defineModel('lastName')
 </template>
 ```
 
+  </div>
+</div>
+
 ## 📖Handling v-model modifiers
 
 # Fallthrough Attributes
@@ -1713,9 +1739,205 @@ const lastName = defineModel('lastName')
 
 A "fallthrough attribute" is an attribute or v-on event listener that is passed to a component
 
-
-
 # -Reusability  
+
+# Composables
+
+## What is a "Composable"?
+
+a "composable" is a <mark>function</mark> that *leverages* Vue's Composition API to encapsulate and reuse *stateful logic*.
+
+## Mouse Tracker Example
+
+If we were to implement the mouse tracking functionality using the Composition API directly inside a component, it would look like this:
+
+<details>
+<summary>vue component</summary>
+
+```html
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const x = ref(0)
+const y = ref(0)
+
+function update(event) {
+  x.value = event.pageX
+  y.value = event.pageY
+}
+
+onMounted(() => window.addEventListener('mousemove', update))
+onUnmounted(() => window.removeEventListener('mousemove', update))
+</script>
+
+<template>Mouse position is at: {{ x }}, {{ y }}</template>
+```
+
+</details>
+
+
+<details>
+<summary>to composable function</summary>
+
+```javascript
+// mouse.js
+import { ref, onMounted, onUnmounted } from 'vue'
+
+// by convention, composable function names start with "use"
+export function useMouse() {
+  // state encapsulated and managed by the composable
+  const x = ref(0)
+  const y = ref(0)
+
+  // a composable can update its managed state over time.
+  function update(event) {
+    x.value = event.pageX
+    y.value = event.pageY
+  }
+
+  // a composable can also hook into its owner component's
+  // lifecycle to setup and teardown side effects.
+  onMounted(() => window.addEventListener('mousemove', update))
+  onUnmounted(() => window.removeEventListener('mousemove', update))
+
+  // expose managed state as return value
+  return { x, y }
+}
+```
+
+</details>
+
+<details>
+<summary>used in another component</summary>
+
+```html
+<script setup>
+import { useMouse } from './mouse.js'
+
+const { x, y } = useMouse()
+</script>
+
+<template>Mouse position is at: {{ x }}, {{ y }}</template>
+```
+
+</details>
+
+<br/>
+
+<span style='font-size: 15px;'>**With other functions**</span>  
+The cooler part about composables though,  
+is that you can also nest them:  
+one composable function can call one or more other composable functions. 
+
+<details>
+<summary>events in other function</summary>
+
+```javascript
+// event.js
+import { onMounted, onUnmounted } from 'vue'
+
+export function useEventListener(target, event, callback) {
+  // if you want, you can also make this
+  // support selector strings as target
+  onMounted(() => target.addEventListener(event, callback))
+  onUnmounted(() => target.removeEventListener(event, callback))
+}
+```
+
+
+</details>
+
+<details>
+<summary>used</summary>
+
+```javascript
+// mouse.js
+import { ref } from 'vue'
+import { useEventListener } from './event'
+
+export function useMouse() {
+  const x = ref(0)
+  const y = ref(0)
+
+  useEventListener(window, 'mousemove', (event) => {
+    x.value = event.pageX
+    y.value = event.pageY
+  })
+
+  return { x, y }
+}
+```
+
+</details>
+
+## Async State Example
+
+encapsulated some common logic with vue features.  
+<details>
+<summary>code</summary>
+
+```javascript
+// fetch.js
+import { ref } from 'vue'
+
+export function useFetch(url) {
+  const data = ref(null)
+  const error = ref(null)
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => (data.value = json))
+    .catch((err) => (error.value = err))
+
+  return { data, error }
+}
+```
+
+</details>
+
+used  
+```html
+<script setup>
+import { useFetch } from './fetch.js'
+
+const { data, error } = useFetch('...')
+</script>
+```
+
+
+### Accepting Reactive State
+
+```javascript
+// fetch.js
+import { ref, watchEffect, toValue } from 'vue'
+
+export function useFetch(url) {
+  const data = ref(null)
+  const error = ref(null)
+
+  const fetchData = () => {
+    // reset state before fetching..
+    data.value = null
+    error.value = null
+
+    fetch(toValue(url))
+      .then((res) => res.json())
+      .then((json) => (data.value = json))
+      .catch((err) => (error.value = err))
+  }
+
+  watchEffect(() => {
+    fetchData()
+  })
+
+  return { data, error }
+}
+```
+
+Notice that `toValue(url)` is called inside the watchEffect callback.  
+This ensures that any reactive dependencies <u>accessed during the `toValue()` normalization</u> are tracked by the watcher.
+
+This version of `useFetch()` now accepts static URL strings, refs, and getters, making it much more flexible. 
 
 # Custom Directives
 
@@ -1751,6 +1973,14 @@ const greeting = ref('Hello World!')
 
 The full syntax is defined in the [SFC Syntax Specification](https://vuejs.org/api/sfc-spec.html).
 
+# 🛠️ Tooling
+
+## Try It Online
+
+## Project Scaffolding
+
+## Browser Devtools
+
 # State Management 
 
 ## What is State Management?
@@ -1759,7 +1989,11 @@ A simpler and more straightforward solution is to extract the shared state out o
 
 ## Pinia
 
+# 📖 Testing
 
+## Why Test?
+
+`Automated tests` help you and your team build complex Vue applications quickly and confidently by preventing regressions and encouraging you to break apart your application into testable functions, modules, classes, and components. 
 
 # Server-Side Rendering (SSR)
 

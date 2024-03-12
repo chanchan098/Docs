@@ -1,3 +1,8 @@
 {
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.statusBar.visible": false,
+    "workbench.layoutControl.type": "both",
+    "workbench.activityBar.location": "top",
+    "window.commandCenter": false,
+    "editor.codeActionWidget.showHeaders": true
 }

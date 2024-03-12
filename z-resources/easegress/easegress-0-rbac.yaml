@@ -1,0 +1,40 @@
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: easegress-gateway-controller
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["services", "secrets", "endpoints", "namespaces"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: ["gateway.networking.k8s.io"]
+  resources: ["gatewayclasses", "httproutes", "gateways"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: ["gateway.networking.k8s.io"]
+  resources: ["gatewayclasses/status", "gateways/status"]
+  verbs: ["update"]
+# used for extensions
+- apiGroups: ["easegress.megaease.com"]
+  resources: ["filterspecs"]
+  verbs: ["get", "watch", "list"]
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: easegress-gateway-controller
+  namespace: default
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: easegress-gateway-controller
+subjects:
+- kind: ServiceAccount
+  name: easegress-gateway-controller
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: easegress-gateway-controller
+  apiGroup: rbac.authorization.k8s.io

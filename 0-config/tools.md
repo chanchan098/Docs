@@ -10,10 +10,12 @@
 
 [env](https://blog.csdn.net/weixin_36296538/article/details/83044639)
 
-
 ## mermaid chart
 
-## markdown hint on vscode
+## markdown on vscode
+
+### hint
+
 open settings as json
 ```json
 "[markdown]":{
@@ -25,6 +27,20 @@ open settings as json
     }
 ```
 
+### vscode settings for markdown 
+
+`.vscode/settings.json`
+
+```json
+{
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.statusBar.visible": false,
+    "workbench.layoutControl.type": "both",
+    "workbench.activityBar.location": "top",
+    "window.commandCenter": false
+}
+```
+
 ## markdown customized style
 
 using `tags` and inner `style`
@@ -33,6 +49,7 @@ using `tags` and inner `style`
 ```
 
 ## mardown emoji cheat sheet
+
 <https://github.com/ikatyang/emoji-cheat-sheet>
 
 ## postman 
@@ -41,6 +58,7 @@ postman `joey4567@gmail.com`
 delete p3 p4
 
 ## ssh 
+
 <https://blog.csdn.net/john1337/article/details/109465781>
 
 root  
@@ -59,6 +77,7 @@ WHERE email LIKE '%@example.com';
 ## tabby
 
 ### font jaggedness on light theme
+
 <https://github.com/Eugeny/tabby/issues/8659>
 
 ## ubuntu server static ip
@@ -79,8 +98,6 @@ WHERE email LIKE '%@example.com';
 ### markdown all in one
 
 ### markdown preview enhanced 
-
-
 
 ## windows
 
