@@ -4,5 +4,9 @@
     "workbench.layoutControl.type": "both",
     "workbench.activityBar.location": "top",
     "window.commandCenter": false,
-    "editor.codeActionWidget.showHeaders": true
+    "editor.codeActionWidget.showHeaders": true,
+    "markdown-preview-enhanced.codeBlockTheme": "vue.css",
+    "markdown-preview-enhanced.HTML5EmbedIsAllowedHttp": true,
+    "markdown-preview-enhanced.HTML5EmbedUseLinkSyntax": true,
+    "markdown-preview-enhanced.liveUpdate": true
 }

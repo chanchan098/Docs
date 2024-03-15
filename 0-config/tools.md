@@ -1,5 +1,10 @@
 # tools.md
 
+## free resources
+
+- ssl, <https://letsencrypt.org/>
+- ingress, <https://www.cpolar.com/>
+
 ## chrome tools
 
 - AdBlock — 最佳广告拦截工具
@@ -11,6 +16,10 @@
 [env](https://blog.csdn.net/weixin_36296538/article/details/83044639)
 
 ## mermaid chart
+
+## markdown math
+
+<https://freeopen.github.io/mathjax/>
 
 ## markdown on vscode
 

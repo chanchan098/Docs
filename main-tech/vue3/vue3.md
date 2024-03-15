@@ -133,6 +133,17 @@
   - [📖Handling v-model modifiers](#handling-v-model-modifiers)
 - [Fallthrough Attributes](#fallthrough-attributes)
   - [Attribute Inheritance](#attribute-inheritance)
+    - [`class` and `style` Merging](#class-and-style-merging)
+    - [`v-on` Listener Inheritance](#v-on-listener-inheritance)
+    - [Nested Component Inheritance](#nested-component-inheritance)
+  - [📖 Disabling Attribute Inheritance](#-disabling-attribute-inheritance)
+  - [📖 Attribute Inheritance on Multiple Root Nodes](#-attribute-inheritance-on-multiple-root-nodes)
+- [Provide / Inject](#provide--inject)
+  - [Prop Drilling](#prop-drilling)
+- [Async Components](#async-components)
+  - [Basic Usage](#basic-usage-2)
+  - [📖Loading and Error States](#loading-and-error-states)
+  - [📖Using with Suspense](#using-with-suspense)
 - [-Reusability](#-reusability)
 - [Composables](#composables)
   - [What is a "Composable"?](#what-is-a-composable)
@@ -140,9 +151,16 @@
   - [Async State Example](#async-state-example)
     - [Accepting Reactive State](#accepting-reactive-state)
 - [Custom Directives](#custom-directives)
+  - [Introduction](#introduction-1)
+  - [Directive Hooks](#directive-hooks)
+    - [📖 Hook Arguments](#-hook-arguments)
+  - [Object Literals](#object-literals)
+  - [Usage on Components](#usage-on-components)
+- [Plugins](#plugins)
+  - [Introduction](#introduction-2)
 - [-Scaling Up](#-scaling-up)
 - [Single-File Components](#single-file-components)
-  - [Introduction](#introduction-1)
+  - [Introduction](#introduction-3)
 - [🛠️ Tooling](#️-tooling)
   - [Try It Online](#try-it-online)
   - [Project Scaffolding](#project-scaffolding)
@@ -1737,7 +1755,184 @@ const lastName = defineModel('lastName')
 
 ## Attribute Inheritance
 
-A "fallthrough attribute" is an attribute or v-on event listener that is passed to a component
+A "fallthrough attribute" is an attribute or `v-on` event listener that is passed to a component,  
+but is not explicitly declared in the receiving component's `props` or `emits`.
+
+Common examples of this include `class`, `style`, and `id` attributes.
+
+<span style='font-size: 15px;'>**For example**</span>  
+given a `<MyButton>` component with the following template:
+```html
+<!-- template of <MyButton> -->
+<button>click me</button>
+```
+
+And a parent using this component with:
+```html
+<MyButton class="large" />
+```
+
+The final rendered DOM would be:
+```html
+<button class="large">click me</button>
+```
+
+Here, `<MyButton>` did not declare class as an accepted `prop`.  
+Therefore, class is treated as <mark>a fallthrough attribute</mark> and automatically added to `<MyButton>`'s root element.
+
+### `class` and `style` Merging
+
+If the child component's root element already has existing class or style attributes,  
+it will be merged with the `class` and `style` values that are inherited from the parent.
+<div style="display: flex;">
+  <div style="flex: 1; padding-right: 20px;">
+
+  <p><b>from &nbsp;</b></p>
+
+  ```html
+  <!-- template of <MyButton> -->
+<button class="btn">click me</button>
+  ```
+  
+
+  </div>
+  <div style="flex: 1;">
+
+  <p><b>to &nbsp;</b></p>
+
+  ```html
+  <button class="btn large">click me</button>
+  ```
+  </div>
+</div>
+
+### `v-on` Listener Inheritance
+
+The same rule applies to `v-on` event listeners: 
+```html
+<MyButton @click="onClick" />
+```
+The `click` listener will be added to the root element of `<MyButton>`, i.e. the native `<button>` element.  
+When the native `<button>` is clicked, it will trigger the onClick method of the parent component.  
+If the native `<button>` already has a click listener bound with `v-on`, then both listeners will trigger.
+
+### Nested Component Inheritance
+
+If a component renders another component as its root node,  
+for example, we refactored `<MyButton>` to render a `<BaseButton>` as its root:
+```html
+<!-- template of <MyButton/> that simply renders another component -->
+<BaseButton />
+```
+
+Then the fallthrough attributes received by `<MyButton>` will be automatically forwarded to `<BaseButton>`.  
+Note that:
+- Forwarded attributes do not include any attributes that are declared as props, or `v-on` listeners of *declared events* by `<MyButton>` - in other words, the <u>declared props and listeners</u> have been "consumed" by <MyButton>.
+- Forwarded attributes may be accepted as props by `<BaseButton>`, if declared by it.
+
+## 📖 Disabling Attribute Inheritance
+
+## 📖 Attribute Inheritance on Multiple Root Nodes
+
+Unlike components with a single root node, components with multiple root nodes *do not* have an automatic attribute fallthrough behavior.  
+If `$attrs` are not bound explicitly, a runtime *warning* will be issued.
+
+# Provide / Inject
+
+## Prop Drilling
+
+If there is a longer parent chain, more components would be affected along the way.  
+
+<details>
+<summary>diagram</summary>
+
+![alt](https://vuejs.org/assets/prop-drilling.FyV2vFBP.png)
+
+</details>
+
+<br/>
+
+<span style='font-size: 15px;'>**`provide` and `inject`**</span>  
+*Any component* in the descendant tree, regardless of how deep it is, can inject dependencies provided by components up in its parent chain.
+<details>
+<summary>diagram</summary>
+
+![alt](https://vuejs.org/assets/provide-inject.tIACH1Z-.png)
+
+</details>
+
+# Async Components
+
+## Basic Usage
+
+In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed.  
+To make that possible, Vue has a `defineAsyncComponent` function:
+```javascript
+import { defineAsyncComponent } from 'vue'
+
+const AsyncComp = defineAsyncComponent(() => {
+  return new Promise((resolve, reject) => {
+    // ...load component from server
+    resolve(/* loaded component */)
+  })
+})
+// ... use `AsyncComp` like a normal component
+```
+
+<span style='font-size: 15px;'>**[ES module dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import)**</span>  
+```javascript
+import { defineAsyncComponent } from 'vue'
+
+const AsyncComp = defineAsyncComponent(() =>
+  import('./components/MyComponent.vue')
+)
+```
+
+<span style='font-size: 15px;'>**registered globally**</span>  
+```javascript
+app.component('MyComponent', defineAsyncComponent(() =>
+  import('./components/MyComponent.vue')
+))
+```
+
+
+They can also be defined directly inside their parent component:
+```html
+<script setup>
+import { defineAsyncComponent } from 'vue'
+
+const AdminPage = defineAsyncComponent(() =>
+  import('./components/AdminPageComponent.vue')
+)
+</script>
+
+<template>
+  <AdminPage />
+</template>
+```
+
+## 📖Loading and Error States
+
+advanced options:
+```javascript
+const AsyncComp = defineAsyncComponent({
+  // the loader function
+  loader: () => import('./Foo.vue'),
+
+  // A component to use while the async component is loading
+  loadingComponent: LoadingComponent,
+  // Delay before showing the loading component. Default: 200ms.
+  delay: 200,
+
+  // A component to use if the load fails
+  errorComponent: ErrorComponent,
+  // The error component will be displayed if a timeout is
+  // provided and exceeded. Default: Infinity.
+  timeout: 3000
+})
+```
+
+## 📖Using with Suspense
 
 # -Reusability  
 
@@ -1745,7 +1940,8 @@ A "fallthrough attribute" is an attribute or v-on event listener that is passed 
 
 ## What is a "Composable"?
 
-a "composable" is a <mark>function</mark> that *leverages* Vue's Composition API to encapsulate and reuse *stateful logic*.
+a "composable" is <mark>a function</mark> that *leverages* Vue's Composition API to encapsulate and reuse *stateful logic*.  
+
 
 ## Mouse Tracker Example
 
@@ -1941,7 +2137,133 @@ This version of `useFetch()` now accepts static URL strings, refs, and getters, 
 
 # Custom Directives
 
+## Introduction
 
+Custom directives, on the other hand, are mainly intended for reusing logic that involves low-level DOM access on plain elements.
+
+A custom directive is defined as an object containing lifecycle hooks similar to those of a component. 
+
+## Directive Hooks
+
+```javascript
+const myDirective = {
+  // called before bound element's attributes
+  // or event listeners are applied
+  created(el, binding, vnode, prevVnode) {
+    // see below for details on arguments
+  },
+  // called right before the element is inserted into the DOM.
+  beforeMount(el, binding, vnode, prevVnode) {},
+  // called when the bound element's parent component
+  // and all its children are mounted.
+  mounted(el, binding, vnode, prevVnode) {},
+  // called before the parent component is updated
+  beforeUpdate(el, binding, vnode, prevVnode) {},
+  // called after the parent component and
+  // all of its children have updated
+  updated(el, binding, vnode, prevVnode) {},
+  // called before the parent component is unmounted
+  beforeUnmount(el, binding, vnode, prevVnode) {},
+  // called when the parent component is unmounted
+  unmounted(el, binding, vnode, prevVnode) {}
+}
+```
+
+### 📖 Hook Arguments
+
+see also <https://vuejs.org/guide/reusability/custom-directives.html#hook-arguments>
+
+Directive hooks are passed these arguments:
+
+- `el`: the element the directive is bound to. 
+  - This can be used to directly manipulate the DOM.
+- `binding`: an object containing the following properties.
+  - `value`: The value passed to the directive. 
+    - For example in `v-my-directive="1 + 1"`, the value would be `2`.
+  - `oldValue`: The previous value, only available in `beforeUpdate` and `updated`.
+    - It is available whether or not the value has changed.
+  - `arg`: The argument passed to the directive, if any.
+    - For example in v-my-directive:foo, the arg would be "foo".
+  - `modifiers`: An object containing modifiers, if any.
+    - For example in v-my-directive.foo.bar, the modifiers object would be `{ foo: true, bar: true }`.
+  - `instance`: The instance of the component where the directive is used.
+  - `dir`: the directive definition object.
+- `vnode`: the underlying VNode representing the bound element.
+- `prevNode`: the VNode representing the bound element from the previous render. 
+  - Only available in the `beforeUpdate` and `updated` hooks.
+
+<span style='font-size: 15px;'>**Example**</span>  
+
+```html
+<div v-example:foo.bar="baz">
+```
+
+The `binding` argument would be
+```javascript
+{
+  arg: 'foo',
+  modifiers: { bar: true },
+  value: /* value of `baz` */,
+  oldValue: /* value of `baz` from previous update */
+}
+```
+
+<span style='font-size: 15px;'>**Dynamic arguments**</span>  
+```html
+<div v-example:[arg]="value"></div>
+```
+
+Here the directive argument will be reactively updated based on arg property in our component state.
+
+## Object Literals
+
+If your directive needs multiple values, you can also pass in a JavaScript object literal. Remember, directives can take any valid JavaScript expression.
+
+```html
+<div v-demo="{ color: 'white', text: 'hello!' }"></div>
+```
+```javascript
+app.directive('demo', (el, binding) => {
+  console.log(binding.value.color) // => "white"
+  console.log(binding.value.text) // => "hello!"
+})
+```
+
+## Usage on Components
+
+When used on components, custom directives will always apply to a component's root node, similar to Fallthrough Attributes.
+
+```html
+<MyComponent v-demo="test" />
+
+<!-- template of MyComponent -->
+
+<div> <!-- v-demo directive will be applied here -->
+  <span>My component content</span>
+</div>
+```
+
+Note that components can potentially have more than one root node. When applied to a multi-root component, a directive will be ignored and a warning will be thrown. 
+
+In general, it is not recommended to use custom directives on components.
+
+
+# Plugins
+
+## Introduction
+
+Plugins are self-contained code that usually add app-level functionality to Vue.  
+```javascript
+import { createApp } from 'vue'
+
+const app = createApp({})
+
+app.use(myPlugin, {
+  /* optional options */
+})
+```
+
+A plugin is defined as either <u>an object</u> that exposes an install() method, or simply <u>a function</u> that acts as the install function itself.
 
 # -Scaling Up
 

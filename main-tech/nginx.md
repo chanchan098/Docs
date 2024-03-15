@@ -1,6 +1,130 @@
-# nginx.md
+# -Admin Guide/HTTP Load Balancing
 
-# Configuring NGINX and NGINX Plus as a Web Server-Web Server
+# HTTP Load Balancing
+
+## Overview
+
+is a commonly used technique for optimizing resource utilization, maximizing throughput, reducing latency, and ensuring fault‑tolerant configurations.
+
+## Proxying HTTP Traffic to a Group of Servers
+
+<span style='font-size: 15px;'>**define server groups**</span>  
+1. need to define the group with the `upstream` directive. The directive is placed in the `http` context.
+2. Servers in the group are configured using the `server` directive.
+  
+for example 
+```nginx
+http {
+    upstream backend {
+        server backend1.example.com weight=5;
+        server backend2.example.com;
+        server 192.0.0.1 backup;
+    }
+}
+```
+
+<span style='font-size: 15px;'>**used**</span>  
+To pass requests to a server group, the name of the group is specified in the `proxy_pass` directive
+
+```nginx
+server {
+    location / {
+        proxy_pass http://backend;
+    }
+}
+```
+
+
+<span style='font-size: 15px;'>**final**</span>  
+Because no load‑balancing algorithm is specified in the upstream block, NGINX uses the default algorithm, *Round Robin*:
+```nginx
+http {
+    upstream backend {
+        server backend1.example.com;
+        server backend2.example.com;
+        server 192.0.0.1 backup;
+    }
+    
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+```
+
+## Choosing a Load-Balancing Method
+
+NGINX Open Source supports *four* load‑balancing methods:
+
+1. `Round Robin` – Requests are distributed *evenly* across the servers, with server weights taken into consideration. This method is used by default (there is no directive for enabling it):
+    ```nginx
+    upstream backend {
+      # no load balancing method is specified for Round Robin
+      server backend1.example.com;
+      server backend2.example.com;
+    }
+    ```
+
+2. `Least Connections` – A request is sent to the server with the least number of active connections, again with server weights taken into consideration:
+   ```nginx
+    upstream backend {
+      least_conn;
+      server backend1.example.com;
+      server backend2.example.com;
+    }
+   ```
+
+3. `IP Hash` – The server to which a request is sent is determined from the client IP address.  
+   In this case, either the first three octets of the IPv4 address or the whole IPv6 address are used to calculate the hash value.  
+   The method guarantees that requests from the same address get to the same server unless it is not available.  
+   ```nginx
+    upstream backend {
+      server backend1.example.com;
+      server backend2.example.com;
+      server backend3.example.com down;
+    }
+   ```
+
+4. `Generic Hash` – The server to which a request is sent is determined from a user‑defined key which can be a text string, variable, or a combination.  
+   For example, the key may be a paired source IP address and port, or a URI as in this example:  
+   ```nginx
+    upstream backend {
+      hash $request_uri consistent;
+      server backend1.example.com;
+      server backend2.example.com;
+    } 
+   ```
+   
+## Server Weights
+
+By default, NGINX distributes requests among the servers in the group according to their weights using the Round Robin method.  
+The weight parameter to the server directive sets the weight of a server; the default is 1:
+```nginx
+upstream backend {
+    server backend1.example.com weight=5;
+    server backend2.example.com;
+    server 192.0.0.1 backup;
+}
+```
+
+With this configuration of weights, out of every 6 requests, 5 are sent to `backend1.example.com` and 1 to `backend2.example.com.`
+
+## （Plus）Server Slow-Start
+
+The server slow‑start feature prevents <u>a recently recovered server</u> from being overwhelmed by connections, which may time out and cause the server to be marked as failed *again*.
+
+## Enabling Session Persistence
+
+identifies user sessions and routes all requests in a given session to the same upstream server.
+
+NGINX Plus supports three session persistence methods. The methods are set with the sticky directive.  
+(For session persistence with NGINX Open Source, use the `hash` or `ip_hash` directive as described above.)
+
+# -Admin Guide/Web Server
+ 
+*Admin Guide/Web Server/*
+# Configuring NGINX and NGINX Plus as a Web Server
 
 [doc](https://docs.nginx.com/nginx/admin-guide/web-server/web-server/)
 
@@ -147,7 +271,8 @@ location / {
 
 ## Handling Errors
 
-# NGINX Reverse Proxy-Web Server
+*Admin Guide/Web Server/*
+# NGINX Reverse Proxy-Web 
 
 Configure NGINX as a reverse proxy for HTTP and other protocols, with support for modifying request headers and fine-tuned buffering of responses.
 

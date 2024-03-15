@@ -180,6 +180,8 @@ Customer component's required Account interface is delegated to the Store compon
 
 # ER diagram
 
+drawn by `MySQL workbench`
+
 [tutorial](https://www.lucidchart.com/pages/er-diagrams)
 
 [tutorial2](https://drawio-app.com/blog/entity-relationship-diagrams-with-draw-io/)

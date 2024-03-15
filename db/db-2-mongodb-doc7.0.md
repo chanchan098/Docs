@@ -169,7 +169,7 @@ ObjectId values are 12 bytes in length
 
 <https://www.mongodb.com/docs/manual/aggregation/>
 
-Aggregation operations process multiple documents and return computed results.
+Aggregation operations <u>process multiple documents and return computed results.</u>
 
 use to:
 - Group values from multiple documents together.

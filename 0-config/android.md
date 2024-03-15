@@ -1,19 +1,19 @@
 # android.md
 
-# Gradle
+## Gradle
 
-## Custom environment 
+### Custom environment 
 
 `GRADLE_USER_HOME` = `D:\liaoyj\.gradle`
 
-## Zh proxy
+### Zh proxy
 
 In `.gralde/init.gralde`
 
 <details>
 <summary>zh proxy</summary>
 
-```
+```gradle
 allprojects {
     buildscript {
         repositories {
@@ -45,24 +45,24 @@ allprojects {
 
 </details>
 
-# Emulator
+## Emulator
 
 `Leidian 9.0.43`, above this version, can't use virtual keyboard.
 
 
-# Offline dev environment
+## Offline dev environment
 
 https://blog.csdn.net/Tiny_Cao/article/details/118386544
 
 
-## install
+### install
 
 在%USER_HOME%/.gradle下新建init.d/offline.gradle文件，文件里写以下代码：  
 
 <details>
 <summary>code</summary>
 
-```
+```gradle
 def reposDir = new File(System.properties['user.home'], ".android/manual-offline-m2")
 def repos = new ArrayList()
 reposDir.eachDir {repos.add(it) }
@@ -98,7 +98,7 @@ allprojects {
 
 
 
-## 生成本地依赖的jar  
+### 生成本地依赖的jar  
 
 在sdk的extras下创建m2repository文件夹，然后将%USER_HOME%/.gradle/caches/modules-2/files-2.1，全部copy到里面，然后运行下面的  
 Java测试代码生成可认识的依赖（缓存中的文件比如：androidx.recyclerview，需要变为androidx/recyclerview）
@@ -108,7 +108,7 @@ Java测试代码生成可认识的依赖（缓存中的文件比如：androidx.r
 <details>
 <summary>CopyTool</summary>
 
-```
+```java
 public class CopyTool {
     // 我的sdk的目录在e盘下，这里可根据自己的位置修改
     static String path = "E:\\android\\AndroidSDK\\Sdk\\extras\\m2repository"; 
@@ -447,7 +447,7 @@ public class CopyTool {
 
 </details>
 
-## 修改项目下的build.gradle文件
+### 修改项目下的build.gradle文件
 
 在buildscirp和allprojects中添加maven依赖：
 

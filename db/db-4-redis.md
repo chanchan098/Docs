@@ -1,6 +1,4 @@
-# db-4-redis.md
-
-# Introduction to Redis 
+# - About 
 
 <https://redis.io/docs/about/>
 
@@ -10,6 +8,21 @@ Redis provides data structures such as **strings, hashes, lists, sets, sorted se
 
 Redis has **built-in replication**, Lua scripting, LRU eviction, transactions, and different levels of **on-disk persistence**, and provides **high availability** via Redis Sentinel and automatic partitioning with Redis Cluster.
 
+
+# -Connect
+
+# CLI
+
+In interactive mode, redis-cli has basic line editing capabilities to provide a familiar typing experience.
+
+# -Understand Redis data types
+
+# Sorted sets
+
+A Redis sorted set is a collection of unique strings (members) ordered by an associated score.  
+
+
+*Manage Redis/*
 # Redis persistence
 
 <https://redis.io/docs/management/persistence/>
