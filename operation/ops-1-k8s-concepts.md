@@ -1,22 +1,22 @@
 # ops-1-k8s-concepts.md
 - [ops-1-k8s-concepts.md](#ops-1-k8s-conceptsmd)
-- [Overview](#overview)
-- [Objects in kubernetes-Overview](#objects-in-kubernetes-overview)
+- [-Overview](#-overview)
+- [Objects in kubernetes](#objects-in-kubernetes)
   - [Understanding Kubernetes objects](#understanding-kubernetes-objects)
     - [Object spec and status](#object-spec-and-status)
     - [Describing a Kubernetes object](#describing-a-kubernetes-object)
     - [Required fields](#required-fields)
-- [Kubernetes Object Management-Objects in kubernetes-Overview](#kubernetes-object-management-objects-in-kubernetes-overview)
+- [Kubernetes Object Management](#kubernetes-object-management)
   - [Management techniques](#management-techniques)
-- [Object Names and IDs-Objects in kubernetes-Overview](#object-names-and-ids-objects-in-kubernetes-overview)
+- [Object Names and IDs](#object-names-and-ids)
     - [UIDs](#uids)
-- [Labels and Selectors-Objects in kubernetes-Overview](#labels-and-selectors-objects-in-kubernetes-overview)
+- [Labels and Selectors](#labels-and-selectors)
   - [Motivation](#motivation)
   - [Syntax and character set](#syntax-and-character-set)
   - [Label selectors](#label-selectors)
     - [Equality-based requirement](#equality-based-requirement)
     - [Set-based requirement](#set-based-requirement)
-- [Kubernetes Components-Overview](#kubernetes-components-overview)
+- [Kubernetes components](#kubernetes-components)
   - [Control panel components](#control-panel-components)
     - [kube-apiserver](#kube-apiserver)
     - [etcd](#etcd)
@@ -33,7 +33,7 @@
     - [Container Resource Monitoring](#container-resource-monitoring)
     - [Cluster-level Logging](#cluster-level-logging)
     - [Network Plugins](#network-plugins)
-- [The Kubernetes API-Overview](#the-kubernetes-api-overview)
+- [The Kubernetes API](#the-kubernetes-api)
 - [Cluster structure](#cluster-structure)
   - [Nodes](#nodes)
     - [Management](#management)
@@ -41,9 +41,9 @@
   - [Communication between Nodes and the Control Plane](#communication-between-nodes-and-the-control-plane)
   - [Controllers](#controllers)
   - [Leases](#leases)
-- [Workloads](#workloads)
+- [-Workloads](#-workloads)
   - [pods](#pods)
-- [Workload Management-Workloads](#workload-management-workloads)
+- [Workload Management](#workload-management)
   - [Deployment](#deployment)
   - [ReplicaSet](#replicaset)
   - [StatefulSet](#statefulset)
@@ -88,6 +88,7 @@
 - [API Overview](#api-overview-1)
 - [API Access Control](#api-access-control)
 - [Using RBAC Authorization](#using-rbac-authorization)
+- [Kubeadm](#kubeadm)
 - [Command line tool (kubectl)](#command-line-tool-kubectl)
 - [Workload Resources](#workload-resources)
   - [Pod](#pod)
@@ -103,10 +104,11 @@
 - [Api references](#api-references)
 
 
-# Overview
+# -Overview
 
+*Overview*
 
-# Objects in kubernetes-Overview
+# Objects in kubernetes
 
 [doc](https://kubernetes.io/docs/concepts/overview/working-with-objects/)
 
@@ -116,13 +118,13 @@ Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes 
 entities <mark>to represent the state of your cluster</mark>.
 
 To work with Kubernetes objects—whether to create, modify, or delete them—you'll need to use  
-the **Kubernetes API**. 
+the <u>Kubernetes API</u>. 
 
 ### Object spec and status
 
-`spec` providing a description of the characteristics you want the resource to have: its **desired state**.
+`spec` providing a description of the characteristics you want the resource to have: its <u>desired state</u>.
 
-The `status` describes the **current state** of the object, supplied and updated by the Kubernetes system and its components. 
+The `status` describes the <u>current state</u> of the object, supplied and updated by the Kubernetes system and its components. 
 
 ### Describing a Kubernetes object
 
@@ -138,42 +140,48 @@ The `status` describes the **current state** of the object, supplied and updated
 - metadata   
   Data that helps uniquely identify the object, including a name string, UID, and optional namespace
 - spec  
-  What state you desire for **the object**
+  What state you desire for <u>the object</u>
 
 
-The [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/) can help you find the **spec format** for all of the objects you can create using Kubernetes.
+The [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/) can help you find the <u>spec format</u> for all of the objects you can create using Kubernetes.
 
-# Kubernetes Object Management-Objects in kubernetes-Overview
+*Overview/Objects in kubernetes*
+
+# Kubernetes Object Management
 
 ## Management techniques 
+
 Management technique | Operates on	| Recommended environment |	Supported writers |	Learning curve
 |:---|:---:|:---:|:---:|:---:|
 Imperative commands	             | Live objects	        | Development projects	| 1+	| Lowest
 Imperative object configuration	 | Individual files	    | Production projects	  | 1	  | Moderate
 Declarative object configuration | Directories of files	| Production projects	  | 1+	| Highest
 
+*Overview/Objects in kubernetes*
 
-# Object Names and IDs-Objects in kubernetes-Overview
+# Object Names and IDs
 
-- Each object in your cluster **has a Name** that is unique for that **type of resource**.  
-  Every Kubernetes object also has a **UID** that is unique across your whole cluster.
+- Each object in your cluster <u>has a Name</u> that is unique for that <u>type of resource</u>.  
+  Every Kubernetes object also has a <u>UID</u> that is unique across your whole cluster.
 
 ### UIDs
 
-- A Kubernetes systems-generated string **to uniquely identify objects**.
+- A Kubernetes systems-generated string <u>to uniquely identify objects</u>.
 
-# Labels and Selectors-Objects in kubernetes-Overview
+*Overview/Objects in kubernetes*
 
-- Labels can be used **to organize** and **to select** subsets of objects.
+# Labels and Selectors
+
+- Labels can be used <u>to organize</u> and <u>to select</u> subsets of objects.
 
 ## Motivation 
 
-- Labels enable users to map their **own organizational structures** onto system objects
+- Labels enable users to map their <u>own organizational structures</u> onto system objects
 
 ## Syntax and character set 
 
 - Labels are *key/value pairs*.  
-  Valid label keys have two segments: **an optional prefix and name**, separated by a slash (/).  
+  Valid label keys have two segments: <u>an optional prefix and name</u>, separated by a slash (/).  
   
   ---
 
@@ -182,7 +190,7 @@ Declarative object configuration | Directories of files	| Production projects	  
 - If the prefix is omitted  
   the label Key is presumed to be private to the user.  
 
-  Automated system components (e.g. kube-scheduler, kube-controller-manager, kube-apiserver, kubectl, or other third-party automation) which add labels to end-user objects **must** specify a prefix.  
+  Automated system components (e.g. kube-scheduler, kube-controller-manager, kube-apiserver, kubectl, or other third-party automation) which add labels to end-user objects <u>must</u> specify a prefix.  
   
 For example, here's a manifest for a Pod that has two labels environment: production and app: nginx:
 
@@ -206,11 +214,11 @@ spec:
 
 - Labels do not provide uniqueness.
 - Via a label selector, the client/user can identify `a set of objects`.
-- The API currently supports two types of selectors: **equality-based** and **set-based**.
+- The API currently supports two types of selectors: <u>equality-based</u> and <u>set-based</u>.
 
 ### Equality-based requirement
 
-Equality- or inequality-based requirements allow filtering by **label keys and values**. 
+Equality- or inequality-based requirements allow filtering by <u>label keys and values</u>. 
 
 For example, the sample Pod below selects nodes with the label "accelerator=nvidia-tesla-p100".
 
@@ -232,7 +240,7 @@ spec:
 
 ### Set-based requirement
 
-Set-based label requirements allow filtering keys according to **a set of values**.  
+Set-based label requirements allow filtering keys according to <u>a set of values</u>.  
 Three kinds of operators are supported: in,notin and exists (only the key identifier).  
 
 For example:
@@ -248,7 +256,10 @@ partition
 - The third example selects all resources including a label with key `partition`; no values are checked.
 - The fourth example selects all resources without a label with key `partition`; no values are checked.
 
-# Kubernetes Components-Overview
+*Overview*
+
+# Kubernetes components
+
 [doc](https://kubernetes.io/docs/concepts/overview/components/)
 
 ![components](https://kubernetes.io/images/docs/components-of-kubernetes.svg)
@@ -268,11 +279,11 @@ partition
 
 ### etcd
 
-* Consistent and highly-available **key value store** used as Kubernetes' backing store for all cluster data.
+* Consistent and highly-available <u>key value store</u> used as Kubernetes' backing store for all cluster data.
 
 ### kube-scheduler 
 
-* Control plane component that watches for newly created Pods **with no assigned node**,  
+* Control plane component that watches for newly created Pods <u>with no assigned node</u>,  
   and selects a node for them to run on.
 
 ### kube-controller-manager 
@@ -284,10 +295,10 @@ flowchart BT
 ```
 
 
-- Node controller: Responsible for noticing and responding when **nodes** go down.
-- Job controller: Watches for Job objects that represent **one-off tasks**, then creates Pods to run those tasks to completion.
-- EndpointSlice controller: Populates EndpointSlice objects (to provide **a link** between Services and Pods).
-- ServiceAccount controller: Create default **ServiceAccounts** for new namespaces.
+- Node controller: Responsible for noticing and responding when <u>nodes</u> go down.
+- Job controller: Watches for Job objects that represent <u>one-off tasks</u>, then creates Pods to run those tasks to completion.
+- EndpointSlice controller: Populates EndpointSlice objects (to provide <u>a link</u> between Services and Pods).
+- ServiceAccount controller: Create default <u>ServiceAccounts</u> for new namespaces.
 
 ### cloud-controller-manager 
 
@@ -310,8 +321,7 @@ flowchart BT
 
 ## Node Components 
 
-
-* Maintaining **running pods** and providing the Kubernetes **runtime environment**.
+* Maintaining <u>running pods</u> and providing the Kubernetes <u>runtime environment</u>.
 
 ### kubelet
 
@@ -319,8 +329,8 @@ flowchart BT
 
 ### kube-proxy 
 
- maintains **network rules** on nodes. These network rules allow network communication   
- to your Pods from network sessions **inside or outside** of your cluster.
+ maintains <u>network rules</u> on nodes. These network rules allow network communication   
+ to your Pods from network sessions <u>inside or outside</u> of your cluster.
 
 ### Container runtime 
 
@@ -349,8 +359,9 @@ Containers started by Kubernetes automatically include this DNS server in their 
 
 ### Network Plugins 
 
+*Overview*
 
-# The Kubernetes API-Overview
+# The Kubernetes API
 
 The Kubernetes API lets you query and manipulate the state of API objects in Kubernetes (for example: Pods,  
 Namespaces, ConfigMaps, and Events).
@@ -382,27 +393,32 @@ as kubeadm, which in turn use the API. However, you can also access the API dire
 
 ## Leases
 
-# Workloads
+# -Workloads
 
 ## pods
+
 [link](https://kubernetes.io/docs/concepts/workloads/pods/)  
 
-* Pods are the smallest deployable units of computing **that you can create and manage in Kubernetes**.
-* A Pod (as in a pod of whales or pea pod) **is a group of one or more containers.**
+* Pods are the smallest deployable units of computing <u>that you can create and manage in Kubernetes</u>.
+* A Pod (as in a pod of whales or pea pod) <u>is a group of one or more containers.</u>
 * A Pod is similar to a set of containers with shared namespaces and shared filesystem volumes
 * Quiting
   * The Pod remains on that node until the Pod finishes execution,  
     the Pod object is deleted, the Pod is evicted for lack of resources,  
     or the node fails.
 
-# Workload Management-Workloads
+*Workloads*
+
+# Workload Management
 
 [link](https://kubernetes.io/docs/concepts/workloads/controllers/)
 
 ## Deployment
+
 - A Deployment provides declarative updates for Pods and ReplicaSets.
 
 ## ReplicaSet
+
 A ReplicaSet's purpose is to maintain `a stable set of replica Pods` running at any given time.  
 As such, it is often used to guarantee the availability of a specified number of identical Pods.
 
@@ -429,17 +445,15 @@ As such, it is often used to guarantee the availability of a specified number of
 
 A *CronJob* creates Jobs on a repeating schedule.
 
-
-
-
 # -Services, Load Balancing, and Networking
 
 [link](https://kubernetes.io/docs/concepts/services-networking/)
 
 *Services, Load Balancing, and Networking/concepts*
+
 # Service
 
-- a `Service` is a method for **exposing a network application**  
+- a `Service` is a method for <u>exposing a network application</u>  
   that is running as one or more Pods in your cluster.
 
 ## Services in Kubernetes 
@@ -499,7 +513,6 @@ including ones that run outside the cluster.
 - You want to have an external database cluster in production, but in your test environment you use your own databases.
 - You want to point your Service to a Service in *a different Namespace* or on *another cluster*.
 - You are migrating a workload to Kubernetes. While evaluating the approach, you run only *a portion of your backends* in Kubernetes.
-
 
 ### EndpointSlices 
 
@@ -573,7 +586,6 @@ termed headless Services, by explicitly specifying "None" for the cluster IP add
 For clients running *inside* your cluster, Kubernetes supports two primary modes of finding a Service:  
 `environment variables` and `DNS`
 
-
 ### DNS
 
 If DNS has been enabled throughout your cluster then all Pods should automatically be able to resolve Services by their `DNS name`.
@@ -581,6 +593,7 @@ If DNS has been enabled throughout your cluster then all Pods should automatical
 The Kubernetes DNS server is the only way to access `ExternalName` Services. 
 
 *Services, Load Balancing, and Networking/concepts*
+
 # ~~Ingress~~
 
 - An API object that manages external access to the services in a cluster, typically HTTP.
@@ -593,11 +606,13 @@ The Kubernetes DNS server is the only way to access `ExternalName` Services.
 - Service: that identifies a set of Pods using label selectors.
 
 *Services, Load Balancing, and Networking/concepts*
+
 # ~~Ingress Controllers~~
 
 In order for the Ingress resource to work, the cluster must have an ingress controller running.
 
 *Services, Load Balancing, and Networking/concepts*
+
 # Gateway API
 
 Make network services available by using an extensible, role-oriented, protocol-aware configuration  
@@ -619,10 +634,8 @@ provisioning and advanced traffic routing.
   Defines HTTP-specific rules for mapping traffic from a Gateway listener to a representation  
   of backend network endpoints. These endpoints are often represented as a Service.
 
-
-
-
 ## EndpointSlices
+
 Kubernetes' EndpointSlice API provides a way to track network endpoints within a Kubernetes cluster.  
 EndpointSlices offer a more scalable and extensible alternative to Endpoints.
 
@@ -631,9 +644,10 @@ EndpointSlices offer a more scalable and extensible alternative to Endpoints.
 an EndpointSlice contains references to a set of network endpoints. 
 
 *Services, Load Balancing, and Networking/concepts*
+
 # DNS for Services and Pods
 
-Kubernetes creates DNS records for Services and Pods. You can contact Services with consistent ***DNS names*** instead of IP addresses.
+Kubernetes creates DNS records for Services and Pods. You can contact Services with consistent <u>*DNS names*</u> instead of IP addresses.
 
 Kubelet configures Pods' DNS so that *running containers* can lookup Services by name rather than IP.
 
@@ -652,6 +666,7 @@ the SRV record has the form `_port-name._port-protocol.my-svc.my-namespace.svc.c
 # -Configuration
 
 *Configuration/concepts*
+
 # ConfigMaps
 
 A ConfigMap is an API object used to store non-confidential data in key-value pairs.  
@@ -662,6 +677,7 @@ Pods can consume ConfigMaps as environment variables, command-line arguments, or
 <https://kubernetes.io/docs/concepts/security/>
 
 *concepts/Security*
+
 # Controlling Access to the Kubernetes API
 
 Both human users and Kubernetes service accounts can be authorized for API access.  
@@ -704,19 +720,19 @@ The request is authorized if an existing policy declares that the user has permi
 Admission Control modules are software modules that can modify or reject requests. 
 
 *concepts/Security*
+
 # Role Based Access Control Good Practices
 
 Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles.
 
-
 ## API Overview
 
-You can use the Kubernetes API **to read and write Kubernetes resource objects** via a Kubernetes API endpoint.
-
+You can use the Kubernetes API <ul>to read and write Kubernetes resource objects</u> via a Kubernetes API endpoint.
 
 # -Reference
 
 *Reference/*
+
 # API Overview
 
 [link](https://kubernetes.io/docs/reference/using-api/)
@@ -726,38 +742,62 @@ external user commands are REST API calls that the API Server handles. Consequen
 platform is treated as an API object and has a corresponding entry in the API.
 
 *Reference/*
+
 # API Access Control
 
 *Reference/API Access Control*
+
 # Using RBAC Authorization
 
+*Reference/Setup tools/Kubeadm*
+
+# Kubeadm
+
 *Reference/*
+
 # Command line tool (kubectl) 
 
 [link](https://kubernetes.io/docs/reference/kubectl/)
 
-
-
 *Reference/Kubernetes API*
+
 # Workload Resources
 
 <https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/>
-
 
 ## Pod
 
 Pod is a collection of containers that can run on a host. This resource is created by clients and scheduled onto hosts.
 
-`spec (PodSpec)`
-- [Containers](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#containers)
+- spec([PodSpec](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec))
   - containers ([]Container), required
-    - List of containers belonging to the pod. at least one
+    - name  
+    - image (string)
+    - imagePullPolicy (string)(optional)
+
+<span style='font-size: 15px;'>**[example](https://github.com/easegress-io/easegress/blob/main/docs/04.Cloud-Native/4.2.Gateway-API.md#deploy-backend-services)**</span>  
+```yaml
+spec:
+  containers:
+  - name: hello-v1
+    image: "us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0"
+    env:
+    - name: "PORT"
+      value: "50001"
+  - name: hello-v2
+    image: "us-docker.pkg.dev/google-samples/containers/gke/hello-app:2.0"
+    env:
+    - name: "PORT"
+      value: "50002"
+```
 
 ## PodTemplate
 
 PodTemplate describes a template for creating copies of a predefined pod.
 
-`template (PodTemplateSpec) > spec (PodSpec)`
+- template (PodTemplateSpec)  
+    - metadata(ObjectMeta)
+    - spec([PodSpec](#pod))
 
 ## ReplicationController
 
@@ -778,10 +818,10 @@ ReplicaSet ensures that a specified number of pod replicas are running at any gi
 `spec (ReplicaSetSpec) > template (PodTemplateSpec)`
 
 *Reference/Kubernetes API*
+
 # Service Resources
 
 <https://kubernetes.io/docs/reference/kubernetes-api/service-resources/>
-
 
 ## Service
 
@@ -791,7 +831,6 @@ Service is `a named abstraction of software service` (for example, mysql) consis
 - ports ([]ServicePort)
   - ports.port (int32), required
 
-
 A middle line in front of an item start, marking it and with followers as an item of an array.
 ```yaml
 - port: 80
@@ -800,6 +839,7 @@ A middle line in front of an item start, marking it and with followers as an ite
 ```
 
 *Reference/Kubernetes API*
+
 # Common Definitions
 
 [doc](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/)
@@ -814,4 +854,4 @@ ObjectMeta is metadata that all persisted resources must have, which includes al
 
 [doc](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#api-overview)
 
-Kubernetes resources and "records of intent" are all stored as **API objects**.
+Kubernetes resources and "records of intent" are all stored as <ul>API objects</u>.
