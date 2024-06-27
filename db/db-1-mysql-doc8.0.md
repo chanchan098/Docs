@@ -1,8 +1,58 @@
-# db-1-mysql-doc8.0.md
+- [Articles](#articles)
+- [Test data](#test-data)
+- [5 MySQL Server Administration](#5-mysql-server-administration)
+- [10 Optimization](#10-optimization)
+- [13 Data Types](#13-data-types)
+- [12 The JSON Data Type](#12-the-json-data-type)
+- [14 Functions and Operators](#14-functions-and-operators)
+  - [14.4 Operators](#144-operators)
+  - [14.5 Flow Control Functions](#145-flow-control-functions)
+- [17 The InnoDB Storage Engine](#17-the-innodb-storage-engine)
+  - [17.1 Introduction to InnoDB](#171-introduction-to-innodb)
+    - [d-Key Advantages of InnoDB](#d-key-advantages-of-innodb)
+  - [d-17.2 InnoDB and the ACID Model](#d-172-innodb-and-the-acid-model)
+  - [d-17.7.2.1 Transaction Isolation Levels](#d-17721-transaction-isolation-levels)
+  - [17.7.2.3 Consistent Nonlocking Reads](#17723-consistent-nonlocking-reads)
+  - [d-17.3 InnoDB Multi-Versioning](#d-173-innodb-multi-versioning)
+- [19 Replication](#19-replication)
+  - [Table \& db filtering](#table--db-filtering)
+  - [17.1.1 Binary Log File Position Based Replication Configuration Overview](#1711-binary-log-file-position-based-replication-configuration-overview)
+    - [Setting the Replication Source Configuration](#setting-the-replication-source-configuration)
+    - [Creating a User for Replication](#creating-a-user-for-replication)
+    - [doc-Obtaining the Replication Source Binary Log Coordinates](#doc-obtaining-the-replication-source-binary-log-coordinates)
+    - [doc-Choosing a Method for Data Snapshots](#doc-choosing-a-method-for-data-snapshots)
+      - [Creating a Data Snapshot Using mysqldump](#creating-a-data-snapshot-using-mysqldump)
+    - [doc-Setting the Source Configuration on the Replica](#doc-setting-the-source-configuration-on-the-replica)
+  - [17.1.3 Replication with Global Transaction Identifiers](#1713-replication-with-global-transaction-identifiers)
+    - [GTID Format and Storage](#gtid-format-and-storage)
+    - [doc-Setting Up Replication Using GTIDs](#doc-setting-up-replication-using-gtids)
+- [25 Stored Objects](#25-stored-objects)
+  - [25.2 Using Stored Routines](#252-using-stored-routines)
+  - [25.3 Using Triggers](#253-using-triggers)
+- [MySQL Glossary](#mysql-glossary)
+    - [consistent read](#consistent-read)
+    - [MVCC](#mvcc)
+- [Install](#install)
+  - [Windows 10 (8.0.35)](#windows-10-8035)
+    - [my.ini](#myini)
+    - [Initialization](#initialization)
+    - [Remote connection](#remote-connection)
+  - [Ubuntu Server 22.04 (8.0.35)](#ubuntu-server-2204-8035)
 
+# Articles
+
+https://blog.logrocket.com/5-ways-rapidly-improve-mysql-database-performance/#indexes-partitions
+
+# Test data
+
+https://dev.mysql.com/doc/index-other.html
 
 
 # 5 MySQL Server Administration
+
+# 10 Optimization
+
+
 
 # 13 Data Types
 
@@ -46,6 +96,12 @@
 
 # 12 The JSON Data Type
 
+# 14 Functions and Operators
+
+## 14.4 Operators
+
+## 14.5 Flow Control Functions
+
 # 17 The InnoDB Storage Engine
 
 ## 17.1 Introduction to InnoDB
@@ -54,7 +110,25 @@
 
 ## d-17.2 InnoDB and the ACID Model
 
+• A: atomicity.
+• C: consistency.
+• I:: isolation.
+• D: durability.
+
 ## d-17.7.2.1 Transaction Isolation Levels
+
+key words: `Phantom read`  
+
+<span style='font-size: 15px;'>**REPEATABLE READ**</span>  
+
+<span style='font-size: 15px;'>**READ COMMITTED**</span>  
+
+<span style='font-size: 15px;'>**READ UNCOMMITTED**</span>  
+
+<span style='font-size: 15px;'>**SERIALIZABLE**</span>  
+
+
+
 
 ## 17.7.2.3 Consistent Nonlocking Reads
 

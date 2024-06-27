@@ -1,5 +1,23 @@
 # ops-3-docker.md
 
+# Used frequently
+
+docker exec -it abc123 /bin/bash
+
+# Important
+
+## Export images from docker to containerd 
+
+- [export](https://blog.csdn.net/panyong2010/article/details/135664490)
+
+- [download from ctr](https://blog.csdn.net/justlpf/article/details/132224499)
+
+- [ctr to crictl](https://blog.csdn.net/qq_37837432/article/details/123929774)
+
+## local registry
+
+- [link](https://blog.csdn.net/kele_baba/article/details/119457524)
+
 # Overview
 
 [doc](https://docs.docker.com/get-started/overview/)
@@ -85,10 +103,9 @@ You can create, start, stop, move, or delete a container using **the Docker API 
 
 <https://docs.docker.com/get-started/>
 
-# Containerize an application - Getting started guide
+## Containerize an application
 
-
-## Always remember that <mark>network problems</mark>.
+### Always remember that <mark>network problems</mark>.
 
 - <span style='font-size: 15px;'>**run**</span>  
   `docker run -dp 127.0.0.1:3000:3000 getting-started`  
@@ -111,7 +128,7 @@ You can create, start, stop, move, or delete a container using **the Docker API 
   ```
 
 
-# Update the application - Getting started guide
+## Update the application
 
 Stop and remove the previous `container` before run `new one`.
 
@@ -121,7 +138,16 @@ docker stop <the-container-id>
 docker rm <the-container-id>
 ```
 
-# Persist the DB - Getting started guide
+## Part6: use bind mounts
+
+Development with docker:
+
+running on docker in linux, coding on windows.
+
+
+
+
+## Persist the DB
 
 ## Container volumes
 
@@ -129,16 +155,38 @@ Volumes provide the ability to connect specific filesystem paths of the containe
 
 
 
-# Use Docker Compose - Getting started guide 
+## Use Docker Compose
 
 Docker Compose is a tool that helps you define and share *multi-container applications*.  
 With Compose, you can create a YAML file to define the services and with a single command,  
 you can spin everything up or tear it all down.
 
+# Develop with Docker
+
+## -Dockerfile best practices
+
+### What is a Dockerfile?
+
+Docker builds images automatically by reading the instructions 
+
+a Dockerfile which is a text file that contains all commands, in order, needed to build a given image.
+
+### General guidelines
+
+## Overview
+
 # Docker registry
 
 <https://distribution.github.io/distribution/>
 
+[insecure registries](https://stackoverflow.com/questions/49674004/docker-repository-server-gave-http-response-to-https-client)
+
+[start automatically](https://docs.docker.com/config/containers/start-containers-automatically/)
+
+[crictl http](https://blog.csdn.net/justlpf/article/details/132224499)
+
 # Reference
 
 <https://docs.docker.com/reference/>
+
+<https://docs.docker.com/reference/cli/docker/>

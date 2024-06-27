@@ -1,0 +1,1 @@
+F: && cd F:\Program Files\Oracle\VirtualBox && VBoxManage startvm "ub-22.04-server" --type headless && VBoxManage startvm "ub-22.04-server-2" --type headless

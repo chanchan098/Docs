@@ -32,3 +32,16 @@ A Redis sorted set is a collection of unique strings (members) ordered by an ass
 - AOF (Append Only File): AOF persistence logs every write operation received by the server. These operations can then be replayed again at server startup, reconstructing the original dataset. Commands are logged using the same format as the Redis protocol itself.
 - No persistence: You can disable persistence completely. This is sometimes used when caching.
 - RDB + AOF: You can also combine both AOF and RDB in the same instance.
+
+
+# Commands
+
+https://redis.io/docs/latest/commands/
+
+## EXPIRE
+
+https://redis.io/docs/latest/commands/expire/
+
+[expire key](https://javaguide.cn/database/redis/redis-questions-01.html#redis-%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E6%98%AF%E5%90%A6%E8%BF%87%E6%9C%9F%E7%9A%84%E5%91%A2)
+
+

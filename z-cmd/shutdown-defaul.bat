@@ -1,0 +1,1 @@
+VBoxManage controlvm "ub-22.04-server" acpipowerbutton

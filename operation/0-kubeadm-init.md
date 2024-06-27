@@ -63,13 +63,16 @@ p
 
 ### Extends logic volume
 
+- [Tutorial: Extends Free PE](https://www.linuxtechi.com/extend-volume-group-size/)
+- [Tutorial: Extends Free PE2](https://blog.csdn.net/qq_40137850/article/details/110630758)
+
+
 0. Creates a partition to use.
 1. Adds the partition to *Free PE*
 2. Extends logic volume.
 
 
-- [Extends Free PE](https://www.linuxtechi.com/extend-volume-group-size/)
-- [Extends Free PE2](https://blog.csdn.net/qq_40137850/article/details/110630758)
+
 
 ## [doc](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
@@ -99,6 +102,8 @@ systemctl enable containerd >/dev/null 2>&1
 
 
 ## Download and retag images
+
+see also [image-proxy](./0-image-proxy.md)
 
 ### Download and retag
 
@@ -158,10 +163,17 @@ sudo kubeadm init --image-repository registry.aliyuncs.com/google_containers --a
 
 ## `kubeadm init --v=5`
 
+`init-with-proxy.sh`
 ```shell
+echo y | kubeadm reset
+
 kubeadm init \
+--kubernetes-version=v1.29.1 \
 --image-repository registry.aliyuncs.com/google_containers \
---v=5 
+--v=5
+
+
+kubectl apply -f calico.yaml
 ```
 
 ## Start using cluster

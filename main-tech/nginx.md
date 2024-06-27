@@ -1,3 +1,6 @@
+
+https://nginx.org/en/docs/beginners_guide.html
+
 # -Admin Guide/HTTP Load Balancing
 
 # HTTP Load Balancing

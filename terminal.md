@@ -170,6 +170,7 @@ vim /etc/systemd/system/docker.service.d/http-proxy.conf
 export http_proxy= ;export https_proxy=
 
 export http_proxy=http://192.168.0.116:10809;export https_proxy=http://192.168.0.116:10809
+set http_proxy=http://192.168.0.116:10809&&set https_proxy=http://192.168.0.116:10809
 
 export http_proxy=http://192.168.0.117:10809;export https_proxy=http://192.168.0.117:10809
 

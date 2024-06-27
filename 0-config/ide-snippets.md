@@ -1,5 +1,7 @@
 # ide-snippets.md
 
+mardown.json
+
 ```json
 {
 	// Place your snippets for markdown here. Each snippet is defined under a snippet name and has a prefix, body and 
@@ -18,7 +20,7 @@
 	"break line": {
 		"prefix": "b",
 		"body": [
-			"  "
+			"<br/>"
 		],
 		"description": "break line"
 	},
@@ -133,6 +135,18 @@
 		],
 		"description": "code block mermaid"
 	},
+	"code block plantuml": {
+		"prefix": "cop",
+		"body": [
+			"```plantuml",
+			"@startuml"
+			"$1",
+			"@enduml"
+			"```",
+			"",			
+		],
+		"description": "code block plantuml"
+	},
 	"code block vue": {
 		"prefix": "cov",
 		"body": [
@@ -171,7 +185,7 @@
 			"<details>",
 			"<summary>Diagram</summary>",
 			"",
-			"$1",
+			"![alt]($1)",
 			"",
 			"</details>",			
 		],
@@ -184,6 +198,14 @@
 		],
 		"description": "doc mark"
 	},
+	"bookmark": {
+		"prefix": "bm",
+		"body": [
+			"📑"
+		],
+		"description": "bookmark"
+	},
+	
 	"key concept": {
 		"prefix": "k",
 		"body": [
@@ -220,6 +242,13 @@
 			"<mark>$1</mark>"			
 		],
 		"description": "key concept"
+	},
+	"next line": {
+		"prefix": "n",
+		"body": [
+			"  "
+		],
+		"description": "next line"
 	},	
 	"other headings": {
 		"prefix": "oh",
@@ -265,7 +294,13 @@
 			"<u>$1</u>",
 		],
 		"description": "under line"
+	},
+	"under writing": {
+		"prefix": "writ",
+		"body": [
+			"📝",
+		],
+		"description": "under writing"
 	}
-
 }
 ```

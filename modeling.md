@@ -7,11 +7,11 @@
 A **solid line** is drawn from the child class (the class inheriting the behavior) with a closed,  
 **unfilled arrowhead** (or triangle) pointing to the super class.
 
-```mermaid
-classDiagram 
-    direction BT
-    CheckingAccount --|> BankAccount
-    SavingsAccount --|> BankAccount
+```plantuml
+@startuml
+BankAccount <|-- CheckingAccount 
+BankAccount <|-- SavingsAccount
+@enduml
 ```
 
 ## Associations
@@ -22,12 +22,13 @@ Certain objects will be related to each other.
 
 This means that **both classes** are aware of each other and their relationship.
 
-```mermaid
-classDiagram
-    direction LR
-    Flight  "0..*" -- "0..1" Plane : assignObjects
-    Flight : +assignPlane()
-    Plane : +assignFlights()
+```plantuml
+@startuml
+    
+Flight  "0..*" --- "0..1" Plane 
+Flight : assignPlane()
+Plane : assignFlights()
+@enduml
 ```
 
 
@@ -40,11 +41,14 @@ A Plane knows about its association with the Flight class.
 Two classes are related, but **only one** class knows that the relationship exists.
 
 
-```mermaid
-classDiagram
-    direction LR
-    OverdrawnAccountsReport --> "0..*" BankAccount
-    OverdrawnAccountsReport : +setAccounts()
+```plantuml
+@startuml
+
+OverdrawnAccountsReport : setAccounts()
+
+OverdrawnAccountsReport " " -> "0..*" BankAccount
+    
+@enduml
 ```
 
 The OverdrawnAccountsReport knows about the BankAccount class,  
@@ -54,17 +58,16 @@ but BankAccount does'n know former.
 
 To include another class because it includes **valuable information** about the relationship.
 
+```plantuml
+@startuml
+
+Flight "0..*" - "0..*" FrequentFlyer
+(Flight, FrequentFlyer) .. MileageCredit
+
+@enduml
+
 ```
-        solid line
-     0..*
-Flight--------------FrequentFlyer
-            .     0..*
-            .
-            .
-            .
-            .
-       MileageCredit
-```
+
 
 ## Aggregation
 
@@ -82,17 +85,22 @@ existence of the Company class's instance.
 That one class is a part of another class. In an aggregation relationship, the child class instance **can outlive** its  
 parent class. 
 
-```mermaid
-classDiagram
-    car o--> "4" wheel
+```plantuml
+@startuml
+
+car " " o-- "4" wheel
+
+@enduml
 ```
 
 ### Composition aggregation
 
-```mermaid
-classDiagram
-    Company *--> "1..*" Department  
+```plantuml
+@startuml
+Company *--> "1..*" Department  
+@enduml
 ```
+
 
 A Company class instance will **always have** at least one Department class instance. Because the relationship is a  
 composition relationship, when the Company instance is removed/destroyed, the Department instance is automatically  
@@ -103,10 +111,11 @@ related to one instance of the parent class (e.g. the Company class in our examp
 When a class is associated to itself, this does not mean that a class's instance is related to itself, but that an  
 instance of the class is related to **another instance of the class**.
 
-```mermaid
-classDiagram
-    Employee "1" -- "0..*" Employee 
+```plantuml
+@startuml
+    Employee "1" --- "0..*" Employee 
 
+@enduml
 ```
 
 Means that an instance of Employee can be the manager of another Employee instance. However, because the relationship  

@@ -268,7 +268,7 @@ You can create collections and indexes in transactions.
 
 ## Transactions and Sessions
 
-## 🚴‍♂️ Read Concern/Write Concern/Read Preference
+## 🚴‍♂️ Read Concern(读关注)/Write Concern/Read Preference
 
 ### Transactions and Read Preference
 

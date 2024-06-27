@@ -1,3 +1,6 @@
+- [Command line management](#command-line-management)
+  - [source](#source)
+  - [eval](#eval)
 - [Disk management](#disk-management)
   - [blkid](#blkid)
   - [df](#df)
@@ -6,6 +9,7 @@
   - [parted](#parted)
   - [resize2fs](#resize2fs)
   - [vgdisplay](#vgdisplay)
+- [Editor](#editor)
 - [File management](#file-management)
   - [chown](#chown)
   - [ln](#ln)
@@ -17,22 +21,67 @@
 - [Package management](#package-management)
   - [dpkg](#dpkg)
   - [dpkg-query](#dpkg-query)
+- [Programming](#programming)
+  - [mapfile](#mapfile)
 - [du](#du)
 - [echo](#echo)
 - [nohup](#nohup)
-- [scp](#scp)
 - [sort](#sort)
 - [Remote file operation](#remote-file-operation)
+  - [scp](#scp)
   - [sftp(client side)](#sftpclient-side)
 - [String processing](#string-processing)
   - [awk](#awk)
   - [sed (stream editor)](#sed-stream-editor)
 - [System management](#system-management)
-  - [free](#free)
+  - [free, use for peek up memory](#free-use-for-peek-up-memory)
+  - [hostnamectl, use for queryign kernal](#hostnamectl-use-for-queryign-kernal)
+  - [ps](#ps)
   - [systemctl](#systemctl)
   - [sysctl](#sysctl)
   - [timedatectl](#timedatectl)
 - [VBoxManage](#vboxmanage)
+
+
+# Command line management
+
+## source
+
+```shell
+source: source filename [arguments]
+    Execute commands from a file in the current shell.
+
+    Read and execute commands from FILENAME in the current shell.  The
+    entries in $PATH are used to find the directory containing FILENAME.
+    If any ARGUMENTS are supplied, they become the positional parameters
+    when FILENAME is executed.
+
+    Exit Status:
+    Returns the status of the last command executed in FILENAME; fails if
+    FILENAME cannot be read.
+```
+
+<span style='font-size: 15px;'>**Example**</span>  
+`source tok8s.sh`
+
+
+- tok8s.sh
+  ```shell
+  cd /home/user/dr/k8s
+  ```
+
+## eval
+
+```
+eval: eval [arg ...]
+    Execute arguments as a shell command.
+
+    Combine ARGs into a single string, use the result as input to the shell,
+    and execute the resulting commands.
+
+    Exit Status:
+    Returns exit status of command or success if command is null.
+```
 
 
 # Disk management
@@ -294,6 +343,10 @@ Usage: resize2fs [-d debug_flags] [-f] [-F] [-M] [-P] [-p] device [-b|-s|new_siz
 ```
 
 ## vgdisplay
+
+# Editor
+
+https://linuxhandbook.com/vim/
 
 # File management
 
@@ -1137,6 +1190,46 @@ Format syntax:
   case left alignment will be used.
 ```
 
+# Programming
+
+## mapfile
+
+```
+mapfile: mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array]
+    Read lines from the standard input into an indexed array variable.
+
+    Read lines from the standard input into the indexed array variable ARRAY, or
+    from file descriptor FD if the -u option is supplied.  The variable MAPFILE
+    is the default ARRAY.
+
+    Options:
+      -d delim  Use DELIM to terminate lines, instead of newline
+      -n count  Copy at most COUNT lines.  If COUNT is 0, all lines are copied
+      -O origin Begin assigning to ARRAY at index ORIGIN.  The default index is 0
+      -s count  Discard the first COUNT lines read
+      -t        Remove a trailing DELIM from each line read (default newline)
+      -u fd     Read lines from file descriptor FD instead of the standard input
+      -C callback       Evaluate CALLBACK each time QUANTUM lines are read
+      -c quantum        Specify the number of lines read between each call to
+                        CALLBACK
+
+    Arguments:
+      ARRAY     Array variable name to use for file data
+
+    If -C is supplied without -c, the default quantum is 5000.  When
+    CALLBACK is evaluated, it is supplied the index of the next array
+    element to be assigned and the line to be assigned to that element
+    as additional arguments.
+
+    If not supplied with an explicit origin, mapfile will clear ARRAY before
+    assigning to it.
+
+    Exit Status:
+    Returns success unless an invalid option is given or ARRAY is readonly or
+    not an indexed array.
+```
+
+
 # du
 ```
 Usage: du [OPTION]... [FILE]...
@@ -1247,12 +1340,12 @@ echo: echo [-neE] [arg ...]
 
 ```
 
-用法：nohup 命令 [参数]...
-　或：nohup 选项
-忽略挂起信号运行指定的命令。
+Usage: nohup COMMAND [ARG]...
+  or:  nohup OPTION
+Run COMMAND, ignoring hangup signals.
 
-      --help            显示此帮助信息并退出
-      --version         显示版本信息并退出
+      --help     display this help and exit
+      --version  output version information and exit
 
 If standard input is a terminal, redirect it from an unreadable file.
 If standard output is a terminal, append output to 'nohup.out' if possible,
@@ -1260,20 +1353,15 @@ If standard output is a terminal, append output to 'nohup.out' if possible,
 If standard error is a terminal, redirect it to standard output.
 To save output to FILE, use 'nohup COMMAND > FILE'.
 
-```
+NOTE: your shell may have its own version of nohup, which usually supersedes
+the version described here.  Please refer to your shell's documentation
+for details about the options it supports.
 
-# scp
-
-```
-scp: unknown option -- -
-usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
-           [-i identity_file] [-J destination] [-l limit]
-           [-o ssh_option] [-P port] [-S program] source ... target
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Full documentation <https://www.gnu.org/software/coreutils/nohup>
+or available locally via: info '(coreutils) nohup invocation'
 
 ```
-
-
-
 
 # sort
 
@@ -1356,9 +1444,27 @@ or available locally via: info '(coreutils) sort invocation'
 
 # Remote file operation
 
-## sftp(client side)
+
+## scp
 
 ```
+scp: unknown option -- -
+usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
+           [-i identity_file] [-J destination] [-l limit]
+           [-o ssh_option] [-P port] [-S program] source ... target
+
+```
+
+`scp -r local_directory_path username@remote_host:remote_directory_path`
+
+`scp -r username@remote_host:remote_directory_path local_directory_path`
+
+`scp /home/user/documents/example.txt user@example.com:/home/user/remote_documents/`
+
+
+## sftp(client side)
+
+```shell
 usage: sftp [-46aCfpqrv] [-B buffer_size] [-b batchfile] [-c cipher]
           [-D sftp_server_path] [-F ssh_config] [-i identity_file] [-l limit]
           [-o ssh_option] [-P port] [-R num_requests] [-S program]
@@ -1367,7 +1473,43 @@ usage: sftp [-46aCfpqrv] [-B buffer_size] [-b batchfile] [-c cipher]
        sftp [user@]host[:dir[/]]
        sftp -b batchfile [user@]host
 
+
+sftp> help
 ```
+
+in commands
+```
+sftp 116@192.168.0.116 <<EOF
+cd /D:
+get -R "/D:/liaoyj/Developer/Java/spring-microservices-k8s" /home/x/developer/spring-microservices-k8s
+exit
+EOF
+
+
+shpass -p '123456' sftp 116@192.168.0.116 <<EOF
+pwd
+EOF
+```
+
+
+sftpbatch.txt
+```txt
+cd /D:
+get -R "/D:\\liaoyj\\Developer\\Java\\spring-microservices-k8s" /home/x/developer/spring-microservices-k8s
+exit
+```
+```
+sftp -b sftpbatch.txt 116@192.168.0.116
+
+or
+
+sshpass -p '123456' sftp -b sftpbatch.txt 116@192.168.0.116
+
+```
+
+
+
+
 
 # String processing
 
@@ -1474,7 +1616,7 @@ E-mail bug reports to: <bug-sed@gnu.org>.
 
 # System management
 
-## free
+## free, use for peek up memory
 
 ```
 Usage:
@@ -1505,6 +1647,97 @@ Options:
 
 For more details see free(1).
 ```
+
+## hostnamectl, use for queryign kernal
+
+## ps
+
+`ps aux --sort=-rss`
+
+```
+ps --help all
+
+Usage:
+ ps [options]
+
+Basic options:
+ -A, -e               all processes
+ -a                   all with tty, except session leaders
+  a                   all with tty, including other users
+ -d                   all except session leaders
+ -N, --deselect       negate selection
+  r                   only running processes
+  T                   all processes on this terminal
+  x                   processes without controlling ttys
+
+Selection by list:
+ -C <command>         command name
+ -G, --Group <GID>    real group id or name
+ -g, --group <group>  session or effective group name
+ -p, p, --pid <PID>   process id
+        --ppid <PID>  parent process id
+ -q, q, --quick-pid <PID>
+                      process id (quick mode)
+ -s, --sid <session>  session id
+ -t, t, --tty <tty>   terminal
+ -u, U, --user <UID>  effective user id or name
+ -U, --User <UID>     real user id or name
+
+  The selection options take as their argument either:
+    a comma-separated list e.g. '-u root,nobody' or
+    a blank-separated list e.g. '-p 123 4567'
+
+Output formats:
+ -F                   extra full
+ -f                   full-format, including command lines
+  f, --forest         ascii art process tree
+ -H                   show process hierarchy
+ -j                   jobs format
+  j                   BSD job control format
+ -l                   long format
+  l                   BSD long format
+ -M, Z                add security data (for SELinux)
+ -O <format>          preloaded with default columns
+  O <format>          as -O, with BSD personality
+ -o, o, --format <format>
+                      user-defined format
+  s                   signal format
+  u                   user-oriented format
+  v                   virtual memory format
+  X                   register format
+ -y                   do not show flags, show rss vs. addr (used with -l)
+     --context        display security context (for SELinux)
+     --headers        repeat header lines, one per page
+     --no-headers     do not print header at all
+     --cols, --columns, --width <num>
+                      set screen width
+     --rows, --lines <num>
+                      set screen height
+
+Show threads:
+  H                   as if they were processes
+ -L                   possibly with LWP and NLWP columns
+ -m, m                after processes
+ -T                   possibly with SPID column
+
+Miscellaneous options:
+ -c                   show scheduling class with -l option
+  c                   show true command name
+  e                   show the environment after command
+  k,    --sort        specify sort order as: [+|-]key[,[+|-]key[,...]]
+  L                   show format specifiers
+  n                   display numeric uid and wchan
+  S,    --cumulative  include some dead child process data
+ -y                   do not show flags, show rss (only with -l)
+ -V, V, --version     display version information and exit
+ -w, w                unlimited output width
+
+        --help <simple|list|output|threads|misc|all>
+                      display help and exit
+
+For more details see ps(1).
+```
+
 
 ## systemctl
 
@@ -1578,30 +1811,6 @@ See the timedatectl(1) man page for details.
 
 # VBoxManage
 
-```
-  VBoxManage startvm "ubuntu-server22.04-3" --type headless
+`VBoxManage startvm "ub-22.04-server-2" --type headless`
 
-  VBoxManage controlvm "ubuntu-server22.04-3" acpipowerbutton 
-
-  VBoxManage list vms
-
-  VBoxManage controlvm <uuid | vmname> pause
-
-  VBoxManage controlvm <uuid | vmname> resume
-
-  VBoxManage controlvm <uuid | vmname> reset
-
-  VBoxManage controlvm <uuid | vmname> poweroff
-
-  VBoxManage controlvm <uuid | vmname> savestate
-
-  VBoxManage controlvm <uuid | vmname> acpipowerbutton
-
-  VBoxManage controlvm <uuid | vmname> acpisleepbutton
-
-  VBoxManage controlvm <uuid | vmname> reboot
-
-  VBoxManage controlvm <uuid | vmname> shutdown [--force]
-
-
-```
+`VBoxManage controlvm "ub-22.04-server" acpipowerbutton`

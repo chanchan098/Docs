@@ -15,15 +15,15 @@
 
 [env](https://blog.csdn.net/weixin_36296538/article/details/83044639)
 
-## mermaid chart
+## markdown on vscode
 
-## markdown math
+### mermaid chart
+
+### markdown math
 
 <https://freeopen.github.io/mathjax/>
 
-## markdown on vscode
-
-### hint
+### quick hints
 
 open settings as json
 ```json
@@ -50,14 +50,21 @@ open settings as json
 }
 ```
 
-## markdown customized style
+
+### plantuml on vscode
+
+[tutorial](https://github.com/sxgic/plantumlforvscode/blob/master/%E5%A6%82%E4%BD%95%E5%9C%A8vscode%E4%B8%AD%E4%BD%BF%E7%94%A8PlantUML%E7%94%BBUML%E5%9B%BE.md#42-vscode-%E4%B8%AD%E5%AE%89%E8%A3%85-plantuml)
+
+[use 2.11.2](https://github.com/qjebbs/vscode-plantuml/issues/255)
+
+### markdown customized style
 
 using `tags` and inner `style`
 ```html
 <span style="">text</span>
 ```
 
-## mardown emoji cheat sheet
+### mardown emoji cheat sheet
 
 <https://github.com/ikatyang/emoji-cheat-sheet>
 
@@ -89,11 +96,6 @@ WHERE email LIKE '%@example.com';
 
 <https://github.com/Eugeny/tabby/issues/8659>
 
-## ubuntu server static ip
-
-<https://ubuntu.com/server/docs/network-configuration>
-
-
 ## vscode plugins
 
 ### code tour
@@ -111,6 +113,8 @@ WHERE email LIKE '%@example.com';
 ## windows
 
 ### Boot app when launched
+
+`C:\Users\116\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
 `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup`
 

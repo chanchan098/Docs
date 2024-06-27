@@ -61,8 +61,7 @@ A plugin goal represents a specific task (finer than a build phase) which contri
 
 ```xml
 <project>
-  <modelVersion>4.0.0</modelVersion>
- 
+  <modelVersion>4.0.0</modelVersion> 
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app</artifactId>
   <version>1</version>

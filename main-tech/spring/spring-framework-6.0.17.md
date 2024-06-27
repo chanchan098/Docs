@@ -2,32 +2,44 @@
 
 - [spring-framework.md](#spring-frameworkmd)
 - [-Core Technologies](#-core-technologies)
-- [The IoC Container](#the-ioc-container)
-  - [Introduction to the Spring IoC Container and Beans](#introduction-to-the-spring-ioc-container-and-beans)
-  - [Container Overview](#container-overview)
-    - [Configuration Metadata](#configuration-metadata)
-  - [Bean Overview](#bean-overview)
-  - [Annotation-based Container Configuration](#annotation-based-container-configuration)
-  - [Java-based Container Configuration](#java-based-container-configuration)
+- [-- The IoC Container](#---the-ioc-container)
+- [Introduction to the Spring IoC Container and Beans](#introduction-to-the-spring-ioc-container-and-beans)
+- [Container Overview](#container-overview)
+  - [Configuration Metadata](#configuration-metadata)
+- [Bean Overview](#bean-overview)
+- [Annotation-based Container Configuration](#annotation-based-container-configuration)
+- [Java-based Container Configuration](#java-based-container-configuration)
+  - [Basic Concepts: @Bean and @Configuration](#basic-concepts-bean-and-configuration)
+- [--E-The IoC Container](#--e-the-ioc-container)
+- [--Validation, Data Binding, and Type Conversion](#--validation-data-binding-and-type-conversion)
 - [Java Bean Validation](#java-bean-validation)
-    - [Configuring Custom Constraints](#configuring-custom-constraints)
-- [Spring Expression Language (SpEL)](#spring-expression-language-spel)
-- [Aspect Oriented Programming with Spring](#aspect-oriented-programming-with-spring)
-  - [AOP Concepts](#aop-concepts)
-  - [@AspectJ support](#aspectj-support)
+  - [Configuring Custom Constraints](#configuring-custom-constraints)
+- [--E-Validation, Data Binding, and Type Conversion](#--e-validation-data-binding-and-type-conversion)
+- [--Spring Expression Language (SpEL)](#--spring-expression-language-spel)
+- [--E-Spring Expression Language (SpEL)](#--e-spring-expression-language-spel)
+- [--Aspect Oriented Programming with Spring](#--aspect-oriented-programming-with-spring)
+- [AOP Concepts](#aop-concepts)
+- [@AspectJ support](#aspectj-support)
   - [Enabling @AspectJ Support - @AspectJ support](#enabling-aspectj-support---aspectj-support)
   - [Declaring an Aspect - @AspectJ support](#declaring-an-aspect---aspectj-support)
   - [Introductions - @AspectJ support](#introductions---aspectj-support)
 - [Proxying Mechanisms](#proxying-mechanisms)
   - [Understanding AOP Proxies](#understanding-aop-proxies)
+- [--E-Aspect Oriented Programming with Spring](#--e-aspect-oriented-programming-with-spring)
+- [-E-Core Technologies](#-e-core-technologies)
 - [-Data Access](#-data-access)
-- [Transaction Management](#transaction-management)
+- [--Transaction Management](#--transaction-management)
 - [Advantages of the Spring Framework’s Transaction Support Model](#advantages-of-the-spring-frameworks-transaction-support-model)
   - [Global Transactions](#global-transactions)
   - [Local Transactions](#local-transactions)
 - [Understanding the Spring Framework Transaction Abstraction](#understanding-the-spring-framework-transaction-abstraction)
 - [Understanding the Spring Framework’s Declarative Transaction Implementation](#understanding-the-spring-frameworks-declarative-transaction-implementation)
 - [Using `@Transactional`](#using-transactional)
+- [Transaction Propagation](#transaction-propagation)
+  - [Understanding PROPAGATION\_REQUIRED](#understanding-propagation_required)
+  - [Understanding PROPAGATION\_REQUIRES\_NEW](#understanding-propagation_requires_new)
+  - [Understanding PROPAGATION\_NESTED](#understanding-propagation_nested)
+- [--E-Transaction Management](#--e-transaction-management)
 - [-Web on Servlet Stack](#-web-on-servlet-stack)
 - [Spring Web MVC](#spring-web-mvc)
 - [DispatcherServlet](#dispatcherservlet)
@@ -39,13 +51,19 @@
   - [Handler Methods](#handler-methods)
 - [Message Converters](#message-converters)
 - [MVC Config API](#mvc-config-api)
+- [- Testing](#--testing)
+  - [TestContext Framework Support Classes](#testcontext-framework-support-classes)
+
+
+[api](https://docs.spring.io/spring-framework/docs/6.0.17/javadoc-api/index.html)
+
+[doc](https://docs.spring.io/spring-framework/reference/6.0/overview.html)
 
 # -Core Technologies
 
-*Core Technologies*
-# The IoC Container
+# -- The IoC Container
 
-## Introduction to the Spring IoC Container and Beans
+# Introduction to the Spring IoC Container and Beans
 
 **IoC**  
 
@@ -59,7 +77,7 @@ The IoC container then **injects** those dependencies when it creates the bean.
 
 This process is fundamentally the inverse of the bean itself.
 
-<span style='font-size: 15px;'>**Bean factory**</span>  
+<span style='font-size: 16px;font-weight: 500'>Bean factory</span>  
 provides the configuration framework and basic functionality, and the `ApplicationContext` adds more enterprise-specific functionality.
 
 ---
@@ -67,7 +85,8 @@ provides the configuration framework and basic functionality, and the `Applicati
 In Spring, the objects *that form the backbone of your application and that are managed by the Spring IoC container* are called beans. 
 
 
-## Container Overview
+*Core Technologies/The IoC Container*
+# Container Overview
 
 [docs](https://docs.spring.io/spring-framework/reference/core/beans/basics.html)
 
@@ -78,7 +97,7 @@ The configuration metadata is represented in `XML`, `Java annotations`, or `Java
 
 ![alt](https://docs.spring.io/spring-framework/reference/_images/container-magic.png)
 
-### Configuration Metadata
+## Configuration Metadata
 
 This configuration metadata represents how you, as an application developer, tell the Spring container *to instantiate, configure, and assemble* the objects in your application.
 
@@ -88,33 +107,41 @@ For information about using other forms of metadata with the Spring container, s
 
 - [Java-based configuration](https://docs.spring.io/spring-framework/reference/core/beans/java.html): define beans external to your application classes by using Java rather than XML files. To use these features, see the @Configuration, @Bean, @Import, and @DependsOn annotations.
 
-## Bean Overview
+*Core Technologies/The IoC Container*
+# Bean Overview
 
-## Annotation-based Container Configuration
+*Core Technologies/The IoC Container*
+# Annotation-based Container Configuration
 
 which relies on `bytecode metadata` for wiring up components 
 
-## Java-based Container Configuration
+*Core Technologies/The IoC Container*
+# Java-based Container Configuration
 
+## Basic Concepts: @Bean and @Configuration
 
-*[Core Technologies/Validation, Data Binding, and Type Conversion](https://docs.spring.io/spring-framework/reference/6.0/core/validation/beanvalidation.html)*
+# --E-The IoC Container
+
+# --Validation, Data Binding, and Type Conversion
+
 # Java Bean Validation
 
 - [tutorial](https://www.iocoder.cn/Spring-Boot/Validation/?fuck)
 - [spec](https://beanvalidation.org/)
 - [Hibernate Validator](https://hibernate.org/validator/)
 
-### Configuring Custom Constraints
-  
+## Configuring Custom Constraints
 
 
-*Core Technologies*
-# Spring Expression Language (SpEL)
+# --E-Validation, Data Binding, and Type Conversion
+
+# --Spring Expression Language (SpEL)
 
 is a powerful expression language that supports querying and manipulating an object graph at runtime.
 
-*Core Technologies*
-# Aspect Oriented Programming with Spring
+# --E-Spring Expression Language (SpEL)
+
+# --Aspect Oriented Programming with Spring
 
 [docs](https://docs.spring.io/spring-framework/reference/core/aop.html)
 
@@ -122,7 +149,7 @@ The key unit of modularity in AOP is the aspect.
 
 Aspects enable the modularization of concerns (such as transaction management) that cut across multiple types and objects.  
 
-## AOP Concepts
+# AOP Concepts
 
 - Aspect:  
   A modularization of a concern that cuts across multiple classes.
@@ -134,7 +161,7 @@ Aspects enable the modularization of concerns (such as transaction management) t
   Action taken by an aspect at a particular join point.
 
 - Pointcut:  
-  A predicate that matches join points. `@Around("@annotation(preAuthenticated)")`
+  A predicate that matches join points. `@PreAuthenticated`
 
 - Introduction:  
   Declaring additional methods or fields on behalf of a type. 
@@ -149,6 +176,36 @@ Aspects enable the modularization of concerns (such as transaction management) t
 - Weaving:  
   linking aspects with other application types or objects to create an advised object. 
 
+
+
+
+<span style='font-size: 16px;font-weight: 500'>Example</span>  
+
+```java
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Documented
+public @interface PreAuthenticated {
+}
+```
+
+
+```java
+@Aspect
+@Slf4j
+public class PreAuthenticatedAspect {
+
+    @Around("@annotation(preAuthenticated)")
+    public Object around(ProceedingJoinPoint joinPoint, PreAuthenticated preAuthenticated) throws Throwable {
+        if (SecurityFrameworkUtils.getLoginUser() == null) {
+            throw exception(UNAUTHORIZED);
+        }
+        return joinPoint.proceed();
+    }
+
+}
+```
 
 **Types of advice**
 
@@ -165,7 +222,7 @@ Aspects enable the modularization of concerns (such as transaction management) t
   Around advice can perform custom behavior before and after the method invocation.  
   It is also responsible for choosing whether to proceed to the join point or to shortcut the advised method execution by returning its own return value or throwing an exception.
 
-## @AspectJ support
+# @AspectJ support
 
 `@AspectJ` refers to a style of declaring aspects as regular Java classes annotated with annotations. 
 
@@ -195,11 +252,15 @@ Introductions (known as inter-type declarations in AspectJ) enable an aspect to 
 ## Understanding AOP Proxies
 
 
+# --E-Aspect Oriented Programming with Spring
+
+# -E-Core Technologies
+
 # -Data Access
 
-# Transaction Management
+# --Transaction Management
 
-*Data Access/Transaction Management*
+
 # Advantages of the Spring Framework’s Transaction Support Model
 
 ## Global Transactions
@@ -208,17 +269,17 @@ Global transactions let you work with multiple transactional resources, typicall
 
 ## Local Transactions
 
-*Data Access/Transaction Management*
+Local transactions are resource-specific, such as a transaction associated with a JDBC connection. 
+
 # Understanding the Spring Framework Transaction Abstraction
 
 [docs](https://docs.spring.io/spring-framework/reference/6.0/data-access/transaction/strategies.html)
 
-Local transactions are resource-specific, such as a transaction associated with a JDBC connection. 
 
 imperative transaction management by `org.springframework.transaction  PlatformTransactionManager`  
 reactive transaction management by `org.springframework.transaction.ReactiveTransactionManager`
 
-<span style='font-size: 15px;'>**a service provider interface (SPI)**</span>  
+<span style='font-size: 16px;font-weight: 500'>a service provider interface (SPI)</span>  
 ```java
 public interface PlatformTransactionManager extends TransactionManager {
 
@@ -230,7 +291,7 @@ public interface PlatformTransactionManager extends TransactionManager {
 }
 ```
 
-*Data Access/Transaction Management/Declarative Transaction Management*
+
 # Understanding the Spring Framework’s Declarative Transaction Implementation
 
 [doc ](https://docs.spring.io/spring-framework/reference/6.0/data-access/transaction/declarative/tx-decl-explained.html)
@@ -242,9 +303,28 @@ The combination of AOP with transactional metadata <mark>yields</mark> an AOP pr
 
 
 *Data Access/Transaction Management/Declarative Transaction Management*
+
 # Using `@Transactional`
 
+# Transaction Propagation
 
+## Understanding PROPAGATION_REQUIRED
+
+![alt](https://docs.spring.io/spring-framework/reference/6.0/_images/tx_prop_required.png)
+
+PROPAGATION_REQUIRED enforces a physical transaction, either locally for the current scope if no transaction exists yet or participating in an existing 'outer' transaction defined for a larger scope.
+
+## Understanding PROPAGATION_REQUIRES_NEW
+
+![alt](https://docs.spring.io/spring-framework/reference/6.0/_images/tx_prop_requires_new.png)
+
+PROPAGATION_REQUIRES_NEW, in contrast to PROPAGATION_REQUIRED, always uses an independent physical transaction for each affected transaction scope, never participating in an existing transaction for an outer scope.
+
+## Understanding PROPAGATION_NESTED
+
+PROPAGATION_NESTED uses a single physical transaction with multiple savepoints that it can roll back to. 
+
+# --E-Transaction Management
 
 # -Web on Servlet Stack
 
@@ -259,16 +339,16 @@ The combination of AOP with transactional metadata <mark>yields</mark> an AOP pr
 
 [process progress](https://blog.csdn.net/anying5823/article/details/106308360)
 
-<span style='font-size: 15px;'>**Spring MVC**</span>  
+<span style='font-size: 16px;font-weight: 500'>Spring MVC</span>  
 is designed around the front controller pattern  
 where a central Servlet, the DispatcherServlet, provides a shared algorithm for request processing,  
 while actual work is performed by configurable delegate components. 
 
-<span style='font-size: 15px;'>**DispatcherServlet**</span>  
+<span style='font-size: 16px;font-weight: 500'>DispatcherServlet</span>  
 the DispatcherServlet uses Spring configuration to discover `the delegate components` it needs for request  
 mapping, view resolution, exception handling, and more.
 
-<span style='font-size: 15px;'>**From [DispatcherServlet api](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html)**</span>  
+<span style='font-size: 16px;font-weight: 500'>From [DispatcherServlet api](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html)</span>  
 Central dispatcher for `HTTP request handlers/controllers`,  
 e.g. for web UI controllers or HTTP-based remote service exporters.  
 Dispatches to registered handlers for processing *a web request*, providing convenient *mapping* and *exception handling* facilities.
@@ -333,3 +413,11 @@ In a Spring Boot application, the `WebMvcAutoConfiguration` adds any `HttpMessag
 # MVC Config API
 
 to customize mvc configs
+
+# - Testing
+
+*Spring TestContext Framework\*
+
+## TestContext Framework Support Classes
+
+https://docs.spring.io/spring-framework/reference/testing/testcontext-framework/support-classes.html

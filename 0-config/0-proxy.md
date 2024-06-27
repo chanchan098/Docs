@@ -2,10 +2,17 @@
 
 ## Allowing connections from `local network` 
 
-## proxies 
+## proxies
+
 - Linux
+- vscode
 - Gradle 
 - Maven
 - Docker 
 - Containerd
 - ... 
+
+### vscode
+
+User  
+`Settings > Application > Proxy(Applies to all profiles)`

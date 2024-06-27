@@ -1,5 +1,3 @@
-# ops-1-k8s-concepts.md
-- [ops-1-k8s-concepts.md](#ops-1-k8s-conceptsmd)
 - [-Overview](#-overview)
 - [Objects in kubernetes](#objects-in-kubernetes)
   - [Understanding Kubernetes objects](#understanding-kubernetes-objects)
@@ -15,7 +13,10 @@
   - [Syntax and character set](#syntax-and-character-set)
   - [Label selectors](#label-selectors)
     - [Equality-based requirement](#equality-based-requirement)
-    - [Set-based requirement](#set-based-requirement)
+    - [Set-based requirement(in cmd)](#set-based-requirementin-cmd)
+  - [API](#api)
+    - [LIST and WATCH filtering](#list-and-watch-filtering)
+    - [Set references in API objects](#set-references-in-api-objects)
 - [Kubernetes components](#kubernetes-components)
   - [Control panel components](#control-panel-components)
     - [kube-apiserver](#kube-apiserver)
@@ -44,12 +45,13 @@
 - [-Workloads](#-workloads)
   - [pods](#pods)
 - [Workload Management](#workload-management)
-  - [Deployment](#deployment)
-  - [ReplicaSet](#replicaset)
-  - [StatefulSet](#statefulset)
-  - [DaemonSet](#daemonset)
-  - [Jobs](#jobs)
-  - [CronJob](#cronjob)
+- [Deployment](#deployment)
+  - [Use Case](#use-case)
+- [ReplicaSet](#replicaset)
+- [StatefulSet](#statefulset)
+- [DaemonSet](#daemonset)
+- [Jobs](#jobs)
+- [CronJob](#cronjob)
 - [-Services, Load Balancing, and Networking](#-services-load-balancing-and-networking)
 - [Service](#service)
   - [Services in Kubernetes](#services-in-kubernetes)
@@ -62,6 +64,7 @@
   - [Service type](#service-type)
   - [Headless Services](#headless-services)
   - [Discovering services](#discovering-services)
+    - [Environment variables](#environment-variables)
     - [DNS](#dns-1)
 - [~~Ingress~~](#ingress)
     - [Terminology](#terminology)
@@ -74,22 +77,35 @@
   - [Services](#services)
     - [A/AAAA records](#aaaaa-records)
     - [SRV records](#srv-records)
+- [-Storage](#-storage)
+- [Volumes](#volumes)
+  - [Types of volumes](#types-of-volumes)
+    - [secret](#secret)
+  - [REF](#ref)
+- [Projected Volumes](#projected-volumes)
 - [-Configuration](#-configuration)
 - [ConfigMaps](#configmaps)
+- [Secrets](#secrets)
 - [-Security](#-security)
+- [Service Accounts](#service-accounts)
+  - [What are service accounts?](#what-are-service-accounts)
+    - [Default service accounts](#default-service-accounts)
+  - [Use cases for Kubernetes service accounts](#use-cases-for-kubernetes-service-accounts)
 - [Controlling Access to the Kubernetes API](#controlling-access-to-the-kubernetes-api)
   - [Transport security](#transport-security)
   - [Authentication](#authentication)
   - [Authorization](#authorization)
   - [Admission control](#admission-control)
-- [Role Based Access Control Good Practices](#role-based-access-control-good-practices)
   - [API Overview](#api-overview)
+- [Role Based Access Control Good Practices](#role-based-access-control-good-practices)
 - [-Reference](#-reference)
 - [API Overview](#api-overview-1)
-- [API Access Control](#api-access-control)
+- [--API Access Control](#--api-access-control)
 - [Using RBAC Authorization](#using-rbac-authorization)
-- [Kubeadm](#kubeadm)
-- [Command line tool (kubectl)](#command-line-tool-kubectl)
+  - [API objects](#api-objects)
+    - [Role and ClusterRole](#role-and-clusterrole)
+  - [RoleBinding and ClusterRoleBinding](#rolebinding-and-clusterrolebinding)
+- [-- Kubernetes API](#---kubernetes-api)
 - [Workload Resources](#workload-resources)
   - [Pod](#pod)
   - [PodTemplate](#podtemplate)
@@ -98,8 +114,16 @@
   - [ReplicaSet](#replicaset-1)
 - [Service Resources](#service-resources)
   - [Service](#service-1)
+- [Config and Storage Resources](#config-and-storage-resources)
+  - [Volume](#volume)
+- [Authentication Resources](#authentication-resources)
+  - [ServiceAccount](#serviceaccount)
 - [Common Definitions](#common-definitions)
+  - [LabelSelector](#labelselector)
   - [ObjectMeta](#objectmeta)
+- [-- Setup tools](#---setup-tools)
+- [Kubeadm](#kubeadm)
+- [-- Command line tool (kubectl)](#---command-line-tool-kubectl)
 - [-------------------------------------------------](#-------------------------------------------------)
 - [Api references](#api-references)
 
@@ -151,11 +175,11 @@ The [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-a
 
 ## Management techniques 
 
-Management technique | Operates on	| Recommended environment |	Supported writers |	Learning curve
-|:---|:---:|:---:|:---:|:---:|
-Imperative commands	             | Live objects	        | Development projects	| 1+	| Lowest
-Imperative object configuration	 | Individual files	    | Production projects	  | 1	  | Moderate
-Declarative object configuration | Directories of files	| Production projects	  | 1+	| Highest
+| Management technique             |     Operates on      | Recommended environment | Supported writers | Learning curve |
+| :------------------------------- | :------------------: | :---------------------: | :---------------: | :------------: |
+| Imperative commands              |     Live objects     |  Development projects   |        1+         |     Lowest     |
+| Imperative object configuration  |   Individual files   |   Production projects   |         1         |    Moderate    |
+| Declarative object configuration | Directories of files |   Production projects   |        1+         |    Highest     |
 
 *Overview/Objects in kubernetes*
 
@@ -172,7 +196,18 @@ Declarative object configuration | Directories of files	| Production projects	  
 
 # Labels and Selectors
 
+- Labels are intended to be used to specify identifying attributes of objects.
 - Labels can be used <u>to organize</u> and <u>to select</u> subsets of objects.
+
+```yaml
+"metadata": {
+  "labels": {
+    "key1" : "value1",
+    "key2" : "value2"
+  }
+}
+```
+
 
 ## Motivation 
 
@@ -238,7 +273,7 @@ spec:
     accelerator: nvidia-tesla-p100
 ```
 
-### Set-based requirement
+### Set-based requirement(in cmd)
 
 Set-based label requirements allow filtering keys according to <u>a set of values</u>.  
 Three kinds of operators are supported: in,notin and exists (only the key identifier).  
@@ -257,6 +292,14 @@ partition
 - The fourth example selects all resources without a label with key `partition`; no values are checked.
 
 *Overview*
+
+## API
+
+### LIST and WATCH filtering
+
+### Set references in API objects
+
+
 
 # Kubernetes components
 
@@ -413,20 +456,33 @@ as kubeadm, which in turn use the API. However, you can also access the API dire
 
 [link](https://kubernetes.io/docs/concepts/workloads/controllers/)
 
-## Deployment
 
-- A Deployment provides declarative updates for Pods and ReplicaSets.
 
-## ReplicaSet
+# Deployment
+
+A Deployment provides declarative <u>updates</u> for Pods and ReplicaSets.
+
+## Use Case 
+
+- Create a Deployment to rollout a ReplicaSet. 
+- Declare the new state of the Pods
+- 
+
+
+# ReplicaSet
 
 A ReplicaSet's purpose is to maintain `a stable set of replica Pods` running at any given time.  
 As such, it is often used to guarantee the availability of a specified number of identical Pods.
 
-## StatefulSet
+# StatefulSet
 
-## DaemonSet
 
-## Jobs
+
+# DaemonSet
+
+
+
+# Jobs
 
 - **Do what**  
   A Job *creates* one or more Pods and will continue to retry execution of the Pods  
@@ -441,7 +497,8 @@ As such, it is often used to guarantee the availability of a specified number of
   Suspending a Job will delete its `active Pods` until the Job is resumed again.
 
 
-## CronJob
+
+# CronJob
 
 A *CronJob* creates Jobs on a repeating schedule.
 
@@ -586,6 +643,9 @@ termed headless Services, by explicitly specifying "None" for the cluster IP add
 For clients running *inside* your cluster, Kubernetes supports two primary modes of finding a Service:  
 `environment variables` and `DNS`
 
+### Environment variables 
+
+
 ### DNS
 
 If DNS has been enabled throughout your cluster then all Pods should automatically be able to resolve Services by their `DNS name`.
@@ -663,6 +723,34 @@ SRV Records are created for named ports that are part of normal or headless serv
 
 the SRV record has the form `_port-name._port-protocol.my-svc.my-namespace.svc.cluster-domain.example`
 
+
+https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
+
+# -Storage
+
+# Volumes
+
+[link](https://kubernetes.io/docs/concepts/storage/volumes/)
+
+A directory containing data, accessible to the containers in a pod.
+
+## Types of volumes 
+
+### secret 
+
+A secret volume is used to pass sensitive information, such as passwords, to Pods.
+
+
+## REF 
+
+https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/volume/#Volume
+
+# Projected Volumes
+
+A projected volume maps several existing volume sources into the same directory.
+
+
+
 # -Configuration
 
 *Configuration/concepts*
@@ -672,11 +760,36 @@ the SRV record has the form `_port-name._port-protocol.my-svc.my-namespace.svc.c
 A ConfigMap is an API object used to store non-confidential data in key-value pairs.  
 Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
 
+# Secrets
+
+A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key.
+
+
+
 # -Security 
 
 <https://kubernetes.io/docs/concepts/security/>
 
-*concepts/Security*
+# Service Accounts
+
+## What are service accounts? 
+
+provides <u>a distinct identity</u> in a Kubernetes cluster.
+
+Application Pods, system components, and entities inside and outside the cluster can use a specific ServiceAccount's credentials to identify as that `ServiceAccount`. 
+
+### Default service accounts 
+
+<span style='font-size: 15px;'>**need permissions**</span>  
+The default service accounts in each namespace get no permissions by default other than the [default API discovery permissions](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings) that Kubernetes grants to all authenticated principals if role-based access control (RBAC) is enabled.
+
+<span style='font-size: 15px;'>**default assignment**</span>  
+If you deploy a Pod in a namespace, and you don't manually assign a ServiceAccount to the Pod, Kubernetes assigns the default `ServiceAccount` for that namespace to the Pod.
+
+## Use cases for Kubernetes service accounts 
+
+https://kubernetes.io/docs/concepts/security/service-accounts/#use-cases
+
 
 # Controlling Access to the Kubernetes API
 
@@ -719,15 +832,14 @@ The request is authorized if an existing policy declares that the user has permi
 
 Admission Control modules are software modules that can modify or reject requests. 
 
-*concepts/Security*
+## API Overview
+
+You can use the Kubernetes API <ul>to read and write Kubernetes resource objects</u> via a Kubernetes API endpoint.
 
 # Role Based Access Control Good Practices
 
 Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles.
 
-## API Overview
-
-You can use the Kubernetes API <ul>to read and write Kubernetes resource objects</u> via a Kubernetes API endpoint.
 
 # -Reference
 
@@ -743,23 +855,39 @@ platform is treated as an API object and has a corresponding entry in the API.
 
 *Reference/*
 
-# API Access Control
+# --API Access Control
 
 *Reference/API Access Control*
 
 # Using RBAC Authorization
 
-*Reference/Setup tools/Kubeadm*
+https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
-# Kubeadm
+## API objects
 
-*Reference/*
+### Role and ClusterRole
 
-# Command line tool (kubectl) 
+- Role, has namespace 
+- ClusterRole, hasn't namespace 
 
-[link](https://kubernetes.io/docs/reference/kubectl/)
+<span style='font-size: 15px;'>**ClusterRoles uses**</span>  
+1. define permissions on namespaced resources and be granted access within individual namespace(s)
+2. define permissions on namespaced resources and be granted access across all namespaces
+3. define permissions on cluster-scoped resources
 
-*Reference/Kubernetes API*
+---
+
+If you want to define a role within a namespace, use a Role; if you want to define a role cluster-wide, use a ClusterRole.
+
+## RoleBinding and ClusterRoleBinding 
+
+A role binding grants the permissions defined in a role to a user or set of users.
+
+
+
+
+
+# -- Kubernetes API
 
 # Workload Resources
 
@@ -769,11 +897,26 @@ platform is treated as an API object and has a corresponding entry in the API.
 
 Pod is a collection of containers that can run on a host. This resource is created by clients and scheduled onto hosts.
 
-- spec([PodSpec](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec))
-  - containers ([]Container), required
-    - name  
-    - image (string)
-    - imagePullPolicy (string)(optional)
+- **spec**([PodSpec](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec))
+  - **containers** ([]Container), required
+    - **name**  
+    - **image** (string)
+    - **imagePullPolicy** (string)(optional)
+    - **volumeMounts** ([]VolumeMount)
+      - >Pod volumes to mount into the container's filesystem. Cannot be updated.
+      - >VolumeMount describes a mounting of a Volume within a container.
+        - **mountPath** (string), required
+          - >Path within the container at which the volume should be mounted. Must not contain ':'.
+        - **name** (string), required
+        - **mountPropagation**  (string)
+          - >mountPropagation determines how mounts are propagated from the host to container and the other way around.
+          - >When not set, MountPropagationNone is used. This field is beta in 1.10.
+  - **volumes**
+    - >List of volumes that can be mounted by containers belonging to the pod.
+    - see also[volume](#volume)
+  - **serviceAccountName (string)**
+    - >ServiceAccountName is the name of the ServiceAccount to use to run this pod. 
+    - >https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 
 <span style='font-size: 15px;'>**[example](https://github.com/easegress-io/easegress/blob/main/docs/04.Cloud-Native/4.2.Gateway-API.md#deploy-backend-services)**</span>  
 ```yaml
@@ -809,13 +952,22 @@ ReplicationController represents the configuration of a replication controller.
 
 Deployment enables declarative updates for Pods and ReplicaSets.
 
-`spec (DeploymentSpec) > template (PodTemplateSpec)`
+- **spec** ([DeploymentSpec](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/#DeploymentSpec)) 
+  - **selector** ([LabelSelector](#labelselector)), required
+    - >Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.
+  - **template** ([PodTemplateSpec](#podtemplate))
 
 ## ReplicaSet
 
 ReplicaSet ensures that a specified number of pod replicas are running at any given time.
 
-`spec (ReplicaSetSpec) > template (PodTemplateSpec)`
+- **spec** (ReplicaSetSpec)
+  - **selector** (LabelSelector), required
+    - >Selector is a label query over pods that should match the replica count.
+  - **template** [PodTemplateSpec](#podtemplate)
+  - **replicas** (int32)
+    - >Replicas is the number of desired replicas. 
+    - >This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. 
 
 *Reference/Kubernetes API*
 
@@ -827,9 +979,25 @@ ReplicaSet ensures that a specified number of pod replicas are running at any gi
 
 Service is `a named abstraction of software service` (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy.
 
-`spec (ServiceSpec)
-- ports ([]ServicePort)
-  - ports.port (int32), required
+- **spec** (ServiceSpec)
+  - **ports** ([]ServicePort)
+    - **ports.port** (int32), required
+      - >The port that will be exposed by this service.
+    - **ports.targetPort** (IntOrString)
+      - >Number or name of the port to access on the pods targeted by the service.  
+        Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.  
+        ---
+        >If this is a string, it will be looked up as a named port in the target Pod's container ports.  
+        If this is not specified, the value of the 'port' field is used (an identity map).  
+        This field is ignored for services with clusterIP=None, and should be omitted or set equal to the 'port' field.
+    - **ports.nodePort (int32)**
+      - >The port on each node on which this service is exposed when type is NodePort or LoadBalancer.
+    - **ports.name** (string)
+  - **selector** (map[string]string)
+    - Route service traffic to pods with label keys and values matching this selector.
+  - **type** (string)
+    - >type determines how the Service is exposed. Defaults to ClusterIP.
+    - >"ExternalName" aliases this service to the specified externalName. Several other fields do not apply to ExternalName services.
 
 A middle line in front of an item start, marking it and with followers as an item of an array.
 ```yaml
@@ -840,13 +1008,88 @@ A middle line in front of an item start, marking it and with followers as an ite
 
 *Reference/Kubernetes API*
 
+# Config and Storage Resources
+
+## Volume
+
+[link](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/volume/)
+
+Volume represents a named volume in a pod that may be accessed by any container in the pod.
+
+# Authentication Resources 
+
+## ServiceAccount
+
+- **Example**  
+  ```yaml
+  apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: bookinfo-details
+    labels:
+      account: details
+  ```
+  
 # Common Definitions
 
 [doc](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/)
 
+
+## LabelSelector
+
+A label selector is a label query over a set of resources.  
+The result of `matchLabels` and `matchExpressions` are <mark>ANDed</mark>.  
+An empty label selector matches <u>all objects</u>.  
+A null label selector matches <u>no objects</u>.
+
+- [selector](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/label-selector/)
+  - matchExpressions ([]LabelSelectorRequirement)
+    - > `matchExpressions` is a list of label selector requirements. The requirements are ANDed.  
+        *A label selector requirement is a selector that contains `values`, `a key`, and `an operator` that relates the key and values.*
+    - matchExpressions.key (string), required
+      - >key is the label key that the selector applies to.
+    - matchExpressions.operator (string), required
+      - >operator represents a key's relationship to a set of values.  
+        Valid operators are <u>In, NotIn, Exists and DoesNotExist</u>.
+    - matchExpressions.values ([]string)
+      - >values is an array of string values.  
+        If the operator is `In` or `NotIn`, the values array must be non-empty.  
+        If the operator is `Exists` or `DoesNotExist`, the values array must be empty.  
+        This array is replaced during a strategic merge patch.
+  - matchLabels (map[string]string)
+    - >`matchLabels` is a map of {key,value} pairs.  
+      A single {key,value} in the matchLabels map is equivalent to an element of `matchExpressions`,  
+      whose key field is "`key`", the operator is "`In`", and the values array contains only "`value`".  
+      The requirements are ANDed.
+
+
 ## ObjectMeta
 
-ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+[ObjectMeta](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) is metadata that <u>all persisted resources must have</u>, which includes all objects users must create.
+
+- **name** (string)
+  - >Name must be unique within a namespace.
+  - >https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+- **generateName** (string)
+  - >GenerateName is an optional prefix, used by the server, to generate a unique name 
+  - >ONLY IF the <mark>Name</mark> field has not been provided.
+  - >If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with <u>a unique suffix</u>. 
+- **namespace** (string)
+  - >Namespace defines the space within which each name must be unique.   
+    An empty namespace is equivalent to the "default" namespace,
+- **labels** (map[string]string)
+  - >Map of string keys and values that can be used to organize and categorize (scope and select) objects. 
+
+
+# -- Setup tools
+
+# Kubeadm
+
+*Reference/*
+
+# -- Command line tool (kubectl) 
+
+[link](https://kubernetes.io/docs/reference/kubectl/)
 
 # -------------------------------------------------
 

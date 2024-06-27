@@ -7,18 +7,13 @@
   - [Ts](#ts)
   - [npm](#npm)
   - [sass](#sass)
-  - [vue cli\]](#vue-cli)
+  - [vue cli](#vue-cli)
   - [vite](#vite)
   - [vue router 4.x](#vue-router-4x)
   - [vue3](#vue3)
     - [modularization thought](#modularization-thought)
     - [api ref](#api-ref)
     - [single file component](#single-file-component)
-    - [watcher](#watcher)
-    - [props](#props)
-    - [slot](#slot)
-      - [custom events](#custom-events)
-    - [custom components](#custom-components)
     - [element ui plus](#element-ui-plus)
 - [-Getting Started](#-getting-started)
 - [Introduction](#introduction)
@@ -115,7 +110,7 @@
   - [Global Registration](#global-registration)
   - [Local Registration](#local-registration)
   - [Component Name Casing](#component-name-casing)
-- [Props](#props-1)
+- [Props](#props)
   - [📖 Props Declaration](#-props-declaration)
   - [📖 Prop Passing Details](#-prop-passing-details)
   - [One-Way Data Flow](#one-way-data-flow)
@@ -173,9 +168,24 @@
 - [Server-Side Rendering (SSR)](#server-side-rendering-ssr)
   - [Overview](#overview)
     - [What is SSR?](#what-is-ssr)
+- [-TypeScript](#-typescript)
+- [Overview](#overview-1)
+  - [General Usage Notes](#general-usage-notes)
+    - [`defineComponent()`](#definecomponent)
+    - [Usage in Single-File Components](#usage-in-single-file-components)
+    - [Usage with TSX](#usage-with-tsx)
+- [-Extra Topics](#-extra-topics)
+- [Rendering Mechanism](#rendering-mechanism)
+  - [Virtual DOM](#virtual-dom)
+- [Render Functions \& JSX](#render-functions--jsx)
+  - [Basic Usage](#basic-usage-3)
+  - [JSX / TSX](#jsx--tsx)
+    - [JSX Type Inference](#jsx-type-inference)
+  - [Render Function Recipes](#render-function-recipes)
 - [---](#---)
 - [Appendix](#appendix)
-  - [API Ref](#api-ref-1)
+  - [APIS navigation](#apis-navigation)
+  - [Built-in directives](#built-in-directives)
 
 # Scaffold
 
@@ -202,11 +212,12 @@
 * [package.json](package.json)
 * [doc script block](https://docs.npmjs.com/cli/v10/using-npm/scripts)
 
+
 ## sass
 
 * [doc](https://sass-lang.com/documentation/syntax/)
 
-## vue cli]
+## vue cli
 
 * [vue cli](https://cli.vuejs.org/zh/guide/)
 
@@ -237,28 +248,8 @@
 ### [api ref](https://cn.vuejs.org/api/)
 
 ### [single file component](https://cn.vuejs.org/guide/scaling-up/sfc.html)
+
 * [example](src\views\system\user\index.vue)
-
-### watcher
-
-* [doc](https://vuejs.org/guide/essentials/watchers.html)
-* [use](src\views\mall\product\spu\form\ProductAttributes.vue#L75)
-
-### props
-
-* [doc](https://cn.vuejs.org/guide/essentials/component-basics.html#passing-props)
-
-### slot
-
-* [doc](https://cn.vuejs.org/guide/components/slots.html#slot-content-and-outlet)
-
-#### custom events
-
-* [doc](https://cn.vuejs.org/guide/essentials/component-basics.html#listening-to-events)
-
-### [custom components](src\components)
-
-* [doc](https://cn.vitejs.dev/guide/env-and-mode.html)
 
 ### [element ui plus](https://element-plus.org/zh-CN/guide/design.html)
 
@@ -1592,6 +1583,32 @@ The `defineEmits()` macro cannot be used inside *a function*,
 it must be placed directly within `<script setup>`,  
 as in the example above.
 
+<span style='font-size: 15px;'>**Example**</span>  
+```html
+
+CopperModal.vue
+
+const emit = defineEmits(['uploadSuccess'])
+
+async function handleOk() {
+  const blob = dataURLtoBlob(previewSource.value)
+  emit('uploadSuccess', { source: previewSource.value, data: blob, filename: filename })
+}
+
+----------------------------------
+
+CropperAvatar.vue
+
+<CopperModal
+  ref="cropperModelRef"
+  :srcValue="sourceValue"
+  @upload-success="handleUploadSuccess"
+/>
+```
+
+
+
+
 <span style='font-size: 15px;'>**used in explicit `setup` function**</span>  
 
 define events
@@ -1635,7 +1652,7 @@ function submitForm(email, password) {
 
 ## Basic Usage
 
-`v-model` can be used on a component to implement *a two-way binding*.
+`v-model` can be used on a component to implement <u>a two-way binding</u>.
 
 <span style='font-size: 15px;'>**defineModel()**</span>  
 Starting in Vue 3.4, the recommended approach to achieve this is using the `defineModel()` macro:
@@ -2325,11 +2342,99 @@ A simpler and more straightforward solution is to extract the shared state out o
 
 it is also possible to render the same components into HTML strings on the server, send them directly to the browser, and finally "hydrate" the static markup into a fully interactive app on the client.
 
+# -TypeScript
+
+https://vuejs.org/guide/typescript/overview.html
+
+# Overview
+
+## General Usage Notes
+
+### `defineComponent()`
+
+To let TypeScript properly infer types inside component options, we need to define components with `defineComponent()`
+
+```javascript
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  // type inference enabled
+  props: {
+    name: String,
+    msg: { type: String, required: true }
+  },
+  data() {
+    return {
+      count: 1
+    }
+  },
+  mounted() {
+    this.name // type: string | undefined
+    this.msg // type: string
+    this.count // type: number
+  }
+})
+```
+
+
+### Usage in Single-File Components
+
+### Usage with TSX
+
+https://vuejs.org/guide/extras/render-function.html#jsx-tsx
+
+
+# -Extra Topics
+
+# Rendering Mechanism
+
+## Virtual DOM
+
+`"Virtual DOM"`, which Vue's rendering system is based upon.
+
+The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM.
+
+Virtual DOM is more of a pattern than a specific technology, so there is no one canonical implementation.
+
+example  
+```javascript
+const vnode = {
+  type: 'div',
+  props: {
+    id: 'hello'
+  },
+  children: [
+    /* more vnodes */
+  ]
+}
+```
+
+
+# Render Functions & JSX
+
+Vue recommends using templates to build applications in the vast majority of cases.  
+However, there are situations where we need the full programmatic power of JavaScript.  
+That's where we can use the **render function**.
+
+## Basic Usage
+
+
+
+## JSX / TSX
+
+### JSX Type Inference
+
+## Render Function Recipes
+
 
 # ---
 
 # Appendix
 
-## API Ref
+## APIS navigation
 
-[Ref](https://vuejs.org/api/composition-api-lifecycle.html)
+[navigation](https://vuejs.org/api/)
+
+## Built-in directives
+
+[built-in](https://vuejs.org/api/built-in-directives.html)

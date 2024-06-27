@@ -2,7 +2,29 @@
 
 from <https://github.com/kailong321200875/vue-element-plus-admin/tree/master>
 
-## AutoImport
+
+- check out
+  - [vue3](../main-tech/vue3/vue3.md)
+  - [vue router]()
+
+## Scaffold
+
+### Ts
+
+* [ts](https://www.tslang.cn/docs/handbook/basic-types.html)
+* [doc tsconfig-json](https://www.tslang.cn/docs/handbook/tsconfig-json.html)
+
+### vite
+
+#### config (vite.config.js)
+
+[vite.config.js](https://cn.vitejs.dev/config/)
+
+#### .env
+
+[check out](https://cn.vitejs.dev/guide/env-and-mode.html)
+
+### AutoImport
 
 <https://github.com/unplugin/unplugin-auto-import>
 
@@ -58,7 +80,7 @@ included at `tsconfig.json`
 ```
 
 
-## AutoImportComponent
+### AutoImportComponent
 
 <https://github.com/unplugin/unplugin-vue-components#configuration>
 
@@ -91,6 +113,35 @@ included at `tsconfig.json`
   ...
 ],
 ```
+
+
+### scss
+
+### unocss
+
+[introduction](https://unocss.nodejs.cn/guide/)
+
+#### preset
+
+[presets](https://unocss.dev/guide/presets) 
+
+[search presets](https://unocss.dev/interactive)
+
+
+
+### postcss
+
+
+## A .vue
+
+```
+html
+----
+ts
+----
+style
+```
+
 
 ## 0.1 普通列表
 
