@@ -42,12 +42,12 @@ spec:
             port:
               number: 9080
     - match:
-      - uri:
-          exact: /testing
+        - uri:
+            exact: /testing
       rewrite:
-          uri: /
+        uri: /
       route:
-      - destination:
-          host: nginx-service
-          port:
+        - destination:
+            host: nginx-service
+            port:
               number: 80

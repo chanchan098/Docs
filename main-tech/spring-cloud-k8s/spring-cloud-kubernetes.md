@@ -1,5 +1,7 @@
 # Spring cloud kubernetes
 
+https://docs.spring.io/spring-cloud-kubernetes/reference/index.html
+
 ## Resources
 
 - [spring on k8s](https://hackmd.io/@ryanjbaxter/spring-on-k8s-workshop#Spring-on-Kubernetes)
@@ -88,3 +90,10 @@ setting maven proxy at `/usr/share/maven/conf/settings.xml`
 - move image from docker to containerd
 
 ### run on k8s
+
+
+## Spring Cloud Kubernetes Configuration Watcher
+
+
+## Spring Cloud Kubernetes Discovery Server
+

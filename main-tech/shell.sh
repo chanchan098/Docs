@@ -1,13 +1,9 @@
-# shell.md
-
-```shell
 
 # a variable
 name="joey"
 
 # define an array
 fruits=("apple" "banana" "orange")
-
 
 variablesTrying(){
     # access a variable 
@@ -23,7 +19,7 @@ variablesTrying(){
     echo "Trying to set ${name} to Chandler, but failed because of being an immutable value."
     echo ""
 
-    echo 'Cannot use variables in a pair of single qoute, eg: ${name}.'
+    echo 'Cannot use variables in a pair of single quote, eg: ${name}.'
     echo ""
 
     echo "Getting length of a string via \${#string}, eg: \${#name}:${#name}"
@@ -214,7 +210,7 @@ argsTest(){
 argsTest
 # stringExtracting
 # forLoopTrying
-# variablesTrying
+#  variablesTrying
 # arrayTrying
 # flowsTrying
 
@@ -227,4 +223,3 @@ argsTest
 
 # echo $DATE
 # echo $JAVA_HOME
-```

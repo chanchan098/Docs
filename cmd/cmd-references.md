@@ -1464,6 +1464,8 @@ usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
 
 ## sftp(client side)
 
+https://man7.org/linux/man-pages/man1/sftp.1.html
+
 ```shell
 usage: sftp [-46aCfpqrv] [-B buffer_size] [-b batchfile] [-c cipher]
           [-D sftp_server_path] [-F ssh_config] [-i identity_file] [-l limit]
@@ -1475,6 +1477,34 @@ usage: sftp [-46aCfpqrv] [-B buffer_size] [-b batchfile] [-c cipher]
 
 
 sftp> help
+```
+
+```shell
+get [-afpR] remote-path [local-path]
+    Retrieve the remote-path and store it on the local
+    machine.  If the local path name is not specified, it is
+    given the same name it has on the remote machine.
+    remote-path may contain glob(7) characters and may match
+    multiple files.  If it does and local-path is specified,
+    then local-path must specify a directory.
+
+    If the -a flag is specified, then attempt to resume
+    partial transfers of existing files.  Note that
+    resumption assumes that any partial copy of the local
+    file matches the remote copy.  If the remote file
+    contents differ from the partial local copy then the
+    resultant file is likely to be corrupt.
+
+    If the -f flag is specified, then fsync(2) will be called
+    after the file transfer has completed to flush the file
+    to disk.
+
+    If the -p flag is specified, then full file permissions
+    and access times are copied too.
+
+    If the -R flag is specified then directories will be
+    copied recursively.  Note that sftp does not follow
+    symbolic links when performing recursive transfers.
 ```
 
 in commands
