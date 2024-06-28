@@ -28,7 +28,7 @@ https://spring.io/projects/spring-cloud
 
 <span style='font-size: 16px;font-weight: 500'>see also</span>  
 
-- [priv-and-pub-key-sign-in(win-to-win)](../../z-cmd/cmd-uses.md#priv-and-pub-key-sign-inwin-to-win)
+- [priv-and-pub-key-sign-in(win-to-win)](../../cmd/cmd-uses.md#priv-and-pub-key-sign-inwin-to-win)
 - [automated build](./build-lab-12-sc-k8s.sh)
 
 

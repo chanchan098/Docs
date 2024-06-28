@@ -17,6 +17,32 @@
 
 ## markdown on vscode
 
+### open preview default 
+
+https://stackoverflow.com/questions/60155443/vscode-preview-markdown-by-default
+
+`in settings.json`
+```
+
+"workbench.editorAssociations": {   
+    "*.md": "vscode.markdown.preview.editor",
+}
+
+
+
+
+
+"workbench.editorAssociations": {
+        "*.md": "markdown-preview-enhanced",
+},
+
+
+"markdown-preview-enhanced.previewMode": "Multiple Previews"
+```
+
+
+
+
 ### mermaid chart
 
 ### markdown math
