@@ -1,0 +1,8 @@
+- head
+    - hair
+    - face
+    - teeth
+- chest
+- back
+- belly
+- waist

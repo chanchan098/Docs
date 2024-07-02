@@ -1,25 +1,35 @@
 
-### VPC solution
-```mermaid
-flowchart  LR
-    subgraph x
-        direction TB
-        domain --> 1[cloud servers] --> gateway
-    end
-    x --> cluster --> n1 & n2 & n.. --> pods
-
-```
-
 ### Machine room solution
 ```mermaid
 flowchart  LR
     subgraph x
         direction TB
-        domain --> 1[public ip] --> gateway
+        domain --> 1[public ip] --> sr[soft route] --> metallb --> gateway
     end
-    x --> cluster --> n1 & n2 & n.. --> pods
+    subgraph cluster
+        direction LR
+        n1 & n2 & n.. --> pods
+    end
+    x --> cluster
 
 ```
+
+### VPC solution
+```mermaid
+flowchart  LR
+    subgraph x
+        direction TB
+        domain --> 1[cloud servers] --> metallb --> gateway
+    end
+    subgraph cluster
+        direction LR
+        n1 & n2 & n.. --> pods
+    end
+    x --> cluster
+
+```
+
+
 
 
 ### ingress solution
@@ -27,20 +37,20 @@ flowchart  LR
 flowchart  LR
     subgraph x
         direction TB
-        v[my domain] --> g1[gateway]
+        v[my domain] --> metallb --> g1[gateway]
     end
 
     subgraph x2
         direction TB
-        a[privider domain] --> g2[gateway]
+        a[privider domain] --> m2[metallb] --> g2[gateway]
     end
 
-    subgraph Cluster
+    subgraph cluster
         direction LR
-        cluster --> n1 & n2 & n.. --> pods
+        n1 & n2 & n.. --> pods
     end
-    x --> Cluster
+    x --> cluster
 
-    x2 --> Cluster
+    x2 --> cluster
 
 ```

@@ -1,0 +1,10 @@
+- user data related
+  - youdao
+  - vscode
+  - smartgit
+- shortcuts
+- work folder
+- chrome
+  - history
+- mysql
+- virtual machines

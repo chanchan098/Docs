@@ -462,7 +462,6 @@ or available locally via: info '(coreutils) ln invocation'
 ## ls
 
 ```
-
 Usage: ls [OPTION]... [FILE]...
 List information about the FILEs (the current directory by default).
 Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
