@@ -1,3 +1,8 @@
+# Imperative sentences
+
+https://www.grammarly.com/blog/imperative-sentences/
+
+https://www.grammarly.com/blog/imperative/
 
 # Articles
 

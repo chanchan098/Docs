@@ -2,9 +2,14 @@
 ### Machine room solution
 ```mermaid
 flowchart  LR
+    
     subgraph x
         direction TB
-        domain --> 1[public ip] --> sr[soft route] --> metallb --> gateway
+        domain --> 1[public ip] --> sr[soft route] --> gw
+    end
+    subgraph gw
+        direction RL
+        gateway -->|by| metallb 
     end
     subgraph cluster
         direction LR

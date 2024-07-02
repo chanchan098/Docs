@@ -82,6 +82,7 @@
   - [Types of volumes](#types-of-volumes)
     - [secret](#secret)
   - [REF](#ref)
+    - [local](#local)
 - [Projected Volumes](#projected-volumes)
 - [-Configuration](#-configuration)
 - [ConfigMaps](#configmaps)
@@ -712,6 +713,10 @@ A secret volume is used to pass sensitive information, such as passwords, to Pod
 ## REF 
 
 https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/volume/#Volume
+
+### local 
+
+A local volume represents a mounted local storage device such as a disk, partition or directory.
 
 # Projected Volumes
 
