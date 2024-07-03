@@ -2,10 +2,11 @@
   - [source](#source)
   - [eval](#eval)
 - [Disk management](#disk-management)
-  - [blkid](#blkid)
-  - [df](#df)
-  - [fdisk](#fdisk)
-  - [lvextend](#lvextend)
+  - [blkid (block ID)](#blkid-block-id)
+  - [df (disk free)](#df-disk-free)
+  - [du (disk usage)](#du-disk-usage)
+  - [fdisk (fixed disk)](#fdisk-fixed-disk)
+  - [lvextend (logical volume extend)](#lvextend-logical-volume-extend)
   - [parted](#parted)
   - [resize2fs](#resize2fs)
   - [vgdisplay](#vgdisplay)
@@ -16,26 +17,28 @@
   - [ls](#ls)
   - [rm](#rm)
   - [tar](#tar)
+  - [wget](#wget)
 - [Log](#log)
   - [tail](#tail)
+  - [journalctl](#journalctl)
 - [Package management](#package-management)
   - [dpkg](#dpkg)
   - [dpkg-query](#dpkg-query)
 - [Programming](#programming)
   - [mapfile](#mapfile)
-- [du](#du)
 - [echo](#echo)
-- [nohup](#nohup)
-- [sort](#sort)
 - [Remote file operation](#remote-file-operation)
   - [scp](#scp)
   - [sftp(client side)](#sftpclient-side)
+- [Shell](#shell)
+  - [nohup](#nohup)
+  - [sort](#sort)
 - [String processing](#string-processing)
   - [awk](#awk)
   - [sed (stream editor)](#sed-stream-editor)
 - [System management](#system-management)
   - [free, use for peek up memory](#free-use-for-peek-up-memory)
-  - [hostnamectl, use for queryign kernal](#hostnamectl-use-for-queryign-kernal)
+  - [hostnamectl, use for querying kernal](#hostnamectl-use-for-querying-kernal)
   - [ps](#ps)
   - [systemctl](#systemctl)
   - [sysctl](#sysctl)
@@ -86,7 +89,8 @@ eval: eval [arg ...]
 
 # Disk management
 
-## blkid
+## blkid (block ID)
+
 ```
 Usage:
  blkid --label <label> | --uuid <uuid>
@@ -135,8 +139,7 @@ Arguments:
 For more details see blkid(8).
 ```
 
-
-## df
+## df (disk free)
 
 ```
 Usage: df [OPTION]... [FILE]...
@@ -180,7 +183,75 @@ field names are: 'source', 'fstype', 'itotal', 'iused', 'iavail', 'ipcent',
 'size', 'used', 'avail', 'pcent', 'file' and 'target' (see info page).
 ```
 
-## fdisk
+## du (disk usage)
+
+```
+Usage: du [OPTION]... [FILE]...
+  or:  du [OPTION]... --files0-from=F
+Summarize disk usage of the set of FILEs, recursively for directories.        
+
+Mandatory arguments to long options are mandatory for short options too.      
+  -0, --null            end each output line with NUL, not newline
+  -a, --all             write counts for all files, not just directories      
+      --apparent-size   print apparent sizes, rather than disk usage; although
+                          the apparent size is usually smaller, it may be     
+                          larger due to holes in ('sparse') files, internal   
+                          fragmentation, indirect blocks, and the like        
+  -B, --block-size=SIZE  scale sizes by SIZE before printing them; e.g.,      
+                           '-BM' prints sizes in units of 1,048,576 bytes;    
+                           see SIZE format below
+  -b, --bytes           equivalent to '--apparent-size --block-size=1'
+  -c, --total           produce a grand total
+  -D, --dereference-args  dereference only symlinks that are listed on the
+                          command line
+  -d, --max-depth=N     print the total for a directory (or file, with --all)
+                          only if it is N or fewer levels below the command
+                          line argument;  --max-depth=0 is the same as
+                          --summarize
+      --files0-from=F   summarize disk usage of the
+                          NUL-terminated file names specified in file F;
+                          if F is -, then read names from standard input
+  -H                    equivalent to --dereference-args (-D)
+  -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G)
+      --inodes          list inode usage information instead of block usage
+  -k                    like --block-size=1K
+  -L, --dereference     dereference all symbolic links
+  -l, --count-links     count sizes many times if hard linked
+  -m                    like --block-size=1M
+  -P, --no-dereference  don't follow any symbolic links (this is the default)
+  -S, --separate-dirs   for directories do not include size of subdirectories
+      --si              like -h, but use powers of 1000 not 1024
+  -s, --summarize       display only a total for each argument
+  -t, --threshold=SIZE  exclude entries smaller than SIZE if positive,
+                          or entries greater than SIZE if negative
+      --time            show time of the last modification of any file in the
+                          directory, or any of its subdirectories
+      --time=WORD       show time as WORD instead of modification time:
+                          atime, access, use, ctime or status
+      --time-style=STYLE  show times using STYLE, which can be:
+                            full-iso, long-iso, iso, or +FORMAT;
+                            FORMAT is interpreted like in 'date'
+  -X, --exclude-from=FILE  exclude files that match any pattern in FILE
+      --exclude=PATTERN    exclude files that match PATTERN
+  -x, --one-file-system    skip directories on different file systems
+      --help     display this help and exit
+      --version  output version information and exit
+
+Display values are in units of the first available SIZE from --block-size,
+and the DU_BLOCK_SIZE, BLOCK_SIZE and BLOCKSIZE environment variables.
+Otherwise, units default to 1024 bytes (or 512 if POSIXLY_CORRECT is set).
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+Binary prefixes can be used, too: KiB=K, MiB=M, and so on.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Full documentation <https://www.gnu.org/software/coreutils/du>
+or available locally via: info '(coreutils) du invocation'
+```
+
+
+## fdisk (fixed disk)
 
 ```
 Usage:
@@ -224,7 +295,8 @@ Available output columns:
 For more details see fdisk(8).
 ```
 
-## lvextend
+## lvextend (logical volume extend)
+
 ```
 lvextend - Add space to a logical volume
 
@@ -343,6 +415,54 @@ Usage: resize2fs [-d debug_flags] [-f] [-F] [-M] [-P] [-p] device [-b|-s|new_siz
 ```
 
 ## vgdisplay
+
+```
+  vgdisplay - Display volume group information
+
+  vgdisplay
+        [ -A|--activevolumegroups ]
+        [ -c|--colon ]
+        [ -C|--columns ]
+        [ -o|--options String ]
+        [ -S|--select String ]
+        [ -s|--short ]
+        [ -O|--sort String ]
+        [    --aligned ]
+        [    --binary ]
+        [    --configreport log|vg|lv|pv|pvseg|seg ]
+        [    --foreign ]
+        [    --ignorelockingfailure ]
+        [    --logonly ]
+        [    --noheadings ]
+        [    --nosuffix ]
+        [    --readonly ]
+        [    --reportformat basic|json ]
+        [    --shared ]
+        [    --separator String ]
+        [    --unbuffered ]
+        [    --units r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
+        [ COMMON_OPTIONS ]
+        [ VG|Tag ... ]
+
+  Common options for lvm:
+        [ -d|--debug ]
+        [ -h|--help ]
+        [ -q|--quiet ]
+        [ -v|--verbose ]
+        [ -y|--yes ]
+        [ -t|--test ]
+        [    --commandprofile String ]
+        [    --config String ]
+        [    --driverloaded y|n ]
+        [    --nolocking ]
+        [    --lockopt String ]
+        [    --longhelp ]
+        [    --profile String ]
+        [    --version ]
+
+  Use --longhelp to show all options and advanced commands.
+```
+
 
 # Editor
 
@@ -962,6 +1082,220 @@ Valid arguments for the --quoting-style option are:
 ```
 
 
+## wget
+
+```
+GNU Wget 1.21.2, a non-interactive network retriever.
+Usage: wget [OPTION]... [URL]...
+
+Mandatory arguments to long options are mandatory for short options too.
+
+Startup:
+  -V,  --version                   display the version of Wget and exit
+  -h,  --help                      print this help
+  -b,  --background                go to background after startup
+  -e,  --execute=COMMAND           execute a `.wgetrc'-style command
+
+Logging and input file:
+  -o,  --output-file=FILE          log messages to FILE
+  -a,  --append-output=FILE        append messages to FILE
+  -d,  --debug                     print lots of debugging information
+  -q,  --quiet                     quiet (no output)
+  -v,  --verbose                   be verbose (this is the default)
+  -nv, --no-verbose                turn off verboseness, without being quiet
+       --report-speed=TYPE         output bandwidth as TYPE.  TYPE can be bits
+  -i,  --input-file=FILE           download URLs found in local or external FILE
+  -F,  --force-html                treat input file as HTML
+  -B,  --base=URL                  resolves HTML input-file links (-i -F)
+                                     relative to URL
+       --config=FILE               specify config file to use
+       --no-config                 do not read any config file
+       --rejected-log=FILE         log reasons for URL rejection to FILE
+
+Download:
+  -t,  --tries=NUMBER              set number of retries to NUMBER (0 unlimits)
+       --retry-connrefused         retry even if connection is refused
+       --retry-on-http-error=ERRORS    comma-separated list of HTTP errors to retry
+  -O,  --output-document=FILE      write documents to FILE
+  -nc, --no-clobber                skip downloads that would download to
+                                     existing files (overwriting them)
+       --no-netrc                  don't try to obtain credentials from .netrc
+  -c,  --continue                  resume getting a partially-downloaded file
+       --start-pos=OFFSET          start downloading from zero-based position OFFSET
+       --progress=TYPE             select progress gauge type
+       --show-progress             display the progress bar in any verbosity mode
+  -N,  --timestamping              don't re-retrieve files unless newer than
+                                     local
+       --no-if-modified-since      don't use conditional if-modified-since get
+                                     requests in timestamping mode
+       --no-use-server-timestamps  don't set the local file's timestamp by
+                                     the one on the server
+  -S,  --server-response           print server response
+       --spider                    don't download anything
+  -T,  --timeout=SECONDS           set all timeout values to SECONDS
+       --dns-timeout=SECS          set the DNS lookup timeout to SECS
+       --connect-timeout=SECS      set the connect timeout to SECS
+       --read-timeout=SECS         set the read timeout to SECS
+  -w,  --wait=SECONDS              wait SECONDS between retrievals
+                                     (applies if more then 1 URL is to be retrieved)
+       --waitretry=SECONDS         wait 1..SECONDS between retries of a retrieval
+                                     (applies if more then 1 URL is to be retrieved)
+       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs between retrievals
+                                     (applies if more then 1 URL is to be retrieved)
+       --no-proxy                  explicitly turn off proxy
+  -Q,  --quota=NUMBER              set retrieval quota to NUMBER
+       --bind-address=ADDRESS      bind to ADDRESS (hostname or IP) on local host
+       --limit-rate=RATE           limit download rate to RATE
+       --no-dns-cache              disable caching DNS lookups
+       --restrict-file-names=OS    restrict chars in file names to ones OS allows
+       --ignore-case               ignore case when matching files/directories
+  -4,  --inet4-only                connect only to IPv4 addresses
+  -6,  --inet6-only                connect only to IPv6 addresses
+       --prefer-family=FAMILY      connect first to addresses of specified family,
+                                     one of IPv6, IPv4, or none
+       --user=USER                 set both ftp and http user to USER
+       --password=PASS             set both ftp and http password to PASS
+       --ask-password              prompt for passwords
+       --use-askpass=COMMAND       specify credential handler for requesting
+                                     username and password.  If no COMMAND is
+                                     specified the WGET_ASKPASS or the SSH_ASKPASS
+                                     environment variable is used.
+       --no-iri                    turn off IRI support
+       --local-encoding=ENC        use ENC as the local encoding for IRIs
+       --remote-encoding=ENC       use ENC as the default remote encoding
+       --unlink                    remove file before clobber
+       --xattr                     turn on storage of metadata in extended file attributes
+
+Directories:
+  -nd, --no-directories            don't create directories
+  -x,  --force-directories         force creation of directories
+  -nH, --no-host-directories       don't create host directories
+       --protocol-directories      use protocol name in directories
+  -P,  --directory-prefix=PREFIX   save files to PREFIX/..
+       --cut-dirs=NUMBER           ignore NUMBER remote directory components
+
+HTTP options:
+       --http-user=USER            set http user to USER
+       --http-password=PASS        set http password to PASS
+       --no-cache                  disallow server-cached data
+       --default-page=NAME         change the default page name (normally
+                                     this is 'index.html'.)
+  -E,  --adjust-extension          save HTML/CSS documents with proper extensions
+       --ignore-length             ignore 'Content-Length' header field
+       --header=STRING             insert STRING among the headers
+       --compression=TYPE          choose compression, one of auto, gzip and none. (default: none)
+       --max-redirect              maximum redirections allowed per page
+       --proxy-user=USER           set USER as proxy username
+       --proxy-password=PASS       set PASS as proxy password
+       --referer=URL               include 'Referer: URL' header in HTTP request
+       --save-headers              save the HTTP headers to file
+  -U,  --user-agent=AGENT          identify as AGENT instead of Wget/VERSION
+       --no-http-keep-alive        disable HTTP keep-alive (persistent connections)
+       --no-cookies                don't use cookies
+       --load-cookies=FILE         load cookies from FILE before session
+       --save-cookies=FILE         save cookies to FILE after session
+       --keep-session-cookies      load and save session (non-permanent) cookies
+       --post-data=STRING          use the POST method; send STRING as the data
+       --post-file=FILE            use the POST method; send contents of FILE
+       --method=HTTPMethod         use method "HTTPMethod" in the request
+       --body-data=STRING          send STRING as data. --method MUST be set
+       --body-file=FILE            send contents of FILE. --method MUST be set
+       --content-disposition       honor the Content-Disposition header when
+                                     choosing local file names (EXPERIMENTAL)
+       --content-on-error          output the received content on server errors
+       --auth-no-challenge         send Basic HTTP authentication information
+                                     without first waiting for the server's
+                                     challenge
+
+HTTPS (SSL/TLS) options:
+       --secure-protocol=PR        choose secure protocol, one of auto, SSLv2,
+                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS
+       --https-only                only follow secure HTTPS links
+       --no-check-certificate      don't validate the server's certificate
+       --certificate=FILE          client certificate file
+       --certificate-type=TYPE     client certificate type, PEM or DER
+       --private-key=FILE          private key file
+       --private-key-type=TYPE     private key type, PEM or DER
+       --ca-certificate=FILE       file with the bundle of CAs
+       --ca-directory=DIR          directory where hash list of CAs is stored
+       --crl-file=FILE             file with bundle of CRLs
+       --pinnedpubkey=FILE/HASHES  Public key (PEM/DER) file, or any number
+                                   of base64 encoded sha256 hashes preceded by
+                                   'sha256//' and separated by ';', to verify
+                                   peer against
+       --random-file=FILE          file with random data for seeding the SSL PRNG
+
+       --ciphers=STR           Set the priority string (GnuTLS) or cipher list string (OpenSSL) directly.
+                                   Use with care. This option overrides --secure-protocol.
+                                   The format and syntax of this string depend on the specific SSL/TLS engine.
+HSTS options:
+       --no-hsts                   disable HSTS
+       --hsts-file                 path of HSTS database (will override default)
+
+FTP options:
+       --ftp-user=USER             set ftp user to USER
+       --ftp-password=PASS         set ftp password to PASS
+       --no-remove-listing         don't remove '.listing' files
+       --no-glob                   turn off FTP file name globbing
+       --no-passive-ftp            disable the "passive" transfer mode
+       --preserve-permissions      preserve remote file permissions
+       --retr-symlinks             when recursing, get linked-to files (not dir)
+
+FTPS options:
+       --ftps-implicit                 use implicit FTPS (default port is 990)
+       --ftps-resume-ssl               resume the SSL/TLS session started in the control connection when
+                                         opening a data connection
+       --ftps-clear-data-connection    cipher the control channel only; all the data will be in plaintext
+       --ftps-fallback-to-ftp          fall back to FTP if FTPS is not supported in the target server
+WARC options:
+       --warc-file=FILENAME        save request/response data to a .warc.gz file
+       --warc-header=STRING        insert STRING into the warcinfo record
+       --warc-max-size=NUMBER      set maximum size of WARC files to NUMBER
+       --warc-cdx                  write CDX index files
+       --warc-dedup=FILENAME       do not store records listed in this CDX file
+       --no-warc-compression       do not compress WARC files with GZIP
+       --no-warc-digests           do not calculate SHA1 digests
+       --no-warc-keep-log          do not store the log file in a WARC record
+       --warc-tempdir=DIRECTORY    location for temporary files created by the
+                                     WARC writer
+
+Recursive download:
+  -r,  --recursive                 specify recursive download
+  -l,  --level=NUMBER              maximum recursion depth (inf or 0 for infinite)
+       --delete-after              delete files locally after downloading them
+  -k,  --convert-links             make links in downloaded HTML or CSS point to
+                                     local files
+       --convert-file-only         convert the file part of the URLs only (usually known as the basename)
+       --backups=N                 before writing file X, rotate up to N backup files
+  -K,  --backup-converted          before converting file X, back up as X.orig
+  -m,  --mirror                    shortcut for -N -r -l inf --no-remove-listing
+  -p,  --page-requisites           get all images, etc. needed to display HTML page
+       --strict-comments           turn on strict (SGML) handling of HTML comments
+
+Recursive accept/reject:
+  -A,  --accept=LIST               comma-separated list of accepted extensions
+  -R,  --reject=LIST               comma-separated list of rejected extensions
+       --accept-regex=REGEX        regex matching accepted URLs
+       --reject-regex=REGEX        regex matching rejected URLs
+       --regex-type=TYPE           regex type (posix|pcre)
+  -D,  --domains=LIST              comma-separated list of accepted domains
+       --exclude-domains=LIST      comma-separated list of rejected domains
+       --follow-ftp                follow FTP links from HTML documents
+       --follow-tags=LIST          comma-separated list of followed HTML tags
+       --ignore-tags=LIST          comma-separated list of ignored HTML tags
+  -H,  --span-hosts                go to foreign hosts when recursive
+  -L,  --relative                  follow relative links only
+  -I,  --include-directories=LIST  list of allowed directories
+       --trust-server-names        use the name specified by the redirection
+                                     URL's last component
+  -X,  --exclude-directories=LIST  list of excluded directories
+  -np, --no-parent                 don't ascend to the parent directory
+
+Email bug reports, questions, discussions to <bug-wget@gnu.org>
+and/or open issues at https://savannah.gnu.org/bugs/?func=additem&group=wget.
+```
+
+
 # Log
 
 ## tail
@@ -1060,6 +1394,9 @@ Options:
 
 ```
 
+## journalctl
+
+https://www.man7.org/linux/man-pages/man1/journalctl.1.html
 
 
 # Package management
@@ -1228,69 +1565,6 @@ mapfile: mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C c
     not an indexed array.
 ```
 
-
-# du
-```
-Usage: du [OPTION]... [FILE]...
-  or:  du [OPTION]... --files0-from=F
-Summarize disk usage of the set of FILEs, recursively for directories.
-
-Mandatory arguments to long options are mandatory for short options too.
-  -0, --null            end each output line with NUL, not newline
-  -a, --all             write counts for all files, not just directories
-      --apparent-size   print apparent sizes, rather than disk usage; although
-                          the apparent size is usually smaller, it may be
-                          larger due to holes in ('sparse') files, internal
-                          fragmentation, indirect blocks, and the like
-  -B, --block-size=SIZE  scale sizes by SIZE before printing them; e.g.,
-                           '-BM' prints sizes in units of 1,048,576 bytes;
-                           see SIZE format below
-  -b, --bytes           equivalent to '--apparent-size --block-size=1'
-  -c, --total           produce a grand total
-  -D, --dereference-args  dereference only symlinks that are listed on the
-                          command line
-  -d, --max-depth=N     print the total for a directory (or file, with --all)
-                          only if it is N or fewer levels below the command
-                          line argument;  --max-depth=0 is the same as
-                          --summarize
-      --files0-from=F   summarize disk usage of the
-                          NUL-terminated file names specified in file F;
-                          if F is -, then read names from standard input
-  -H                    equivalent to --dereference-args (-D)
-  -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G)
-      --inodes          list inode usage information instead of block usage
-  -k                    like --block-size=1K
-  -L, --dereference     dereference all symbolic links
-  -l, --count-links     count sizes many times if hard linked
-  -m                    like --block-size=1M
-  -P, --no-dereference  don't follow any symbolic links (this is the default)
-  -S, --separate-dirs   for directories do not include size of subdirectories
-      --si              like -h, but use powers of 1000 not 1024
-  -s, --summarize       display only a total for each argument
-  -t, --threshold=SIZE  exclude entries smaller than SIZE if positive,
-                          or entries greater than SIZE if negative
-      --time            show time of the last modification of any file in the
-                          directory, or any of its subdirectories
-      --time=WORD       show time as WORD instead of modification time:
-                          atime, access, use, ctime or status
-      --time-style=STYLE  show times using STYLE, which can be:
-                            full-iso, long-iso, iso, or +FORMAT;
-                            FORMAT is interpreted like in 'date'
-  -X, --exclude-from=FILE  exclude files that match any pattern in FILE
-      --exclude=PATTERN    exclude files that match PATTERN
-  -x, --one-file-system    skip directories on different file systems
-      --help     display this help and exit
-      --version  output version information and exit
-
-Display values are in units of the first available SIZE from --block-size,
-and the DU_BLOCK_SIZE, BLOCK_SIZE and BLOCKSIZE environment variables.
-Otherwise, units default to 1024 bytes (or 512 if POSIXLY_CORRECT is set).
-
-The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
-Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
-Binary prefixes can be used, too: KiB=K, MiB=M, and so on.
-```
-
 # echo
 
 ```
@@ -1332,117 +1606,7 @@ echo: echo [-neE] [arg ...]
 
 ```
 
-
-
-
-# nohup
-
-```
-
-Usage: nohup COMMAND [ARG]...
-  or:  nohup OPTION
-Run COMMAND, ignoring hangup signals.
-
-      --help     display this help and exit
-      --version  output version information and exit
-
-If standard input is a terminal, redirect it from an unreadable file.
-If standard output is a terminal, append output to 'nohup.out' if possible,
-'$HOME/nohup.out' otherwise.
-If standard error is a terminal, redirect it to standard output.
-To save output to FILE, use 'nohup COMMAND > FILE'.
-
-NOTE: your shell may have its own version of nohup, which usually supersedes
-the version described here.  Please refer to your shell's documentation
-for details about the options it supports.
-
-GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
-Full documentation <https://www.gnu.org/software/coreutils/nohup>
-or available locally via: info '(coreutils) nohup invocation'
-
-```
-
-# sort
-
-```
-
-Usage: sort [OPTION]... [FILE]...
-  or:  sort [OPTION]... --files0-from=F
-Write sorted concatenation of all FILE(s) to standard output.
-
-With no FILE, or when FILE is -, read standard input.
-
-Mandatory arguments to long options are mandatory for short options too.
-Ordering options:
-
-  -b, --ignore-leading-blanks  ignore leading blanks
-  -d, --dictionary-order      consider only blanks and alphanumeric characters
-  -f, --ignore-case           fold lower case to upper case characters
-  -g, --general-numeric-sort  compare according to general numerical value
-  -i, --ignore-nonprinting    consider only printable characters
-  -M, --month-sort            compare (unknown) < 'JAN' < ... < 'DEC'
-  -h, --human-numeric-sort    compare human readable numbers (e.g., 2K 1G)
-  -n, --numeric-sort          compare according to string numerical value
-  -R, --random-sort           shuffle, but group identical keys.  See shuf(1)
-      --random-source=FILE    get random bytes from FILE
-  -r, --reverse               reverse the result of comparisons
-      --sort=WORD             sort according to WORD:
-                                general-numeric -g, human-numeric -h, month -M,
-                                numeric -n, random -R, version -V
-  -V, --version-sort          natural sort of (version) numbers within text
-
-Other options:
-
-      --batch-size=NMERGE   merge at most NMERGE inputs at once;
-                            for more use temp files
-  -c, --check, --check=diagnose-first  check for sorted input; do not sort
-  -C, --check=quiet, --check=silent  like -c, but do not report first bad line
-      --compress-program=PROG  compress temporaries with PROG;
-                              decompress them with PROG -d
-      --debug               annotate the part of the line used to sort,
-                              and warn about questionable usage to stderr
-      --files0-from=F       read input from the files specified by
-                            NUL-terminated names in file F;
-                            If F is - then read names from standard input
-  -k, --key=KEYDEF          sort via a key; KEYDEF gives location and type
-  -m, --merge               merge already sorted files; do not sort
-  -o, --output=FILE         write result to FILE instead of standard output
-  -s, --stable              stabilize sort by disabling last-resort comparison
-  -S, --buffer-size=SIZE    use SIZE for main memory buffer
-  -t, --field-separator=SEP  use SEP instead of non-blank to blank transition
-  -T, --temporary-directory=DIR  use DIR for temporaries, not $TMPDIR or /tmp;
-                              multiple options specify multiple directories
-      --parallel=N          change the number of sorts run concurrently to N
-  -u, --unique              with -c, check for strict ordering;
-                              without -c, output only the first of an equal run
-  -z, --zero-terminated     line delimiter is NUL, not newline
-      --help     display this help and exit
-      --version  output version information and exit
-
-KEYDEF is F[.C][OPTS][,F[.C][OPTS]] for start and stop position, where F is a
-field number and C a character position in the field; both are origin 1, and
-the stop position defaults to the line's end.  If neither -t nor -b is in
-effect, characters in a field are counted from the beginning of the preceding
-whitespace.  OPTS is one or more single-letter ordering options [bdfgiMhnRrV],
-which override global ordering options for that key.  If no key is given, use
-the entire line as the key.  Use --debug to diagnose incorrect key usage.
-
-SIZE may be followed by the following multiplicative suffixes:
-% 1% of memory, b 1, K 1024 (default), and so on for M, G, T, P, E, Z, Y.
-
-*** WARNING ***
-The locale specified by the environment affects sort order.
-Set LC_ALL=C to get the traditional sort order that uses
-native byte values.
-
-GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
-Full documentation <https://www.gnu.org/software/coreutils/sort>
-or available locally via: info '(coreutils) sort invocation'
-
-```
-
 # Remote file operation
-
 
 ## scp
 
@@ -1537,6 +1701,113 @@ sshpass -p '123456' sftp -b sftpbatch.txt 116@192.168.0.116
 ```
 
 
+# Shell
+
+## nohup
+
+```
+
+Usage: nohup COMMAND [ARG]...
+  or:  nohup OPTION
+Run COMMAND, ignoring hangup signals.
+
+      --help     display this help and exit
+      --version  output version information and exit
+
+If standard input is a terminal, redirect it from an unreadable file.
+If standard output is a terminal, append output to 'nohup.out' if possible,
+'$HOME/nohup.out' otherwise.
+If standard error is a terminal, redirect it to standard output.
+To save output to FILE, use 'nohup COMMAND > FILE'.
+
+NOTE: your shell may have its own version of nohup, which usually supersedes
+the version described here.  Please refer to your shell's documentation
+for details about the options it supports.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Full documentation <https://www.gnu.org/software/coreutils/nohup>
+or available locally via: info '(coreutils) nohup invocation'
+
+```
+
+## sort
+
+```
+
+Usage: sort [OPTION]... [FILE]...
+  or:  sort [OPTION]... --files0-from=F
+Write sorted concatenation of all FILE(s) to standard output.
+
+With no FILE, or when FILE is -, read standard input.
+
+Mandatory arguments to long options are mandatory for short options too.
+Ordering options:
+
+  -b, --ignore-leading-blanks  ignore leading blanks
+  -d, --dictionary-order      consider only blanks and alphanumeric characters
+  -f, --ignore-case           fold lower case to upper case characters
+  -g, --general-numeric-sort  compare according to general numerical value
+  -i, --ignore-nonprinting    consider only printable characters
+  -M, --month-sort            compare (unknown) < 'JAN' < ... < 'DEC'
+  -h, --human-numeric-sort    compare human readable numbers (e.g., 2K 1G)
+  -n, --numeric-sort          compare according to string numerical value
+  -R, --random-sort           shuffle, but group identical keys.  See shuf(1)
+      --random-source=FILE    get random bytes from FILE
+  -r, --reverse               reverse the result of comparisons
+      --sort=WORD             sort according to WORD:
+                                general-numeric -g, human-numeric -h, month -M,
+                                numeric -n, random -R, version -V
+  -V, --version-sort          natural sort of (version) numbers within text
+
+Other options:
+
+      --batch-size=NMERGE   merge at most NMERGE inputs at once;
+                            for more use temp files
+  -c, --check, --check=diagnose-first  check for sorted input; do not sort
+  -C, --check=quiet, --check=silent  like -c, but do not report first bad line
+      --compress-program=PROG  compress temporaries with PROG;
+                              decompress them with PROG -d
+      --debug               annotate the part of the line used to sort,
+                              and warn about questionable usage to stderr
+      --files0-from=F       read input from the files specified by
+                            NUL-terminated names in file F;
+                            If F is - then read names from standard input
+  -k, --key=KEYDEF          sort via a key; KEYDEF gives location and type
+  -m, --merge               merge already sorted files; do not sort
+  -o, --output=FILE         write result to FILE instead of standard output
+  -s, --stable              stabilize sort by disabling last-resort comparison
+  -S, --buffer-size=SIZE    use SIZE for main memory buffer
+  -t, --field-separator=SEP  use SEP instead of non-blank to blank transition
+  -T, --temporary-directory=DIR  use DIR for temporaries, not $TMPDIR or /tmp;
+                              multiple options specify multiple directories
+      --parallel=N          change the number of sorts run concurrently to N
+  -u, --unique              with -c, check for strict ordering;
+                              without -c, output only the first of an equal run
+  -z, --zero-terminated     line delimiter is NUL, not newline
+      --help     display this help and exit
+      --version  output version information and exit
+
+KEYDEF is F[.C][OPTS][,F[.C][OPTS]] for start and stop position, where F is a
+field number and C a character position in the field; both are origin 1, and
+the stop position defaults to the line's end.  If neither -t nor -b is in
+effect, characters in a field are counted from the beginning of the preceding
+whitespace.  OPTS is one or more single-letter ordering options [bdfgiMhnRrV],
+which override global ordering options for that key.  If no key is given, use
+the entire line as the key.  Use --debug to diagnose incorrect key usage.
+
+SIZE may be followed by the following multiplicative suffixes:
+% 1% of memory, b 1, K 1024 (default), and so on for M, G, T, P, E, Z, Y.
+
+*** WARNING ***
+The locale specified by the environment affects sort order.
+Set LC_ALL=C to get the traditional sort order that uses
+native byte values.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Full documentation <https://www.gnu.org/software/coreutils/sort>
+or available locally via: info '(coreutils) sort invocation'
+
+```
 
 
 
@@ -1677,11 +1948,12 @@ Options:
 For more details see free(1).
 ```
 
-## hostnamectl, use for queryign kernal
+## hostnamectl, use for querying kernal
 
 ## ps
 
 `ps aux --sort=-rss`
+`ps aux --sort=-pid`
 
 ```
 ps --help all
@@ -1769,6 +2041,8 @@ For more details see ps(1).
 
 
 ## systemctl
+
+https://www.man7.org/linux/man-pages/man1/systemctl.1.html
 
 ## sysctl
 

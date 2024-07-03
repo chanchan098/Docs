@@ -51,7 +51,11 @@ When you make a request, offer advice, issue a command, or give an instruction, 
 
 # Determiners
 
-Determiners are words that come before nouns and specify something about their quantity, definiteness, or ownership. Another name for determiners is limiting adjectives;
+<span style='font-size: 16px;font-weight: 500'>What is a determiner?</span>  
+
+A determiner, also known as a limiting adjective, is a word that appears before a noun, providing clarifying context about the number, definiteness, or ownership of the noun.
+
+
 
 # Articles
 

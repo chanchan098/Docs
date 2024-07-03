@@ -1,7 +1,7 @@
 # ops-2.1-kubeadm-init.md
 - [ops-2.1-kubeadm-init.md](#ops-21-kubeadm-initmd)
 - [The versions and network are a snake hole!!!](#the-versions-and-network-are-a-snake-hole)
-- [Crictl proxy](#crictl-proxy)
+- [Crictl(containerd) proxy](#crictlcontainerd-proxy)
 - [Kubeadm cluster setup](#kubeadm-cluster-setup)
   - [Disk operation (VM)](#disk-operation-vm)
     - [Adds new partitions](#adds-new-partitions)
@@ -10,15 +10,15 @@
   - [doc](#doc)
   - [Trun off swp: `swapoff -a` or `vim /etc/fstab`](#trun-off-swp-swapoff--a-or-vim-etcfstab)
   - [Sets timezone](#sets-timezone)
-  - [Container runtime](#container-runtime)
+  - [~~Container runtime~~](#container-runtime)
     - [configure containerd](#configure-containerd)
-  - [Download and retag images](#download-and-retag-images)
+  - [~~Download and retag images~~](#download-and-retag-images)
     - [Download and retag](#download-and-retag)
     - [Cn proxy](#cn-proxy)
     - [Query images](#query-images)
-  - [`kubeadm init --v=5`](#kubeadm-init---v5)
+  - [Init shell](#init-shell)
+    - [References](#references)
   - [Start using cluster](#start-using-cluster)
-  - [Network addon](#network-addon)
   - [Launching a service](#launching-a-service)
     - [Create a pod](#create-a-pod)
     - [Create a service](#create-a-service)
@@ -34,9 +34,9 @@
     
 # The versions and network are a snake hole!!!
 
-# Crictl proxy
+# Crictl(containerd) proxy
 
-<https://stackoverflow.com/questions/77318225/how-to-configure-proxy-in-kubernetes-to-pull-images>
+[containerd](../0-image-proxy.md#containerd)
 
 # Kubeadm cluster setup
 
@@ -67,7 +67,7 @@ p
 - [Tutorial: Extends Free PE2](https://blog.csdn.net/qq_40137850/article/details/110630758)
 
 
-0. Creates a partition to use.
+0. Creates a partition to use by `fdisk`.
 1. Adds the partition to *Free PE*
 2. Extends logic volume.
 
@@ -82,7 +82,7 @@ p
 
 `timedatectl set-timezone Asia/Shanghai`
 
-## Container runtime
+## ~~Container runtime~~
 
 * Container runtime, here is containerd.
   * Notice that this docker engine use differs to ordinary docker, it has an interface layer 
@@ -101,7 +101,7 @@ systemctl enable containerd >/dev/null 2>&1
 
 
 
-## Download and retag images
+## ~~Download and retag images~~
 
 see also [image-proxy](./0-image-proxy.md)
 
@@ -146,9 +146,6 @@ stringExtracting(){
 stringExtracting
 ```
 
-
-
-
 ### Cn proxy
 
 ```shell
@@ -161,10 +158,14 @@ sudo kubeadm init --image-repository registry.aliyuncs.com/google_containers --a
 
 * getting images to use: `kubeadm config images list`
 
-## `kubeadm init --v=5`
+## Init shell
 
 `init-with-proxy.sh`
 ```shell
+wget -nc https://github.com/projectcalico/calico/blob/master/manifests/calico.yaml -O calico-master.yaml
+
+wget -nc https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml -O metallb-native-v0.14.5.yaml
+
 echo y | kubeadm reset
 
 kubeadm init \
@@ -172,9 +173,18 @@ kubeadm init \
 --image-repository registry.aliyuncs.com/google_containers \
 --v=5
 
+kubectl apply -f calico-master.yaml
+kubectl apply -f metallb-native-0.14.5.yaml
 
-kubectl apply -f calico.yaml
+sleep 5
+
+kubectl apply -f ./metalb/sample2.yaml
 ```
+
+### References
+
+- [install calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart#install-calico)
+- [install metallb](https://metallb.io/installation/)
 
 ## Start using cluster
 
@@ -185,13 +195,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
-
-
-## Network addon
-
-[calico](https://github.com/projectcalico/calico/blob/master/manifests/calico.yaml)
-
-`kubectl apply -f http://192.168.0.116:8089/resource/calico.yaml`
 
 
 ## Launching a service

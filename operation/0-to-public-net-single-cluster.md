@@ -1,8 +1,8 @@
 
 ### Machine room solution
+
 ```mermaid
 flowchart  LR
-    
     subgraph x
         direction TB
         domain --> 1[public ip] --> sr[soft route] --> gw
@@ -20,6 +20,7 @@ flowchart  LR
 ```
 
 ### VPC solution
+
 ```mermaid
 flowchart  LR
     subgraph x
@@ -34,10 +35,8 @@ flowchart  LR
 
 ```
 
-
-
-
 ### ingress solution
+
 ```mermaid
 flowchart  LR
     subgraph x

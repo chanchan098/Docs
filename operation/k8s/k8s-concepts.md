@@ -83,6 +83,7 @@
     - [secret](#secret)
   - [REF](#ref)
     - [local](#local)
+- [Persistent Volumes](#persistent-volumes)
 - [Projected Volumes](#projected-volumes)
 - [-Configuration](#-configuration)
 - [ConfigMaps](#configmaps)
@@ -717,6 +718,22 @@ https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources
 ### local 
 
 A local volume represents a mounted local storage device such as a disk, partition or directory.
+
+# Persistent Volumes
+
+
+<span style='font-size: 16px;font-weight: 500'>PersistentVolume (PV)</span>  
+
+A PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes.  
+
+It is a resource in the cluster just like a node is a cluster resource.
+
+
+<span style='font-size: 16px;font-weight: 500'>PersistentVolumeClaim (PVC)</span>  
+
+A PersistentVolumeClaim (PVC) is a request for storage by a user.  
+
+It is similar to a Pod. Pods consume node resources and PVCs consume PV resources.
 
 # Projected Volumes
 

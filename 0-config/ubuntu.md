@@ -1,4 +1,39 @@
-## ubuntu server static ip
+## Folder structure
+
+https://linuxhandbook.com/linux-directory-structure/
+
+```shell
+├── bin -> usr/bin
+├── boot
+├── dev
+├── etc
+├── home
+├── lib -> usr/lib
+├── lib32 -> usr/lib32
+├── lib64 -> usr/lib64
+├── libx32 -> usr/libx32
+├── lost+found
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── run
+├── sbin -> usr/sbin
+├── snap
+├── srv
+├── swap.img
+├── sys
+├── tmp
+├── usr
+└── var
+```
+
+## System backup 
+
+https://ubuntu.com/server/docs/how-to-back-up-using-shell-scripts
+
+## Ubuntu server static ip
 
 <https://ubuntu.com/server/docs/network-configuration>
 

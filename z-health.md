@@ -1,10 +1,19 @@
+## Enemy
+
+Allowing 100% processing ratio by `WarningD`
+
+- Mental maturity
+- Profound and profound
+- Multiple strategies
+- Robust in mind
+
 ## Why do that?
 
 ### The goal
 
-wreck people's body, can't have an ideal working footstone.
+wrecking people's body, can't have an ideal working footstone.
 
-fabricate a false appearance in which everything seems broken, in economy, employment etc.
+fabricated a false appearance in which everything seems broken, in economy, employment etc.
 
 so ruling class can have excuses and opportunity to exploit people.
 
