@@ -16,6 +16,13 @@ https://www.math.net/primary-math
 
 ### Euclid's algorithm
 
+
+1. Divide the larger number by the smaller number. If the remainder is 0, the divisor is the GCF, if not continue to the next step.
+2. Divide the smaller number (the previous divisor) by the remainder. If the new remainder is 0, the divisor is the GCF.
+3. Continue the process of dividing the previous divisor by the remainder until there is no remainder. The divisor that results in a remainder of 0 is the GCF of the original two numbers.
+
+
+
 $$LCM(a,b) = \frac{|a \times b|}{GCF(a,b)}$$
 
 ```
