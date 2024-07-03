@@ -1,8 +1,57 @@
+- [-Basic](#-basic)
+- [Imperative verbs](#imperative-verbs)
+- [Imperative sentences](#imperative-sentences)
+- [Determiners](#determiners)
+- [Articles](#articles)
+  - [A or an?](#a-or-an)
+  - [Take note: school/university, etc.](#take-note-schooluniversity-etc)
+- [Personal forms](#personal-forms)
+- [Question forms](#question-forms)
+  - [Meaning and Use](#meaning-and-use)
+  - [Asking questions with ‘how’](#asking-questions-with-how)
+- [Comparatives and Superlatives](#comparatives-and-superlatives)
+- [State verbs and action verbs](#state-verbs-and-action-verbs)
+  - [meaning and use](#meaning-and-use-1)
+- [Quantifiers: all, every, each, both, neither, either](#quantifiers-all-every-each-both-neither-either)
+  - [Meaning and use: all, every each](#meaning-and-use-all-every-each)
+  - [Meaning and use of both, neither, either](#meaning-and-use-of-both-neither-either)
+- [Subject-object questions](#subject-object-questions)
+  - [Meaning and use](#meaning-and-use-2)
+- ['Used to' and 'would'](#used-to-and-would)
+  - [Meaning and use](#meaning-and-use-3)
+- [Tenses](#tenses)
+  - [Future in the past](#future-in-the-past)
+- [Conditionals](#conditionals)
+  - [Zero conditional](#zero-conditional)
+  - [First conditional](#first-conditional)
+  - [Second conditional](#second-conditional)
+  - [Third conditional](#third-conditional)
+- [E-Basic](#e-basic)
+
+# -Basic
+
+# Imperative verbs
+
+https://www.grammarly.com/blog/imperative/
+
+https://www.grammarly.com/blog/imperative-verbs/
+
+<span style='font-size: 16px;font-weight: 500'>What are imperative verbs</span>  
+
+The imperative verb is an action a speaker or writer wants someone else to do. 
+
 # Imperative sentences
 
 https://www.grammarly.com/blog/imperative-sentences/
 
-https://www.grammarly.com/blog/imperative/
+
+
+What is an imperative sentence?
+When you make a request, offer advice, issue a command, or give an instruction, you use the imperative mood. 
+
+# Determiners
+
+Determiners are words that come before nouns and specify something about their quantity, definiteness, or ownership. Another name for determiners is limiting adjectives;
 
 # Articles
 
@@ -33,15 +82,47 @@ If someone is at the place because they are a student / are sick / a prisoner, e
 
 https://en.wikipedia.org/wiki/English_personal_pronouns
 
+
+
+<span style='font-size: 16px;font-weight: 500'>Singular</span>  
+
+|     Person (gender) | Subject | Object | Dependent possessive <br/> (determiner) | Independent possessive | Reflexive |
+| ------------------: | :-----: | :----: | :-------------------------------------: | :--------------------: | :-------: |
+|           **First** |    I    |   me   |                   my                    |          mine          |  myself   |
+|          **Second** |   you   |  you   |                  your                   |         yours          | yourself  |
+| **Third-Masculine** |   he    |  him   |                   his                   |          his           |  himself  |
+|  **Third-Feminine** |   she   |  her   |                   her                   |          hers          |  herself  |
+|    **Third-Neuter** |   it    |   it   |                   its                   |          its           |  itself   |
+|   **Third-Epicene** |  they   |  them  |                  their                  |         theirs         | themself  |
+
+
+
+<span style='font-size: 16px;font-weight: 500'>Plural</span>  
+
+| Person (gender) | Subject | Object | Dependent possessive <br/>  (determiner) | Independent possessive | Reflexive  |
+| --------------: | :-----: | :----: | :--------------------------------------: | :--------------------: | :--------: |
+|       **First** |   we    |   us   |                   our                    |          ours          | ourselves  |
+|      **Second** |   you   |  you   |                   your                   |         yours          | yourselves |
+|       **Third** |  they   |  them  |                  their                   |         theirs         | themselves |
+
+
 # Question forms
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-1/tab/grammar
 
 ## Meaning and Use
 
-1. Yes/no questions often begin with the verb to be, but can also begin with other auxiliary verbs, such as do. We ask these when we want a yes or no answer.
+<span style='font-size: 16px;font-weight: 500'>Yes/no questions</span>  
 
-2. Wh-questions start with a question word, such as who, what, where, when, why or how. We ask this type of question when we want different kinds of information. These questions cannot be answered with a yes or no.
+often begin with the verb <u>to be</u>, but can also begin with <u>other auxiliary verbs</u>, such as do.  
+We ask these when we want a yes or no answer.
+
+
+<span style='font-size: 16px;font-weight: 500'>Wh-questions</span>  
+
+start with <u>a question word</u>, such as <u>who, what, where, when, why or how.</u>  
+We ask this type of question when we want different kinds of information.  
+These questions cannot be answered with a yes or no.
 
 
 ## Asking questions with ‘how’
@@ -67,6 +148,24 @@ We use <u>state verbs</u> to talk about attitudes, thoughts, senses or belonging
 
 - The children love ice cream.
 - I believe in angels.
+
+# Quantifiers: all, every, each, both, neither, either
+
+https://www.bbc.co.uk/learningenglish/english/course/intermediate/unit-3/tab/grammar
+
+## Meaning and use: all, every each
+
+Quantifiers are words that give us information about the number or amount of something.
+
+All, every and each mean the whole number of something in a group, but there are differences in how we use them. 
+
+## Meaning and use of both, neither, either
+
+We use both (of), neither (of) and either (of) to talk about two people or things.
+
+Both means this one AND the other.  
+Neither means NOT this one AND NOT the other.  
+Either means this one OR the other.
 
 # Subject-object questions
 
@@ -188,22 +287,5 @@ The `main` part of the sentence tells us the imaginary result of this situation.
 - If there had been any snow, we’d have gone skiing. (There wasn’t any snow; we didn’t go skiing.)
 - If it hadn’t been raining, we’d have had a picnic.(It was raining; we didn’t have a picnic.)
 
-
-# Quantifiers: all, every, each, both, neither, either
-
-https://www.bbc.co.uk/learningenglish/english/course/intermediate/unit-3/tab/grammar
-
-## Meaning and use: all, every each
-
-Quantifiers are words that give us information about the number or amount of something.
-
-All, every and each mean the whole number of something in a group, but there are differences in how we use them. 
-
-## Meaning and use of both, neither, either
-
-We use both (of), neither (of) and either (of) to talk about two people or things.
-
-Both means this one AND the other.  
-Neither means NOT this one AND NOT the other.  
-Either means this one OR the other.
+# E-Basic
 
