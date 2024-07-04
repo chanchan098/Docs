@@ -1,3 +1,10 @@
+
+kubectl delete -f samples/addons
+istioctl uninstall -y --purge
+kubectl delete namespace istio-system
+kubectl label namespace default istio-injection-
+
+
 istioctl install --set profile=demo -y
 
 kubectl label namespace default istio-injection=enabled
@@ -20,3 +27,7 @@ SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -
 INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o jsonpath='{.items[0].status.hostIP}')
 GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 echo "$GATEWAY_URL"
+echo "http://$GATEWAY_URL/productpage"
+
+kubectl get svc istio-ingressgateway -n istio-system
+

@@ -11,6 +11,8 @@
   - [resize2fs](#resize2fs)
   - [vgdisplay](#vgdisplay)
 - [Editor](#editor)
+  - [vim](#vim)
+  - [nano](#nano)
 - [File management](#file-management)
   - [chown](#chown)
   - [ln](#ln)
@@ -466,7 +468,12 @@ Usage: resize2fs [-d debug_flags] [-f] [-F] [-M] [-P] [-p] device [-b|-s|new_siz
 
 # Editor
 
+## vim
+
 https://linuxhandbook.com/vim/
+
+## nano
+
 
 # File management
 

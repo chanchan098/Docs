@@ -43,6 +43,10 @@ so ruling class can have excuses and opportunity to exploit people.
 
   - curved forward
 
+### buttock
+
+  - soft tissues shrinked
+
 ### thigh
 
   - soft tissues shrinked
