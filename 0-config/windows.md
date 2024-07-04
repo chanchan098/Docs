@@ -1,6 +1,6 @@
-## host
+## hosts
 
-`C:\Windows\System32\drivers\etc\host`
+`C:\Windows\System32\drivers\etc\hosts`
 
 
 `ipconfig /flushdns`

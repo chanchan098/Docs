@@ -1,4 +1,4 @@
-# ops-99-k8s-AQ.md
+
 
 ## How to deploy apps on kubernetes?
 
@@ -11,3 +11,6 @@ Needs multiple resources, pods, service, gateway api, deployment etc.
 Inner dns mechanism.  
 Local domain.  
 
+## Access services outside cluster
+
+https://medium.com/@ManagedKube/kubernetes-access-external-services-e4fd643e5097
