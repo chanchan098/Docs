@@ -75,6 +75,7 @@ moving gear lever, from center
 - gear 5: right to top
 - gear R: right to bottom
 
+---
 
 0. to step clutch down
 1. to move gear lever to target gear
@@ -85,8 +86,6 @@ moving gear lever, from center
 before upshift, to speed up to target gear.
 
 ### downshift
-
-making sure that clutch be stepped down.
 
 before downshift, to speed down to target gear.  
 
