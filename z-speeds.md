@@ -8,6 +8,41 @@
 
 https://www.yoojia.com/wenda/597250.html?fromtype=top1
 
+
+
+### shift gears
+
+0. to step clutch down
+1. to move gear lever to target gear
+
+---
+
+moving gear lever, from center 
+- gear 1: from left to top
+- gear 2: from left to down
+- gear 3: center to top
+- gear 4: center to bottom
+- gear 5: right to top
+- gear R: right to bottom
+  
+```
+    1   3   5
+    │   │   │
+    ├───┼───┤
+    │   │   │    
+    2   4   R
+```
+---
+
+
+### upshift 
+
+before upshift, to speed up to target gear.
+
+### downshift
+
+before downshift, to speed down to target gear.  
+
 ### steering wheel
 
 ↪️↩️🔄🔃
@@ -56,39 +91,6 @@ https://www.yoojia.com/wenda/597250.html?fromtype=top1
 
 ```
 
-
-
-### shift gears
-
-```
-    1   3   5
-    │   │   │
-    ├───┼───┤
-    │   │   │    
-    2   4   R
-```
-moving gear lever, from center 
-- gear 1: from left to top
-- gear 2: from left to down
-- gear 3: center to top
-- gear 4: center to bottom
-- gear 5: right to top
-- gear R: right to bottom
-
----
-
-0. to step clutch down
-1. to move gear lever to target gear
-
-
-### upshift 
-
-before upshift, to speed up to target gear.
-
-### downshift
-
-before downshift, to speed down to target gear.  
-
 ### State conversion when driving
 
 ```mermaid
@@ -123,4 +125,6 @@ flowchart LR
 ```
 
 ### Environment evaluation
+
+### Weather estimation
 
