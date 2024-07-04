@@ -8,12 +8,12 @@
 
 ### Tools
 
-|comp|version|description
-|---:|:---|---|
-|python||script|
-|firefox||logining & reuse page|
-|selenium||open controlled browser|
-|pyautogui||automation|
+|      comp | version | description             |
+| --------: | :------ | ----------------------- |
+|    python |         | script                  |
+|   firefox |         | logining & reuse page   |
+|  selenium |         | open controlled browser |
+| pyautogui |         | automation              |
 
 
 ### Folder structure 
@@ -70,14 +70,14 @@ sequenceDiagram
 
 ### Tools
 
-|comp|version|description
-|---:|:---|---|
-|python             |   |script                 |
-|firefox            |   |logining & reuse page  |
-|selenium           |   |open controlled browser|
-|pyautogui          |   |automation             |
-|coordination got   |   |screen position        |
-|fscapture          |   |scrolling capture      |
+|             comp | version | description             |
+| ---------------: | :------ | ----------------------- |
+|           python |         | script                  |
+|          firefox |         | logining & reuse page   |
+|         selenium |         | open controlled browser |
+|        pyautogui |         | automation              |
+| coordination got |         | screen position         |
+|        fscapture |         | scrolling capture       |
 
 ### Diagram 
 
