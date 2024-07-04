@@ -109,6 +109,7 @@ flowchart LR
             direction BT
             objects
             knots
+            s[seat position]
         end
         subgraph Watching
             direction BT
