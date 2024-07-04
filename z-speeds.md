@@ -104,14 +104,17 @@ flowchart LR
     end
 
     subgraph Attention
-        de <--> Watching
+        direction LR
         subgraph de[Distance evaluation]
             direction BT
-            de2[distance evaluation] --> objects & knots
+            objects
+            knots
         end
         subgraph Watching
-            direction TB
-            watching --> windows & mirrors & pannels
+            direction BT
+            windows 
+            mirrors
+            pannels
         end
     end
 
