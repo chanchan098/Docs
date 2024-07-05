@@ -19,6 +19,18 @@ so ruling class can have excuses and opportunity to exploit people.
 
 ## Where to repair
 
+### waist
+
+  - curved forward
+
+### buttock
+
+  - soft tissues shrinked
+
+### thigh
+
+  - soft tissues shrinked
+
 ### head
 
   - pillow
@@ -39,17 +51,7 @@ so ruling class can have excuses and opportunity to exploit people.
 
   - muscle tightness
 
-### waist
 
-  - curved forward
-
-### buttock
-
-  - soft tissues shrinked
-
-### thigh
-
-  - soft tissues shrinked
 
 ## Duration of sleeping or lying down
 
