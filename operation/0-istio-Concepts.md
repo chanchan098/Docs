@@ -24,6 +24,10 @@ A virtual service lets you configure how requests are routed to a service within
 
 ## Why use virtual services?
 
+A typical use case
+
+Virtual services also let you:
+
 
 
 ## Gateways

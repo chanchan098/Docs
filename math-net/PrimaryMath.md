@@ -22,7 +22,6 @@ https://www.math.net/primary-math
 3. Continue the process of dividing the previous divisor by the remainder until there is no remainder. The divisor that results in a remainder of 0 is the GCF of the original two numbers.
 
 
-
 $$LCM(a,b) = \frac{|a \times b|}{GCF(a,b)}$$
 
 ```

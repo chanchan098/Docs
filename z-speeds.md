@@ -1,10 +1,15 @@
-| gear  | range | upshift at | dest  | downshift at | dest  |
-| :---: | :---: | :--------: | :---: | :----------: | :---: |
-|   1   | 00-20 |    #15+    |  +2   |              |       |
-|   2   | 05-30 |    #25+    |  +3   |     #10-     |  -1   |
-|   3   | 15-40 |    #35+    |  +4   |     #20-     |  -2   |
-|   4   | 25-50 |    #45+    |  +5   |     #30-     |  -3   |
-|   5   | 35-60 |            |       |     #40-     |  -4   |
+
+to check that speed ranges again.
+
+| gear  | upshift at | dest  | downshift at | dest  | range | range2 |
+| :---: | :--------: | :---: | :----------: | :---: | :---: | :----: |
+|   1   |    #15+    |  +2   |              |       | 00-20 | 00-20  |
+|   2   |    #25+    |  +3   |     #10-     |  -1   | 05-30 | 10-30  |
+|   3   |    #35+    |  +4   |     #20-     |  -2   | 15-40 | 20-40  |
+|   4   |    #45+    |  +5   |     #30-     |  -3   | 25-50 | 30-50  |
+|   5   |            |       |     #40-     |  -4   | 35-60 | 50-??  |
+
+https://www.cnblogs.com/arxive/p/5551052.html
 
 https://www.yoojia.com/wenda/597250.html?fromtype=top1
 
@@ -29,19 +34,18 @@ moving gear lever, from center
     1   3   5
     │   │   │
     ├───┼───┤
-    │   │   │    
+    │   │   │
     2   4   R
 ```
 ---
 
-
 ### upshift 
 
-before upshift, to speed up to target gear.
+before upshifting, to speed up a range like `[1-4]5`, then shift to target gear.
 
 ### downshift
 
-before downshift, to speed down to target gear.  
+before downshifting, to speed down a range like `[1-4]0`, then shift to target gear.  
 
 ### steering wheel
 
@@ -56,7 +60,7 @@ before downshift, to speed down to target gear.
   |    |    |
    \___|___/
  
- 1/4, from ↩️              
+ 1/4 lap, from ↩️              
     _______
    /   |   \
   |    |    |
