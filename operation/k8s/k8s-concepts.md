@@ -721,7 +721,6 @@ A local volume represents a mounted local storage device such as a disk, partiti
 
 # Persistent Volumes
 
-
 <span style='font-size: 16px;font-weight: 500'>PersistentVolume (PV)</span>  
 
 A PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes.  
