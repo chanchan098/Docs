@@ -19,6 +19,12 @@ so ruling class can have excuses and opportunity to exploit people.
 
 ## Where to repair
 
+### heart
+
+  - making sure that power beat out from heart need be consumed correctly, otherwise that power hits at heart.
+  - key concepts
+    - soft tissues state.
+
 ### waist
 
   - curved forward

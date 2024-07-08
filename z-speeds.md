@@ -31,12 +31,27 @@ moving gear lever, from center
 - gear R: right to bottom
   
 ```
-    1   3   5
+    1   3   5 
     │   │   │
     ├───┼───┤
     │   │   │
     2   4   R
 ```
+
+<details>
+<summary>6 gears</summary>
+
+```
+    R   1   3   5 
+    │   │   │   │
+    └───┼───┼───┤
+        │   │   │
+        2   4   6
+```
+
+</details>
+
+
 ---
 
 ### upshift 

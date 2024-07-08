@@ -300,15 +300,11 @@ There is only one mode available for kube-proxy on Windows:
 - kernelspace
   - a mode where the kube-proxy configures packet forwarding rules in the Windows kernel
 
-
-
 # E-Networking Reference
 
 # -- Setup tools
 
 # Kubeadm
-
-
 
 # -- Command line tool (kubectl) 
 

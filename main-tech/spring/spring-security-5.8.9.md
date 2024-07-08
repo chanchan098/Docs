@@ -17,20 +17,20 @@
   - [ProviderManager](#providermanager)
 - [Method Security](#method-security)
 
+---
 
-[tutorial](https://www.iocoder.cn/categories/Spring-Security/)
+[tutorial](https://www.iocoder.cn/Spring-Boot/Spring-Security/)  
+[tutorial catalog](https://www.iocoder.cn/categories/Spring-Security/)
 
-https://www.iocoder.cn/Spring-Boot/Spring-Security/
+---
 
-[doc](https://docs.spring.io/spring-security/reference/5.8/index.html)
-
-[sevlet filter](https://www.geeksforgeeks.org/java-servlet-filter/)
-
+[samples](https://github.com/spring-projects/spring-security-samples/tree/5.8.x)  
+[doc](https://docs.spring.io/spring-security/reference/5.8/index.html)  
+[sevlet filter](https://www.geeksforgeeks.org/java-servlet-filter/)  
 [sevlet filter2](https://www.geeksforgeeks.org/java-servlet-filter-with-example/)
 
 *Spring Security - Features - Authentication*
 # Password Storage
-
 
 # -Servlet Applications
 

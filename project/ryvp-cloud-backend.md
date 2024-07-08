@@ -16,6 +16,7 @@
   - [PageResult](#pageresult)
   - [PageParam](#pageparam)
 - [Module security](#module-security)
+  - [YudaoSecurityAutoConfiguration](#yudaosecurityautoconfiguration)
   - [Global permission checking](#global-permission-checking)
 - [Module test](#module-test)
 - [Token freshing and Login](#token-freshing-and-login)
@@ -617,6 +618,24 @@ public class PageParam implements Serializable {
 ```
 
 ## Module security 
+
+https://github.com/spring-projects/spring-security-samples/tree/5.8.x
+
+│ └ ├ ─ ┼ 
+
+```
+config
+  │
+  ├──── SecurityProperties  
+  ├──── YudaoSecurityAutoConfiguration
+  ├──── YudaoSecurityRpcAutoConfiguration
+  ├──── YudaoWebSecurityConfigurerAdapter
+```
+
+### YudaoSecurityAutoConfiguration
+
+configurations for components to use. 
+
 
 ### Global permission checking
 
