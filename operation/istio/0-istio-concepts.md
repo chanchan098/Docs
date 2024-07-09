@@ -1,4 +1,11 @@
+
 https://istio.io/latest/docs/concepts/
+
+# Service mesh
+
+https://en.wikipedia.org/wiki/Service_mesh
+
+In software architecture, a service mesh is a dedicated infrastructure layer for facilitating service-to-service communications between services or microservices using a proxy.
 
 # Traffic Management
 
@@ -13,7 +20,7 @@ In order to direct traffic within your mesh, Istio needs to know where all your 
 
 To populate its own service registry, Istio connects to a service discovery system. 
 
-# Virtual services
+## Virtual services
 
 
 <span style='font-size: 16px;font-weight: 500'>What is it?</span>  
@@ -31,6 +38,8 @@ Virtual services also let you:
 
 
 ## Gateways
+
+You use a gateway to manage inbound and outbound traffic for your mesh, letting you specify which traffic you want to enter or leave the mesh.
 
 ## Sidecars
 

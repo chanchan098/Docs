@@ -9,7 +9,7 @@ flowchart  LR
     end
     subgraph gw
         direction RL
-        gateway -->|by| metallb 
+        gateways -->|by| metallb 
     end
     subgraph cluster
         direction LR
