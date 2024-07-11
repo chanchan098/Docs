@@ -4,7 +4,7 @@
   - vscode
   - smartgit
 - shortcuts
-- work folder
+- work folders
 - chrome
   - history
 - mysql

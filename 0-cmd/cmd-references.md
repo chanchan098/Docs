@@ -1537,6 +1537,8 @@ Format syntax:
 
 ## mapfile
 
+`mapfile -t pending < <(kubeadm config images list)`
+
 ```
 mapfile: mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array]
     Read lines from the standard input into an indexed array variable.
@@ -1821,6 +1823,10 @@ or available locally via: info '(coreutils) sort invocation'
 # String processing
 
 ## awk
+
+`$kc get namespace | awk 'NR==2{print $1}'`
+
+`$kc get namespace | awk '{a=$1} END{print a}'`
 
 ```
 

@@ -17,8 +17,13 @@ https://www.yoojia.com/wenda/597250.html?fromtype=top1
 
 ### shift gears
 
-0. to step clutch down
-1. to move gear lever to target gear
+0. to speed up or down via accelerator or break to a speeds wanted.
+1. releasing accelerator or break.
+2. to step clutch down.
+3. to move gear lever to target gear.
+4. releasing clutch.
+5. keeping speeds.
+
 
 ---
 
