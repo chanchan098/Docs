@@ -1,6 +1,7 @@
-- [Command line management](#command-line-management)
+- [Command line execution](#command-line-execution)
   - [source](#source)
   - [eval](#eval)
+  - [xargs](#xargs)
 - [Disk management](#disk-management)
   - [blkid (block ID)](#blkid-block-id)
   - [df (disk free)](#df-disk-free)
@@ -32,6 +33,8 @@
 - [Remote file operation](#remote-file-operation)
   - [scp](#scp)
   - [sftp(client side)](#sftpclient-side)
+- [Network management](#network-management)
+  - [netstat](#netstat)
 - [Shell](#shell)
   - [nohup](#nohup)
   - [sort](#sort)
@@ -41,6 +44,7 @@
 - [System management](#system-management)
   - [free, use for peek up memory](#free-use-for-peek-up-memory)
   - [hostnamectl, use for querying kernal](#hostnamectl-use-for-querying-kernal)
+  - [lsof](#lsof)
   - [ps](#ps)
   - [systemctl](#systemctl)
   - [sysctl](#sysctl)
@@ -48,7 +52,7 @@
 - [VBoxManage](#vboxmanage)
 
 
-# Command line management
+# Command line execution
 
 ## source
 
@@ -86,6 +90,58 @@ eval: eval [arg ...]
 
     Exit Status:
     Returns exit status of command or success if command is null.
+```
+
+## xargs
+
+```
+Usage: xargs [OPTION]... COMMAND [INITIAL-ARGS]...
+Run COMMAND with arguments INITIAL-ARGS and more arguments read from input.
+
+Mandatory and optional arguments to long options are also
+mandatory or optional for the corresponding short option.
+  -0, --null                   items are separated by a null, not whitespace;
+                                 disables quote and backslash processing and
+                                 logical EOF processing
+  -a, --arg-file=FILE          read arguments from FILE, not standard input
+  -d, --delimiter=CHARACTER    items in input stream are separated by CHARACTER,
+                                 not by whitespace; disables quote and backslash
+                                 processing and logical EOF processing
+  -E END                       set logical EOF string; if END occurs as a line
+                                 of input, the rest of the input is ignored
+                                 (ignored if -0 or -d was specified)
+  -e, --eof[=END]              equivalent to -E END if END is specified;
+                                 otherwise, there is no end-of-file string
+  -I R                         same as --replace=R
+  -i, --replace[=R]            replace R in INITIAL-ARGS with names read
+                                 from standard input, split at newlines;
+                                 if R is unspecified, assume {}
+  -L, --max-lines=MAX-LINES    use at most MAX-LINES non-blank input lines per
+                                 command line
+  -l[MAX-LINES]                similar to -L but defaults to at most one non-
+                                 blank input line if MAX-LINES is not specified
+  -n, --max-args=MAX-ARGS      use at most MAX-ARGS arguments per command line
+  -o, --open-tty               Reopen stdin as /dev/tty in the child process
+                                 before executing the command; useful to run an
+                                 interactive application.
+  -P, --max-procs=MAX-PROCS    run at most MAX-PROCS processes at a time
+  -p, --interactive            prompt before running commands
+      --process-slot-var=VAR   set environment variable VAR in child processes
+  -r, --no-run-if-empty        if there are no arguments, then do not run COMMAND;
+                                 if this option is not given, COMMAND will be
+                                 run at least once
+  -s, --max-chars=MAX-CHARS    limit length of command line to MAX-CHARS
+      --show-limits            show limits on command-line length
+  -t, --verbose                print commands before executing them
+  -x, --exit                   exit if the size (see -s) is exceeded
+      --help                   display this help and exit
+      --version                output version information and exit
+
+Please see also the documentation at https://www.gnu.org/software/findutils/.
+You can report (and track progress on fixing) bugs in the "xargs"
+program via the GNU findutils bug-reporting page at
+https://savannah.gnu.org/bugs/?group=findutils or, if
+you have no web access, by sending email to <bug-findutils@gnu.org>.
 ```
 
 
@@ -1710,6 +1766,12 @@ sshpass -p '123456' sftp -b sftpbatch.txt 116@192.168.0.116
 ```
 
 
+# Network management
+
+## netstat
+
+https://www.man7.org/linux/man-pages/man8/netstat.8.html
+
 # Shell
 
 ## nohup
@@ -1823,6 +1885,12 @@ or available locally via: info '(coreutils) sort invocation'
 # String processing
 
 ## awk
+
+https://linuxhandbook.com/awk-command-tutorial/#a-basic-usage-of-awk-command
+
+https://linuxhandbook.com/awk-command-tutorial/#6-extracting-fields
+
+`sudo crictl images | grep calico | awk '{print $3}' | xargs -r sudo crictl rmi`
 
 `$kc get namespace | awk 'NR==2{print $1}'`
 
@@ -1962,6 +2030,10 @@ For more details see free(1).
 ```
 
 ## hostnamectl, use for querying kernal
+
+## lsof
+
+https://man7.org/linux/man-pages/man8/lsof.8.html
 
 ## ps
 

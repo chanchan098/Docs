@@ -22,7 +22,6 @@ To populate its own service registry, Istio connects to a service discovery syst
 
 ## Virtual services
 
-
 <span style='font-size: 16px;font-weight: 500'>What is it?</span>  
 
 Virtual services, along with destination rules, are the key building blocks of Istio’s traffic routing functionality.  
@@ -35,8 +34,6 @@ A typical use case
 
 Virtual services also let you:
 
-
-
 ## Gateways
 
 You use a gateway to manage inbound and outbound traffic for your mesh, letting you specify which traffic you want to enter or leave the mesh.
@@ -44,4 +41,3 @@ You use a gateway to manage inbound and outbound traffic for your mesh, letting 
 ## Sidecars
 
 By default, Istio configures every Envoy proxy to accept traffic on all the ports of its associated workload, and to reach every workload in the mesh when forwarding traffic. 
-

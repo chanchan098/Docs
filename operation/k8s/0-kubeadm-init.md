@@ -2,6 +2,8 @@
 - [ops-2.1-kubeadm-init.md](#ops-21-kubeadm-initmd)
 - [The versions and network are a snake hole!!!](#the-versions-and-network-are-a-snake-hole)
 - [Crictl(containerd) proxy](#crictlcontainerd-proxy)
+- [Kubeadm reset](#kubeadm-reset)
+  - [after deletion to `/etc/cni/net.d`:](#after-deletion-to-etccninetd)
 - [Kubeadm cluster setup](#kubeadm-cluster-setup)
   - [Disk operation (VM)](#disk-operation-vm)
     - [Adds new partitions](#adds-new-partitions)
@@ -13,10 +15,11 @@
   - [~~Container runtime~~](#container-runtime)
     - [configure containerd](#configure-containerd)
   - [~~Download and retag images~~](#download-and-retag-images)
-    - [Download and retag](#download-and-retag)
+    - [~~Download and retag~~](#download-and-retag)
     - [Cn proxy](#cn-proxy)
     - [Query images](#query-images)
   - [Init shell](#init-shell)
+    - [Network plugin](#network-plugin)
     - [References](#references)
   - [Start using cluster](#start-using-cluster)
   - [Launching a service](#launching-a-service)
@@ -28,6 +31,9 @@
     - [Query status](#query-status)
     - [Log](#log)
 - [Errors](#errors)
+  - [Node is `not ready` after `kubeadm reset` when booted again](#node-is-not-ready-after-kubeadm-reset-when-booted-again)
+  - [core-dns is `pending` after deleted `/etc/cni/net.d` when restart](#core-dns-is-pending-after-deleted-etccninetd-when-restart)
+    - [container errors](#container-errors)
   - [after `kubeadm init`, run `systemctl status kubelet`](#after-kubeadm-init-run-systemctl-status-kubelet)
   - [`kubeadm init`](#kubeadm-init)
   - [`crictl images` CRI v1](#crictl-images-cri-v1)
@@ -38,10 +44,34 @@
 
 [containerd](../0-image-proxy.md#containerd)
 
+# Kubeadm reset
+
+https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-reset/
+
+do not delete `/etc/cni/net.d`, if it doesn't to be replaced to another network plugin.  
+`rm -rf /etc/cni/net.d`
+
+---
+
+## after deletion to `/etc/cni/net.d`:
+
+check out [container errors](#container-errors)
+
+```
+sudo systemctl stop kubelet
+
+echo y|kubeadm reset --cleanup-tmp-dir
+rm -rf /etc/cni/net.d
+sudo rm -rf /var/lib/kubelet/*
+
+sudo systemctl start kubelet
+
+reboot
+```
+
 # Kubeadm cluster setup
 
 ## Disk operation (VM)
-
 
 ### Adds new partitions
 
@@ -105,9 +135,10 @@ systemctl enable containerd >/dev/null 2>&1
 
 see also [image-proxy](./0-image-proxy.md)
 
-### Download and retag
+### ~~Download and retag~~
 
-pullAndRetag.sh
+<details>
+<summary>pullAndRetag.sh</summary>
 
 ```
 prefix="registry.cn-hangzhou.aliyuncs.com/google_containers"
@@ -145,6 +176,7 @@ stringExtracting(){
 
 stringExtracting
 ```
+</details>
 
 ### Cn proxy
 
@@ -162,7 +194,7 @@ sudo kubeadm init --image-repository registry.aliyuncs.com/google_containers --a
 
 `init-with-proxy.sh`
 ```shell
-wget -nc https://github.com/projectcalico/calico/blob/master/manifests/calico.yaml -O calico-master.yaml
+wget -nc https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml -O calico-master.yaml
 
 wget -nc https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml -O metallb-native-v0.14.5.yaml
 
@@ -180,6 +212,13 @@ sleep 5
 
 kubectl apply -f ./metalb/sample2.yaml
 ```
+
+### Network plugin
+
+https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml
+
+https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
 
 ### References
 
@@ -272,6 +311,16 @@ vim /etc/systemd/system/docker.service.d/http-proxy.conf
 ```
 
 # Errors
+
+## Node is `not ready` after `kubeadm reset` when booted again
+
+## core-dns is `pending` after deleted `/etc/cni/net.d` when restart
+
+trying to delete pods related and launch again.
+
+### container errors
+
+`crictl ps -a | grep flannel | awk '{print $1}'`
 
 ## after `kubeadm init`, run `systemctl status kubelet`
 
