@@ -151,6 +151,10 @@ Aspects enable the modularization of concerns (such as transaction management) t
 
 # AOP Concepts
 
+[Spring style](https://www.baeldung.com/spring-aop)
+
+[AspectJ style](https://www.baeldung.com/aspectj)
+
 - Aspect:  
   A modularization of a concern that cuts across multiple classes.
   
@@ -161,7 +165,14 @@ Aspects enable the modularization of concerns (such as transaction management) t
   Action taken by an aspect at a particular join point.
 
 - Pointcut:  
-  A predicate that matches join points. `@PreAuthenticated`
+  A predicate that matches join points. Advice is associated with a pointcut expression and runs at any join point matched by the pointcut (for example, the execution of a method with a certain name).   
+  ```java
+    @Pointcut("@annotation(preAuthenticated)")
+    public void preAuthenticated() {}
+
+    @Around("@annotation(preAuthenticated)")
+    @Around("preAuthenticated()")
+  ```
 
 - Introduction:  
   Declaring additional methods or fields on behalf of a type. 
@@ -177,9 +188,27 @@ Aspects enable the modularization of concerns (such as transaction management) t
   linking aspects with other application types or objects to create an advised object. 
 
 
+**Types of advice**
 
+- Before advice:  
+Advice that runs before a join point but that does not have the ability to prevent execution flow proceeding to the join point (unless it throws an exception).
 
-<span style='font-size: 16px;font-weight: 500'>Example</span>  
+- After returning advice:  
+Advice to be run after a join point completes normally (for example, if a method returns without throwing an exception).
+
+- After throwing advice:  
+Advice to be run if a method exits by throwing an exception.
+
+- After (finally) advice:  
+Advice to be run regardless of the means by which a join point exits (normal or exceptional return).
+
+- Around advice:  
+Advice that surrounds a join point such as a method invocation.  
+  This is the most powerful kind of advice.  
+  Around advice can perform custom behavior before and after the method invocation.  
+  It is also responsible for choosing whether to proceed to the join point or to shortcut the advised method execution by returning its own return value or throwing an exception.
+
+<span style='font-size: 16px;font-weight: 500'>Example-AspectJ annotation</span>  
 
 ```java
 @Target({ElementType.METHOD})
@@ -196,31 +225,58 @@ public @interface PreAuthenticated {
 @Slf4j
 public class PreAuthenticatedAspect {
 
+    //@Pointcut("@annotation(preAuthenticated)")
+    //public void preAuthenticated() {}
+
+  //@advice type(predicate)            
     @Around("@annotation(preAuthenticated)")
+    // @Around("preAuthenticated()")
     public Object around(ProceedingJoinPoint joinPoint, PreAuthenticated preAuthenticated) throws Throwable {
         if (SecurityFrameworkUtils.getLoginUser() == null) {
             throw exception(UNAUTHORIZED);
         }
         return joinPoint.proceed();
     }
-
 }
 ```
 
-**Types of advice**
+```java
+@PreAuthenticated
+public CommonResult<Boolean> takeCoupon(@Valid @RequestBody AppCouponTakeReqVO reqVO) {}
+```
 
-- Before advice: Advice that runs before a join point but that does not have the ability to prevent execution flow proceeding to the join point (unless it throws an exception).
 
-- After returning advice: Advice to be run after a join point completes normally (for example, if a method returns without throwing an exception).
+<span style='font-size: 16px;font-weight: 500'>Example-spring style</span>  
 
-- After throwing advice: Advice to be run if a method exits by throwing an exception.
+```java
+public class SampleAdder {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
 
-- After (finally) advice: Advice to be run regardless of the means by which a join point exits (normal or exceptional return).
+public class AdderAfterReturnAspect {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    public void afterReturn(Object returnValue) throws Throwable {
+        logger.info("value return was {}",  returnValue);
+    }
+}
 
-- Around advice: Advice that surrounds a join point such as a method invocation.  
-  This is the most powerful kind of advice.  
-  Around advice can perform custom behavior before and after the method invocation.  
-  It is also responsible for choosing whether to proceed to the join point or to shortcut the advised method execution by returning its own return value or throwing an exception.
+```
+
+```xml
+<bean id="sampleAdder" class="org.baeldung.logger.SampleAdder" />
+<bean id="doAfterReturningAspect" 
+  class="org.baeldung.logger.AdderAfterReturnAspect" />
+<aop:config>
+    <aop:aspect id="aspects" ref="doAfterReturningAspect">
+       <aop:pointcut id="pointCutAfterReturning" expression=
+         "execution(* org.baeldung.logger.SampleAdder+.*(..))"/>
+       <aop:after-returning method="afterReturn"
+         returning="returnValue" pointcut-ref="pointCutAfterReturning"/>
+    </aop:aspect>
+</aop:config>
+```
 
 # @AspectJ support
 

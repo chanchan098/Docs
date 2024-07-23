@@ -26,6 +26,8 @@
   - [First conditional](#first-conditional)
   - [Second conditional](#second-conditional)
   - [Third conditional](#third-conditional)
+  - [Mixed third/second conditional form](#mixed-thirdsecond-conditional-form)
+- [Passive form](#passive-form)
 - [E-Basic](#e-basic)
 
 # -Basic
@@ -209,6 +211,15 @@ Would is used only for past habits, not for past states.
 https://www.grammarly.com/blog/verb-tenses/
 
 
+|                           | PAST  | PRESENT | FUTURE | FUTURE IN THE PAST |
+| ------------------------: | :---: | :-----: | :----: | :----------------: |
+|                    SAMPLE |
+|                   PERFECT |
+|               CONTINUOUTS |
+| PERFECT <BR/> CONTINUOUTS |
+
+
+
 ## Future in the past
 
 https://www.englishpage.com/verbpage/futureinpast.html
@@ -290,6 +301,14 @@ The `main` part of the sentence tells us the imaginary result of this situation.
 
 - If there had been any snow, we’d have gone skiing. (There wasn’t any snow; we didn’t go skiing.)
 - If it hadn’t been raining, we’d have had a picnic.(It was raining; we didn’t have a picnic.)
+
+## Mixed third/second conditional form
+
+https://www.bbc.co.uk/learningenglish/english/course/upper-intermediate/unit-8/tab/grammar
+
+# Passive form
+
+https://www.grammarly.com/blog/active-vs-passive-voice/
 
 # E-Basic
 

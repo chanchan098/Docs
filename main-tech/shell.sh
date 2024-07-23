@@ -203,11 +203,12 @@ cmdVarsTrying(){
 }
 
 
-argsTest(){
-    echo "$0"
-    echo "$1 A string from fun"
+argsTest(){    
+    echo $1
+    echo "A string from fun"
 }
-argsTest
+argsTest $1
+
 # stringExtracting
 # forLoopTrying
 #  variablesTrying
