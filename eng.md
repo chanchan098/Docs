@@ -18,7 +18,10 @@
 - [Subject-object questions](#subject-object-questions)
   - [Meaning and use](#meaning-and-use-2)
 - ['Used to' and 'would'](#used-to-and-would)
-  - [Meaning and use](#meaning-and-use-3)
+    - [Meaning and use](#meaning-and-use-3)
+    - [Used to - Habit](#used-to---habit)
+    - [Used to - State](#used-to---state)
+    - [Would - Habit (not for states)](#would---habit-not-for-states)
 - [Tenses](#tenses)
   - [Future in the past](#future-in-the-past)
 - [Conditionals](#conditionals)
@@ -200,16 +203,42 @@ The first question is a subject question because who refers to the subject. Ther
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-29/tab/grammar
 
-## Meaning and use
+### Meaning and use
 
 We can use <u>used to</u> and <u>would</u> to talk about things we did regularly in the past, but we don’t do now.  
+
 We use used to for either habits or states in the past.  
 Would is used only for past habits, not for past states.
 
+### Used to - Habit
+
+- Isabel used to sing in a band.
+- Pablo didn’t use to drive to work.
+- Did John use to study with you?
+
+### Used to - State
+
+- Bob used to be much shorter.
+- I didn’t use to like art.
+- Did Wayne use to belong to the debate team?
+- Didn’t Margaret use to hate flying?
+
+### Would - Habit (not for states)
+
+- Since I always had that day free, I would shop for groceries every Monday.
+- Since we were always in a hurry, we wouldn’t stop for tea on Fridays.
+- Would you often stay for lunch?
+
+
 # Tenses
 
-https://www.grammarly.com/blog/verb-tenses/
+```mermaid
+flowchart LR
+    PAST --- 1[FUTURE IN THE PAST] --- 2(PRESENT) --- FUTURE
 
+```
+
+https://www.grammarly.com/blog/verb-tenses/
 
 |                           | PAST  | PRESENT | FUTURE | FUTURE IN THE PAST |
 | ------------------------: | :---: | :-----: | :----: | :----------------: |
@@ -217,7 +246,6 @@ https://www.grammarly.com/blog/verb-tenses/
 |                   PERFECT |
 |               CONTINUOUTS |
 | PERFECT <BR/> CONTINUOUTS |
-
 
 
 ## Future in the past
@@ -243,7 +271,6 @@ We use the zero conditional to talk about things which <u>always happen</u> if a
 
 - When you take exercise, your heart beats faster.
 - If I drink milk, I get stomach ache.
-
 
 We can use if or when with the same meaning:  
 - If you take exercise, your heart beats faster.

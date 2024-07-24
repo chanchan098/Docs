@@ -3,6 +3,8 @@ https://github.com/FRRouting/frr
 
 ## Configuration(two nodes)
 
+In this mode, The node must be in the k8s cluster as work node or control panel AND be the frr router.
+
 Notice that it has huge differences to `layer2` mode, `layer2` uses arp spoofing which doesn't need real machine with the specific address. In BGP of `frr` a computer as virtual router, so the address advertised to network must map to the real machine.
 
 ### Installation

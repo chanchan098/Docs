@@ -1,3 +1,11 @@
+## Auto-starting app
+
+`systemctl enable nginx.service`, output
+
+>Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+
+to do this by putting a `symblic link` at `/etc/systemd/system/multi-user.target.wants`
+
 ## Folder structure
 
 https://linuxhandbook.com/linux-directory-structure/
@@ -55,6 +63,17 @@ https://www.cnblogs.com/gao0722/p/15026546.html
     *  awk -F"/" '{system("echo " $1)}' ip    
 
 
+## pipeline
+
+[pipeline](https://www.cnblogs.com/gao0722/p/15026546.html)
+
+https://linuxhandbook.com/redirection-linux/
+
+## bash-process-substitution
+
+`<()`
+
+https://linuxhandbook.com/bash-process-substitution/
 
 ## Process substitution
 
