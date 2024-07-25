@@ -83,6 +83,8 @@ source: source filename [arguments]
 
 ## eval
 
+`dpkg -l | grep nginx | awk '{print $2}' | xargs sudo dpkg --purge`
+
 ```
 eval: eval [arg ...]
     Execute arguments as a shell command.

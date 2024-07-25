@@ -23,6 +23,8 @@
     - [Used to - State](#used-to---state)
     - [Would - Habit (not for states)](#would---habit-not-for-states)
 - [Tenses](#tenses)
+    - [Past tenses](#past-tenses)
+    - [Present tenses](#present-tenses)
   - [Future in the past](#future-in-the-past)
 - [Conditionals](#conditionals)
   - [Zero conditional](#zero-conditional)
@@ -168,6 +170,8 @@ Quantifiers are words that give us information about the number or amount of som
 
 All, every and each mean the whole number of something in a group, but there are differences in how we use them. 
 
+<u>All</u> or <u>All the</u> is followed by a plural or uncountable noun. <u>Every</u> and <u>each</u> are followed by a singular noun.
+
 ## Meaning and use of both, neither, either
 
 We use both (of), neither (of) and either (of) to talk about two people or things.
@@ -247,19 +251,52 @@ https://www.grammarly.com/blog/verb-tenses/
 |               CONTINUOUTS |
 | PERFECT <BR/> CONTINUOUTS |
 
+### Past tenses
+
+<span style='font-size: 16px;font-weight: 500'>Simple past</span>  
+
+We use the simple past to show actions completed in the past, with no extra emphasis. 
+
+
+<span style='font-size: 16px;font-weight: 500'>Past perfect</span>  
+
+shows that one past action happened <u>earlier than</u> another one. 
+
+- She had arrived at the office before she realized it was Sunday. 
+
+
+<span style='font-size: 16px;font-weight: 500'>Past continuous</span>  
+
+to show an <u>ongoing action</u> in the past, especially if the action <u>was interrupted</u> by another action.  
+It’s also used for habitual actions that occurred in the past but not in the present.
+
+
+<span style='font-size: 16px;font-weight: 500'>Past perfect continuous</span>  
+
+used just like the past perfect tense, except it describes ongoing actions that happened in the past instead of a one-time occurence.  
+It’s often used with the words when, until, and before <u>to connect it to another past action.</u>  
+
+Before he got his first job as a writer, he had been working as a proofreader. 
+
+I had been living on my friend’s couch for a year until they kicked me out. 
+
+
+### Present tenses 
+
+<span style='font-size: 16px;font-weight: 500'>Simple present</span>  
+
+
+
+
 
 ## Future in the past
 
 https://www.englishpage.com/verbpage/futureinpast.html
 
-
-
 https://topenglishgrammar.com/future-in-the-past/
 
 <span style='font-size: 16px;font-weight: 500'>How to use it?</span>  
 We use the Future in the Past to shape the future of the past. To show <u>the future from the perspective of the past</u>.
-
-
 
 # Conditionals
 
