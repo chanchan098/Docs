@@ -12,7 +12,14 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topolog
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/
 
-## LoadBalancer
+
+create keepalived cluster
 
 https://github.com/kubernetes/kubeadm/blob/main/docs/ha-considerations.md#options-for-software-load-balancing
+
+
+
+## Stacked control plane and etcd nodes 
+
+initialization on master node.
 

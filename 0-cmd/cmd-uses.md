@@ -65,3 +65,54 @@ PasswordAuthentication no
 windows10 ssh客户端访问windows10 的ssh服务端。authorized_keys文件的安全设置中，不能有继承，只保留administrator和system即可。
 
 重启服务
+
+
+## sshpass
+
+```mermaid
+flowchart TD
+    ControlerMachine --> Slave1 & Slave2 & Slave3 & SlaveN
+
+```
+
+### set `pub` key to slaves by shell
+
+connect.sh
+
+```shell
+sshpass -p "$1" sftp  -o StrictHostKeyChecking=no "$2@$3" <<EOF
+pwd
+exit
+EOF
+```
+
+
+```shell
+bash <<'EOF'
+slavesAddresses=("192.168.0.243" "192.168.0.244")
+slavesUsers=("root" "root" )
+slavesPwds=("joeyjoey" "joeyjoey")
+
+for((i==0; i<${#slavesAddresses[@]}; i++))
+do
+    address=${slavesAddresses[i]}
+    user=${slavesUsers[i]}
+    pwd=${slavesPwds[i]}
+
+    ./connect.sh $pwd $user $address
+    sleep 2
+
+    echo ""
+done
+EOF
+```
+
+### to run shell without file
+
+```shell
+bash <<'EOF'
+
+pwd
+
+EOF
+```
