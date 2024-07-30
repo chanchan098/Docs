@@ -40,15 +40,15 @@
     - [Future perfect continuous](#future-perfect-continuous)
   - [Future in the past](#future-in-the-past)
 - [Conditionals](#conditionals)
+  - [Past Conditionals](#past-conditionals)
+    - [Past Real Conditional](#past-real-conditional)
+    - [Past Unreal Conditional](#past-unreal-conditional)
   - [Present Conditionals](#present-conditionals)
     - [Present Real Conditional](#present-real-conditional)
     - [Present Unreal Conditional](#present-unreal-conditional)
   - [Future Conditionals](#future-conditionals)
     - [Future Real Conditional](#future-real-conditional)
     - [Future Unreal Conditional](#future-unreal-conditional)
-  - [Past Conditionals](#past-conditionals)
-    - [Past Real Conditional](#past-real-conditional)
-    - [Past Unreal Conditional](#past-unreal-conditional)
   - [Zero conditional](#zero-conditional)
   - [First conditional(Future real conditional)](#first-conditionalfuture-real-conditional)
   - [Second conditional](#second-conditional)
@@ -56,6 +56,7 @@
   - [Mixed third/second conditional form](#mixed-thirdsecond-conditional-form)
 - [Passive form](#passive-form)
 - [E-Basic](#e-basic)
+- [Gerunds and Infinitives](#gerunds-and-infinitives)
 
 # -Basic
 
@@ -374,52 +375,6 @@ We use the Future in the Past to shape the future of the past. To show <u>the fu
 
 https://www.englishpage.com/conditional/conditionalintro.html
 
-## Present Conditionals
-
-### Present Real Conditional
-
-The present real conditional (also called conditional 0) is used to talk about what you normally do in real-life situations.
-
-### Present Unreal Conditional
-
-The present unreal conditional (also called conditional 2) is used to talk about what you would generally do in imaginary situations.
-
-## Future Conditionals
-
-### Future Real Conditional
-
-describes what you think you will do in a specific situation in the future. 
-
-### Future Unreal Conditional
-
-<span style='font-size: 16px;font-weight: 500'>FORM 1 (Most Common Form)</span>  
-
-is used to talk about <u>imaginary situations</u> in the future.
-
-[If ... simple past ..., ... would + verb ...]
-
-[... would + verb ... if ... simple past ...]
-
-
-
-<span style='font-size: 16px;font-weight: 500'>FORM 2</span>  
-
-[If ... were + present participle ..., ... would be + present participle ...]
-
-[... would be + present participle ... if ... were + present participle ...]
-
-
-
-<span style='font-size: 16px;font-weight: 500'>FORM 3</span>  
-
-Notice that this form is only different from Form 2 in the if-clause.
-
-Native speakers use Form 3 to emphasize that the conditional form is a plan or prediction in the same way "be going to" is used to indicate a plan or prediction.
-
-[If ... were going to + verb ..., ... would be + present participle ...]
-
-[... would be + present participle ... if ... were going to + verb ...]
-
 
 ## Past Conditionals
 
@@ -442,10 +397,61 @@ You can describe what you would have done differently or how something could hav
 
 [... would have + past participle ... if ... past perfect ...]
 
+## Present Conditionals
+
+### Present Real Conditional
+
+[If / When ... simple present ..., ... simple present ...]
+
+[... simple present ... if / when ... simple present ...]
+
+The present real conditional (also called conditional 0) is used to talk about what you normally do in real-life situations.
+
+### Present Unreal Conditional
+
+[If ... simple past ..., ... would + verb ...]
+
+[... would + verb ... if ... simple past ...]
+
+The present unreal conditional (also called conditional 2) is used to talk about what you would generally do in imaginary situations.
+
+## Future Conditionals
+
+### Future Real Conditional
+
+describes what you think you will do in a specific situation in the future. 
+
+[If / When ... simple present ..., ... simple future ...]
+
+[... simple future ... if / when ... simple present ...]
+
+### Future Unreal Conditional
+
+<span style='font-size: 16px;font-weight: 500'>FORM 1 (Most Common Form)</span>  
+
+is used to talk about <u>imaginary situations</u> in the future.
+
+[If ... simple past ..., ... would + verb ...]
+
+[... would + verb ... if ... simple past ...]
 
 
+<span style='font-size: 16px;font-weight: 500'>FORM 2</span>  
 
-[zero & first](http://www.bbc.co.uk/learningenglish/english/course/intermediate/unit-5/tab/grammar)
+[If ... were + present participle ..., ... would be + present participle ...]
+
+[... would be + present participle ... if ... were + present participle ...]
+
+
+<span style='font-size: 16px;font-weight: 500'>FORM 3</span>  
+
+Notice that this form is only different from Form 2 in the if-clause.
+
+Native speakers use Form 3 to emphasize that the conditional form is a plan or prediction in the same way "be going to" is used to indicate a plan or prediction.
+
+[If ... were going to + verb ..., ... would be + present participle ...]
+
+[... would be + present participle ... if ... were going to + verb ...]
 
 ## Zero conditional
 
@@ -457,6 +463,8 @@ We use the zero conditional to talk about things which <u>always happen</u> if a
 We can use if or when with the same meaning:  
 - If you take exercise, your heart beats faster.
 - When I drink milk, I get stomach ache.
+
+[zero & first](http://www.bbc.co.uk/learningenglish/english/course/intermediate/unit-5/tab/grammar)
 
 ## First conditional(Future real conditional)
 
@@ -522,3 +530,11 @@ https://www.grammarly.com/blog/active-vs-passive-voice/
 
 # E-Basic
 
+# Gerunds and Infinitives
+
+Continuous actions use GERUNDS after verb.
+
+Brief actions OR abstract actions use INFINITIVES after verb.
+
+
+https://www.englishpage.com/gerunds/index.htm
