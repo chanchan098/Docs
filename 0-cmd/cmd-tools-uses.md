@@ -62,6 +62,8 @@ PasswordAuthentication no
 
 -------------
 
+authorized_keys
+
 windows10 ssh客户端访问windows10 的ssh服务端。authorized_keys文件的安全设置中，不能有继承，只保留administrator和system即可。
 
 重启服务
@@ -85,7 +87,6 @@ pwd
 exit
 EOF
 ```
-
 
 ```shell
 bash <<'EOF'

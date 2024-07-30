@@ -55,13 +55,3 @@ https://jmeter.apache.org/usermanual/build-db-test-plan.html
 https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.30
 
 to `apache-jmeter-5.6.3\lib\ext`
-
-## reset mysql password
-
-0. stop mysql service
-1. perform command `mysqld --console --skip-grant-tables --shared-memory`, keep it opened
-2. login again by `mysql -uroot -p`, no pwd.
-3. set pwd to null, `UPDATE mysql.user SET authentication_string='' WHERE user='root';`
-4. end up the `skip-grant-tables` cmd window
-5. start mysql service and login `mysql -uroot -p`
-6. set new pwd, `use mysql ;ALTER user root@'localhost' identified by 'root';`

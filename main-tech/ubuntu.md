@@ -6,6 +6,30 @@
 
 to do this by putting a `symblic link` at `/etc/systemd/system/multi-user.target.wants`
 
+## bash-process-substitution
+
+`<()`
+
+https://linuxhandbook.com/bash-process-substitution/
+
+## Environment configs
+
+`vim /etc/profile`
+
+```shell
+. /home/user/dr/k8s/cmds
+
+export hp="export http_proxy=http://192.168.0.116:10809;export https_proxy=http://192.168.0.116:10809"
+export KUBECONFIG=/etc/kubernetes/admin.conf
+export resp=http://192.168.0.116:8089/resource
+export ISTIO_B=/home/user/dr/k8s/istio-1.21.0/bin
+
+export PATH=$PATH:$KUBECONFIG:$ISTIO_B
+```
+
+- execute string as cmd
+  - `eval $hp`
+
 ## Folder structure
 
 https://linuxhandbook.com/linux-directory-structure/
@@ -37,13 +61,9 @@ https://linuxhandbook.com/linux-directory-structure/
 └── var
 ```
 
-## System backup 
+## HereDoc
 
-https://ubuntu.com/server/docs/how-to-back-up-using-shell-scripts
-
-## Ubuntu server static ip
-
-<https://ubuntu.com/server/docs/network-configuration>
+https://phoenixnap.com/kb/bash-heredoc
 
 ## IO Redirection
 
@@ -69,31 +89,15 @@ https://www.cnblogs.com/gao0722/p/15026546.html
 
 https://linuxhandbook.com/redirection-linux/
 
-## bash-process-substitution
-
-`<()`
-
-https://linuxhandbook.com/bash-process-substitution/
 
 ## Process substitution
 
 https://linuxhandbook.com/bash-process-substitution/
 
+## System backup 
 
-## Environment configs
+https://ubuntu.com/server/docs/how-to-back-up-using-shell-scripts
 
-`vim /etc/profile`
+## Ubuntu server static ip
 
-```shell
-. /home/user/dr/k8s/cmds
-
-export hp="export http_proxy=http://192.168.0.116:10809;export https_proxy=http://192.168.0.116:10809"
-export KUBECONFIG=/etc/kubernetes/admin.conf
-export resp=http://192.168.0.116:8089/resource
-export ISTIO_B=/home/user/dr/k8s/istio-1.21.0/bin
-
-export PATH=$PATH:$KUBECONFIG:$ISTIO_B
-```
-
-- execute string as cmd
-  - `eval $hp`
+<https://ubuntu.com/server/docs/network-configuration>

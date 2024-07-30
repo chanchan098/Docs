@@ -1,0 +1,2 @@
+systemctl status nginx
+systemctl status keepalived

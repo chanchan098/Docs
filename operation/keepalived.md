@@ -6,7 +6,9 @@ https://www.keepalived.org/manpage.html
 
 
 
-## Nginx HA sample, two nodes
+## Nginx HA sample, three nodes
+
+batching for slaves [login-slaves-files-cmds](../0-cmd/login-slaves-files-cmds.sh)
 
 ### 0. installation
 

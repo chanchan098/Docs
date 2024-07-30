@@ -23,8 +23,21 @@
     - [Used to - State](#used-to---state)
     - [Would - Habit (not for states)](#would---habit-not-for-states)
 - [Tenses](#tenses)
-    - [Past tenses](#past-tenses)
-    - [Present tenses](#present-tenses)
+  - [Past tenses](#past-tenses)
+    - [Simple past](#simple-past)
+    - [Past perfect](#past-perfect)
+    - [Past continuous](#past-continuous)
+    - [Past perfect continuous](#past-perfect-continuous)
+  - [Present tenses](#present-tenses)
+    - [Simple present](#simple-present)
+    - [Present perfect](#present-perfect)
+    - [Present continuous](#present-continuous)
+    - [Present perfect continuous](#present-perfect-continuous)
+  - [Future tenses](#future-tenses)
+    - [Simple future](#simple-future)
+    - [Future perfect](#future-perfect)
+    - [Future continuous](#future-continuous)
+    - [Future perfect continuous](#future-perfect-continuous)
   - [Future in the past](#future-in-the-past)
 - [Conditionals](#conditionals)
   - [Zero conditional](#zero-conditional)
@@ -251,27 +264,27 @@ https://www.grammarly.com/blog/verb-tenses/
 |               CONTINUOUTS |
 | PERFECT <BR/> CONTINUOUTS |
 
-### Past tenses
+## Past tenses
 
-<span style='font-size: 16px;font-weight: 500'>Simple past</span>  
+### Simple past
 
 We use the simple past to show actions completed in the past, with no extra emphasis. 
 
 
-<span style='font-size: 16px;font-weight: 500'>Past perfect</span>  
+### Past perfect
 
 shows that one past action happened <u>earlier than</u> another one. 
 
 - She had arrived at the office before she realized it was Sunday. 
 
 
-<span style='font-size: 16px;font-weight: 500'>Past continuous</span>  
+### Past continuous
 
 to show an <u>ongoing action</u> in the past, especially if the action <u>was interrupted</u> by another action.  
 It’s also used for habitual actions that occurred in the past but not in the present.
 
 
-<span style='font-size: 16px;font-weight: 500'>Past perfect continuous</span>  
+### Past perfect continuous
 
 used just like the past perfect tense, except it describes ongoing actions that happened in the past instead of a one-time occurence.  
 It’s often used with the words when, until, and before <u>to connect it to another past action.</u>  
@@ -280,16 +293,64 @@ Before he got his first job as a writer, he had been working as a proofreader.
 
 I had been living on my friend’s couch for a year until they kicked me out. 
 
+---
 
-### Present tenses 
+## Present tenses 
 
-<span style='font-size: 16px;font-weight: 500'>Simple present</span>  
+### Simple present
 
+It’s used for individual actions or habitual actions in the present. 
 
-<span style='font-size: 16px;font-weight: 500'>Present perfect</span>  
+### Present perfect
 
 https://www.grammarly.com/blog/present-perfect-tense/
 
+
+- An ongoing action that started in the past, but has not yet been completed 
+- A series of the same action completed multiple times in the past, likely to happen again in the future
+- An action that was completed very recently (often used with just or now)
+- A change over time
+- An uncompleted action that is expected to be finished (in the negative)
+- To add significance to a completed action
+
+### Present continuous
+
+to show an action happening right now or in the near future. 
+
+
+
+### Present perfect continuous
+
+https://www.grammarly.com/blog/present-perfect-continuous-tense/
+
+shows an ongoing action in the present that was started in the past. It is often used to emphasize the length of time. 
+
+to talk about something that started in the past and is continuing at the present time.
+
+## Future tenses
+
+### Simple future
+
+https://www.grammarly.com/blog/simple-future/
+
+actions that have not happened yet but will later. 
+
+### Future perfect
+
+shows an action that will be completed in the future by a specified time.
+
+### Future continuous
+
+[will] + [be] + [present participle]
+
+Use the future continuous tense for future actions happening over a period of time, especially when a specific time is mentioned.  
+The future continuous tense also shows more certainty and likelihood than the simple future. 
+
+### Future perfect continuous
+
+[will] + [have] + [been] + [present participle]
+
+The future perfect continuous depicts future ongoing actions that continue up until a certain point. Like the future perfect and future continuous, it’s used with a specified time.
 
 ## Future in the past
 
@@ -358,7 +419,6 @@ examples:
 - If the taxi had arrived on time, he wouldn’t have missed the plane.
 
 
-
 the `if` part is the imaginary situation in the past, and the `main` part is what could have happened (but didn’t happen) as a result.  
 We make the third conditional with <u>if + past perfect</u>, and <u>would have + past participle</u>.
 
@@ -371,6 +431,8 @@ The `main` part of the sentence tells us the imaginary result of this situation.
 ## Mixed third/second conditional form
 
 https://www.bbc.co.uk/learningenglish/english/course/upper-intermediate/unit-8/tab/grammar
+
+https://www.englishpage.com/conditional/mixedconditional.html
 
 # Passive form
 
