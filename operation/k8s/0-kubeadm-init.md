@@ -58,6 +58,14 @@ do not delete `/etc/cni/net.d`, if it doesn't to be replaced to another network 
 check out [container errors](#container-errors)
 
 ```
+bash <<'EOF'
+...
+EOF
+```
+
+```
+bash <<'EOF'
+
 sudo systemctl stop kubelet
 
 echo y|kubeadm reset --cleanup-tmp-dir
@@ -67,6 +75,8 @@ sudo rm -rf /var/lib/kubelet/*
 sudo systemctl start kubelet
 
 reboot
+
+EOF
 ```
 
 # Kubeadm cluster setup

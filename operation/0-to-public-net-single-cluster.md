@@ -5,11 +5,11 @@
 flowchart  LR
     subgraph x
         direction TB
-        domain --> 1[public ip] --> sr[soft route] --> gw
+        domain -->|opt LB TO| er[public enterprise routers] -->|LB TO| gw
     end
     subgraph gw
         direction RL
-        gateways -->|by| metallb 
+        ingressgateways -->|by| mb[metallb BGP]
     end
     subgraph cluster
         direction LR
@@ -18,6 +18,7 @@ flowchart  LR
     x --> cluster
 
 ```
+
 
 ### VPC solution
 

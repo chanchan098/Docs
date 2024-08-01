@@ -1,5 +1,11 @@
 
+## REFS
+
 https://github.com/FRRouting/frr
+
+https://docs.frrouting.org/en/latest/setup.html
+
+https://metallb.io/configuration/#enabling-bfd-support-for-bgp-sessions
 
 ## Configuration(two nodes)
 
@@ -15,7 +21,7 @@ https://deb.frrouting.org/
 
 ### Config
 
-<span style='font-size: 16px;font-weight: 500'>241</span>  
+<span style='font-size: 16px;font-weight: 500'>242</span>  
 
 <details>
 <summary>config</summary>
@@ -30,29 +36,16 @@ https://deb.frrouting.org/
 # live configuration to this file, overwriting its contents. If you want to
 # avoid this, you can edit this file manually before starting FRR, or instruct
 # vtysh to write configuration to a different file.
-#log syslog informational
 log syslog informational
 frr version 7.5
 frr defaults traditional
-hostname frr-router
+hostname bgp-router
 log syslog
 
-! Enable syslog logging for bgpd
-logging syslog
-  facility daemon
-  ident bgpd
-  level debugging
+router bgp 242
+ bgp router-id 192.168.0.242
 
-
-router bgp 64501
- bgp router-id 192.168.0.241
-# neighbor 192.168.0.244 remote-as 64500
-# neighbor 192.168.0.244 route-map RM-IN in
-# neighbor 192.168.0.244 route-map RM-OUT out
-# neighbor 192.168.0.244 passive
-
-
- neighbor 192.168.0.243 remote-as 64502
+ neighbor 192.168.0.243 remote-as 243
  neighbor 192.168.0.243 route-map RM-IN in
  neighbor 192.168.0.243 route-map RM-OUT out
  neighbor 192.168.0.243 passive
@@ -65,12 +58,12 @@ router bgp 64501
 
 </details>
 
-
+---
 
 <span style='font-size: 16px;font-weight: 500'>243</span>  
 
 <details>
-<summary>243</summary>
+<summary>config</summary>
 
 ```
 # default to using syslog. /etc/rsyslog.d/45-frr.conf places the log in
@@ -85,31 +78,26 @@ router bgp 64501
 log syslog informational
 frr version 7.5
 frr defaults traditional
-hostname frr-router
+hostname bgp-router
 log syslog
 
-
-router bgp 64502
+router bgp 243
  bgp router-id 192.168.0.243
 
- neighbor 192.168.0.241 remote-as 64501
- neighbor 192.168.0.241 route-map RM-IN in
- neighbor 192.168.0.241 route-map RM-OUT out
-# neighbor 192.168.0.241 passive
-
-# neighbor 192.168.0.244 remote-as 64500
-# neighbor 192.168.0.244 route-map RM-IN in
-# neighbor 192.168.0.244 route-map RM-OUT out
-# neighbor 192.168.0.244 passive
+ neighbor 192.168.0.242 remote-as 242
+ neighbor 192.168.0.242 route-map RM-IN in
+ neighbor 192.168.0.242 route-map RM-OUT out
+ neighbor 192.168.0.242 passive
 !
  address-family ipv4 unicast
    network 192.168.0.0/24
-   neighbor 192.168.0.241 activate
+   neighbor 192.168.0.242 activate
  exit-address-family
 ```
 
 </details>
 
+---
 
 
 <span style='font-size: 16px;font-weight: 500'>k8s `bgppeer.yaml`</span>  
@@ -143,3 +131,30 @@ spec:
     - 192.168.0.249/32
   avoidBuggyIPs: true
 ```
+
+
+## ERRORS
+
+in machine 243 use this configuration
+
+```
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: p242
+  namespace: metallb-system
+spec:
+  myASN: 242
+  peerASN: 243
+  peerAddress: 192.168.0.243  
+```
+
+got
+
+
+```javascript
+{"caller":"native.go:101","error":"read OPEN from \"192.168.0.243:179\": EOF","level":"error","localASN":242,"msg":"failed to connect to peer","op":"connect","peer":"192.168.0.243:179","peerASN":243,"ts":"2024-07-31T08:10:45Z"}
+{"caller":"native.go:101","error":"read OPEN from \"192.168.0.243:179\": EOF","level":"error","localASN":242,"msg":"failed to connect to peer","op":"connect","peer":"192.168.0.243:179","peerASN":243,"ts":"2024-07-31T08:12:45Z"}
+```
+
+https://metallb.io/configuration/#enabling-bfd-support-for-bgp-sessions

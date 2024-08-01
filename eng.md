@@ -116,8 +116,6 @@ If someone is at the place because they are a student / are sick / a prisoner, e
 
 https://en.wikipedia.org/wiki/English_personal_pronouns
 
-
-
 <span style='font-size: 16px;font-weight: 500'>Singular</span>  
 
 |     Person (gender) | Subject | Object | Dependent possessive <br/> (determiner) | Independent possessive | Reflexive |
@@ -128,7 +126,6 @@ https://en.wikipedia.org/wiki/English_personal_pronouns
 |  **Third-Feminine** |   she   |  her   |                   her                   |          hers          |  herself  |
 |    **Third-Neuter** |   it    |   it   |                   its                   |          its           |  itself   |
 |   **Third-Epicene** |  they   |  them  |                  their                  |         theirs         | themself  |
-
 
 
 <span style='font-size: 16px;font-weight: 500'>Plural</span>  
@@ -267,12 +264,12 @@ flowchart LR
 
 https://www.grammarly.com/blog/verb-tenses/
 
-|                           | PAST  | PRESENT | FUTURE | FUTURE IN THE PAST |
-| ------------------------: | :---: | :-----: | :----: | :----------------: |
-|                    SAMPLE |
-|                   PERFECT |
-|               CONTINUOUTS |
-| PERFECT <BR/> CONTINUOUTS |
+|                   ASPECTS \ TIMES | PAST           | PRESENT         | FUTURE               | FUTURE IN THE PAST    |
+| --------------------------------: | :------------- | :-------------- | :------------------- | :-------------------- |
+|                        **SAMPLE** | did            | do              | will do              | would do              |
+|                       **PERFECT** | had done       | have done       | will have done       | would have done       |
+|                   **CONTINUOUTS** | was\were doing | doing           | will be doing        | would be doing        |
+| **PERFECT** <BR/> **CONTINUOUTS** | had been doing | have been doing | will have been doing | would have been doing |
 
 ## Past tenses
 
@@ -386,6 +383,7 @@ The past real conditional describes what you used to do in particular real-life 
 
 [... simple past... if / when ... simple past ...]
 
+Verb of if part and main part are <u>simple past</u>.
 
 ### Past Unreal Conditional
 
@@ -397,6 +395,8 @@ You can describe what you would have done differently or how something could hav
 
 [... would have + past participle ... if ... past perfect ...]
 
+Verb of if part is <u>past perfetct</u>, verb of main part is <u>would have + past participle</u>.
+
 ## Present Conditionals
 
 ### Present Real Conditional
@@ -407,6 +407,8 @@ You can describe what you would have done differently or how something could hav
 
 The present real conditional (also called conditional 0) is used to talk about what you normally do in real-life situations.
 
+Verb of <u>if part</u> and <u>main part</u> are <u>simple present</u>.
+
 ### Present Unreal Conditional
 
 [If ... simple past ..., ... would + verb ...]
@@ -414,6 +416,8 @@ The present real conditional (also called conditional 0) is used to talk about w
 [... would + verb ... if ... simple past ...]
 
 The present unreal conditional (also called conditional 2) is used to talk about what you would generally do in imaginary situations.
+
+Verb of if part is <u>simple past</u>, verb of main part is <u>would do</u>
 
 ## Future Conditionals
 
@@ -425,6 +429,8 @@ describes what you think you will do in a specific situation in the future.
 
 [... simple future ... if / when ... simple present ...]
 
+Verb of if\when part is <u>simple present</u>, verb of main part is <u>simple future</u>.
+
 ### Future Unreal Conditional
 
 <span style='font-size: 16px;font-weight: 500'>FORM 1 (Most Common Form)</span>  
@@ -435,6 +441,7 @@ is used to talk about <u>imaginary situations</u> in the future.
 
 [... would + verb ... if ... simple past ...]
 
+Verb of if part is `simple past`, verb of main part is `would do`.
 
 <span style='font-size: 16px;font-weight: 500'>FORM 2</span>  
 
@@ -442,6 +449,7 @@ is used to talk about <u>imaginary situations</u> in the future.
 
 [... would be + present participle ... if ... were + present participle ...]
 
+Verb of if part is `were present participle`, verb of main part is `would be present participle`.
 
 <span style='font-size: 16px;font-weight: 500'>FORM 3</span>  
 
@@ -452,6 +460,8 @@ Native speakers use Form 3 to emphasize that the conditional form is a plan or p
 [If ... were going to + verb ..., ... would be + present participle ...]
 
 [... would be + present participle ... if ... were going to + verb ...]
+
+Verb of if part is `were were going to do`, verb of main part is `would be present participle`.
 
 ## Zero conditional
 
