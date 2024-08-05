@@ -126,9 +126,8 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
+    - 192.168.0.242/32
     - 192.168.0.243/32
-    - 192.168.0.247/32
-    - 192.168.0.249/32
   avoidBuggyIPs: true
 ```
 

@@ -1,3 +1,16 @@
+
+## Installation for multiple instances on single machine of Windows 
+
+https://blog.csdn.net/qq_36959454/article/details/101849693
+
+first one, install it step by step via official tutorial.
+
+other ones, copy the folder installed.
+- modify port, in `data/postgresql.conf`
+- delete `postmaster.pid`
+- install services, `pg_ctl.exe register -N "postgresql-x64-16-2" -D "C:\Program Files\PostgreSQL\16-2\data"`
+
+
 ## Comparison with MySQL
 
 <https://www.cnblogs.com/blog5277/p/10658426.html>

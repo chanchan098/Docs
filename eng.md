@@ -118,23 +118,23 @@ https://en.wikipedia.org/wiki/English_personal_pronouns
 
 <span style='font-size: 16px;font-weight: 500'>Singular</span>  
 
-|     Person (gender) | Subject | Object | Dependent possessive <br/> (determiner) | Independent possessive | Reflexive |
-| ------------------: | :-----: | :----: | :-------------------------------------: | :--------------------: | :-------: |
-|           **First** |    I    |   me   |                   my                    |          mine          |  myself   |
-|          **Second** |   you   |  you   |                  your                   |         yours          | yourself  |
-| **Third-Masculine** |   he    |  him   |                   his                   |          his           |  himself  |
-|  **Third-Feminine** |   she   |  her   |                   her                   |          hers          |  herself  |
-|    **Third-Neuter** |   it    |   it   |                   its                   |          its           |  itself   |
-|   **Third-Epicene** |  they   |  them  |                  their                  |         theirs         | themself  |
+| Person (gender) \ pronoun | Subject | Object | Dependent possessive <br/> (determiner) | Independent possessive | Reflexive |
+| ------------------------: | :-----: | :----: | :-------------------------------------: | :--------------------: | :-------: |
+|                 **First** |    I    |   me   |                   my                    |          mine          |  myself   |
+|                **Second** |   you   |  you   |                  your                   |         yours          | yourself  |
+|       **Third-Masculine** |   he    |  him   |                   his                   |          his           |  himself  |
+|        **Third-Feminine** |   she   |  her   |                   her                   |          hers          |  herself  |
+|          **Third-Neuter** |   it    |   it   |                   its                   |          its           |  itself   |
+|         **Third-Epicene** |  they   |  them  |                  their                  |         theirs         | themself  |
 
 
 <span style='font-size: 16px;font-weight: 500'>Plural</span>  
 
-| Person (gender) | Subject | Object | Dependent possessive <br/>  (determiner) | Independent possessive | Reflexive  |
-| --------------: | :-----: | :----: | :--------------------------------------: | :--------------------: | :--------: |
-|       **First** |   we    |   us   |                   our                    |          ours          | ourselves  |
-|      **Second** |   you   |  you   |                   your                   |         yours          | yourselves |
-|       **Third** |  they   |  them  |                  their                   |         theirs         | themselves |
+| Person (gender) \ pronoun | Subject | Object | Dependent possessive <br/>  (determiner) | Independent possessive | Reflexive  |
+| ------------------------: | :-----: | :----: | :--------------------------------------: | :--------------------: | :--------: |
+|                 **First** |   we    |   us   |                   our                    |          ours          | ourselves  |
+|                **Second** |   you   |  you   |                   your                   |         yours          | yourselves |
+|                 **Third** |  they   |  them  |                  their                   |         theirs         | themselves |
 
 
 # Question forms
@@ -264,12 +264,21 @@ flowchart LR
 
 https://www.grammarly.com/blog/verb-tenses/
 
-|                   ASPECTS \ TIMES | PAST           | PRESENT         | FUTURE               | FUTURE IN THE PAST    |
-| --------------------------------: | :------------- | :-------------- | :------------------- | :-------------------- |
-|                        **SAMPLE** | did            | do              | will do              | would do              |
-|                       **PERFECT** | had done       | have done       | will have done       | would have done       |
-|                   **CONTINUOUTS** | was\were doing | doing           | will be doing        | would be doing        |
-| **PERFECT** <BR/> **CONTINUOUTS** | had been doing | have been doing | will have been doing | would have been doing |
+
+|              ASPECTS \ TIMES | PAST                    | PRESENT                    | FUTURE                    | FUTURE IN THE PAST   |
+| ---------------------------: | :---------------------- | :------------------------- | :------------------------ | :------------------- |
+|                   **SIMPLE** | simple past             | simple present             | simple future             | simple -             |
+|                  **PERFECT** | past perfect            | present perfect            | future perfect            | perfect -            |
+|               **CONTINUOUS** | past continuous         | present continuous         | future continuous         | continuous -         |
+| **PERFECT <BR/> CONTINUOUS** | past perfect continuous | present perfect continuous | future perfect continuous | perfect continuous - |
+
+
+|               ASPECTS \ TIMES | PAST           | PRESENT         | FUTURE               | FUTURE IN THE PAST    |
+| ----------------------------: | :------------- | :-------------- | :------------------- | :-------------------- |
+|                    **SAMPLE** | did            | do              | will do              | would do              |
+|                   **PERFECT** | had done       | have done       | will have done       | would have done       |
+|               **CONTINUOUTS** | was\were doing | doing           | will be doing        | would be doing        |
+| **PERFECT <BR/> CONTINUOUTS** | had been doing | have been doing | will have been doing | would have been doing |
 
 ## Past tenses
 
@@ -407,7 +416,7 @@ Verb of if part is <u>past perfetct</u>, verb of main part is <u>would have + pa
 
 The present real conditional (also called conditional 0) is used to talk about what you normally do in real-life situations.
 
-Verb of <u>if part</u> and <u>main part</u> are <u>simple present</u>.
+Verbs of both of <u>if part</u> and <u>main part</u> are <u>simple present</u>.
 
 ### Present Unreal Conditional
 
