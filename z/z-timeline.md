@@ -1,14 +1,9 @@
-```mermaid
-timeline
-    title weekday morning 
-    07 50(get up)
-            : cook breakfirst
-            : wash face
-            : dress up
-            : eat breakfirst
-    08 20(get out) 
-            : keys
-            : phone
-            : post card
-            : brush and toothpaste
-```
+
+|   时间 \ 日期 | 一 ~ 五    | 说明 |
+| ------------: | :--------- | :--- |
+|          7:30 | 起床       |
+|   7:30 - 8:20 | 洗漱，早餐 | 晴天 |
+|   8:20 - 8:40 | 骑车       | 晴天 |
+|          8:40 | 打卡       |
+| 12:15 - 12:20 | 打卡       |
+| 12:20 - 12:50 | 午餐       |

@@ -57,6 +57,9 @@
 - [Passive form](#passive-form)
 - [E-Basic](#e-basic)
 - [Gerunds and Infinitives](#gerunds-and-infinitives)
+- [Participle  clause](#participle--clause)
+  - [Present participle clauses](#present-participle-clauses)
+  - [Perfect participle clauses](#perfect-participle-clauses)
 
 # -Basic
 
@@ -292,7 +295,7 @@ We use the simple past to show actions completed in the past, with no extra emph
 shows that one past action happened <u>earlier than</u> another one. 
 
 - She had arrived at the office before she realized it was Sunday. 
-
+- I ran to my car when I noticed my wife had left already. 
 
 ### Past continuous
 
@@ -557,3 +560,22 @@ Brief actions OR abstract actions use INFINITIVES after verb.
 
 
 https://www.englishpage.com/gerunds/index.htm
+
+
+# Participle  clause 
+
+https://www.grammaring.com/participle-clauses
+
+## Present participle clauses
+
+The subject of two actions are the same in common situation, 
+but also could be different.
+
+- Opening the envelope, I found two concert tickets. (I opened the envelope and I found two concert tickets.)
+- The weather being nice, we decided to go for a picnic. (As the weather was nice, we decided to go for a picnic.)
+
+## Perfect participle clauses
+
+If we want to make it clear that an action happens before another one, we use a perfect participle for the earlier action.
+
+

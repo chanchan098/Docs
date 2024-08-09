@@ -170,8 +170,8 @@ Aspects enable the modularization of concerns (such as transaction management) t
     @Pointcut("@annotation(preAuthenticated)")
     public void preAuthenticated() {}
 
-    @Around("@annotation(preAuthenticated)")
     @Around("preAuthenticated()")
+    @Around("@annotation(preAuthenticated)")
   ```
 
 - Introduction:  

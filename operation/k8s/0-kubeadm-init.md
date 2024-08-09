@@ -4,7 +4,6 @@
 - [Crictl(containerd) proxy](#crictlcontainerd-proxy)
 - [Kubeadm reset](#kubeadm-reset)
   - [after deletion to `/etc/cni/net.d`:](#after-deletion-to-etccninetd)
-- [Kubeadm cluster setup](#kubeadm-cluster-setup)
   - [Disk operation (VM)](#disk-operation-vm)
     - [Adds new partitions](#adds-new-partitions)
     - [Merges or removes spaces to partitions](#merges-or-removes-spaces-to-partitions)
@@ -78,8 +77,6 @@ reboot
 
 EOF
 ```
-
-# Kubeadm cluster setup
 
 ## Disk operation (VM)
 
