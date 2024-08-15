@@ -211,12 +211,13 @@ window.addEventListener('touchend', handleMouseUp);
 // @match        https://juejin.cn/post/*
 // @match        http://www.netbian.com/*
 // @grant        GM_xmlhttpRequest
+// @require      https://raw.githubusercontent.com/chanchan098/Docs/master/tools/get-infos-by-site.js
 // ==/UserScript==
 
 const UPLOAD_ADDR = "http://192.168.0.116:7777/upload";
 
 // for specific website
-function getInfosBySite(){
+/*function getInfosBySite(){
    //var imgs = document.getElementsByTagName("img")
     const currentUrl = window.location.href;
     console.log("Current Page URL:", currentUrl);
@@ -240,19 +241,21 @@ function getInfosBySite(){
         return {imgs, folderRoot, folder};
     }
     else if(currentUrl.indexOf('www.netbian.com/index') != -1){
+        var list = document.getElementsByClassName('list')[0];
+        var imgs = list.getElementsByTagName("img");
+
         var page = document.getElementsByClassName("page")[0];
         var curPage = page.getElementsByTagName("b")[0];
         var folderRoot = "D:\\liaoyj\\test\\bian\\";
         var folder = curPage.innerText;
 
-        var list = document.getElementsByClassName('list')[0];
-        var imgs = list.getElementsByTagName("img");
+
 
         return {imgs, folderRoot, folder}
     }
 }
 
-
+*/
 
 
 function getImageExtension(url) {
