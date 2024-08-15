@@ -208,7 +208,7 @@ window.addEventListener('touchend', handleMouseUp);
 // @author       none
 // @run-at       document-idle
 // @match        https://www.baidu.com/*
-// @match        https://juejin.cn/post/*
+// @match        *://juejin.cn/post/*
 // @match        http://www.netbian.com/*
 // @grant        GM_xmlhttpRequest
 // @require      https://raw.githubusercontent.com/chanchan098/Docs/master/tools/get-infos-by-site.js
@@ -216,48 +216,104 @@ window.addEventListener('touchend', handleMouseUp);
 
 const UPLOAD_ADDR = "http://192.168.0.116:7777/upload";
 
-// for specific website
-/*function getInfosBySite(){
-   //var imgs = document.getElementsByTagName("img")
-    const currentUrl = window.location.href;
-    console.log("Current Page URL:", currentUrl);
+let isMouseDown = false;
+let longPressTimeout;
 
-    // 如果需要处理URL中的特定部分，可以使用URL API
-    // const url = new URL(currentUrl);
-    // console.log("Hostname:", url.hostname);
-    // console.log("Pathname:", url.pathname);
-    // console.log("Search Params:", url.search);
-
-    if(currentUrl.indexOf('juejin.cn/post') != -1){
-        var articleA = document.getElementsByClassName('article-area')[0];
-
-        var at = articleA.getElementsByTagName("article")[0];
-        var title = document.getElementsByClassName('article-title')[0];
-
-        var imgs = at.getElementsByTagName("img");
-        var folderRoot = "D:\\liaoyj\\test\\juejin\\";
-        var folder = title.innerText;
-
-        return {imgs, folderRoot, folder};
-    }
-    else if(currentUrl.indexOf('www.netbian.com/index') != -1){
-        var list = document.getElementsByClassName('list')[0];
-        var imgs = list.getElementsByTagName("img");
-
-        var page = document.getElementsByClassName("page")[0];
-        var curPage = page.getElementsByTagName("b")[0];
-        var folderRoot = "D:\\liaoyj\\test\\bian\\";
-        var folder = curPage.innerText;
+function uploadImage(base64, folderRoot, folder, filename, idx) {
+    // 假设我们已经有了一个 Blob 对象，它代表了图片数据
 
 
+    // 创建 FormData 对象
+    const formData = new FormData();
+    formData.append('image', base64); // 第三个参数是文件名
+    formData.append('folderRoot', folderRoot)
+    formData.append('folder', folder);
+    formData.append('filename', filename);
+    formData.append('idx', idx);
 
-        return {imgs, folderRoot, folder}
-    }
+
+    GM_xmlhttpRequest({
+        method: 'POST',
+        url: UPLOAD_ADDR,
+        data: formData, // 直接将 FormData 作为 data 传递
+        headers: { // 设置 Content-Type 为 multipart/form-data
+            'Content-Type': undefined // GM_xmlhttpRequest 会自动处理 FormData 的 Content-Type
+        },
+        onload: function (response) {
+            //console.log('Response:', response.responseText);
+        },
+        onerror: function (error) {
+            console.error('Error:', error);
+        }
+    });
+
+    return
+    // 创建 XMLHttpRequest 实例
+    const xhr = new XMLHttpRequest();
+    // 设置请求的 URL 和类型
+    xhr.open('POST', UPLOAD_ADDR, true);
+
+    // 设置请求头，告诉服务器我们将发送一个 Blob
+    //xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+
+    // 设置响应处理函数
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            //console.log('Image uploaded successfully.');
+            //console.log('Server response:', xhr.responseText);
+        } else {
+            console.log(filename)
+            console.error('Failed to upload image. Status:', xhr.status);
+        }
+    };
+
+    // 发送 FormData
+    xhr.send(formData);
 }
 
-*/
+// upload
+function handleLongPress() {
+    //var imgs = document.getElementsByTagName("img")
+    //console.log("Long press detected!", imgs.length);
+
+    //var folder = "D:\\liaoyj\\test\\"
+    //var ext2 = getImageExtension(imgs[0].src)
+    var obj = getInfosBySite()
+    var imgs = obj.imgs
+    var folderRoot = obj.folderRoot
+    var folder = obj.folder
+
+    console.log("imgs:", imgs.length);
+    document.getElementsByTagName("body")[0].style = "opacity:0.2;transition: opacity .5s ease-in-out;"
+    setTimeout(() => { document.getElementsByTagName("body")[0].style = "opacity:1;transition: opacity .5s ease-in-out;" }, 500)
 
 
+    setTimeout(() => {
+        for (var i = 0; i < imgs.length; i++) {
+            (function (i) {
+                setTimeout(() => {
+                    //console.log(i,imgs[i].src);
+                    var img = imgs[i];
+                    var ext = getImageExtension(img.src);
+                    var fname = getFileNameAndExtension(img.src)
+
+                    getImageBase64(img.src) // 替换为实际图片URL
+                        .then(base64 => {
+                            uploadImage(base64, folderRoot, folder, fname, i);
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                }, i * 100);
+            })(i);
+        }
+    }, 1000)
+    // 清除计时器，防止重复触发
+    clearTimeout(longPressTimeout);
+}
+
+
+// start assistant
 function getImageExtension(url) {
     // 去掉URL片段部分（#号后面的内容）
     const urlWithoutFragment = url.split('#')[0];
@@ -275,8 +331,6 @@ function getImageExtension(url) {
         return ''; // 返回空字符串表示没有找到有效的后缀名
     }
 }
-
-
 function getFileNameAndExtension(url) {
     // 去掉URL片段部分（#号后面的内容）
     const urlWithoutFragment = url.split('#')[0];
@@ -300,51 +354,6 @@ function getFileNameAndExtension(url) {
         return ""; // 返回空字符串表示没有找到有效的后缀名
     }
 }
-
-
-function uploadImage(base64, folderRoot, folder, filename, idx) {
-    // 假设我们已经有了一个 Blob 对象，它代表了图片数据
-
-
-    // 创建 FormData 对象
-    const formData = new FormData();
-    formData.append('image', base64); // 第三个参数是文件名
-    formData.append('folderRoot', folderRoot)
-    formData.append('folder', folder);
-    formData.append('filename', filename);
-    formData.append('idx', idx);
-
-    // 创建 XMLHttpRequest 实例
-    const xhr = new XMLHttpRequest();
-    // 设置请求的 URL 和类型
-    xhr.open('POST', UPLOAD_ADDR, true);
-
-    // 设置请求头，告诉服务器我们将发送一个 Blob
-    //xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-
-
-
-    // 设置响应处理函数
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            //console.log('Image uploaded successfully.');
-            //console.log('Server response:', xhr.responseText);
-        } else {
-            console.log(filename)
-            console.error('Failed to upload image. Status:', xhr.status);
-        }
-    };
-
-    // 发送 FormData
-    xhr.send(formData);
-}
-
-
-/**
- * 将ArrayBuffer转换为Base64编码
- * @param {ArrayBuffer} buffer
- * @return {string} Base64编码
- */
 function arrayBufferToBase64(buffer) {
     const bytes = new Uint8Array(buffer);
     let binary = '';
@@ -353,12 +362,6 @@ function arrayBufferToBase64(buffer) {
     }
     return window.btoa(binary);
 }
-
-/**
-    * 获取图片的Base64编码
-    * @param {string} url - 图片的URL
-    * @return {Promise<string>} - Promise对象，解析为Base64编码的字符串
-    */
 function getImageBase64(url) {
     return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
@@ -379,65 +382,17 @@ function getImageBase64(url) {
         });
     });
 }
-
-
 function handleMouseDown() {
     // 设置一个计时器，如果持续时间超过一定阈值，则触发长按事件
     longPressTimeout = setTimeout(handleLongPress, 600); // 500毫秒后触发长按
     isMouseDown = true;
 }
-
 function handleMouseUp() {
     // 清除计时器，防止触发长按
     clearTimeout(longPressTimeout);
     isMouseDown = false;
 }
-
-
-let isMouseDown = false;
-let longPressTimeout;
-
-// upload
-function handleLongPress() {
-    //var imgs = document.getElementsByTagName("img")
-    //console.log("Long press detected!", imgs.length);
-
-    //var folder = "D:\\liaoyj\\test\\"
-    //var ext2 = getImageExtension(imgs[0].src)
-    var obj = getInfosBySite()
-    var imgs = obj.imgs
-    var folderRoot = obj.folderRoot
-    var folder = obj.folder
-
-    console.log("imgs:", imgs.length);
-    document.getElementsByTagName("body")[0].style = "opacity:0.2;transition: opacity .5s ease-in-out;"
-    setTimeout(()=>{ document.getElementsByTagName("body")[0].style = "opacity:1;transition: opacity .5s ease-in-out;" }, 500)
-
-
-    setTimeout(()=>{
-        for (var i = 0; i < imgs.length; i++) {
-        (function (i) {
-            setTimeout(() => {
-                //console.log(i,imgs[i].src);
-                var img = imgs[i];
-                var ext = getImageExtension(img.src);
-                var fname = getFileNameAndExtension(img.src)
-
-                getImageBase64(img.src) // 替换为实际图片URL
-                    .then(base64 => {
-                    uploadImage(base64, folderRoot, folder, fname, i);
-                })
-                    .catch(error => {
-                    console.error("Error:", error);
-                });
-            }, i * 100);
-        })(i);
-    }
-    },1000)
-    // 清除计时器，防止重复触发
-    clearTimeout(longPressTimeout);
-}
-
+// end assistant
 
 (function () {
     'use strict';
