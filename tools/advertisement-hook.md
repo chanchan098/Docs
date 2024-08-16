@@ -194,7 +194,7 @@ window.addEventListener('touchend', handleMouseUp);
 </details>
 
 
-### get imgs
+### get imgs by download
 
 <details>
 <summary></summary>
