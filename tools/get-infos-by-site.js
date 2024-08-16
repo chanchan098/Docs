@@ -14,27 +14,24 @@ function getInfosBySite() {
 
     if (currentUrl.indexOf('juejin.cn/post') != -1) {
         var articleA = document.getElementsByClassName('article-area')[0];
-
         var at = articleA.getElementsByTagName("article")[0];
+        var _imgs = at.getElementsByTagName("img");
+
         var title = document.getElementsByClassName('article-title')[0];
+        var _folderRoot = "D:\\liaoyj\\test\\juejin\\";
+        var _folder = title.innerText;
 
-        var imgs = at.getElementsByTagName("img");
-        var folderRoot = "D:\\liaoyj\\test\\juejin\\";
-        var folder = title.innerText;
-
-        return { imgs, folderRoot, folder };
+        return { _imgs, _folderRoot, _folder };
     }
     else if (currentUrl.indexOf('www.netbian.com/index') != -1) {
         var list = document.getElementsByClassName('list')[0];
-        var imgs = list.getElementsByTagName("img");
+        var _imgs = list.getElementsByTagName("img");
 
         var page = document.getElementsByClassName("page")[0];
         var curPage = page.getElementsByTagName("b")[0];
-        var folderRoot = "D:\\liaoyj\\test\\bian\\";
-        var folder = curPage.innerText;
+        var _folderRoot = "D:\\liaoyj\\test\\bian\\";
+        var _folder = curPage.innerText;
 
-
-
-        return { imgs, folderRoot, folder }
+        return { _imgs, _folderRoot, _folder }
     }
 }
