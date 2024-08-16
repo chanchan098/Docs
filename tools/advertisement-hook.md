@@ -216,16 +216,18 @@ window.addEventListener('touchend', handleMouseUp);
 
 const UPLOAD_ADDR = "http://192.168.0.116:7777/upload";
 
-let isMouseDown = false;
-let longPressTimeout;
+var dlCon = "j-dl-con"
+var dlBg = "j-dl-btn-bg"
+var dlId = "j-dl-btn"
+
+var basicBtnStyle = 'width: 10px;position: fixed;top: 40px;right: 10px;background-color: rgb(179, 179, 179);color: rgb(249, 249, 249);border: none;cursor: pointer;text-align: center;line-height: 11px;padding: 5px 4px;border-radius: 5px;z-index: 9999 !important;'
+var downloading = false
+
 
 function uploadImage(base64, folderRoot, folder, filename, idx) {
-    // 假设我们已经有了一个 Blob 对象，它代表了图片数据
 
-
-    // 创建 FormData 对象
     const formData = new FormData();
-    formData.append('image', base64); // 第三个参数是文件名
+    formData.append('image', base64);
     formData.append('folderRoot', folderRoot)
     formData.append('folder', folder);
     formData.append('filename', filename);
@@ -235,10 +237,10 @@ function uploadImage(base64, folderRoot, folder, filename, idx) {
     GM_xmlhttpRequest({
         method: 'POST',
         url: UPLOAD_ADDR,
-        data: formData, // 直接将 FormData 作为 data 传递
-        headers: { // 设置 Content-Type 为 multipart/form-data
+        data: formData,
+        /*headers: { // 设置 Content-Type 为 multipart/form-data
             'Content-Type': undefined // GM_xmlhttpRequest 会自动处理 FormData 的 Content-Type
-        },
+        },*/
         onload: function (response) {
             //console.log('Response:', response.responseText);
         },
@@ -247,48 +249,32 @@ function uploadImage(base64, folderRoot, folder, filename, idx) {
         }
     });
 
-    return
-    // 创建 XMLHttpRequest 实例
-    const xhr = new XMLHttpRequest();
-    // 设置请求的 URL 和类型
-    xhr.open('POST', UPLOAD_ADDR, true);
-
-    // 设置请求头，告诉服务器我们将发送一个 Blob
-    //xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-
-    // 设置响应处理函数
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            //console.log('Image uploaded successfully.');
-            //console.log('Server response:', xhr.responseText);
-        } else {
-            console.log(filename)
-            console.error('Failed to upload image. Status:', xhr.status);
-        }
-    };
-
-    // 发送 FormData
-    xhr.send(formData);
 }
 
 // upload
-function handleLongPress() {
-    //var imgs = document.getElementsByTagName("img")
-    //console.log("Long press detected!", imgs.length);
+function startUpload() {
+    if (downloading) {
+        return
+    }
 
-    //var folder = "D:\\liaoyj\\test\\"
-    //var ext2 = getImageExtension(imgs[0].src)
     var obj = getInfosBySite()
     var imgs = obj.imgs
     var folderRoot = obj.folderRoot
     var folder = obj.folder
-
     console.log("imgs:", imgs.length);
-    document.getElementsByTagName("body")[0].style = "opacity:0.2;transition: opacity .5s ease-in-out;"
-    setTimeout(() => { document.getElementsByTagName("body")[0].style = "opacity:1;transition: opacity .5s ease-in-out;" }, 500)
+    // reset
+    downloading = true
 
+    var curCount = 0
+    var height = 60
+    var count = imgs.length
+    var rate = height / count
+    var bg = document.getElementById(dlBg)
+
+    bg.style.top = '60px'
 
     setTimeout(() => {
+
         for (var i = 0; i < imgs.length; i++) {
             (function (i) {
                 setTimeout(() => {
@@ -297,23 +283,44 @@ function handleLongPress() {
                     var ext = getImageExtension(img.src);
                     var fname = getFileNameAndExtension(img.src)
 
-                    getImageBase64(img.src) // 替换为实际图片URL
+                    getImageBase64(img.src)
                         .then(base64 => {
+                            console.log("curCount", curCount, imgs.length)
                             uploadImage(base64, folderRoot, folder, fname, i);
+
+
+                            var curH = height - (curCount * rate)
+                            bg.style.top = curH + 'px'
+
+                            curCount = curCount + 1
+                            // reset
+                            if (curCount == imgs.length) {
+                                downloading = false
+                                bg.style.top = '0px'
+                            }
                         })
                         .catch(error => {
                             console.error("Error:", error);
+                            var curH = height - (curCount * rate)
+                            bg.style.top = curH + 'px'
+
+                            curCount = curCount + 1
+                            // reset
+                            if (curCount == imgs.length) {
+                                downloading = false
+                                bg.style.top = '0px'
+                            }
                         });
-                }, i * 100);
+                }, i * 10);
             })(i);
         }
-    }, 1000)
-    // 清除计时器，防止重复触发
-    clearTimeout(longPressTimeout);
+
+    }, 500)
+
 }
 
 
-// start assistant
+// START assistant
 function getImageExtension(url) {
     // 去掉URL片段部分（#号后面的内容）
     const urlWithoutFragment = url.split('#')[0];
@@ -382,17 +389,8 @@ function getImageBase64(url) {
         });
     });
 }
-function handleMouseDown() {
-    // 设置一个计时器，如果持续时间超过一定阈值，则触发长按事件
-    longPressTimeout = setTimeout(handleLongPress, 600); // 500毫秒后触发长按
-    isMouseDown = true;
-}
-function handleMouseUp() {
-    // 清除计时器，防止触发长按
-    clearTimeout(longPressTimeout);
-    isMouseDown = false;
-}
-// end assistant
+// END assistant
+
 
 (function () {
     'use strict';
@@ -405,14 +403,30 @@ function handleMouseUp() {
         console.error("Error:", error);
     });*/
 
-    // 添加事件监听器
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
+    var buttonCon = document.createElement('div');
+    buttonCon.id = dlCon
+    buttonCon.style = 'width: 15px;height: 60px;position: fixed;top: 40px;right: 10px;color: rgb(245 245 245);cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px; border: 1px solid rgb(155 198 155);z-index: 9999 !important;overflow: hidden;'
 
-    // 为了兼容移动设备，还可以监听 touchstart 和 touchend 事件
-    window.addEventListener('touchstart', handleMouseDown);
-    window.addEventListener('touchend', handleMouseUp);
 
+    var buttonBg = document.createElement('div');
+    buttonBg.id = dlBg
+    buttonBg.style = 'width: 100%;height: 100%;background-color: rgb(179, 179, 179);border: none;cursor: pointer;border-radius: 2px;position: absolute;top: 0px;left: 0px;align-content: center;transition: top 0.2s ease;'
+
+
+    var button = document.createElement('div');
+    button.id = dlId
+    button.textContent='down';
+    button.style = 'width: 100%;height: 100%;border: none;cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px;position: absolute;top: 0px;left: 0px;align-content: center;z-index: 10000 !important;text-orientation: upright;writing-mode: vertical-rl; font-size:12px !important'
+
+    buttonCon.appendChild(buttonBg)
+    buttonCon.appendChild(button)
+
+
+    button.addEventListener('click', function () {
+            startUpload()
+        });
+
+    document.body.appendChild(buttonCon);
 })();
 ```
 
