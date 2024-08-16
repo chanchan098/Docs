@@ -1,4 +1,6 @@
-console.log("from github raw")
+
+const UPLOAD_ADDR = "http://192.168.0.116:7777/upload";
+console.log("from github raw, upload server is " + UPLOAD_ADDR)
 function getInfosBySite() {
     //var imgs = document.getElementsByTagName("img")
     const currentUrl = window.location.href;
