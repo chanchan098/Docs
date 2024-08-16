@@ -219,7 +219,7 @@ const UPLOAD_ADDR = "http://192.168.0.116:7777/upload";
 var dlCon = "j-dl-con"
 var dlBg = "j-dl-btn-bg"
 var dlId = "j-dl-btn"
-
+var heightDlBtn = 80
 var basicBtnStyle = 'width: 10px;position: fixed;top: 40px;right: 10px;background-color: rgb(179, 179, 179);color: rgb(249, 249, 249);border: none;cursor: pointer;text-align: center;line-height: 11px;padding: 5px 4px;border-radius: 5px;z-index: 9999 !important;'
 var downloading = false
 
@@ -266,12 +266,12 @@ function startUpload() {
     downloading = true
 
     var curCount = 0
-    var height = 60
+    var height = heightDlBtn
     var count = imgs.length
     var rate = height / count
     var bg = document.getElementById(dlBg)
 
-    bg.style.top = '60px'
+    bg.style.top = heightDlBtn + 'px'
 
     setTimeout(() => {
 
@@ -405,7 +405,7 @@ function getImageBase64(url) {
 
     var buttonCon = document.createElement('div');
     buttonCon.id = dlCon
-    buttonCon.style = 'width: 15px;height: 60px;position: fixed;top: 40px;right: 10px;color: rgb(245 245 245);cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px; border: 1px solid rgb(155 198 155);z-index: 9999 !important;overflow: hidden;'
+    buttonCon.style = 'width: 15px;height: '+ heightDlBtn +'px;position: fixed;top: 40px;right: 10px;color: rgb(245 245 245);cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px; border: 1px solid rgb(155 198 155);z-index: 9999 !important;overflow: hidden;'
 
 
     var buttonBg = document.createElement('div');
