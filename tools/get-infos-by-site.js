@@ -21,7 +21,7 @@ function getInfosBySite() {
         var _folderRoot = "D:\\liaoyj\\test\\juejin\\";
         var _folder = title.innerText;
 
-        return { _imgs, _folderRoot, _folder };
+        return { imgs: _imgs, folderRoot: _folderRoot, folder: _folder };
     }
     else if (currentUrl.indexOf('www.netbian.com/index') != -1) {
         var list = document.getElementsByClassName('list')[0];
@@ -32,6 +32,6 @@ function getInfosBySite() {
         var _folderRoot = "D:\\liaoyj\\test\\bian\\";
         var _folder = curPage.innerText;
 
-        return { _imgs, _folderRoot, _folder }
+        return { imgs: _imgs, folderRoot: _folderRoot, folder: _folder }
     }
 }
