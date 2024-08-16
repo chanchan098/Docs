@@ -216,10 +216,11 @@ window.addEventListener('touchend', handleMouseUp);
 
 const UPLOAD_ADDR = "http://192.168.0.116:7777/upload";
 
+var heightDlBtn = 80
+var widthDlBtn = 20
 var dlCon = "j-dl-con"
 var dlBg = "j-dl-btn-bg"
 var dlId = "j-dl-btn"
-var heightDlBtn = 80
 var basicBtnStyle = 'width: 10px;position: fixed;top: 40px;right: 10px;background-color: rgb(179, 179, 179);color: rgb(249, 249, 249);border: none;cursor: pointer;text-align: center;line-height: 11px;padding: 5px 4px;border-radius: 5px;z-index: 9999 !important;'
 var downloading = false
 
@@ -405,7 +406,7 @@ function getImageBase64(url) {
 
     var buttonCon = document.createElement('div');
     buttonCon.id = dlCon
-    buttonCon.style = 'width: 15px;height: '+ heightDlBtn +'px;position: fixed;top: 40px;right: 10px;color: rgb(245 245 245);cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px; border: 1px solid rgb(155 198 155);z-index: 9999 !important;overflow: hidden;'
+    buttonCon.style = 'width: '+ widthDlBtn +'px;height: '+ heightDlBtn +'px;position: fixed;top: 40px;right: 10px;color: rgb(245 245 245);cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px; border: 1px solid rgb(155 198 155);z-index: 9999 !important;overflow: hidden;'
 
 
     var buttonBg = document.createElement('div');
