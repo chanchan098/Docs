@@ -406,7 +406,7 @@ function getImageBase64(url) {
 
     var buttonCon = document.createElement('div');
     buttonCon.id = dlCon
-    buttonCon.style = 'width: '+ widthDlBtn +'px;height: '+ heightDlBtn +'px;position: fixed;top: 40px;right: 10px;color: rgb(245 245 245);cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px; border: 1px solid rgb(155 198 155);z-index: 9999 !important;overflow: hidden;'
+    buttonCon.style = 'width: '+ widthDlBtn +'px;height: '+ heightDlBtn +'px;position: fixed;top: 40px;right: 10px;color: rgb(245 245 245);cursor: pointer;text-align: center;line-height: 11px;border-radius: 5px; border: 1px solid rgb(155 198 155);z-index: 999999 !important;overflow: hidden;'
 
 
     var buttonBg = document.createElement('div');
