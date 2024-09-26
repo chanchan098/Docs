@@ -1,6 +1,3 @@
-# spring-framework.md
-
-- [spring-framework.md](#spring-frameworkmd)
 - [-Core Technologies](#-core-technologies)
 - [-- The IoC Container](#---the-ioc-container)
 - [Introduction to the Spring IoC Container and Beans](#introduction-to-the-spring-ioc-container-and-beans)

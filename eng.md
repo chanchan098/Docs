@@ -1,4 +1,5 @@
 - [-Basic](#-basic)
+- [Soundmark](#soundmark)
 - [Imperative verbs](#imperative-verbs)
 - [Imperative sentences](#imperative-sentences)
 - [Determiners](#determiners)
@@ -62,6 +63,12 @@
   - [Perfect participle clauses](#perfect-participle-clauses)
 
 # -Basic
+
+# Soundmark
+
+https://www.antimoon.com/how/pronunc-soundsipa.htm
+
+https://www.xdf.cn/zhuanti/bd-phonetic-alphabet-card/index.html
 
 # Imperative verbs
 
@@ -553,6 +560,8 @@ https://www.grammarly.com/blog/active-vs-passive-voice/
 # E-Basic
 
 # Gerunds and Infinitives
+
+https://www.englishpage.com/gerunds/part_1.htm
 
 Continuous actions use GERUNDS after verb.
 

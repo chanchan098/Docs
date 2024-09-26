@@ -42,6 +42,11 @@
 - [others---](#others---)
 - [Spring Boot – Transaction Management Using @Transactional Annotation](#spring-boot--transaction-management-using-transactional-annotation)
   - [@Transactional Annotation](#transactional-annotation)
+  
+
+[doc](https://docs.spring.io/spring-boot/docs/3.1.9/reference/htmlsingle/)
+
+[api](https://docs.spring.io/spring-boot/docs/3.1.9/api/)
 
 # 4. Getting Started
 
@@ -52,10 +57,6 @@ Spring Boot helps you to create stand-alone, production-grade Spring-based appli
 ## 3.2. Installing the Spring Boot CLI
 
 ## 4. Developing Your First Spring Boot Application
-
-[doc](https://docs.spring.io/spring-boot/docs/3.1.9/reference/htmlsingle/)
-
-[api](https://docs.spring.io/spring-boot/docs/3.1.9/api/)
 
 ### 4.2. Setting up the project with Maven
 
