@@ -66,6 +66,8 @@
 
 # Soundmark
 
+https://pronunciationstudio.com/english-ipa-chart/
+
 https://www.antimoon.com/how/pronunc-soundsipa.htm
 
 https://www.xdf.cn/zhuanti/bd-phonetic-alphabet-card/index.html
