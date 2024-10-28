@@ -13,6 +13,7 @@ https://www.math.net/primary-math
 
 ## Least common multiple
 
+https://www.math.net/lcm
 
 ### Euclid's algorithm
 
@@ -45,6 +46,46 @@ $GCF(4,6)=2$
 $$LCM(4,6)=\frac{4 \times 6}{2}=12$$
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 短除
 
 ```
@@ -60,5 +101,9 @@ $$LCM(4,6)=\frac{4 \times 6}{2}=12$$
 
 
 # Fraction
+
+## Common fraction
+
+https://www.math.net/common-fraction
 
 # Percentage
