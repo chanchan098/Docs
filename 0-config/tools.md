@@ -11,6 +11,11 @@
 - Dark Reader
 - 知乎去除登录提示
 
+
+## idea 2021.2.2 
+
+to remove `configRoot/config/eval`
+
 ## linux
 
 [env](https://blog.csdn.net/weixin_36296538/article/details/83044639)

@@ -1,6 +1,8 @@
 - [Dependencies management](#dependencies-management)
 - [Module structure](#module-structure)
-  - [starter-security](#starter-security)
+- [starter-security](#starter-security)
+- [stater-test](#stater-test)
+- [@SpringBootTest](#springboottest)
 - [Feature diagram](#feature-diagram)
 - [Jpa Testing](#jpa-testing)
   - [0. Create module for configuration and create config files](#0-create-module-for-configuration-and-create-config-files)
@@ -29,10 +31,11 @@
 
 ## Dependencies management
 
-related to Maven Dependencies management   
-see also [maven.md#dependency-management](../build/maven.md#dependency-management)
+related to Maven Dependencies management  
 
-[spring framework dependencies](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies)
+see also  
+- [maven.md#dependency-management](../build-tools/maven.md#dependency-management)
+- [spring framework dependencies](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies)
 
 
 ## Module structure
@@ -57,7 +60,7 @@ see also [maven.md#dependency-management](../build/maven.md#dependency-managemen
     - service`call mapper and do business logic`
 - pom.xml `root`
 
-### starter-security
+## starter-security
 
 - config
   - YudaoSecurityRpcAutoConfiguration 
@@ -65,20 +68,53 @@ see also [maven.md#dependency-management](../build/maven.md#dependency-managemen
   - YudaoWebSecurityConfigurerAdapter
     - configs for web security
 
+## stater-test
+
+```java
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = BaseDbUnitTest.Application.class)
+@ActiveProfiles("unit-test") // 设置使用 application-unit-test 配置文件
+@Sql(scripts = "/sql/clean.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD) // 每个单元测试结束后，清理 DB
+public class BaseDbUnitTest {
+
+    @Import({
+            // DB 配置类
+            YudaoDataSourceAutoConfiguration.class, // 自己的 DB 配置类
+            DataSourceAutoConfiguration.class, // Spring DB 自动配置类
+            DataSourceTransactionManagerAutoConfiguration.class, // Spring 事务自动配置类
+            DruidDataSourceAutoConfigure.class, // Druid 自动配置类
+            SqlInitializationTestConfiguration.class, // SQL 初始化
+            // MyBatis 配置类
+            YudaoMybatisAutoConfiguration.class, // 自己的 MyBatis 配置类
+            MybatisPlusAutoConfiguration.class, // MyBatis 的自动配置类
+            MybatisPlusJoinAutoConfiguration.class, // MyBatis 的Join配置类
+//            JpaTestConfig.class
+    })
+    public static class Application {
+    }
+
+}
+```
+
+
+## @SpringBootTest
+
+https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/context/SpringBootTest.html
+
 
 ## Feature diagram
 
 ```
 ↑↓
-                                        serviceImpl              MySQL  Mongo   ES   Redis
-                                            │                      │      │      │     │
-                                            │                      └──────┴──────┴─────┤
-                                            ↓                                          │
-            user <————> controller <————> service <————> (db accessor)mapper <————> database
-                                                               │
-                                        ┌──────────┬───────────┼─────────────┐
-                                        │          │           │             │
-                                 redisTemplate  mybatis    mybatis plus   hibernate
+                                                          serviceImpl              MySQL  Mongo   ES   Redis
+                                                              │                      │      │      │     │
+                                                              │                      └──────┴──────┴─────┤
+                                                              ↓                                          │
+      user <————> request filters <————> controller <————> service <————> (db accessor)mapper <————>  database
+                                                                                 │
+                                                          ┌──────────┬───────────┼─────────────┐
+                                                          │          │           │             │
+                                                  redisTemplate  mybatis    mybatis plus   hibernate
+
 ```
 
 

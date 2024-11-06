@@ -58,6 +58,10 @@
 - [Passive form](#passive-form)
 - [E-Basic](#e-basic)
 - [Gerunds and Infinitives](#gerunds-and-infinitives)
+  - [5. Followed by gerunds as obj](#5-followed-by-gerunds-as-obj)
+  - [6. Followed by infinitives as obj](#6-followed-by-infinitives-as-obj)
+  - [13. Followed by a gerund or an infinitive](#13-followed-by-a-gerund-or-an-infinitive)
+  - [20. Gerund and infinitive forms](#20-gerund-and-infinitive-forms)
 - [Participle  clause](#participle--clause)
   - [Present participle clauses](#present-participle-clauses)
   - [Perfect participle clauses](#perfect-participle-clauses)
@@ -386,6 +390,8 @@ https://www.englishpage.com/verbpage/futureinpast.html
 
 https://topenglishgrammar.com/future-in-the-past/
 
+[could, would have done](https://www.perfect-english-grammar.com/could-have-should-have-would-have.html)
+
 <span style='font-size: 16px;font-weight: 500'>How to use it?</span>  
 We use the Future in the Past to shape the future of the past. To show <u>the future from the perspective of the past</u>.
 
@@ -555,6 +561,10 @@ https://www.bbc.co.uk/learningenglish/english/course/upper-intermediate/unit-8/t
 
 https://www.englishpage.com/conditional/mixedconditional.html
 
+Sometimes *<u>unreal conditional</u>* sentences are mixed.
+
+
+
 # Passive form
 
 https://www.grammarly.com/blog/active-vs-passive-voice/
@@ -571,6 +581,30 @@ Brief actions OR abstract actions use INFINITIVES after verb.
 
 
 https://www.englishpage.com/gerunds/index.htm
+
+## 5. Followed by gerunds as obj
+
+https://www.englishpage.com/gerunds/part_1.htm
+
+https://www.englishpage.com/gerunds/infinitive_list.htm
+
+## 6. Followed by infinitives as obj
+
+https://www.englishpage.com/gerunds/part_1.htm
+
+https://www.englishpage.com/gerunds/infinitive_list.htm
+
+
+## 13. Followed by a gerund or an infinitive
+
+https://www.englishpage.com/gerunds/part_3.htm
+
+[List of Verbs Followed by a Gerund or Infinitive (Different Meaning)](https://www.englishpage.com/gerunds/gerund_or_infinitive_different_list.htm)
+
+
+## 20. Gerund and infinitive forms
+
+https://www.englishpage.com/gerunds/part_3.htm
 
 
 # Participle  clause 

@@ -1,5 +1,12 @@
 # java.md
 
+# JVM
+
+https://www.baeldung.com/jvm-parameters
+
+https://www.geeksforgeeks.org/jvm-works-jvm-architecture/
+
+
 # Stream API
 
 - [package](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)

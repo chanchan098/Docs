@@ -1,43 +1,6 @@
-# maven.md
+## The POM
 
-# -User Centre/Getting Started Guide
-
-*User Centre/Getting Started Guide*
-# Naming Conventions
-
-- **groupId** uniquely identifies your project across all projects.
-  -  A group ID should follow Java's package name rules. 
-  -  This means it starts with a reversed domain name you control. 
-  -  For example, `org.apache.maven`, `org.apache.commons`.
-  -  **subject groupId**       
-      -  You can create as many subgroups as you want. A good way to determine the granularity of the groupId is to use the project structure. That is, if the current project is a multiple module project, it should append a new identifier to the parent's groupId.  
-      -  For example,org.apache.maven, org.apache.maven.plugins, org.apache.maven.reporting            
-- **artifactId** is the name of the jar without version.
-- **version**
-
-*User Centre/Getting Started Guide*
-# The Build Lifecycle
-
-## Build Lifecycle Basics
-
-three built-in build lifecycles:
-- The `default` lifecycle handles your project deployment,  
-- the `clean` lifecycle handles project cleaning,  
-- the `site` lifecycle handles the creation of your project's web site.
-
-## 📖A Build Lifecycle is Made Up of Phases
-
-[doc](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#a-build-lifecycle-is-made-up-of-phases)
-
-## A Build Phase is Made Up of Plugin Goals
-
-A plugin goal represents a specific task (finer than a build phase) which contributes to the building and managing of a project. It may be bound to zero or more build phases.
-
-
-
-# The POM
-
-## What is a POM?
+### What is a POM?
 
 <u>A Project Object Model or POM is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project.</u>
 
@@ -48,10 +11,9 @@ A plugin goal represents a specific task (finer than a build phase) which contri
 - ...
 
 
+### 📖 Super POM
 
-## 📖 Super POM
-
-## Minimal POM
+### Minimal POM
 
 - `project` root
 - `modelVersion` - should be set to 4.0.0
@@ -68,19 +30,20 @@ A plugin goal represents a specific task (finer than a build phase) which contri
 </project>
 ```
 
-## 📝to be continued 
 
-## Project Inheritance
+### 📖 Project Inheritance
 
-*User Centre/Getting Started Guide*
-# Profiles
+to check out inheritance examples
 
+## Profiles
 
+https://maven.apache.org/guides/introduction/introduction-to-profiles.html
 
-*User Centre/Getting Started Guide*
-# Dependency Mechanism
+## Dependency Mechanism
 
-## Dependency Management
+https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+
+### Dependency Management
 
 
 [doc](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#dependency-management)
@@ -91,7 +54,7 @@ explained inheritance relationship.
 see also doc
 
 
-### Importing Dependencies
+#### Importing Dependencies
 
 projects can import managed dependencies from other projects.
 
@@ -158,7 +121,8 @@ check out `yudao-dependencies/pom.xml`
 </dependencyManagement>
 ```
 
-# cn mirror
+
+## cn mirror
 
 <https://blog.csdn.net/qq_38217990/article/details/129257106>
 
@@ -221,3 +185,52 @@ check out `yudao-dependencies/pom.xml`
   </mirrors>
 ```
 
+
+
+---
+
+
+
+
+
+## Custom configs
+
+### config java version
+
+**windows**
+
+open *mavenRoot/bin/mvn.cmd*
+
+`set JAVA_HOME=D:\liaoyj\DevelopmentResources\jdk-17.0.9`
+
+
+## Naming Conventions
+
+- **groupId** uniquely identifies your project across all projects.
+  -  A group ID should follow Java's package name rules. 
+  -  This means it starts with a reversed domain name you control. 
+  -  For example, `org.apache.maven`, `org.apache.commons`.
+  -  **subject groupId**       
+      -  You can create as many subgroups as you want. A good way to determine the granularity of the groupId is to use the project structure. That is, if the current project is a multiple module project, it should append a new identifier to the parent's groupId.  
+      -  For example,org.apache.maven, org.apache.maven.plugins, org.apache.maven.reporting            
+- **artifactId** is the name of the jar without version.
+- **version**
+
+## The Build Lifecycle
+
+https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+
+### Build Lifecycle Basics
+
+three built-in build lifecycles:
+- The `default` lifecycle handles your project deployment,  
+- the `clean` lifecycle handles project cleaning,  
+- the `site` lifecycle handles the creation of your project's web site.
+
+### 📖A Build Lifecycle is Made Up of Phases
+
+[doc](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#a-build-lifecycle-is-made-up-of-phases)
+
+### A Build Phase is Made Up of Plugin Goals
+
+A plugin goal represents a specific task (finer than a build phase) which contributes to the building and managing of a project. It may be bound to zero or more build phases.
