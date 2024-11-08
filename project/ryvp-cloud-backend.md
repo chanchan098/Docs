@@ -1,8 +1,16 @@
 - [Dependencies management](#dependencies-management)
 - [Module structure](#module-structure)
+- [yudao-common](#yudao-common)
+  - [CommonResult](#commonresult)
+  - [PageResult](#pageresult)
+  - [PageParam](#pageparam)
 - [starter-security](#starter-security)
+  - [YudaoSecurityAutoConfiguration](#yudaosecurityautoconfiguration)
+  - [Global permission checking](#global-permission-checking)
 - [stater-test](#stater-test)
-- [@SpringBootTest](#springboottest)
+  - [check out `pom.xml`](#check-out-pomxml)
+  - [BaseDbUnitTest.java](#basedbunittestjava)
+  - [unit-test.yaml](#unit-testyaml)
 - [Feature diagram](#feature-diagram)
 - [Jpa Testing](#jpa-testing)
   - [0. Create module for configuration and create config files](#0-create-module-for-configuration-and-create-config-files)
@@ -12,17 +20,7 @@
 - [Third part libs](#third-part-libs)
   - [captcha](#captcha)
   - [guava](#guava)
-- [Module configs](#module-configs)
-- [Module common](#module-common)
-  - [CommonResult](#commonresult)
-  - [PageResult](#pageresult)
-  - [PageParam](#pageparam)
-- [Module security](#module-security)
-  - [YudaoSecurityAutoConfiguration](#yudaosecurityautoconfiguration)
-  - [Global permission checking](#global-permission-checking)
-- [Module test](#module-test)
 - [Token freshing and Login](#token-freshing-and-login)
-- [Testing](#testing)
 - [Data validation](#data-validation)
 - [OAuth2](#oauth2)
   - [三方授权调试](#三方授权调试)
@@ -60,6 +58,87 @@ see also
     - service`call mapper and do business logic`
 - pom.xml `root`
 
+## yudao-common
+
+*yudao-framework/yudao-common*
+
+### CommonResult
+
+*yudao-framework/yudao-common/src/main/java/cn/iocoder/yudao/framework/common/pojo/CommonResult.java*
+
+```java
+@Data
+public class CommonResult<T> implements Serializable {
+    private Integer code;
+    private T data;
+    private String msg;
+    ...
+}    
+```
+
+
+[convert to json](../main-tech/spring/spring-framework-6.0.17.md#message-converters)
+
+used at `UserController.java` 
+```java
+import static ...CommonResult.success;
+
+public CommonResult<PageResult<UserRespVO>> getUserPage(@Valid UserPageReqVO pageReqVO) {
+  ...
+  return success(...)
+}
+```
+
+### PageResult
+
+```java
+@Schema(description = "分页结果")
+@Data
+public final class PageResult<T> implements Serializable {
+
+    @Schema(description = "数据", requiredMode = Schema.RequiredMode.REQUIRED)
+    private List<T> list;
+
+    @Schema(description = "总量", requiredMode = Schema.RequiredMode.REQUIRED)
+    private Long total;
+
+    ...
+}
+```
+
+### PageParam
+
+bean validation see also [java bean validation](../main-tech/spring/spring-framework-6.0.17.md#java-bean-validation)
+
+```java
+@Schema(description="分页参数")
+@Data
+public class PageParam implements Serializable {
+
+    private static final Integer PAGE_NO = 1;
+    private static final Integer PAGE_SIZE = 10;
+
+    /**
+     * 每页条数 - 不分页
+     *
+     * 例如说，导出接口，可以设置 {@link #pageSize} 为 -1 不分页，查询所有数据。
+     */
+    public static final Integer PAGE_SIZE_NONE = -1;
+
+    @Schema(description = "页码，从 1 开始", requiredMode = Schema.RequiredMode.REQUIRED,example = "1")
+    @NotNull(message = "页码不能为空")
+    @Min(value = 1, message = "页码最小值为 1")
+    private Integer pageNo = PAGE_NO;
+
+    @Schema(description = "每页条数，最大值为 100", requiredMode = Schema.RequiredMode.REQUIRED, example = "10")
+    @NotNull(message = "每页条数不能为空")
+    @Min(value = 1, message = "每页条数最小值为 1")
+    @Max(value = 100, message = "每页条数最大值为 100")
+    private Integer pageSize = PAGE_SIZE;
+
+}
+```
+
 ## starter-security
 
 - config
@@ -68,7 +147,85 @@ see also
   - YudaoWebSecurityConfigurerAdapter
     - configs for web security
 
+
+https://github.com/spring-projects/spring-security-samples/tree/5.8.x
+
+│ └ ├ ─ ┼ 
+
+```
+config
+  │
+  ├──── SecurityProperties  
+  ├──── YudaoSecurityAutoConfiguration
+  ├──── YudaoSecurityRpcAutoConfiguration
+  ├──── YudaoWebSecurityConfigurerAdapter
+```
+
+### YudaoSecurityAutoConfiguration
+
+configurations for components to use. 
+
+
+### Global permission checking
+
+*yudao-framework/yudao-spring-boot-starter-security/src/main/java/cn/iocoder/yudao/framework/security/core/service/SecurityFrameworkServiceImpl.java*
+
+
 ## stater-test
+
+### check out `pom.xml`
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>cn.iocoder.cloud</groupId>
+        <artifactId>yudao-common</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>cn.iocoder.cloud</groupId>
+        <artifactId>yudao-spring-boot-starter-jpa</artifactId>
+    </dependency>
+    <!-- DB 相关 -->
+    <dependency>
+        <groupId>cn.iocoder.cloud</groupId>
+        <artifactId>yudao-spring-boot-starter-mybatis</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>cn.iocoder.cloud</groupId>
+        <artifactId>yudao-spring-boot-starter-redis</artifactId>
+    </dependency>
+
+    <!-- Test 测试相关 -->
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-inline</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>com.h2database</groupId> <!-- 单元测试，我们采用 H2 作为数据库 -->
+        <artifactId>h2</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>com.github.fppt</groupId> <!-- 单元测试，我们采用内嵌的 Redis 数据库 -->
+        <artifactId>jedis-mock</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>uk.co.jemos.podam</groupId> <!-- 单元测试，随机生成 POJO 类 -->
+        <artifactId>podam</artifactId>
+    </dependency>
+</dependencies>
+```
+
+### BaseDbUnitTest.java
+
+cn/iocoder/yudao/framework/test/core/ut/BaseDbUnitTest.java
 
 ```java
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = BaseDbUnitTest.Application.class)
@@ -95,10 +252,76 @@ public class BaseDbUnitTest {
 }
 ```
 
+[@SpringBootTest](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/context/SpringBootTest.html)
 
-## @SpringBootTest
 
-https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/context/SpringBootTest.html
+### unit-test.yaml
+
+yudao-module-system/yudao-module-system-biz/src/test/resources/application-unit-test.yaml
+
+```yaml
+spring:
+  main:
+    lazy-initialization: true # 开启懒加载，加快速度
+    banner-mode: off # 单元测试，禁用 Banner
+
+--- #################### 数据库相关配置 ####################
+
+spring:
+  # 数据源配置项
+  datasource:
+    name: ruoyi-vue-pro
+    url: jdbc:h2:mem:testdb;MODE=MYSQL;DATABASE_TO_UPPER=false;NON_KEYWORDS=value; # MODE 使用 MySQL 模式；DATABASE_TO_UPPER 配置表和字段使用小写
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    druid:
+      async-init: true # 单元测试，异步初始化 Druid 连接池，提升启动速度
+      initial-size: 1 # 单元测试，配置为 1，提升启动速度
+  sql:
+    init:
+      schema-locations: classpath:/sql/create_tables.sql
+
+  # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
+  redis:
+    host: 127.0.0.1 # 地址
+    port: 16379 # 端口（单元测试，使用 16379 端口）
+    database: 0 # 数据库索引
+
+mybatis:
+  lazy-initialization: true # 单元测试，设置 MyBatis Mapper 延迟加载，加速每个单元测试
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: AUTO # H2 主键递增
+
+--- #################### 定时任务相关配置 ####################
+
+--- #################### 配置中心相关配置 ####################
+
+--- #################### 服务保障相关配置 ####################
+
+# Lock4j 配置项（单元测试，禁用 Lock4j）
+
+# Resilience4j 配置项
+
+--- #################### 监控相关配置 ####################
+
+--- #################### 芋道相关配置 ####################
+
+# 芋道配置项，设置当前项目所有自定义的配置
+yudao:
+  info:
+    base-package: cn.iocoder.yudao.module
+  captcha:
+    timeout: 5m
+    width: 160
+    height: 60
+    enable: true
+
+```
+
 
 
 ## Feature diagram
@@ -113,8 +336,10 @@ https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/contex
                                                                                  │
                                                           ┌──────────┬───────────┼─────────────┐
                                                           │          │           │             │
-                                                  redisTemplate  mybatis    mybatis plus   hibernate
-
+                                                  redisTemplate  mybatis <— mybatis plus   hibernate
+                                                                                 │
+                                                                                 │
+                                                                                 └ Mapper.java compatible to Mapper.xml from mybatis                                               
 ```
 
 
@@ -567,120 +792,6 @@ public class JpaTest extends J_BaseDbUnitTest {
 
 ### guava
 
-## Module configs
-
-## Module common 
-
-*yudao-framework/yudao-common*
-
-### CommonResult
-
-*yudao-framework/yudao-common/src/main/java/cn/iocoder/yudao/framework/common/pojo/CommonResult.java*
-
-```java
-@Data
-public class CommonResult<T> implements Serializable {
-    private Integer code;
-    private T data;
-    private String msg;
-    ...
-}    
-```
-
-
-[convert to json](../main-tech/spring/spring-framework-6.0.17.md#message-converters)
-
-used at `UserController.java` 
-```java
-import static ...CommonResult.success;
-
-public CommonResult<PageResult<UserRespVO>> getUserPage(@Valid UserPageReqVO pageReqVO) {
-  ...
-  return success(...)
-}
-```
-
-
-
-### PageResult
-
-```java
-@Schema(description = "分页结果")
-@Data
-public final class PageResult<T> implements Serializable {
-
-    @Schema(description = "数据", requiredMode = Schema.RequiredMode.REQUIRED)
-    private List<T> list;
-
-    @Schema(description = "总量", requiredMode = Schema.RequiredMode.REQUIRED)
-    private Long total;
-
-    ...
-}
-```
-
-### PageParam
-
-bean validation see also [java bean validation](../main-tech/spring/spring-framework-6.0.17.md#java-bean-validation)
-
-
-```java
-@Schema(description="分页参数")
-@Data
-public class PageParam implements Serializable {
-
-    private static final Integer PAGE_NO = 1;
-    private static final Integer PAGE_SIZE = 10;
-
-    /**
-     * 每页条数 - 不分页
-     *
-     * 例如说，导出接口，可以设置 {@link #pageSize} 为 -1 不分页，查询所有数据。
-     */
-    public static final Integer PAGE_SIZE_NONE = -1;
-
-    @Schema(description = "页码，从 1 开始", requiredMode = Schema.RequiredMode.REQUIRED,example = "1")
-    @NotNull(message = "页码不能为空")
-    @Min(value = 1, message = "页码最小值为 1")
-    private Integer pageNo = PAGE_NO;
-
-    @Schema(description = "每页条数，最大值为 100", requiredMode = Schema.RequiredMode.REQUIRED, example = "10")
-    @NotNull(message = "每页条数不能为空")
-    @Min(value = 1, message = "每页条数最小值为 1")
-    @Max(value = 100, message = "每页条数最大值为 100")
-    private Integer pageSize = PAGE_SIZE;
-
-}
-```
-
-## Module security 
-
-https://github.com/spring-projects/spring-security-samples/tree/5.8.x
-
-│ └ ├ ─ ┼ 
-
-```
-config
-  │
-  ├──── SecurityProperties  
-  ├──── YudaoSecurityAutoConfiguration
-  ├──── YudaoSecurityRpcAutoConfiguration
-  ├──── YudaoWebSecurityConfigurerAdapter
-```
-
-### YudaoSecurityAutoConfiguration
-
-configurations for components to use. 
-
-
-### Global permission checking
-
-*yudao-framework/yudao-spring-boot-starter-security/src/main/java/cn/iocoder/yudao/framework/security/core/service/SecurityFrameworkServiceImpl.java*
-
-## Module test
-
-0. check out `pom.xml`
-
 ## Token freshing and Login
 
 `yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java`
@@ -698,11 +809,6 @@ configurations for components to use.
   -createOAuth2AccessToken
 
 ```
-
-
-
-## Testing
-
 
 
 ## Data validation

@@ -30,15 +30,6 @@ https://baike.baidu.com/item/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/5097433
 
 
 
-
-
-
-
-
-
-
-
-
 ## Examples
 
 ### Metallb BGP uses

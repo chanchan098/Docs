@@ -104,6 +104,12 @@ using `tags` and inner `style`
 postman `joey4567@gmail.com`  
 delete p3 p4
 
+
+older than 10.17.0 can use scratch pad mode.
+
+https://www.filehorse.com/download-postman/72677/
+
+
 ## ssh 
 
 <https://blog.csdn.net/john1337/article/details/109465781>

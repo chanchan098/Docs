@@ -1,19 +1,19 @@
-# java.md
 
-# JVM
+
+## JVM
 
 https://www.baeldung.com/jvm-parameters
 
 https://www.geeksforgeeks.org/jvm-works-jvm-architecture/
 
 
-# Stream API
+## Stream API
 
 - [package](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)
 
 - [stream api](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html)
 
-## Features 
+### Features 
 
 ### Paralleism
 
@@ -25,28 +25,28 @@ https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.
 
 
 
-# Exception 
+## Exception 
 
-## Checked Exception
+### Checked Exception
 
 1. 这些异常继承自java.lang.Exception类，但不继承自java.lang.RuntimeException类及其子类。
 2. 编译器要求程序员必须显式地捕获（使用 try-catch 块）或者声明（在方法签名中通过 throws 关键字抛出）这些异常。如果不这样做，编译时就会报错。
 3. 受检查异常通常用于表示那些预期可能在正常程序流中发生的、可以预见的问题，如文件未找到（FileNotFoundException）、网络连接失败等。
 
-## Unchecked Exception 
+### Unchecked Exception 
 
 1. 包括所有继承自java.lang.RuntimeException的异常以及java.lang.Error及其子类。
 2. 编译器不会强制程序员对这类异常进行处理或声明。即使没有处理，代码也能顺利通过编译阶段。
 3. 这类异常通常是由于编程错误导致的，例如空指针异常（NullPointerException）、数组越界异常（ArrayIndexOutOfBoundsException）等， 它们通常发生在运行时，并且应该在编码阶段尽量避免或修复。
 4. 尽管不是必须处理，但良好的编程实践仍然建议程序员适当地处理非受检查异常，以确保程序健壮性。
 
-# Multi-thread
+## Multi-thread
 
 https://github.com/zaiyunduan123/springboot-seckill?tab=readme-ov-file
 
 https://www.baeldung.com/java-concurrency
 
-## Thread
+### Thread
 
 ### state
 
@@ -79,7 +79,7 @@ https://www.baeldung.com/java-concurrency
 - `thread.join()`
 
 
-## Executors.java
+### Executors.java
 
 <span style='font-size: 15px;'>**What is it?**</span>  
 An object that executes submitted Runnable tasks. This interface provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc. An Executor is normally used instead of explicitly creating threads. 
@@ -98,7 +98,7 @@ executor.execute(new RunnableTask2());
 Factory and utility methods for Executor, ExecutorService, ScheduledExecutorService, ThreadFactory,  
 and Callable classes defined in this package.
 
-## ThreadPoolExecutor.java
+### ThreadPoolExecutor.java
 
 <span style='font-size: 15px;'>**What is it?**</span>  
 An ExecutorService that executes each submitted task using one of possibly several pooled threads,  
@@ -109,7 +109,7 @@ they usually provide improved performance when executing large numbers of asynch
 they provide a means of bounding and managing the resources, including <u>threads, consumed when executing a collection of tasks</u>.
 
 
-### Core and maximum pool sizes
+#### Core and maximum pool sizes
 
 A ThreadPoolExecutor will automatically adjust the pool size (see getPoolSize) according to the  
 bounds set by `corePoolSize (see getCorePoolSize)` and `maximumPoolSize (see getMaximumPoolSize)`.
@@ -123,12 +123,12 @@ even if other worker threads are idle.
 
 If there are **more than** `corePoolSize` but **less than** `maximumPoolSize` threads running, a new thread will be created **only if** the queue is full.
 
-### Creating new threads
+#### Creating new threads
 
 New threads are created using a ThreadFactory. If not otherwise specified, a Executors.  
 defaultThreadFactory is used,
 
-### Keep-alive times
+#### Keep-alive times
 
 If the pool currently has more than corePoolSize threads, excess threads will be terminated  
 if they have been idle for more than the keepAliveTime (see getKeepAliveTime(TimeUnit)).
@@ -138,7 +138,7 @@ By default, the keep-alive policy applies only when there are more than corePool
 But method allowCoreThreadTimeOut(boolean) can be used to apply this time-out policy to core  
 threads as well, so long as the keepAliveTime value is non-zero.
 
-### Queuing
+#### Queuing
 
 <span style='font-size: 15px;'>**What is it?**</span>  
 Any `BlockingQueue` may be used to transfer and hold submitted tasks.  
@@ -169,7 +169,7 @@ Thus, no more than `corePoolSize` threads will ever be created. (And the value o
 A bounded queue (for example, an ArrayBlockingQueue) helps prevent resource exhaustion when used with finite maximumPoolSizes, but can be more difficult to tune and control.  
 
 
-### ScheduledThreadPoolExecutor
+#### ScheduledThreadPoolExecutor
 ```mermaid
 classDiagram
     direction BT
@@ -183,7 +183,7 @@ classDiagram
 ```
 
 
-## AQS
+### AQS
 
 Provides a framework for implementing blocking locks and related synchronizers (semaphores, events, etc)  
 that rely on **first-in-first-out** (FIFO) wait queues.  
@@ -196,7 +196,7 @@ When acquired in **exclusive mode**, attempted acquires by other threads cannot 
 **Shared mode** acquires by multiple threads may (but need not) succeed.
 
 
-### Blocks a thread(node)
+#### Blocks a thread(node)
 
 ```mermaid
 sequenceDiagram    
@@ -223,7 +223,7 @@ sequenceDiagram
 
 AbstractQueuedSynchronizer.java#parkAndCheckInterrupt()
 
-## Differences Runnable and Callable
+### Differences Runnable and Callable
 
 1. 返回值：
 
@@ -242,22 +242,48 @@ AbstractQueuedSynchronizer.java#parkAndCheckInterrupt()
 
 
 
-## Deadlock
+### Deadlock
 
 https://www.geeksforgeeks.org/deadlock-in-java-multithreading/?ref=lbp
 
-## CyclicBarrier
+### CyclicBarrier
 
 https://www.baeldung.com/java-cyclic-barrier
 
 A CyclicBarrier is a synchronizer that allows a set of threads to wait for each other to reach a common execution point, also called a barrier.
 
-## CountDownLatch
+### CountDownLatch
 
 https://www.baeldung.com/java-countdown-latch
 
 Simply put, a CountDownLatch has a counter field, which you can decrement as we require. We can then use it to block a calling thread until it’s been counted down to zero.
 
-### 3. Waiting for a Pool of Threads to Complete
+#### 3. Waiting for a Pool of Threads to Complete
 
-### 4. A Pool of Threads Waiting to Begin
+#### 4. A Pool of Threads Waiting to Begin
+
+### Executor service
+
+https://www.baeldung.com/java-executor-service-tutorial
+
+## double colon
+
+https://mkyong.com/java8/java-8-method-references-double-colon-operator/
+
+
+## Functional interface
+
+https://www.baeldung.com/java-8-functional-interfaces
+
+
+## BiFunction
+
+https://mkyong.com/java8/java-8-bifunction-examples/
+
+## Supplier
+
+https://mkyong.com/java8/java-8-supplier-examples/
+
+## Future
+
+https://www.baeldung.com/java-future

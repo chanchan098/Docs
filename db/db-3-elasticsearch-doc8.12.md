@@ -1,31 +1,37 @@
-- [-What is elasticsearch](#-what-is-elasticsearch)
-- [Data in: documents and indices](#data-in-documents-and-indices)
-  - [What is the ES](#what-is-the-es)
-  - [Inverted index](#inverted-index)
+- [- 8.15](#--815)
+- [--Elasticsearch basics](#--elasticsearch-basics)
+- [Indices, documents, and fields](#indices-documents-and-fields)
+  - [Documents and fields](#documents-and-fields)
+  - [Mappings and data types](#mappings-and-data-types)
+- [Get ready for production](#get-ready-for-production)
+  - [Use multiple nodes and shards](#use-multiple-nodes-and-shards)
+- [--Configuring Elasticsearch](#--configuring-elasticsearch)
+- [Shard allocation, relocation, and recovery](#shard-allocation-relocation-and-recovery)
+- [--Mapping](#--mapping)
+  - [Dynamic mapping](#dynamic-mapping)
+  - [Explicit mapping](#explicit-mapping)
+- [--Index modules](#--index-modules)
+- [-----](#-----)
+- [Indices, documents, and fields](#indices-documents-and-fields-1)
+- [What is the ES](#what-is-the-es)
+- [Inverted index](#inverted-index)
 - [Information out: search and analyze](#information-out-search-and-analyze)
-  - [testing purposes](#testing-purposes)
-  - [Searching your data](#searching-your-data)
-    - [Quering types](#quering-types)
-  - [Analyzing your data](#analyzing-your-data)
+- [testing purposes](#testing-purposes)
+- [Searching your data](#searching-your-data)
+  - [Quering types](#quering-types)
+- [Analyzing your data](#analyzing-your-data)
 - [Scalability and resilience: clusters, nodes, and shards](#scalability-and-resilience-clusters-nodes-and-shards)
 - [-Set up Elasticsearch](#-set-up-elasticsearch)
-- [--Configuring Elasticsearch](#--configuring-elasticsearch)
-  - [Config files location](#config-files-location)
+- [--Configuring Elasticsearch](#--configuring-elasticsearch-1)
+- [Config files location](#config-files-location)
 - [Important Elasticsearch configuration](#important-elasticsearch-configuration)
 - [-Index modules](#-index-modules)
-  - [Index Settings](#index-settings)
-  - [Static index settings](#static-index-settings)
+- [Index Settings](#index-settings)
+- [Static index settings](#static-index-settings)
 - [Analysis](#analysis)
 - [--Index Shard Allocation](#--index-shard-allocation)
 - [Index-level shard allocation filtering](#index-level-shard-allocation-filtering)
 - [--E-Index Shard Allocation](#--e-index-shard-allocation)
-- [--Mapping](#--mapping)
-- [Dynamic mapping](#dynamic-mapping)
-- [Dynamic field mapping](#dynamic-field-mapping)
-- [Dynamic templates](#dynamic-templates)
-- [Explicit mapping](#explicit-mapping)
-- [Field data types](#field-data-types)
-- [--E-Mapping](#--e-mapping)
 - [-Index templates](#-index-templates)
 - [-Data streams](#-data-streams)
 - [-Ingest pipelines](#-ingest-pipelines)
@@ -35,56 +41,144 @@
 - [Index lifecycle](#index-lifecycle)
 - [--END Concepts](#--end-concepts)
 - [--Index lifecycle actions](#--index-lifecycle-actions)
-- [Rollover](#rollover)
 - [--E-Index lifecycle actions](#--e-index-lifecycle-actions)
 - [Query examples](#query-examples)
-  - [Limited size](#limited-size)
-  - [By field](#by-field)
-  - [By phrases phase](#by-phrases-phase)
-  - [By multiple conditions](#by-multiple-conditions)
-  - [Sort](#sort)
-  - [Terms look up(join)](#terms-look-upjoin)
+- [Limited size](#limited-size)
+- [By field](#by-field)
+- [By phrases phase](#by-phrases-phase)
+- [By multiple conditions](#by-multiple-conditions)
+- [Sort](#sort)
+- [Terms look up(join)](#terms-look-upjoin)
 - [Mapping](#mapping)
-  - [Dynamic mapping](#dynamic-mapping-1)
-  - [Explicit mapping](#explicit-mapping-1)
+- [Dynamic mapping](#dynamic-mapping-1)
+- [Explicit mapping](#explicit-mapping-1)
 - [Search your data](#search-your-data)
-  - [The search api](#the-search-api)
-    - [Sort search results](#sort-search-results)
-      - [Sort mode option](#sort-mode-option)
-      - [Sorting numeric fields](#sorting-numeric-fields)
-      - [Sorting within nested objects](#sorting-within-nested-objects)
-    - [Filter search results](#filter-search-results)
-      - [Post filter](#post-filter)
+- [The search api](#the-search-api)
+  - [Sort search results](#sort-search-results)
+    - [Sort mode option](#sort-mode-option)
+    - [Sorting numeric fields](#sorting-numeric-fields)
+    - [Sorting within nested objects](#sorting-within-nested-objects)
+  - [Filter search results](#filter-search-results)
+    - [Post filter](#post-filter)
 - [Query DSL](#query-dsl)
-  - [Query and filter context](#query-and-filter-context)
-    - [Relevance scores](#relevance-scores)
-    - [Query context](#query-context)
+- [Query and filter context](#query-and-filter-context)
+  - [Relevance scores](#relevance-scores)
+  - [Query context](#query-context)
 - [Ways for data synchronization](#ways-for-data-synchronization)
-    - [同步双写](#同步双写)
-    - [异步双写](#异步双写)
-    - [计划作业](#计划作业)
-    - [Binlog](#binlog)
-    - [Cannel](#cannel)
+  - [同步双写](#同步双写)
+  - [异步双写](#异步双写)
+  - [计划作业](#计划作业)
+  - [Binlog](#binlog)
+  - [Cannel](#cannel)
 - [Testing data see also project `labs\elasticsearch`](#testing-data-see-also-project-labselasticsearch)
 
-# -What is elasticsearch
 
-- the distributed search and analytics engine
-- provides near real-time search and analytics for all types of data
-
-----------
-
-- use cases
-  - Add **a search box** to an app or website
-  - Store and analyze **logs, metrics, and security event data**
-  - Use **machine learning** to automatically model the behavior of your data in real time
-  - Use Elasticsearch as **a vector database** to create, store, and search vector embeddings
-  - Automate **business workflows** using Elasticsearch as a storage engine
-  - Manage, integrate, and analyze spatial information using Elasticsearch as a geographic information system (**GIS**)
-  - Store and process genetic data using Elasticsearch as a bioinformatics research tool
+https://www.elastic.co/guide/en/elasticsearch/reference/8.15/documents-indices.html
 
 
-# Data in: documents and indices
+
+
+
+## - 8.15
+
+## --Elasticsearch basics
+
+## Indices, documents, and fields
+
+https://www.elastic.co/guide/en/elasticsearch/reference/8.15/documents-indices.html
+
+
+The index is the fundamental unit of storage in Elasticsearch, a logical namespace for storing data that share similar characteristics.
+
+### Documents and fields
+
+Elasticsearch serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data.
+
+### Mappings and data types
+
+`Mapping > Index > Document > Fields`
+
+Each index has a mapping or schema for how the fields in your documents are indexed.  
+A mapping defines the data type for each field, how the field should be indexed, and how it should be stored. 
+
+
+## Get ready for production
+
+https://www.elastic.co/guide/en/elasticsearch/reference/8.15/scalability.html
+
+
+### Use multiple nodes and shards
+
+
+
+<span style='font-size: 16px;font-weight: 500'>Index and shards</span>  
+
+Elastic is able to distribute your data across nodes by subdividing *an index into shards*.  
+
+Each index in Elasticsearch is a grouping of one or more physical shards, where each shard is a self-contained Lucene index containing a subset of the documents in the index.  
+
+By distributing the documents in an index across multiple shards, and distributing those shards across multiple nodes, Elasticsearch increases indexing and query capacity.
+
+
+
+<span style='font-size: 16px;font-weight: 500'>Shard types</span>  
+
+There are two types of shards: *primaries* and *replicas*.
+
+Each document in an index belongs to one <u>primary shard</u>. 
+
+<br/>
+
+**replica shards**
+
+A replica shard is a copy of a primary shard. Replicas maintain redundant copies of your data across the nodes in your cluster. 
+
+This protects against hardware failure and increases capacity to serve read requests like searching or retrieving a document.
+
+
+## --Configuring Elasticsearch
+
+## Shard allocation, relocation, and recovery
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-relocation-recovery.html
+
+
+<span style='font-size: 16px;font-weight: 500'>Replicas tasks</span>  
+
+Replicas maintain redundant copies of your data across the nodes in your cluster, protecting against hardware failure and increasing capacity to serve read requests like searching or retrieving a document.  
+
+
+
+## --Mapping
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
+
+Mapping is the process of defining how a document, and the fields it contains, are stored and indexed.
+
+When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. 
+
+### Dynamic mapping
+
+Elasticsearch automatically attempts to detect the data type of fields in your documents. This allows you to get started quickly by just adding data to an index. 
+
+### Explicit mapping
+
+Use explicit mapping to define exactly how data types are mapped to fields, customized to your specific use case.
+
+## --Index modules
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html
+
+Index Modules are modules created per index and control all aspects related to an index.
+
+
+
+
+
+## -----
+
+## Indices, documents, and fields
+
 
 ## What is the ES
 
@@ -98,7 +192,7 @@
 - An index can be thought of as an optimized collection of documents and each document is a collection of fields,
 
 
-# Information out: search and analyze
+## Information out: search and analyze
 
 ## testing purposes
 
@@ -117,7 +211,7 @@
 
 - to build complex summaries of your data and gain insight into **key metrics, patterns, and trends**.
 
-# Scalability and resilience: clusters, nodes, and shards
+## Scalability and resilience: clusters, nodes, and shards
 
 - You can add servers (nodes) to a cluster *to increase capacity* and Elasticsearch automatically  
   distributes your data and query load across *all of the available nodes*.
@@ -131,7 +225,7 @@ an Elasticsearch index is really just <u>a logical grouping</u> of one or more p
 By distributing the documents in an index across multiple shards, and distributing those shards across multiple nodes, Elasticsearch can ensure redundancy, which both protects against hardware failures and increases query capacity as nodes are added to a cluster. As the cluster grows (or shrinks), Elasticsearch automatically migrates shards to rebalance the cluster.
 
 
-# -Set up Elasticsearch
+## -Set up Elasticsearch
 
 This section includes information on how to setup Elasticsearch and get it running, including:  
 - Downloading
@@ -139,7 +233,7 @@ This section includes information on how to setup Elasticsearch and get it runni
 - Starting
 - Configuring
 
-# --Configuring Elasticsearch
+## --Configuring Elasticsearch
 
 ## Config files location
 
@@ -151,11 +245,11 @@ Elasticsearch has three configuration files:
 
 These files are located in the config directory
 
-# Important Elasticsearch configuration
+## Important Elasticsearch configuration
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
 
-# -Index modules
+## -Index modules
 
 Index Modules are modules created per index and control all aspects related to an index.
 
@@ -178,7 +272,7 @@ They can be changed on a live index using the <u>update-index-settings API</u>.
   This setting can only be set at index creation time.  
   It cannot be changed on a closed index.
 
-# Analysis
+## Analysis
 
 The index analysis module acts as a configurable registry of analyzers that can be used in order to convert a string field into individual terms which are:
 
@@ -187,7 +281,7 @@ The index analysis module acts as a configurable registry of analyzers that can 
 
 See Text analysis for configuration details.
 
-# --Index Shard Allocation
+## --Index Shard Allocation
 
 This module provides per-index settings to control the allocation of shards to nodes:
 
@@ -196,69 +290,41 @@ This module provides per-index settings to control the allocation of shards to n
 - Total shards per node: A hard limit on the number of shards from the same index per node.
 - Data tier allocation: Controls the allocation of indices to data tiers.
 
-# Index-level shard allocation filtering
+## Index-level shard allocation filtering
 
 You can use shard allocation filters to control where Elasticsearch allocates shards of a particular index.  
 
 
 Shard allocation filters can be based on custom node attributes or the built-in `_name, _host_ip, _publish_ip, _ip, _host, _id, _tier and _tier_preference` attributes.
 
-# --E-Index Shard Allocation
-
-# --Mapping 
-
-Mapping is the process of defining how a document, and the fields it contains, are stored and indexed.
+## --E-Index Shard Allocation
 
 
-# Dynamic mapping
-
-The automatic detection and addition of new fields is called *dynamic mapping*.
-
-# Dynamic field mapping
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-field-mapping.html
-
-When Elasticsearch detects a new field in a document, it dynamically adds the field to the type mapping by default. The dynamic parameter controls this behavior.
-
-# Dynamic templates
-
-Dynamic templates allow you greater control of how Elasticsearch maps your data beyond the default `dynamic field mapping rules`. 
-
-# Explicit mapping
-
-
-# Field data types
-
-
-
-
-# --E-Mapping 
-
-# -Index templates
+## -Index templates
 
 An index template is a way to tell Elasticsearch how to configure an index when it is created.
 
-# -Data streams
+## -Data streams
 
 A data stream lets you store append-only time series data across multiple indices while giving you a single named resource for requests.  
 Data streams are well-suited for logs, events, metrics, and other continuously generated data.
 
-# -Ingest pipelines
+## -Ingest pipelines
 
 Ingest pipelines let you perform common transformations on your data before indexing.
 
-# -Aliases
+## -Aliases
 
 An alias is a secondary name for a group of data streams or indices. Most Elasticsearch APIs accept an alias in place of a data stream or index name.
 
-# -Data management
+## -Data management
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/data-management.html
 
-# --Concepts
+## --Concepts
 
 
-# Index lifecycle
+## Index lifecycle
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html
 
@@ -269,21 +335,19 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecy
 - searchable, but it’s okay if those queries are extremely slow.
 - Delete: The index is no longer needed and can safely be removed.
 
-# --END Concepts
+## --END Concepts
 
 ILM & Data stream lifecycle
 
-# --Index lifecycle actions
+## --Index lifecycle actions
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html
 
 
 
-# Rollover
+## --E-Index lifecycle actions
 
-# --E-Index lifecycle actions
-
-# Query examples
+## Query examples
 
 ## Limited size
 ```json
@@ -363,7 +427,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html
 
 [Terms look up](https://blog.csdn.net/UbuntuTouch/article/details/112857984)
 
-# [Mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)
+##  [Mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)
 
 - Mapping is the process of defining how a document, and the fields it contains, are stored and indexed.
 
@@ -377,7 +441,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html
 
 
 
-# [Search your data](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html)
+##  [Search your data](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html)
 
 ## The search api
 
@@ -396,7 +460,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html
 
 - the search hits are filtered after the aggregations are calculated.
 
-# [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)
+##  [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)
 
 ## Query and filter context
 
@@ -410,7 +474,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html
 - the query clause also calculates a relevance score in the `_score` metadata field.
 
 
-# Ways for data synchronization 
+##  Ways for data synchronization 
 
 https://zhuanlan.zhihu.com/p/659792107
 
@@ -424,6 +488,6 @@ https://zhuanlan.zhihu.com/p/659792107
 
 ### Cannel
 
-# Testing data see also project `labs\elasticsearch`
+## Testing data see also project `labs\elasticsearch`
 
 [doc](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html)

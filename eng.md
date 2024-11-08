@@ -1,74 +1,74 @@
-- [-Basic](#-basic)
+- [--Basic](#--basic)
 - [Soundmark](#soundmark)
-- [Imperative verbs](#imperative-verbs)
-- [Imperative sentences](#imperative-sentences)
-- [Determiners](#determiners)
-- [Articles](#articles)
-  - [A or an?](#a-or-an)
-  - [Take note: school/university, etc.](#take-note-schooluniversity-etc)
-- [Personal forms](#personal-forms)
-- [Question forms](#question-forms)
-  - [Meaning and Use](#meaning-and-use)
-  - [Asking questions with ‘how’](#asking-questions-with-how)
-- [Comparatives and Superlatives](#comparatives-and-superlatives)
-- [State verbs and action verbs](#state-verbs-and-action-verbs)
-  - [meaning and use](#meaning-and-use-1)
-- [Quantifiers: all, every, each, both, neither, either](#quantifiers-all-every-each-both-neither-either)
-  - [Meaning and use: all, every each](#meaning-and-use-all-every-each)
-  - [Meaning and use of both, neither, either](#meaning-and-use-of-both-neither-either)
-- [Subject-object questions](#subject-object-questions)
-  - [Meaning and use](#meaning-and-use-2)
-- ['Used to' and 'would'](#used-to-and-would)
-    - [Meaning and use](#meaning-and-use-3)
-    - [Used to - Habit](#used-to---habit)
-    - [Used to - State](#used-to---state)
-    - [Would - Habit (not for states)](#would---habit-not-for-states)
-- [Tenses](#tenses)
-  - [Past tenses](#past-tenses)
-    - [Simple past](#simple-past)
-    - [Past perfect](#past-perfect)
-    - [Past continuous](#past-continuous)
-    - [Past perfect continuous](#past-perfect-continuous)
-  - [Present tenses](#present-tenses)
-    - [Simple present](#simple-present)
-    - [Present perfect](#present-perfect)
-    - [Present continuous](#present-continuous)
-    - [Present perfect continuous](#present-perfect-continuous)
-  - [Future tenses](#future-tenses)
-    - [Simple future](#simple-future)
-    - [Future perfect](#future-perfect)
-    - [Future continuous](#future-continuous)
-    - [Future perfect continuous](#future-perfect-continuous)
-  - [Future in the past](#future-in-the-past)
-- [Conditionals](#conditionals)
-  - [Past Conditionals](#past-conditionals)
-    - [Past Real Conditional](#past-real-conditional)
-    - [Past Unreal Conditional](#past-unreal-conditional)
-  - [Present Conditionals](#present-conditionals)
-    - [Present Real Conditional](#present-real-conditional)
-    - [Present Unreal Conditional](#present-unreal-conditional)
-  - [Future Conditionals](#future-conditionals)
-    - [Future Real Conditional](#future-real-conditional)
-    - [Future Unreal Conditional](#future-unreal-conditional)
-  - [Zero conditional](#zero-conditional)
-  - [First conditional(Future real conditional)](#first-conditionalfuture-real-conditional)
-  - [Second conditional](#second-conditional)
-  - [Third conditional](#third-conditional)
-  - [Mixed third/second conditional form](#mixed-thirdsecond-conditional-form)
+- [- Imperative verbs](#--imperative-verbs)
+- [- Imperative sentences](#--imperative-sentences)
+- [- Determiners](#--determiners)
+- [- Articles](#--articles)
+- [A or an?](#a-or-an)
+- [Take note: school/university, etc.](#take-note-schooluniversity-etc)
+- [- Personal forms](#--personal-forms)
+- [- Question forms](#--question-forms)
+- [Meaning and Use](#meaning-and-use)
+- [Asking questions with ‘how’](#asking-questions-with-how)
+- [- Comparatives and Superlatives](#--comparatives-and-superlatives)
+- [- State verbs and action verbs](#--state-verbs-and-action-verbs)
+- [meaning and use](#meaning-and-use-1)
+- [- Quantifiers: all, every, each, both, neither, either](#--quantifiers-all-every-each-both-neither-either)
+- [Meaning and use: all, every each](#meaning-and-use-all-every-each)
+- [Meaning and use of both, neither, either](#meaning-and-use-of-both-neither-either)
+- [- Subject-object questions](#--subject-object-questions)
+- [Meaning and use](#meaning-and-use-2)
+- [- 'Used to' and 'would'](#--used-to-and-would)
+  - [Meaning and use](#meaning-and-use-3)
+  - [Used to - Habit](#used-to---habit)
+  - [Used to - State](#used-to---state)
+  - [Would - Habit (not for states)](#would---habit-not-for-states)
+- [-Tenses](#-tenses)
+- [Past tenses](#past-tenses)
+  - [Simple past](#simple-past)
+  - [Past perfect](#past-perfect)
+  - [Past continuous](#past-continuous)
+  - [Past perfect continuous](#past-perfect-continuous)
+- [Present tenses](#present-tenses)
+  - [Simple present](#simple-present)
+  - [Present perfect](#present-perfect)
+  - [Present continuous](#present-continuous)
+  - [Present perfect continuous](#present-perfect-continuous)
+- [Future tenses](#future-tenses)
+  - [Simple future](#simple-future)
+  - [Future perfect](#future-perfect)
+  - [Future continuous](#future-continuous)
+  - [Future perfect continuous](#future-perfect-continuous)
+- [Future in the past](#future-in-the-past)
+- [-Conditionals](#-conditionals)
+- [Past Conditionals](#past-conditionals)
+  - [Past Real Conditional](#past-real-conditional)
+  - [Past Unreal Conditional](#past-unreal-conditional)
+- [Present Conditionals](#present-conditionals)
+  - [Present Real Conditional](#present-real-conditional)
+  - [Present Unreal Conditional](#present-unreal-conditional)
+- [Future Conditionals](#future-conditionals)
+  - [Future Real Conditional](#future-real-conditional)
+  - [Future Unreal Conditional](#future-unreal-conditional)
+- [Zero conditional](#zero-conditional)
+- [First conditional(Future real conditional)](#first-conditionalfuture-real-conditional)
+- [Second conditional](#second-conditional)
+- [Third conditional](#third-conditional)
+- [Mixed third/second conditional form](#mixed-thirdsecond-conditional-form)
 - [Passive form](#passive-form)
-- [E-Basic](#e-basic)
-- [Gerunds and Infinitives](#gerunds-and-infinitives)
-  - [5. Followed by gerunds as obj](#5-followed-by-gerunds-as-obj)
-  - [6. Followed by infinitives as obj](#6-followed-by-infinitives-as-obj)
-  - [13. Followed by a gerund or an infinitive](#13-followed-by-a-gerund-or-an-infinitive)
-  - [20. Gerund and infinitive forms](#20-gerund-and-infinitive-forms)
-- [Participle  clause](#participle--clause)
-  - [Present participle clauses](#present-participle-clauses)
-  - [Perfect participle clauses](#perfect-participle-clauses)
+- [E--Basic](#e--basic)
+- [- Gerunds and Infinitives](#--gerunds-and-infinitives)
+- [5. Followed by gerunds as obj](#5-followed-by-gerunds-as-obj)
+- [6. Followed by infinitives as obj](#6-followed-by-infinitives-as-obj)
+- [13. Followed by a gerund or an infinitive](#13-followed-by-a-gerund-or-an-infinitive)
+- [20. Gerund and infinitive forms](#20-gerund-and-infinitive-forms)
+- [- Participle  clause](#--participle--clause)
+- [Present participle clauses](#present-participle-clauses)
+- [Perfect participle clauses](#perfect-participle-clauses)
 
-# -Basic
+## --Basic
 
-# Soundmark
+## Soundmark
 
 https://pronunciationstudio.com/english-ipa-chart/
 
@@ -76,7 +76,7 @@ https://www.antimoon.com/how/pronunc-soundsipa.htm
 
 https://www.xdf.cn/zhuanti/bd-phonetic-alphabet-card/index.html
 
-# Imperative verbs
+## - Imperative verbs
 
 https://www.grammarly.com/blog/imperative/
 
@@ -86,7 +86,7 @@ https://www.grammarly.com/blog/imperative-verbs/
 
 The imperative verb is an action a speaker or writer wants someone else to do. 
 
-# Imperative sentences
+## - Imperative sentences
 
 https://www.grammarly.com/blog/imperative-sentences/
 
@@ -95,7 +95,7 @@ https://www.grammarly.com/blog/imperative-sentences/
 What is an imperative sentence?
 When you make a request, offer advice, issue a command, or give an instruction, you use the imperative mood. 
 
-# Determiners
+## - Determiners
 
 <span style='font-size: 16px;font-weight: 500'>What is a determiner?</span>  
 
@@ -103,7 +103,7 @@ A determiner, also known as a limiting adjective, is a word that appears before 
 
 https://www.grammarly.com/blog/determiners/
 
-# Articles
+## - Articles
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-8/tab/grammar
 
@@ -128,7 +128,7 @@ She was in hospital for three weeks.       Is there a shop in the hospital?
 
 If someone is at the place because they are a student / are sick / a prisoner, etc, we don't use the. If they are there for another reason, or we are talking about the building, we use the.
 
-# Personal forms
+## - Personal forms
 
 https://en.wikipedia.org/wiki/English_personal_pronouns
 
@@ -153,7 +153,7 @@ https://en.wikipedia.org/wiki/English_personal_pronouns
 |                 **Third** |  they   |  them  |                  their                   |         theirs         | themselves |
 
 
-# Question forms
+## - Question forms
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-1/tab/grammar
 
@@ -176,11 +176,11 @@ These questions cannot be answered with a yes or no.
 
 The question word how is usually combined with other words when asking for information, such as size, someone’s age, or the price of something.
 
-# Comparatives and Superlatives
+## - Comparatives and Superlatives
 
 http://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-13/tab/grammar
 
-# State verbs and action verbs
+## - State verbs and action verbs
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-25/tab/grammar
 
@@ -196,7 +196,7 @@ We use <u>state verbs</u> to talk about attitudes, thoughts, senses or belonging
 - The children love ice cream.
 - I believe in angels.
 
-# Quantifiers: all, every, each, both, neither, either
+## - Quantifiers: all, every, each, both, neither, either
 
 https://www.bbc.co.uk/learningenglish/english/course/intermediate/unit-3/tab/grammar
 
@@ -216,7 +216,7 @@ Both means this one AND the other.
 Neither means NOT this one AND NOT the other.  
 Either means this one OR the other.
 
-# Subject-object questions
+## - Subject-object questions
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-18/tab/grammar
 
@@ -239,7 +239,7 @@ We can ask about the subject or object of this sentence:
 
 The first question is a subject question because who refers to the subject. There is no auxiliary. The second question is an object question because who refers to the object and comes before the auxiliary did.
 
-# 'Used to' and 'would'
+## - 'Used to' and 'would'
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-29/tab/grammar
 
@@ -270,7 +270,7 @@ Would is used only for past habits, not for past states.
 - Would you often stay for lunch?
 
 
-# Tenses
+## -Tenses
 
 ```mermaid
 flowchart LR
@@ -395,7 +395,7 @@ https://topenglishgrammar.com/future-in-the-past/
 <span style='font-size: 16px;font-weight: 500'>How to use it?</span>  
 We use the Future in the Past to shape the future of the past. To show <u>the future from the perspective of the past</u>.
 
-# Conditionals
+## -Conditionals
 
 https://www.englishpage.com/conditional/conditionalintro.html
 
@@ -565,13 +565,13 @@ Sometimes *<u>unreal conditional</u>* sentences are mixed.
 
 
 
-# Passive form
+## Passive form
 
 https://www.grammarly.com/blog/active-vs-passive-voice/
 
-# E-Basic
+## E--Basic
 
-# Gerunds and Infinitives
+## - Gerunds and Infinitives
 
 https://www.englishpage.com/gerunds/part_1.htm
 
@@ -607,7 +607,8 @@ https://www.englishpage.com/gerunds/part_3.htm
 https://www.englishpage.com/gerunds/part_3.htm
 
 
-# Participle  clause 
+
+## - Participle  clause 
 
 https://www.grammaring.com/participle-clauses
 

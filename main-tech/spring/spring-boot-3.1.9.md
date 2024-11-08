@@ -48,7 +48,6 @@
 
 [api](https://docs.spring.io/spring-boot/docs/3.1.9/api/)
 
-# 4. Getting Started
 
 ## 1. Introducing Spring Boot
 
@@ -62,7 +61,7 @@ Spring Boot helps you to create stand-alone, production-grade Spring-based appli
 
 ### 4.3. Setting up the project with Gradle
 
-# 6. Developing with Spring Boot
+
 
 ## 6.1.1. Dependency Management
 
@@ -143,7 +142,6 @@ A single `@SpringBootApplication` annotation can be used to enable those three f
 - `@SpringBootConfiguration`: enable registration of extra beans in the context or the import of additional configuration classes. An alternative to Spring’s standard @Configuration that aids configuration detection in your integration tests.
 
 
-# 7. Core Features
 
 ## 7.1. SpringApplication
 
@@ -341,9 +339,9 @@ public class MyProperties {
 ```
 
 
-# 7.9 Testing
+## 7.9.3. Testing Spring Boot Applications
 
-# 9. Data
+https://docs.spring.io/spring-boot/docs/3.1.9/reference/htmlsingle/#features.testing.spring-boot-applications
 
 Spring Boot integrates with a number of data technologies, both SQL and NoSQL.
 
