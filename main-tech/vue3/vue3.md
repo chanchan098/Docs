@@ -1,6 +1,3 @@
-# vue3.md
-
-- [vue3.md](#vue3md)
 - [Scaffold](#scaffold)
   - [debugger](#debugger)
   - [nodejs](#nodejs)
@@ -224,7 +221,7 @@
 ## vite 
 
 - [vite](https://cn.vitejs.dev/guide)
- 
+
 ## vue router 4.x
 
 - [vue router 4.x](https://router.vuejs.org/zh/guide/)
@@ -865,7 +862,7 @@ You can add the lazy modifier to instead sync after change events:
 <details>
 <summary>picture</summary>
 
-![alt](https://vuejs.org/assets/lifecycle.DLmSwRQE.png)
+![alt](https://vuejs.org/assets/lifecycle.MuZLBFAS.png)
 
 </details>
 
@@ -1284,7 +1281,7 @@ can access value by variable name string.
 
 <div style="display: flex;">
   <div style="flex: 1; padding-right: 20px;">    
-  
+
   <p><b>equals to &nbsp;</b></p>
 
   ```javascript
@@ -1297,7 +1294,7 @@ can access value by variable name string.
 
   </div>  
   <div style="flex: 1;">
-  
+
   <p><b> &nbsp;</b></p>
 
   ```javascript
@@ -1366,7 +1363,7 @@ If using SFCs, you will be registering the imported `.vue` files:
 
   app.component('MyComponent', MyComponent)
   ```
-  
+
   </div>
   <div style="flex: 1;">
   <p><b>no SFC &nbsp;</b></p>
@@ -1447,7 +1444,7 @@ export default {
   }
 }
   ```
-  
+
 
   </div>
 </div>
@@ -1481,7 +1478,7 @@ props.foo = 'bar'
   The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards.
   ```javascript
   const props = defineProps(['initialCounter'])
-
+  
   // counter only uses props.initialCounter as the initial value;
   // it is disconnected from future prop updates.
   const counter = ref(props.initialCounter)
@@ -1490,7 +1487,7 @@ props.foo = 'bar'
   The prop is passed in as a raw value that needs to be transformed.
   ```javascript
   const props = defineProps(['size'])
-
+  
   // computed property that auto-updates when the prop changes
   const normalizedSize = computed(() => props.size.trim().toLowerCase())
   ```
@@ -1670,7 +1667,7 @@ function update() {
   <div>parent bound v-model is: {{ model }}</div>
 </template>
 ```
-  
+
 The parent can then bind a value with v-model:
 ```html
 <!-- Parent.vue -->
@@ -1761,7 +1758,7 @@ const lastName = defineModel('lastName')
   <input type="text" v-model="firstName" />
   <input type="text" v-model="lastName" />
 </template>
-```
+  ```
 
   </div>
 </div>
@@ -1810,7 +1807,7 @@ it will be merged with the `class` and `style` values that are inherited from th
   <!-- template of <MyButton> -->
 <button class="btn">click me</button>
   ```
-  
+
 
   </div>
   <div style="flex: 1;">

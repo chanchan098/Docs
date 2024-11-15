@@ -60,6 +60,7 @@
 - [- Gerunds and Infinitives](#--gerunds-and-infinitives)
 - [5. Followed by gerunds as obj](#5-followed-by-gerunds-as-obj)
 - [6. Followed by infinitives as obj](#6-followed-by-infinitives-as-obj)
+- [5 \& 6, Followed by gerunds or infs in different meaning](#5--6-followed-by-gerunds-or-infs-in-different-meaning)
 - [13. Followed by a gerund or an infinitive](#13-followed-by-a-gerund-or-an-infinitive)
 - [20. Gerund and infinitive forms](#20-gerund-and-infinitive-forms)
 - [- Participle  clause](#--participle--clause)
@@ -436,6 +437,29 @@ The present real conditional (also called conditional 0) is used to talk about w
 
 Verbs of both of <u>if part</u> and <u>main part</u> are <u>simple present</u>.
 
+<br/>
+
+
+Examples:
+
+- If I go to a friend's house for dinner, I usually take a bottle of wine or some flowers.
+- When I have a day off from work, I often go to the beach.
+- If the weather is nice, she walks to work.
+- Jerry helps me with my homework when he has time.
+- I read if there is nothing on TV.
+- A: What do you do when it rains?  
+  B: I stay at home.
+- A: Where do you stay if you go to Sydney?  
+  B: I stay with my friends near the harbor.
+
+
+<br/>
+
+**IMPORTANT If / When**  
+Using "if" suggests that something happens less frequently.  
+Using "when" suggests that something happens regularly.
+
+
 ### Present Unreal Conditional
 
 [If ... simple past ..., ... would + verb ...]
@@ -445,6 +469,34 @@ Verbs of both of <u>if part</u> and <u>main part</u> are <u>simple present</u>.
 The present unreal conditional (also called conditional 2) is used to talk about what you would generally do in imaginary situations.
 
 Verb of if part is <u>simple past</u>, verb of main part is <u>would do</u>
+
+<br/>
+
+Examples:
+
+If I owned a car, I would drive to work. But I don't own a car.
+She would travel around the world if she had more money. But she doesn't have much money.
+I would read more if I didn't watch so much TV.
+Mary would move to Japan if she spoke Japanese.
+If they worked harder, they would earn more money.
+A: What would you do if you won the lottery?
+B: I would buy a house.
+A: Where would you live if you moved to the U.S.?
+B: I would live in Seattle.
+
+<br/>
+
+**EXCEPTION If I were ...**  
+In the present unreal conditional, the form "was" is not considered grammatically correct.  
+In written English or in testing situations, you should always use "were."  
+However, in everyday conversation, "was" is often used.
+
+Examples:
+- If he were French, he would live in Paris.
+- If she were rich, she would buy a yacht.
+- I would play basketball if I were taller.
+- I would buy that computer if it were cheaper.
+- I would buy that computer if it was cheaper. Not Correct (But often said in conversation.)
 
 ## Future Conditionals
 
@@ -594,6 +646,15 @@ https://www.englishpage.com/gerunds/part_1.htm
 
 https://www.englishpage.com/gerunds/infinitive_list.htm
 
+## 5 & 6, Followed by gerunds or infs in different meaning
+
+- start
+  - When "start" is used in non-continuous tenses, you can either use a gerund or an infinitive.
+  - When "start" is used in continuous tenses, an infinitive is used.
+
+- try
+  - try to do, do something as far as possible but no success.
+  - try doing, can be done easily, that's some experiments.
 
 ## 13. Followed by a gerund or an infinitive
 

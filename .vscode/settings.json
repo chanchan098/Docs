@@ -1,7 +1,7 @@
 // ren .vscode\settings.json settings-2.json && ren .vscode\settings-1.json settings.json && ren .vscode\settings-2.json settings-1.json
 {
     "workbench.editorAssociations": {
-        // "*.md": "markdown-preview-enhanced"
+        "*.md": "default"
     },
     "workbench.colorTheme": "Visual Studio Light",
     "workbench.statusBar.visible": false,

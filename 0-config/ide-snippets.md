@@ -54,6 +54,16 @@ mardown.json
 		],
 		"description": "code block JavaScript"
 	},
+	"code block TypeScript": {
+		"prefix": "cot",
+		"body": [
+			"```typescript",
+			"$1",
+			"```",
+			"",			
+		],
+		"description": "code block TypeScript"
+	},
 	"code block Java": {
 		"prefix": "coja",
 		"body": [
@@ -257,14 +267,26 @@ mardown.json
 		],
 		"description": "greater than h2, other headings"
 	},
-	"sub heading": {
+	"sub heading commom": {
 		"prefix": "sh",
-		"body": [
-			"<span style='font-size: 15px;'>**$1**</span>  ",
+		"body": [			
+			"",
+			"<span style='font-size: 16px;font-weight: 500'>$1</span>  ",
 			"$2",
 			""
 		],
-		"description": "sub heading"
+		"description": "sub heading, common"
+	},
+	"sub heading": {
+		"prefix": "shd",
+		"body": [
+			"---"
+			"",
+			"<span style='font-size: 16px;font-weight: 500'>$1</span>  ",
+			"$2",
+			""
+		],
+		"description": "sub heading, with divider"
 	},
 	"sub heading unordered": {
 		"prefix": "shu",

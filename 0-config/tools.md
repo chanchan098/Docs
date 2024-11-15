@@ -22,6 +22,18 @@ to remove `configRoot/config/eval`
 
 ## markdown on vscode
 
+### usage for md preview enhanced
+
+fix auto-jumping to preview and rendering error when edited on preview enhanced.
+
+0. to select a default text editor for all md files. 
+   1. right click on a `.md` file
+   2. click `open with` option
+   3. select `Text Editor Active and Default`
+1. open `settings` about md preview enhanced
+   1. find out the `Preview mode`
+   2. get the `Previews only`
+
 ### open preview default 
 
 https://stackoverflow.com/questions/60155443/vscode-preview-markdown-by-default

@@ -37,6 +37,10 @@ look at `tsconfig.json`
 
 ## JSX and TSX
 
+https://legacy.reactjs.org/docs/introducing-jsx.html
+
+https://react.dev/learn/writing-markup-with-jsx
+
 "@vitejs/plugin-vue-jsx": "^3.1.0",
 
 imported at `vite.config.ts`, `import VueJsx from '@vitejs/plugin-vue-jsx'`
