@@ -803,17 +803,17 @@ AppView.vue
 
 ## Entry
 
-### main.ts
-```javascript
-import App from './App.vue'
-const setupAll = async () => {
-  ...
-  const app = createApp(App)
-  app.mount('#app')
-  ...
-}
-```
+### index.html
 
+Entry point for vite-based app.
+
+```html
+<div id="app">
+  ...
+<div>
+
+<script type="module" src="/src/main.ts"></script>
+```
 
 ### App.vue
 
@@ -827,216 +827,22 @@ To render root layout at `<RouterView>`
 </template>
 ```
 
-### index.html
-
-Entry point for vite-based app.
-
-```html
-<div id="app"><div>
-
-<script type="module" src="/src/main.ts"></script>
+### main.ts
+```javascript
+import App from './App.vue'
+const setupAll = async () => {
+  ...
+  const app = createApp(App)
+  app.mount('#app')
+  ...
+}
 ```
 
 ## Layout.vue
 
 `src\layout\components\useRenderLayout.tsx`
 
-### Root layout structure
-```javascript
-const renderLayout = () => {
-  switch (unref(layout)) {
-    case 'classic':
-      const { renderClassic } = useRenderLayout()
-      return renderClassic()
-    case 'topLeft':
-      const { renderTopLeft } = useRenderLayout()
-      return renderTopLeft()
-    case 'top':
-      const { renderTop } = useRenderLayout()
-      return renderTop()
-    case 'cutMenu':
-      const { renderCutMenu } = useRenderLayout()
-      return renderCutMenu()
-    default:
-      break
-  }
-}
-
-export default defineComponent({
-  name: 'Layout',
-  setup() {
-    return () => (
-      <section id='jo-root' class={[prefixCls, `${prefixCls}__${layout.value}`, 'w-[100%] h-[100%] relative']}>
-        {mobile.value && !collapse.value ? (
-          <div
-            class="absolute top-0 left-0 w-full h-full opacity-30 z-99 bg-[var(--el-color-black)]"
-            onClick={handleClickOutside}
-          ></div>
-        ) : undefined}
-
-        {renderLayout()}
-
-        <Backtop></Backtop>
-
-        <Setting></Setting>
-      </section>
-    )
-  }
-})
-```
-
-### Root layout renderer
-```javascript
-export const useRenderLayout = () => {
-
-const renderClassic = () => {}
-const renderTopLeft = () => {}
-const renderTop = () => {}
-const renderCutMenu = () => {}
-
-}
-```
-
-<details>
-<summary>renderClassic</summary>
-
-```javascript
-const renderClassic = () => {
-    return (
-      <>
-        <div
-          id='jo-left'
-          class={[
-            'absolute top-0 left-0 h-full layout-border__right',
-            { '!fixed z-3000': mobile.value }
-          ]}
-        >
-          {logo.value ? (
-            <Logo
-              class={[
-                'bg-[var(--left-menu-bg-color)] relative',
-                {
-                  '!pl-0': mobile.value && collapse.value,
-                  'w-[var(--left-menu-min-width)]': appStore.getCollapse,
-                  'w-[var(--left-menu-max-width)]': !appStore.getCollapse
-                }
-              ]}
-              style="transition: all var(--transition-time-02);"
-            ></Logo>
-          ) : undefined}
-          <Menu class={[{ '!h-[calc(100%-var(--logo-height))]': logo.value }]}></Menu>
-        </div>
-        <div
-          id='jo-right'
-          class={[
-            `${prefixCls}-content`,
-            'absolute top-0 h-[100%]',
-            {
-              'w-[calc(100%-var(--left-menu-min-width))] left-[var(--left-menu-min-width)]':
-                collapse.value && !mobile.value && !mobile.value,
-              'w-[calc(100%-var(--left-menu-max-width))] left-[var(--left-menu-max-width)]':
-                !collapse.value && !mobile.value && !mobile.value,
-              'fixed !w-full !left-0': mobile.value
-            }
-          ]}
-          style="transition: all var(--transition-time-02);"
-        >
-          <ElScrollbar
-            v-loading={pageLoading.value}
-            class={[
-              `${prefixCls}-content-scrollbar`,
-              {
-                '!h-[calc(100%-var(--top-tool-height)-var(--tags-view-height))] mt-[calc(var(--top-tool-height)+var(--tags-view-height))]':
-                  fixedHeader.value
-              }
-            ]}
-          >
-            <div
-              class={[
-                {
-                  'fixed top-0 left-0 z-10': fixedHeader.value,
-                  'w-[calc(100%-var(--left-menu-min-width))] !left-[var(--left-menu-min-width)]':
-                    collapse.value && fixedHeader.value && !mobile.value,
-                  'w-[calc(100%-var(--left-menu-max-width))] !left-[var(--left-menu-max-width)]':
-                    !collapse.value && fixedHeader.value && !mobile.value,
-                  '!w-full !left-0': mobile.value
-                }
-              ]}
-              style="transition: all var(--transition-time-02);"
-            >
-              <ToolHeader
-                class={[
-                  'bg-[var(--top-header-bg-color)]',
-                  {
-                    'layout-border__bottom': !tagsView.value
-                  }
-                ]}
-              ></ToolHeader>
-
-              {tagsView.value ? (
-                <TagsView class="layout-border__bottom layout-border__top"></TagsView>
-              ) : undefined}
-            </div>
-
-            <AppView></AppView>
-          </ElScrollbar>
-        </div>
-      </>
-    )
-  }
-```
-
-
-</details>
-
-
-<details>
-<summary>AppView.vue</summary>
-
-```html
-<script setup lang="ts">
-import { useTagsViewStore } from '@/store/modules/tagsView'
-import { useAppStore } from '@/store/modules/app'
-import { Footer } from '@/components/Footer'
-import { computed } from 'vue'
-
-const appStore = useAppStore()
-
-const footer = computed(() => appStore.getFooter)
-
-const tagsViewStore = useTagsViewStore()
-
-const getCaches = computed((): string[] => {
-  return tagsViewStore.getCachedViews
-})
-</script>
-
-<template>
-  <section
-    :class="[
-      'flex-1 p-[var(--app-content-padding)] w-[calc(100%-var(--app-content-padding)-var(--app-content-padding))] bg-[var(--app-content-bg-color)] dark:bg-[var(--el-bg-color)]'
-    ]"
-  >
-    <router-view>
-      <template #default="{ Component, route }">
-        <keep-alive :include="getCaches">
-          <component :is="Component" :key="route.fullPath" />
-        </keep-alive>
-      </template>
-    </router-view>
-  </section>
-  <Footer v-if="footer" />
-</template>
-
-```
-
-
-</details>
-
-
-### Solved
-
-- structure of layout and router view 
+https://github1s.com/kailong321200875/vue-element-plus-admin/blob/master/src/layout/components/useRenderLayout.tsx
 
 ## Pages view
 
