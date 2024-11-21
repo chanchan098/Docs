@@ -1,5 +1,19 @@
 - thoughts spreading
 
+- Effective reading
+  - Subject
+  - Short definition or description or introduction 
+  - Dive into examples 
+  - Summary shortly 
+  - Application 
+
+
+
+
+
+
+
+
 
 ``` 
 

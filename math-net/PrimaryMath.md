@@ -150,3 +150,120 @@ This means that you would have to pay an additional 99 cents on top of the \$12,
 <u>We also could've multiplied 12 by 1.0825 to get the same result.</u>
 
 ### Discounts
+
+Understanding percentages allows us to calculate how much we will save when purchasing discounted things.
+
+**Example**  
+A shirt originally priced at $15 is discounted 20%. How much money will you save?
+
+20% of $15 can be calculated by multiplying 15 by 0.20 or 20/100.
+
+$\frac{20}{100} \times 15 = \frac{20}{100} \times \frac{15}{1} = \frac{300}{100} = 3$
+
+Therefore, a 20% discount results in $3 of savings.
+
+## Percent change
+
+https://www.math.net/percent-change
+
+Percent change is the amount that a quantity changes relative to its original value.
+
+$\%change=\frac{(new\;-\;old)}{|old|} \times 100\%$
+
+Old here refers to the value we start with, or the initial value, while new refers to the final value.
+
+When we subtract the old from the new value, we can get a negative number, a positive number, or 0.   
+A positive number would mean that the initial value increased.  
+A negative number means that the initial value decreased.  
+In order to get a 0 difference, the old and new number would have to be the same, meaning there was no change.
+
+**Examples**
+
+Given an initial value of 5, how much of a percentage increase will result in a new value of 12?
+
+$\frac{12\;-\;5}{|5|}=1.4 \times 100\% = 140\%$
+
+So, 12 is a 140% increase of 5.
+
+## Percent to decimal
+
+Converting a percent to a decimal involves simply shifting the decimal place by dividing the percent by 100.
+
+**Example**  
+Say we want to convert 8.25% to a decimal. We need to shift the decimal place two spaces to the left:
+
+![alt](https://www.math.net/img/a/primary-math/percentage/percent-to-decimal/ptd.svg)
+
+So, 8.25% in decimal form is 0.0825.
+
+
+# Data and graphs
+
+## Range
+
+### Range (interval) in mathematics
+
+The term range is commonly used in mathematics to refer to an interval.  
+An interval in this context is the set of real numbers that lie between two numbers.
+
+
+**Examples**  
+If we say that the range is some set of numbers, n, between and including 0 and 100, this means that our range is 0, 100, and all of the numbers between 0 and 100. This is written as:
+
+$$0 \leq n \leq 100$$
+
+This is referred to as a *closed interval*, because it does include the endpoints.  
+It can also be written as [0, 100].
+
+<br/><br/>
+
+If instead we were to write:
+
+$$0 < n < 100$$
+
+The range would be all the numbers between 0 and 100, but not including 0 and 100.  
+This is referred to as an *open interval* because it doesn't include the endpoints.  
+It can also be written as (0, 100).
+
+We could also have a range of (0, 100] or 0 < n ≤ 100 and [0, 100) or 0 ≤ n < 100.
+
+
+# Rules and properties
+
+## Basic mathematical properties
+
+### Order of operations
+
+PEMDAS: Parentheses, exponents, multiplication, division, addition, subtraction
+
+BODMAS: Brackets, order, division, multiplication, addition, subtraction
+
+Notice that multiplication and division are in different positions in PE(MD)AS and BO(DM)AS; this is because multiplication and division, and addition and subtraction, can be performed in either order
+
+### Distributive property
+
+The distributive property states that multiplying a group of numbers that are being added is the same as multiplying by each number individually, then adding them together.
+
+$a × (b + c) = a × b + a × c$
+
+## Inverse
+
+### Addition and subtraction
+
+Addition and subtraction are inverses in that the sign is reversed between operations.
+
+**Example**   
+$4 + 3	=	7$  
+$7 - 3	=	4$  
+As can be seen, adding 3 to 4 and then subtracting 3 from the sum leaves us where we started, with 4. 
+
+### Multiplication and division
+
+The inverse operation of multiplication is division, where in either case, reciprocating results in the other operation.
+
+**Example**  
+
+$6 × 5	=	30$  
+$30 ÷ 5	=	6$
+
+As shown above, multiplication and division essentially cancel each other out, which is why they are inverse operations
