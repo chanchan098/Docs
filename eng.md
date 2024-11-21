@@ -13,12 +13,12 @@
 - [- Comparatives and Superlatives](#--comparatives-and-superlatives)
 - [- State verbs and action verbs](#--state-verbs-and-action-verbs)
 - [meaning and use](#meaning-and-use-1)
-- [- Quantifiers: all, every, each, both, neither, either](#--quantifiers-all-every-each-both-neither-either)
+- [-Quantifiers: all, every, each, both, neither, either](#-quantifiers-all-every-each-both-neither-either)
 - [Meaning and use: all, every each](#meaning-and-use-all-every-each)
 - [Meaning and use of both, neither, either](#meaning-and-use-of-both-neither-either)
-- [- Subject-object questions](#--subject-object-questions)
+- [-Subject-object questions](#-subject-object-questions)
 - [Meaning and use](#meaning-and-use-2)
-- [- 'Used to' and 'would'](#--used-to-and-would)
+- [-'Used to' and 'would'](#-used-to-and-would)
   - [Meaning and use](#meaning-and-use-3)
   - [Used to - Habit](#used-to---habit)
   - [Used to - State](#used-to---state)
@@ -57,13 +57,13 @@
 - [Mixed third/second conditional form](#mixed-thirdsecond-conditional-form)
 - [Passive form](#passive-form)
 - [E--Basic](#e--basic)
-- [- Gerunds and Infinitives](#--gerunds-and-infinitives)
-- [5. Followed by gerunds as obj](#5-followed-by-gerunds-as-obj)
-- [6. Followed by infinitives as obj](#6-followed-by-infinitives-as-obj)
+- [-Gerunds and Infinitives](#-gerunds-and-infinitives)
+- [5.Followed by gerunds as obj](#5followed-by-gerunds-as-obj)
+- [6.Followed by infinitives as obj](#6followed-by-infinitives-as-obj)
 - [5 \& 6, Followed by gerunds or infs in different meaning](#5--6-followed-by-gerunds-or-infs-in-different-meaning)
-- [13. Followed by a gerund or an infinitive](#13-followed-by-a-gerund-or-an-infinitive)
-- [20. Gerund and infinitive forms](#20-gerund-and-infinitive-forms)
-- [- Participle  clause](#--participle--clause)
+- [13.Followed by a gerund or an infinitive](#13followed-by-a-gerund-or-an-infinitive)
+- [20.Gerund and infinitive forms](#20gerund-and-infinitive-forms)
+- [-Participle  clause](#-participle--clause)
 - [Present participle clauses](#present-participle-clauses)
 - [Perfect participle clauses](#perfect-participle-clauses)
 
@@ -197,7 +197,7 @@ We use <u>state verbs</u> to talk about attitudes, thoughts, senses or belonging
 - The children love ice cream.
 - I believe in angels.
 
-## - Quantifiers: all, every, each, both, neither, either
+## -Quantifiers: all, every, each, both, neither, either
 
 https://www.bbc.co.uk/learningenglish/english/course/intermediate/unit-3/tab/grammar
 
@@ -217,7 +217,7 @@ Both means this one AND the other.
 Neither means NOT this one AND NOT the other.  
 Either means this one OR the other.
 
-## - Subject-object questions
+## -Subject-object questions
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-18/tab/grammar
 
@@ -240,7 +240,7 @@ We can ask about the subject or object of this sentence:
 
 The first question is a subject question because who refers to the subject. There is no auxiliary. The second question is an object question because who refers to the object and comes before the auxiliary did.
 
-## - 'Used to' and 'would'
+## -'Used to' and 'would'
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-29/tab/grammar
 
@@ -623,7 +623,7 @@ https://www.grammarly.com/blog/active-vs-passive-voice/
 
 ## E--Basic
 
-## - Gerunds and Infinitives
+## -Gerunds and Infinitives
 
 https://www.englishpage.com/gerunds/part_1.htm
 
@@ -634,13 +634,13 @@ Brief actions OR abstract actions use INFINITIVES after verb.
 
 https://www.englishpage.com/gerunds/index.htm
 
-## 5. Followed by gerunds as obj
+## 5.Followed by gerunds as obj
 
 https://www.englishpage.com/gerunds/part_1.htm
 
 https://www.englishpage.com/gerunds/infinitive_list.htm
 
-## 6. Followed by infinitives as obj
+## 6.Followed by infinitives as obj
 
 https://www.englishpage.com/gerunds/part_1.htm
 
@@ -648,28 +648,52 @@ https://www.englishpage.com/gerunds/infinitive_list.htm
 
 ## 5 & 6, Followed by gerunds or infs in different meaning
 
+
+https://www.englishpage.com/gerunds/gerund_or_infinitive_different_list.htm
+
+- begin
+  - When "begin" is used in non-continuous tenses, you can either use a gerund or an infinitive.
+    - She began singing.
+    - She began to sing.
+  - When "begin" is used in continuous tenses, an infinitive is used.
+    - She is beginning to sing.
+- forget 
+  - When "forget" is used with a gerund, it means "to forget that you have done something."   
+    The sentence above means that she read the book when she was a kid, and that she has forgotten that fact.
+     - She forgot reading the book when she was a kid.
+  - When forget is used with an infinitive, it means "to forget that you need to do something."   
+    The sentence above means that she forgot that she needed to pay the rent.
+    - She forgot to pay the rent this month.
+- need
+  - When "need" is used with a gerund, it takes on a passive meaning.
+    - The house needs cleaning.
+  - "Need" is usually used with an infinitive or an object + an infinitive.
+    - He needs to call his boss.
+    - He needs him to call his boss.
+- remember
+  - When "remember" is used with a gerund, it means "to remember that you have done something."
+  - When "remember" is used with an infinitive, it means "to remember that you need to do something."
 - start
   - When "start" is used in non-continuous tenses, you can either use a gerund or an infinitive.
   - When "start" is used in continuous tenses, an infinitive is used.
-
 - try
   - try to do, do something as far as possible but no success.
   - try doing, can be done easily, that's some experiments.
 
-## 13. Followed by a gerund or an infinitive
+## 13.Followed by a gerund or an infinitive
 
 https://www.englishpage.com/gerunds/part_3.htm
 
 [List of Verbs Followed by a Gerund or Infinitive (Different Meaning)](https://www.englishpage.com/gerunds/gerund_or_infinitive_different_list.htm)
 
 
-## 20. Gerund and infinitive forms
+## 20.Gerund and infinitive forms
 
 https://www.englishpage.com/gerunds/part_3.htm
 
 
 
-## - Participle  clause 
+## -Participle  clause 
 
 https://www.grammaring.com/participle-clauses
 

@@ -1,8 +1,39 @@
-# mid-4-scheduler-quartz.md
-
 # Quartz (2.3.0)
 
 <https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/>
+
+https://www.quartz-scheduler.org/documentation/quartz-2.3.0/
+
+https://docs.spring.io/spring-boot/reference/io/quartz.html
+
+
+# Lesson 1: Using Quartz
+
+```java
+
+  SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
+
+  Scheduler sched = schedFact.getScheduler();
+
+  sched.start();
+
+  // define the job and tie it to our HelloJob class
+  JobDetail job = newJob(HelloJob.class)
+      .withIdentity("myJob", "group1")
+      .build();
+
+  // Trigger the job to run now, and then every 40 seconds
+  Trigger trigger = newTrigger()
+      .withIdentity("myTrigger", "group1")
+      .startNow()
+      .withSchedule(simpleSchedule()
+          .withIntervalInSeconds(40)
+          .repeatForever())
+      .build();
+
+  // Tell quartz to schedule the job using our trigger
+  sched.scheduleJob(job, trigger);
+```
 
 
 # Lesson 2: The Quartz API, Jobs And Triggers

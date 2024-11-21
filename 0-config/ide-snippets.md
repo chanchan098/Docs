@@ -215,7 +215,37 @@ mardown.json
 		],
 		"description": "bookmark"
 	},
+
+	"h1": {
+		"prefix": "h1",
+		"body": [
+			"# $1"
+		],
+		"description": "h1"
+	},
 	
+	"h2": {
+		"prefix": "h2",
+		"body": [
+			"# $1"
+		],
+		"description": "h2"
+	},
+	
+	"h3": {
+		"prefix": "h3",
+		"body": [
+			"# $1"
+		],
+		"description": "h3"
+	},
+	"h4": {
+		"prefix": "h4",
+		"body": [
+			"# $1"
+		],
+		"description": "h4"
+	},
 	"key concept": {
 		"prefix": "k",
 		"body": [

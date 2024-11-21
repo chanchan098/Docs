@@ -782,25 +782,6 @@ ${selector}:after {
 
 # Analysis
 
-## Layout structure
-
-```
-AppView.vue
-—————————————————————————————————
-|  <RouterView>  LayoutView     |
-|  |—————————————————————————|  |  
-|  |      |                  |  | 
-|  |      |                  |  | 
-|  | menu |  <RouterView>    |  | 
-|  |      |                  |  | 
-|  |      |  PagesView       |  | 
-|  |      |                  |  | 
-|  |—————————————————————————|  | 
-|                               |
-—————————————————————————————————
-```
-
-
 ## Entry
 
 ### index.html
@@ -842,7 +823,24 @@ const setupAll = async () => {
 
 `src\layout\components\useRenderLayout.tsx`
 
-https://github1s.com/kailong321200875/vue-element-plus-admin/blob/master/src/layout/components/useRenderLayout.tsx
+https://github.com/kailong321200875/vue-element-plus-admin/blob/master/src/layout/components/useRenderLayout.tsx
+
+### Layout structure
+
+```
+SomePage.vue
+—————————————————————————————————
+|  <RouterView>  LayoutView     |
+|  |—————————————————————————|  |  
+|  |      |                  |  | 
+|  |      |                  |  | 
+|  | menu |  <RouterView>    |  | 
+|  |      |                  |  | 
+|  |      |  PagesView       |  | 
+|  |      |                  |  | 
+|  |—————————————————————————|  | 
+—————————————————————————————————
+```
 
 ## Pages view
 

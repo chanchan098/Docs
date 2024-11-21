@@ -1,31 +1,3 @@
-- [Dependencies management](#dependencies-management)
-- [Module structure](#module-structure)
-- [yudao-common](#yudao-common)
-  - [CommonResult](#commonresult)
-  - [PageResult](#pageresult)
-  - [PageParam](#pageparam)
-- [starter-security](#starter-security)
-  - [YudaoSecurityAutoConfiguration](#yudaosecurityautoconfiguration)
-  - [Global permission checking](#global-permission-checking)
-- [stater-test](#stater-test)
-  - [check out `pom.xml`](#check-out-pomxml)
-  - [BaseDbUnitTest.java](#basedbunittestjava)
-  - [unit-test.yaml](#unit-testyaml)
-- [Feature diagram](#feature-diagram)
-- [Jpa Testing](#jpa-testing)
-  - [0. Create module for configuration and create config files](#0-create-module-for-configuration-and-create-config-files)
-  - [1. Add `dependency` and create `database object` and `repository`](#1-add-dependency-and-create-database-object-and-repository)
-  - [2. Create class for loading `ApplicationContext`](#2-create-class-for-loading-applicationcontext)
-  - [3. Write down testing code](#3-write-down-testing-code)
-- [Third part libs](#third-part-libs)
-  - [captcha](#captcha)
-  - [guava](#guava)
-- [Token freshing and Login](#token-freshing-and-login)
-- [Data validation](#data-validation)
-- [OAuth2](#oauth2)
-  - [三方授权调试](#三方授权调试)
-
-
 
 ## Dependencies management
 
@@ -43,7 +15,6 @@ see also
   - yudao-spring-boot-starter-xxx
     - config `with spring style`
     - core `main code`
-- yudao-gateway
 - yudao-module-xxx`business components`
   - yudao-module-xxx-api`exposed to other modules`
   - yudao-module-xxx-biz`business logic`
@@ -225,7 +196,7 @@ configurations for components to use.
 
 ### BaseDbUnitTest.java
 
-cn/iocoder/yudao/framework/test/core/ut/BaseDbUnitTest.java
+`cn/iocoder/yudao/framework/test/core/ut/BaseDbUnitTest.java`
 
 ```java
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = BaseDbUnitTest.Application.class)
@@ -252,12 +223,12 @@ public class BaseDbUnitTest {
 }
 ```
 
-[@SpringBootTest](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/context/SpringBootTest.html)
-
+[@SpringBootTest](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/context/SpringBootTest.html)  
+Used to load a context from `classes`.
 
 ### unit-test.yaml
 
-yudao-module-system/yudao-module-system-biz/src/test/resources/application-unit-test.yaml
+`yudao-module-system/yudao-module-system-biz/src/test/resources/application-unit-test.yaml`
 
 ```yaml
 spring:
@@ -321,7 +292,27 @@ yudao:
     enable: true
 
 ```
+## stater-job (Quartz)
 
+see also  
+- [Quartz](../middleware/quartz.md)
+
+`core/scheduler/SchedulerManager.java`
+
+Manipulate & scheduler `JobHandlerInvoker`.
+
+
+`core/handler/JobHandler.java`
+
+A custom interface in order for running a job.
+
+---
+
+
+`core/handler/JobHandlerInvoker.java`
+
+Inside it, to run custom job. Using a data-driven style programming, just ONLY one instance of job being registered.  
+To execute different jobs by data configuration set into context.
 
 ## Feature diagram
 
@@ -341,8 +332,77 @@ yudao:
                                                                                  └ Mapper.java compatible to Mapper.xml from mybatis                                               
 ```
 
+## module infra
+
+### job 
+
+`controller/admin/job/JobController.java`  
+
+manipulate jobs by interface.
+
+## Third part libs
+
+### captcha
+
+<https://github.com/xingyuv/captcha-plus>
 
 
+### guava
+
+## Token freshing and Login
+
+`yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java`
+
+```
+
+  authService +login 
+          ↓        
+  -createTokenAfterLoginSuccess
+          ↓
+  oauth2TokenService +createAccessToken
+          ↓
+  -createOAuth2RefreshToken
+          ↓
+  -createOAuth2AccessToken
+
+```
+
+
+## Data validation
+
+- [feral tutorial](https://www.iocoder.cn/Spring-Boot/Validation)
+- [spring| java bean validation](https://docs.spring.io/spring-framework/reference/6.0/core/validation/beanvalidation.html)
+
+
+
+## OAuth2
+  
+### 三方授权调试
+
+* 授权
+  * [OAuth2OpenController.java#approveOrDeny](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/controller/admin/oauth2/OAuth2OpenController.java)
+  * 授权页面 http://localhost/sso?client_id=default&response_type=token&auto_approve=true&redirect_uri=https%3A%2F%2Fwww.iocoder.cn
+  * implicit 应用内使用
+  * authorization code http://127.0.0.1:48080/admin-api/system/oauth2/token?grant_type=authorization_code&code=db5a1ffeb96d40668a9185c99f2fbab3&client_id=default&client_secret=admin123&redirect_uri=https://www.iocoder.cn
+  * password http://127.0.0.1:48080/admin-api/system/oauth2/token?grant_type=password&client_id=default&username=admin&password=admin123&client_id=default&client_secret=admin123
+  * refresh token http://127.0.0.1:48080/admin-api/system/oauth2/token?grant_type=refresh_token&client_id=default&client_secret=admin123&refresh_token=647cb70f09bb40938a11e03d417c397c
+  * 参数参考
+    * 数据表、swagger文档
+    * [OAuth2OpenController.java#postAccessToken](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/controller/admin/oauth2/OAuth2OpenController.java)
+    * 接口参数
+    * 系统文档 http://127.0.0.1:48080/doc.html#/all/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%20-%20OAuth2.0%20%E6%8E%88%E6%9D%83/postAccessToken
+  * 授权范围描述(personalized)
+    * resource.action
+    * block:feature:action
+
+* 没有对所有的授权范围进行限定判断，被授权三方应用默认继承某用户所有权限
+  * [PermissionServiceImpl.java#hasAnyPermissions](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/PermissionServiceImpl.java)
+  * [SecurityFrameworkServiceImpl.java#hasAnyScopes](yudao-framework/yudao-spring-boot-starter-security/src/main/java/cn/iocoder/yudao/framework/security/core/service/SecurityFrameworkServiceImpl.java)
+* access token刷新
+  * 使用refresh token，前端应用在http请求拦截器中进行
+  * [OAuth2TokenServiceImpl.java#refreshAccessToken()](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/oauth2/OAuth2TokenServiceImpl.java)
+  
+  
 ## Jpa Testing
 
 ### 0. Create module for configuration and create config files
@@ -782,66 +842,4 @@ public class JpaTest extends J_BaseDbUnitTest {
 </details>
 
 
-## Third part libs
 
-### captcha
-
-<https://github.com/xingyuv/captcha-plus>
-
-
-### guava
-
-## Token freshing and Login
-
-`yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java`
-
-```
-
-  authService +login 
-          ↓        
-  -createTokenAfterLoginSuccess
-          ↓
-  oauth2TokenService +createAccessToken
-          ↓
-  -createOAuth2RefreshToken
-          ↓
-  -createOAuth2AccessToken
-
-```
-
-
-## Data validation
-
-- [feral tutorial](https://www.iocoder.cn/Spring-Boot/Validation)
-- [spring| java bean validation](https://docs.spring.io/spring-framework/reference/6.0/core/validation/beanvalidation.html)
-
-
-
-## OAuth2
-  
-### 三方授权调试
-
-* 授权
-  * [OAuth2OpenController.java#approveOrDeny](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/controller/admin/oauth2/OAuth2OpenController.java)
-  * 授权页面 http://localhost/sso?client_id=default&response_type=token&auto_approve=true&redirect_uri=https%3A%2F%2Fwww.iocoder.cn
-  * implicit 应用内使用
-  * authorization code http://127.0.0.1:48080/admin-api/system/oauth2/token?grant_type=authorization_code&code=db5a1ffeb96d40668a9185c99f2fbab3&client_id=default&client_secret=admin123&redirect_uri=https://www.iocoder.cn
-  * password http://127.0.0.1:48080/admin-api/system/oauth2/token?grant_type=password&client_id=default&username=admin&password=admin123&client_id=default&client_secret=admin123
-  * refresh token http://127.0.0.1:48080/admin-api/system/oauth2/token?grant_type=refresh_token&client_id=default&client_secret=admin123&refresh_token=647cb70f09bb40938a11e03d417c397c
-  * 参数参考
-    * 数据表、swagger文档
-    * [OAuth2OpenController.java#postAccessToken](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/controller/admin/oauth2/OAuth2OpenController.java)
-    * 接口参数
-    * 系统文档 http://127.0.0.1:48080/doc.html#/all/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%20-%20OAuth2.0%20%E6%8E%88%E6%9D%83/postAccessToken
-  * 授权范围描述(personalized)
-    * resource.action
-    * block:feature:action
-
-* 没有对所有的授权范围进行限定判断，被授权三方应用默认继承某用户所有权限
-  * [PermissionServiceImpl.java#hasAnyPermissions](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/PermissionServiceImpl.java)
-  * [SecurityFrameworkServiceImpl.java#hasAnyScopes](yudao-framework/yudao-spring-boot-starter-security/src/main/java/cn/iocoder/yudao/framework/security/core/service/SecurityFrameworkServiceImpl.java)
-* access token刷新
-  * 使用refresh token，前端应用在http请求拦截器中进行
-  * [OAuth2TokenServiceImpl.java#refreshAccessToken()](yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/oauth2/OAuth2TokenServiceImpl.java)
-  
-  

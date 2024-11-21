@@ -176,9 +176,12 @@
   - [Virtual DOM](#virtual-dom)
 - [Render Functions \& JSX](#render-functions--jsx)
   - [Basic Usage](#basic-usage-3)
+    - [Creating Vnodes](#creating-vnodes)
+    - [Declaring Render Functions](#declaring-render-functions)
   - [JSX / TSX](#jsx--tsx)
     - [JSX Type Inference](#jsx-type-inference)
   - [Render Function Recipes](#render-function-recipes)
+    - [Passing Slots​](#passing-slots)
 - [---](#---)
 - [Appendix](#appendix)
   - [APIS navigation](#apis-navigation)
@@ -461,7 +464,6 @@ export default {
 ```html
 <div>{{ count }}</div>
 ```
-
 
 mutate a ref directly in event handlers:
 ```html
@@ -1116,7 +1118,7 @@ To achieve this, we can use the special ref attribute:
 
 Components allow us to split the UI into independent and reusable pieces, and think about each piece in isolation. 
 
-![alt](https://vuejs.org/assets/components.dSWW39P2.png)
+![alt](https://vuejs.org/assets/components.B1JZbf0_.png)
 
 ## Defining a Component
 
@@ -1134,7 +1136,7 @@ const count = ref(0)
 </template>
 ```
 
-can be defined as a plain JavaScript object containing Vue-specific options:
+When not using a build step, a Vue component can be defined as a plain JavaScript object containing Vue-specific options:
 ```js
 import { ref } from 'vue'
 
@@ -2409,6 +2411,8 @@ const vnode = {
 
 # Render Functions & JSX
 
+https://vuejs.org/guide/extras/render-function.html
+
 Vue recommends using templates to build applications in the vast majority of cases.  
 However, there are situations where we need the full programmatic power of JavaScript.  
 That's where we can use the **render function**.
@@ -2416,12 +2420,73 @@ That's where we can use the **render function**.
 ## Basic Usage
 
 
+### Creating Vnodes
+
+Vue provides an `h()` function for creating vnodes:
+
+```javascript
+import { h } from 'vue'
+
+const vnode = h(
+  'div', // type
+  { id: 'foo', class: 'bar' }, // props
+  [
+    /* children */
+  ]
+)
+```
+
+
+>`h()` is short for hyperscript - which means "JavaScript that produces HTML (hypertext markup language)".
+
+### Declaring Render Functions
+
+When using templates with Composition API, the return value of the `setup()` hook is used to expose data to the template.  
+When using render functions, however, we can directly return the render function instead:
+
+```javascript
+import { ref, h } from 'vue'
+
+export default {
+  props: {
+    /* ... */
+  },
+  setup(props) {
+    const count = ref(1)
+
+    // return the render function
+    return () => h('div', props.msg + count.value)
+  }
+}
+```
+
+The render function is declared inside setup() so it naturally has access to the props and any reactive state declared in the same scope.
 
 ## JSX / TSX
+
+https://facebook.github.io/jsx/
 
 ### JSX Type Inference
 
 ## Render Function Recipes
+
+https://vuejs.org/guide/extras/render-function.html#render-function-recipes
+
+check out examples
+
+### Passing Slots​
+
+```javascript
+// default
+<MyComponent>{() => 'hello'}</MyComponent>
+
+// named
+<MyComponent>{{
+  default: () => 'default slot',
+  foo: () => <div>foo</div>,
+  bar: () => [<span>one</span>, <span>two</span>]
+}}</MyComponent>
+```
 
 
 # ---
