@@ -267,3 +267,37 @@ $6 × 5	=	30$
 $30 ÷ 5	=	6$
 
 As shown above, multiplication and division essentially cancel each other out, which is why they are inverse operations
+
+# Ratios and proportions
+
+A ratio is a comparison between quantities. 
+
+A proportion is a set of ratios that are equal.
+
+
+## Ratios
+
+
+## Proportions
+
+Proportions are equations made up of two equivalent ratios. The following are all proportions:
+
+$2:3=6:9$  
+$\frac{2}{3}=\frac{6}{9}$
+
+A ratio of 2:3 is said to be proportional to a ratio of 4:6 (or 6:9, 8:12, etc.). Proportions indicate that the relative sizes of the objects being compared are the same. 
+
+
+**Example**
+
+If the ratio of apples to students is proportional, and there are 2 apples for every 1 student, how many apples are there in a class of 30 students?
+
+This problem can be set up as a proportion.  
+The ratio of apples to students is 2:1. The total number of students is known.  
+To find the number of apples, write the ratios in fraction form and *cross multiply*:
+
+$\frac{2\;apples}{1\;student}=\frac{\#\;apples}{30\;students}$
+
+$2 × 30 = 1 × \#$
+
+$\# = 60$

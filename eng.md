@@ -43,6 +43,8 @@
 - [-Conditionals](#-conditionals)
 - [Past Conditionals](#past-conditionals)
   - [Past Real Conditional](#past-real-conditional)
+    - [IMPORTANT Used to](#important-used-to)
+    - [IMPORTANT If / When](#important-if--when)
   - [Past Unreal Conditional](#past-unreal-conditional)
 - [Present Conditionals](#present-conditionals)
   - [Present Real Conditional](#present-real-conditional)
@@ -407,23 +409,54 @@ https://www.englishpage.com/conditional/conditionalintro.html
 
 The past real conditional describes what you used to do in particular real-life situations. It suggests that your habits have changed and you do not usually do these things today.
 
-[If / When ... simple past ..., ... simple past ...]
-
+[If / When ... simple past ..., ... simple past ...]  
 [... simple past... if / when ... simple past ...]
 
 Verb of if part and main part are <u>simple past</u>.
 
+Examples:
+- If I went to a friend's house for dinner, I usually took a bottle of wine or some flowers. I don't do that anymore.
+- When I had a day off from work, I often went to the beach. Now, I never get time off.
+- If the weather was nice, she often walked to work. Now, she usually drives.
+- Jerry always helped me with my homework when he had time. But he doesn't do that anymore.  
+  A: What did you usually do when it rained?  
+  B: I usually stayed at home.
+
+
+#### IMPORTANT Used to
+
+The form "used to" expresses the idea that something was an old habit that stopped in the past. 
+
+#### IMPORTANT If / When
+
+Both "if" and "when" are used in the past real conditional.  
+Using "if" suggests that something happened *less frequently*.  
+Using "when" suggests that something happened *regularly*.
+
+
 ### Past Unreal Conditional
 
-is used to talk about imaginary situations in the past.
-
+is used to talk about imaginary situations in the past.  
 You can describe what you would have done differently or how something could have happened differently if circumstances had been different.
 
-[If ... past perfect ..., ... would have + past participle ... ]
-
+[If ... past perfect ..., ... would have + past participle ... ]  
 [... would have + past participle ... if ... past perfect ...]
 
 Verb of if part is <u>past perfetct</u>, verb of main part is <u>would have + past participle</u>.
+
+Examples:
+- If I *had owned* a car, I *would have driven* to work. But I didn't own one, so I took the bus.
+- She *would have traveled* around the world if she *had had* more money. But she didn't have much money, so she never traveled.
+- I *would have read* more as a child if I *hadn't watched* so much TV. Unfortunately, I did watch a lot of TV, so I never read for entertainment.
+- Mary *would have gotten* the job and moved to Japan if she *had studied* Japanese in school instead of French.
+- If Jack *had worked* harder, he *would have earned* more money. Unfortunately, he was lazy and he didn't earn much.  
+  A: What *would you have done* if you had won the lottery last week?  
+  B: I would have bought a house.  
+  A: What city would you have chosen if you had decided to move to the United States?  
+  B: I would have chosen Seattle.  
+
+
+
 
 ## Present Conditionals
 

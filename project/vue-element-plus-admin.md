@@ -3,11 +3,19 @@
 
 # Scaffold
 
+## Debugger
+
+chrome from vscode 
+
+add a little new thing and test it.
+
 ## ES6
 
 ## Nodejs
 
-## Package management 
+## npm
+
+THE PROXY 
 
 look at `package.json`
 
@@ -153,13 +161,15 @@ routerMap = generateRoutesByServer(routers as AppCustomRouteRecordRaw[])
 
 ## Unocss 
 
-### css tips
+UnoCSS is the instant atomic CSS engine
 
-create `uno.config.ts`
+[import to vite](https://unocss.dev/integrations/vite)
+
+
+## Scss
 
 ## Postcss
 
-## Scss
 
 ## Less
 

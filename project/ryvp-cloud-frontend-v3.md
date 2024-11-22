@@ -1,4 +1,5 @@
-# ryvp-cloud-frontend-v3.md
+
+# Profile
 
 from <https://github.com/kailong321200875/vue-element-plus-admin/tree/master>
 
@@ -6,7 +7,35 @@ from <https://github.com/kailong321200875/vue-element-plus-admin/tree/master>
 - check out
   - [vue3](../main-tech/vue3/vue3.md)
   - [vue-element-plus-admin.md](./vue-element-plus-admin.md)
+  - [vue-element-plus-admin.md#analysis](./vue-element-plus-admin.md#analysis)
 
+## Component structure
+
+### Vue component
+
+```
+┌ └ ┐ ┘ ─ │ ├ ┤ ┬ ┴ ┼ 
+```
+
+- html
+  - other vue components
+  - other JSX/TSX components
+- ts/js
+- style
+
+### JSX/TSX component
+
+- js/ts
+- vue component
+- style
+
+### A page
+
+- vue compnents or jsx/tsx compnents
+- api calling
+- html
+- js/ts
+- style
 
 ## Layout Rendering
 
@@ -25,7 +54,7 @@ renderCutMenus
 ---
 
 rendering main tree menu, top tools head(breadcrumb, buttons, avatar), tags view in layout view.  
-inside the `<AppView>` to render a specific layout.
+inside the `<AppView>` to render a specific layout, some sub pages.
 
 ```javascript
 export const useRenderLayout = () => {
@@ -122,7 +151,7 @@ export const useRenderLayout = () => {
 
 in `src\layout\Layout.vue`
 
-listen to changing of layout 
+listen to changing of layout setting
 ```javascript
 ...
 const layout = computed(() => appStore.getLayout)
@@ -188,12 +217,30 @@ const renderMenuItem = (routers: AppRouteRecordRaw[], parentPath = '/') => {
 }
 
 ```
+for
+```javascript
+{{
+  title: () => renderMenuTitle(meta),
+  default: () => renderMenuItem(v.children!, fullPath)
+}}
+```
+see also
+[rendering slots](https://vuejs.org/guide/extras/render-function.html#rendering-slots)
+
 
 ## Store (pinia)
 
 `src\store`
 
 https://github.com/kailong321200875/vue-element-plus-admin/blob/master/src/store/index.ts
+
+## Other components having learnt
+
+### src\views\system\user\DeptTree.vue
+
+- handletree
+- watch(deptName)
+- nodeclick
 
 ## 0.1 普通列表
 

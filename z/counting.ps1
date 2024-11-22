@@ -1,7 +1,7 @@
 [Console]::InputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-#2024-11-21
-#count: 19
+#2024-11-22
+#count: 9
 #========================================================================
 $filePath = "D:\liaoyj\Developer\counting.ps1"
 $msgs = @("STOP: 0x00000024 (0x00190203,0x8A5FC900,0xC0000102,0x00000000)","The program can't start because MSVCP110.dll is missing from your computer. Try reinstalling the program to fix this problem.")
@@ -51,7 +51,7 @@ Write-Host $MDate " count:" $newCount
 
 function Start-Countdown {
     param (
-        [int]$Seconds = 500
+        [int]$Seconds = 300
     )
     for ($i = $Seconds; $i -ge 0; $i--) {
         Write-Host "Rest of time: $i seconds" -NoNewline
@@ -68,8 +68,8 @@ function Start-Countdown {
     }
 "@
     $msg = $msgs | Get-Random
-    [Win32]::MessageBox([IntPtr]::Zero, $msg, "System message", 0x00000000 + 0x00000010)
+    [Win32]::MessageBox([IntPtr]::Zero, $msg, "System error", 0x00000000 + 0x00000010 + 0x00001000)
 
 }
 
-Start-Countdown -Seconds 500
+Start-Countdown -Seconds 300

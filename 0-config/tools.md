@@ -26,6 +26,16 @@ to remove `configRoot/config/eval`
 
 fix auto-jumping to preview and rendering error when edited on preview enhanced.
 
+.settings.json
+```json
+{
+    "workbench.editorAssociations": {
+        "*.md": "default"
+    },
+  
+}
+```
+
 0. to select a default text editor for all md files. 
    1. right click on a `.md` file
    2. click `open with` option
@@ -44,9 +54,6 @@ https://stackoverflow.com/questions/60155443/vscode-preview-markdown-by-default
 "workbench.editorAssociations": {   
     "*.md": "vscode.markdown.preview.editor",
 }
-
-
-
 
 
 "workbench.editorAssociations": {
