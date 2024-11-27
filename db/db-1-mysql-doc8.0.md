@@ -136,13 +136,24 @@ https://dev.mysql.com/doc/index-other.html
 key words: `Phantom read`  
 
 <span style='font-size: 15px;'>**REPEATABLE READ**</span>  
+Issues:  
+Phantom Reads: A query may return additional rows if another transaction inserts data matching the query criteria.
 
 <span style='font-size: 15px;'>**READ COMMITTED**</span>  
+Issues:  
+Non-repeatable Reads: A row read earlier in a transaction may change if another transaction modifies and commits it.  
+Phantom Reads may still occur.
 
 <span style='font-size: 15px;'>**READ UNCOMMITTED**</span>  
+Issues:  
+Dirty Reads: Reading uncommitted changes that may later be rolled back.  
+Non-repeatable Reads: Same query can return different results within the same transaction.  
+Phantom Reads: New rows may appear in subsequent reads.
 
 <span style='font-size: 15px;'>**SERIALIZABLE**</span>  
-
+Issues:  
+No concurrency; all transactions must wait for others to finish.  
+Can cause performance bottlenecks in high-traffic environments.
 
 
 

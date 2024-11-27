@@ -68,6 +68,7 @@
 - [-Participle  clause](#-participle--clause)
 - [Present participle clauses](#present-participle-clauses)
 - [Perfect participle clauses](#perfect-participle-clauses)
+- [Participle](#participle)
 
 ## --Basic
 
@@ -741,5 +742,18 @@ but also could be different.
 ## Perfect participle clauses
 
 If we want to make it clear that an action happens before another one, we use a perfect participle for the earlier action.
+  - *Shocked by the explosion*, the people ran for shelter. (The people were shocked by the explosion and ran for shelter.)
+  - The musicians stood up, *surrounded by thunderous applause*. (The musicians stood up while they were surrounded by thunderous applause.)
 
 
+If we want to emphasise that an action happens before another one, we use a passive perfect participle:
+  - *Having been nominated three times for an Oscar*, he is one of today's most acclaimed film directors.
+
+## Participle
+
+- https://www.grammarly.com/blog/grammar/participle/  
+  - What is a participial phrase?
+  - What are perfect participles?
+
+
+https://www.scribbr.com/verbs/participle/

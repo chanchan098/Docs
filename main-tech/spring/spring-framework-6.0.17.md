@@ -295,18 +295,20 @@ https://docs.spring.io/spring-framework/reference/6.0/data-access/transaction/mo
 
 ### Global Transactions
 
-Global transactions let you work with multiple transactional resources, typically relational databases and message queues.
+Global transactions let you work with multiple transactional resources, typically relational databases and message queues.  
+Managed by JTA, which is a cumbersome API.
 
 ### Local Transactions
 
-Local transactions are resource-specific, such as a transaction associated with a JDBC connection. 
+Local transactions are resource-specific, such as a transaction associated with a JDBC connection.  
+It cannot help ensure correctness across multiple resources.
 
 ## Understanding the Spring Framework Transaction Abstraction
 
 [docs](https://docs.spring.io/spring-framework/reference/6.0/data-access/transaction/strategies.html)
 
 
-imperative transaction management by `org.springframework.transaction  PlatformTransactionManager`  
+imperative transaction management by `org.springframework.transaction.PlatformTransactionManager`  
 reactive transaction management by `org.springframework.transaction.ReactiveTransactionManager`
 
 <span style='font-size: 16px;font-weight: 500'>a service provider interface (SPI)</span>  
@@ -337,6 +339,10 @@ The combination of AOP with transactional metadata <mark>yields</mark> an AOP pr
 # Using `@Transactional`
 
 # Transaction Propagation
+
+
+https://docs.spring.io/spring-framework/docs/6.0.17/javadoc-api/org/springframework/transaction/annotation/Propagation.html
+
 
 ## Understanding PROPAGATION_REQUIRED
 
@@ -372,7 +378,7 @@ PROPAGATION_NESTED uses a single physical transaction with multiple savepoints t
 <span style='font-size: 16px;font-weight: 500'>Spring MVC</span>  
 is designed around the front controller pattern  
 where a central Servlet, the DispatcherServlet, provides a shared algorithm for request processing,  
-while actual work is performed by configurable delegate components. 
+while actual work is performed by configurable delegate components.  
 
 <span style='font-size: 16px;font-weight: 500'>DispatcherServlet</span>  
 the DispatcherServlet uses Spring configuration to discover `the delegate components` it needs for request  

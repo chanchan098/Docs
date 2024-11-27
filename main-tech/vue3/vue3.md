@@ -1110,6 +1110,7 @@ To achieve this, we can use the special ref attribute:
 ```html
 <input ref="input">
 ```
+This may be useful when you want to, for example, programmatically focus an input on component mount, or initialize a 3rd party library on an element.
 
 ## Accessing the Refs
 

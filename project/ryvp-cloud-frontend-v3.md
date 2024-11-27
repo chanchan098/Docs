@@ -1,13 +1,30 @@
 
-# Profile
+# fontend-v3.3
 
 from <https://github.com/kailong321200875/vue-element-plus-admin/tree/master>
-
 
 - check out
   - [vue3](../main-tech/vue3/vue3.md)
   - [vue-element-plus-admin.md](./vue-element-plus-admin.md)
   - [vue-element-plus-admin.md#analysis](./vue-element-plus-admin.md#analysis)
+
+## Scaffold in this
+
+### unplugin-vue-components
+
+https://github.com/unplugin/unplugin-vue-components
+
+```javascript
+// vite.config.ts
+import Components from 'unplugin-vue-components/vite'
+
+export default defineConfig({
+  plugins: [
+    Components({ /* options */ }),
+  ],
+})
+```
+
 
 ## Component structure
 
@@ -236,13 +253,46 @@ https://github.com/kailong321200875/vue-element-plus-admin/blob/master/src/store
 
 ## Other components having learnt
 
-### src\views\system\user\DeptTree.vue
+### src\views\system\user\index.vue
 
-- handletree
-- watch(deptName)
-- nodeclick
+- UserAssignRoleForm.vue
+- UserForm.vue
+- UserImportForm.vue
+- DeptTree.vue
+  - handletree
+  - watch(deptName)
+  - nodeclick
 
-## 0.1 普通列表
+### src\components\ContentWrap\src\ContentWrap.vue
+
+- 
+  ```html
+  <template>
+    <ElCard :class="[prefixCls, 'mb-15px']" shadow="never">
+      <template v-if="title" #header>
+        <div class="flex items-center">
+          <ElTooltip v-if="message" effect="dark" placement="right">
+            <template #content> </template>          
+          </ElTooltip>
+        </div>
+      </template>
+      <div>
+        <slot></slot>
+      </div>
+    </ElCard>
+  </template>
+  ```  
+  ```typescript
+  import ContentWrap from './src/ContentWrap.vue'
+  export { ContentWrap }
+  ```
+  
+    - the name slots & default slot
+    - reexport component for renaming
+
+<br/><br/><br/><br/><br/><br/><br/><br/>
+
+## 0.1 list
 
 可参考 [系统管理 -> 岗位管理] 菜单：
 
@@ -255,7 +305,7 @@ flowchart LR
     id1(Data) --> id2(style) --> id3(template)
 ```
 
-## 0.2 树形列表
+## 0.2 tree
 
 可参考 [系统管理 -> 部门管理] 菜单：
 

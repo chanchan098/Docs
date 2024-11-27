@@ -1,4 +1,24 @@
+
+
+
+
+
+- Attention
+
+- Evaluating advantages
+
+
+
+
+
+
+
 - thoughts spreading
+
+
+
+
+
 
 - Effective reading
   - Subject
@@ -6,6 +26,11 @@
   - Dive into examples 
   - Summary shortly 
   - Application 
+
+
+
+
+
 
 
 

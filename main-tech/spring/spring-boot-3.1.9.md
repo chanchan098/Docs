@@ -1,46 +1,42 @@
-- [4. Getting Started](#4-getting-started)
-  - [1. Introducing Spring Boot](#1-introducing-spring-boot)
-  - [3.2. Installing the Spring Boot CLI](#32-installing-the-spring-boot-cli)
-  - [4. Developing Your First Spring Boot Application](#4-developing-your-first-spring-boot-application)
-    - [4.2. Setting up the project with Maven](#42-setting-up-the-project-with-maven)
-    - [4.3. Setting up the project with Gradle](#43-setting-up-the-project-with-gradle)
-- [6. Developing with Spring Boot](#6-developing-with-spring-boot)
-  - [6.1.1. Dependency Management](#611-dependency-management)
-    - [6.1.2. Maven](#612-maven)
-    - [6.1.3. Gradle](#613-gradle)
-  - [6.2. Structuring Your Code](#62-structuring-your-code)
-    - [6.2.2. Locating the Main Application Class](#622-locating-the-main-application-class)
-  - [6.3. Configuration Classes](#63-configuration-classes)
-    - [6.3.1. Importing Additional Configuration Classes](#631-importing-additional-configuration-classes)
-    - [6.3.2. Importing XML Configuration](#632-importing-xml-configuration)
-  - [6.4. Auto-configuration](#64-auto-configuration)
-    - [6.4.2. Disabling Specific Auto-configuration Classes](#642-disabling-specific-auto-configuration-classes)
-    - [6.4.3. Auto-configuration Packages](#643-auto-configuration-packages)
-  - [6.5. Spring Beans and Dependency Injection](#65-spring-beans-and-dependency-injection)
-  - [6.6. Using the @SpringBootApplication Annotation](#66-using-the-springbootapplication-annotation)
-- [7. Core Features](#7-core-features)
-  - [7.1. SpringApplication](#71-springapplication)
-    - [7.1.2. Lazy Initialization](#712-lazy-initialization)
-    - [7.1.3. Customizing the Banner](#713-customizing-the-banner)
-    - [7.1.4. Customizing SpringApplication](#714-customizing-springapplication)
-    - [doc-7.1.5. Fluent Builder API](#doc-715-fluent-builder-api)
-    - [pending-7.1.6. Application Availability](#pending-716-application-availability)
-    - [doc-7.1.7. Application Events and Listeners](#doc-717-application-events-and-listeners)
-    - [doc-7.1.8. Web Environment](#doc-718-web-environment)
-    - [7.1.10. Using the ApplicationRunner or CommandLineRunner](#7110-using-the-applicationrunner-or-commandlinerunner)
-    - [7.1.11. Application Exit](#7111-application-exit)
-    - [doc-7.1.13. Application Startup tracking](#doc-7113-application-startup-tracking)
-  - [7.2. Externalized Configuration](#72-externalized-configuration)
-  - [7.2.8. Type-safe Configuration Properties](#728-type-safe-configuration-properties)
-    - [JavaBean Properties Binding](#javabean-properties-binding)
-- [7.9 Testing](#79-testing)
-- [9. Data](#9-data)
-  - [9.1. SQL Databases](#91-sql-databases)
+- [1. Introducing Spring Boot](#1-introducing-spring-boot)
+- [3.2. Installing the Spring Boot CLI](#32-installing-the-spring-boot-cli)
+- [4. Developing Your First Spring Boot Application](#4-developing-your-first-spring-boot-application)
+  - [4.2. Setting up the project with Maven](#42-setting-up-the-project-with-maven)
+  - [4.3. Setting up the project with Gradle](#43-setting-up-the-project-with-gradle)
+- [6.1.1. Dependency Management](#611-dependency-management)
+  - [6.1.2. Maven](#612-maven)
+  - [6.1.3. Gradle](#613-gradle)
+- [6.2. Structuring Your Code](#62-structuring-your-code)
+  - [6.2.2. Locating the Main Application Class](#622-locating-the-main-application-class)
+- [6.3. Configuration Classes](#63-configuration-classes)
+  - [6.3.1. Importing Additional Configuration Classes](#631-importing-additional-configuration-classes)
+  - [6.3.2. Importing XML Configuration](#632-importing-xml-configuration)
+- [6.4. Auto-configuration](#64-auto-configuration)
+  - [6.4.2. Disabling Specific Auto-configuration Classes](#642-disabling-specific-auto-configuration-classes)
+  - [6.4.3. Auto-configuration Packages](#643-auto-configuration-packages)
+- [6.5. Spring Beans and Dependency Injection](#65-spring-beans-and-dependency-injection)
+- [6.6. Using the @SpringBootApplication Annotation](#66-using-the-springbootapplication-annotation)
+- [7.1. SpringApplication](#71-springapplication)
+  - [7.1.2. Lazy Initialization](#712-lazy-initialization)
+  - [7.1.3. Customizing the Banner](#713-customizing-the-banner)
+  - [7.1.4. Customizing SpringApplication](#714-customizing-springapplication)
+  - [doc-7.1.5. Fluent Builder API](#doc-715-fluent-builder-api)
+  - [pending-7.1.6. Application Availability](#pending-716-application-availability)
+  - [doc-7.1.7. Application Events and Listeners](#doc-717-application-events-and-listeners)
+  - [doc-7.1.8. Web Environment](#doc-718-web-environment)
+  - [7.1.10. Using the ApplicationRunner or CommandLineRunner](#7110-using-the-applicationrunner-or-commandlinerunner)
+  - [7.1.11. Application Exit](#7111-application-exit)
+  - [doc-7.1.13. Application Startup tracking](#doc-7113-application-startup-tracking)
+- [7.2. Externalized Configuration](#72-externalized-configuration)
+- [7.2.8. Type-safe Configuration Properties](#728-type-safe-configuration-properties)
+  - [JavaBean Properties Binding](#javabean-properties-binding)
+- [7.9.3. Testing Spring Boot Applications](#793-testing-spring-boot-applications)
+- [9.1. SQL Databases](#91-sql-databases)
 - [Appendix](#appendix)
   - [Application Properties](#application-properties)
   - [Configuration Metadata](#configuration-metadata)
 - [others---](#others---)
-- [Spring Boot – Transaction Management Using @Transactional Annotation](#spring-boot--transaction-management-using-transactional-annotation)
+  - [Spring Boot – Transaction Management Using @Transactional Annotation](#spring-boot--transaction-management-using-transactional-annotation)
   - [@Transactional Annotation](#transactional-annotation)
   
 
@@ -350,24 +346,24 @@ Spring Boot integrates with a number of data technologies, both SQL and NoSQL.
 
 
 
-# Appendix 
+## Appendix 
 
 [doc](https://docs.spring.io/spring-boot/docs/3.1.9/reference/html/index.html)
 
-## Application Properties
+### Application Properties
 
-## Configuration Metadata
+### Configuration Metadata
 
 
 
-# others---
+## others---
 
-# Spring Boot – Transaction Management Using @Transactional Annotation
+### Spring Boot – Transaction Management Using @Transactional Annotation
 
 <https://www.geeksforgeeks.org/spring-boot-transaction-management-using-transactional-annotation/>
 
 a transaction is a sequence of actions performed by the application that together pipelined to perform a single operation.
 
-## @Transactional Annotation
+### @Transactional Annotation
 
 If the transaction becomes successful then the changes made to the database are committed, if any transaction fails, all the changes made to that particular transaction can be rollback and it will ensure that the database remains in a consistent state.

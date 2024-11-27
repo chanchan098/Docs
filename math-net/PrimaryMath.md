@@ -1,5 +1,23 @@
 https://www.math.net/primary-math
 
+# Formulas
+
+## Difference of Squares
+
+https://www.storyofmathematics.com/difference-of-squares/
+
+$a^2 – b^2 = (a + b) (a – b)$
+
+## Perfect Square Trinomial
+
+https://www.storyofmathematics.com/perfect-square-trinomial/
+
+$(a+b)(a+b)=a^2+2ab+b^2$
+
+$(a-b)(a-b)=a^2-2ab+b^2$
+
+$(a \pm b)(a \pm b)=a^2 \pm 2ab+b^2$
+
 # Division
 
 6 × 4 = 24, so 24 ÷ 4 = 6.
@@ -102,6 +120,38 @@ Multiplication can be explained by using several different situations. Some of t
 ## Common fraction
 
 https://www.math.net/common-fraction
+
+## Multiplying fractions
+
+Examples:  
+$\frac{2}{5} \times  \frac{4}{7} = \frac{8}{35}$
+
+### Multiplying fractions and whole numbers
+
+To represent a whole number in fraction form, we can simply treat the whole number as the numerator of the fraction while putting a 1 in the denominator.
+
+Examples:  
+$12\times\frac{3}{4}=\frac{12}{1}\times\frac{3}{4}=\frac{36}{4}=9$
+
+### Multiplying mixed fractions
+
+requires that we convert the mixed fraction into an improper fraction before multiplying.
+
+Examples:  
+$2\frac{3}{4} \times \frac{7}{9}$
+
+
+<br/>
+
+To convert this into an improper fraction, we multiply the denominator, 4, by 2, and then add the numerator.  
+$2\times4+3=11$
+
+$\frac{4}{4}+\frac{4}{4}+\frac{3}{4}$
+
+so $\;2\frac{3}{4}=\frac{11}{4}$
+
+$\frac{11}{4} \times \frac{7}{9} = \frac{77}{36}$
+
 
 # Percentage
 
