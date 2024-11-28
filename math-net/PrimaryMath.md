@@ -119,11 +119,15 @@ To check out examples
 
 ## C-Inverse
 
-$2 \times 5=10 $ => $5=10 \div 2$; also $5 = \frac{10}{2}$  
+$2 \times 5=10 $  
+$5=10 \div 2$  
+also $5 = \frac{10}{2}$  
 
 Another one
 
-$2 \times 5=10 $ => $2=10 \div 5$; also $2 = \frac{10}{5}$  
+$2 \times 5=10 $  
+$2=10 \div 5$  
+also $2 = \frac{10}{5}$  
 
 <br/>
 
