@@ -115,11 +115,49 @@ Multiplication can be explained by using several different situations. Some of t
 
 ## Partial products
 
+To check out examples
+
+## C-Inverse
+
+$2 \times5=10 $ => $5=10\div2$; also $5=\frac{10}{2}$  
+
+Another one
+
+$2 \times5=10 $ => $2=10\div5$; also $2=\frac{10}{5}$  
+
+<br/>
+
+Algebra
+
+$2n=b$, so $n=\frac{b}{2}$
+
 # Fraction
 
 ## Common fraction
 
 https://www.math.net/common-fraction
+
+## Dividing fractions
+
+We can divide fractions using the following steps:
+
+1. When dividing two fractions, first determine which fraction is the dividend (the number being divided),  
+   and which fraction is the divisor (number the dividend is divided by)
+2. Switch the positions of the numerator and denominator of the divisor; this is called taking the reciprocal
+3. Multiply the numerators of the dividend and the reciprocated divisor
+4. Multiply the denominators of the dividend and the reciprocated divisor
+5. Simplify the resulting fraction if necessary
+
+**Example**  
+
+$\frac{5}{8} \div \frac{11}{2} = \frac{5}{8} \div \frac{2}{11}=\frac{5\times2}{8\times11}=\frac{10}{88}=\frac{5}{44}$
+
+### Dividing fractions and whole numbers
+
+The whole number needs to be expressed as a fraction.  
+To express a whole number as a fraction, all we need to do is write the whole number over 1, since any number divided by 1 is itself.
+
+$\frac{3}{4}\div4=\frac{3}{4}\div\frac{4}{1}=\frac{3}{4}\times\frac{1}{4}=\frac{3}{16}$
 
 ## Multiplying fractions
 
@@ -151,6 +189,37 @@ $\frac{4}{4}+\frac{4}{4}+\frac{3}{4}$
 so $\;2\frac{3}{4}=\frac{11}{4}$
 
 $\frac{11}{4} \times \frac{7}{9} = \frac{77}{36}$
+
+
+## Reciprocal
+
+The reciprocal of a number is *1 divided by the number*. All numbers have a reciprocal, except for 0, since the reciprocal of 0 is undefined.
+
+The reciprocal of a non-zero integer such as 5 is: $5$ < = > $ \frac{1}{5}$
+
+Notice that if you take the reciprocal of a reciprocal, you get the *original number* (1/5 is the reciprocal of 5 and vice versa). 
+
+
+$\frac{1}{5} \times 5 = \frac{1}{5} \times \frac{5}{1} = 1$
+
+we can confirm that $\frac{1}{5}$  is the reciprocal of 5. Multiplying any expression by its reciprocal will result in 1.
+
+**Example**  
+
+$\frac{12}{7} $; reciprocal is $\frac{7}{12}$
+
+1.25; reciprocal is $\frac{1}{1.25}=0.8$, cause $1.25 \times 0.8=1$
+
+<br/>
+
+We also could have converted 1.25 to an improper fraction, then flipped the improper fraction:
+
+$1.25=\frac{5}{4}$  
+
+$1.25=\frac{1.25}{1}=\frac{125}{100}=\frac{25}{20}=\frac{5}{4}$
+
+
+The reciprocal is therefore $\frac{4}{5}$, which is equal to 0.8.
 
 
 # Percentage
