@@ -1,3 +1,21 @@
+# Formulas
+
+## Difference of Squares
+
+https://www.storyofmathematics.com/difference-of-squares/
+
+$a^2 – b^2 = (a + b) (a – b)$
+
+## Perfect Square Trinomial
+
+https://www.storyofmathematics.com/perfect-square-trinomial/
+
+$(a+b)(a+b)=a^2+2ab+b^2$
+
+$(a-b)(a-b)=a^2-2ab+b^2$
+
+$(a \pm b)^2=a^2 \pm 2ab+b^2$
+
 # Expressions and equations
 
 ## Expressions vs. Equations
@@ -92,7 +110,58 @@ $x=\pm\sqrt{4}=\pm2$
 
 ## Completing the square
 
-It can also be used to convert the general form of a quadratic, $ax^2 + bx + c$ to the vertex form $a(x - h)^2 + k$ Generally,  
-the goal behind completing the square is to create *a perfect square trinomial* from a quadratic.
+see also [Perfect Square Trinomial](#perfect-square-trinomial)
 
+Generally, the goal behind completing the square is to create a perfect square trinomial from a quadratic.  
+A perfect square trinomial is a trinomial that will factor into the square of a binomial.
+
+The square of $x + n$ is $x^2 + 2nx + n^2$. As you can see, the coefficient of x is $2n$.  
+For a quadratic of the form $x^2 + bx + c$, the coefficent of $x$ is already $b$, so we only need to figure out the value of the constant $c$. 
+
+If $2n = b$, then $n = \frac{b}{2}$. Therefore, the binomial used to complete the square is: $x \pm \frac{b}{2}$  
+If we square this binomial, the perfect square trinomial needed to complete the square will equal:
+
+$(x+\frac{b}{2})^2=x^2+bx+(\frac{b}{2})^2$  
+OR  
+$(x-\frac{b}{2})^2=x^2-bx+(\frac{b}{2})^2$  
+
+<br/>
+
+1 Write the given equation in the standard form of the quadratic equation:  
+$ax^2+bx+c=0$
+
+Example  
+
+$2x^2=7x-6$  
+$2x^2-7x+6=0$
+
+<br/>
+
+2 *Factor out* and divide both sides by the coefficient of $x^2$ if it does not already equal 1:
+
+$2x^2-7x+6=0$
+
+$2(x^2-\frac{7}{2}x+3)=0$
+
+$x^2-\frac{7}{2}x+3=0$
+
+Note: Dividing both sides by 2 cancels out 2 on the left side of the equation. On the right, $\frac{0}{2}=0$.  
+
+<br/>
+
+3 Move the constant to the other side of the equation.
+
+$x^2-\frac{7}{2}x=-3$
+
+<br/>
+
+4 Add $(\frac{b}{2})^2$ to both sides of the equation (to keep them equivalent):
+
+$x^2\frac{-7}{2}x=-3$
+
+$b=\frac{-7}{2}; \quad \frac{b}{2}=-\frac{7}{4}; \quad (\frac{b}{2})^2=(-\frac{7}{4})^2$
+
+$x^2-\frac{7}{2}x+(\frac{-7}{4})^2=-3+(\frac{-7}{4})^2$
+
+$x^2-\frac{7}{2}x+(\frac{-7}{4})^2=-3+\frac{49}{16}$
 

@@ -1,10 +1,10 @@
 [Console]::InputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-#2024-11-22
-#count: 9
+#2024-11-28
+#count: 30
 #========================================================================
 $filePath = "D:\liaoyj\Developer\counting.ps1"
-$msgs = @("STOP: 0x00000024 (0x00190203,0x8A5FC900,0xC0000102,0x00000000)","The program can't start because MSVCP110.dll is missing from your computer. Try reinstalling the program to fix this problem.")
+$msgs = @("STOP: 0x00000024 (0x00190203,0x8A5FC900,0xC0000102,0x00000000)","The program can't start because MSVCP110.dll is missing from your computer. Try reinstalling the program to fix this problem.", "The system detected an overrun of a stack based buffer in this application. This overrun could potentially allow a malicious user to gaming control of this application.")
 $MdateLine = 2
 $MCountLine = 3
 
@@ -67,9 +67,14 @@ function Start-Countdown {
         public static extern int MessageBox(IntPtr hWnd, String text, String caption, uint type);
     }
 "@
+
     $msg = $msgs | Get-Random
     [Win32]::MessageBox([IntPtr]::Zero, $msg, "System error", 0x00000000 + 0x00000010 + 0x00001000)
 
+    # Wait for any key press to confirm execution
+    Write-Host "Press any key to execute"
+    [System.Console]::ReadKey($true) | Out-Null
+    Invoke-Expression "$filePath"
 }
 
 Start-Countdown -Seconds 300

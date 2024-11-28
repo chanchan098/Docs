@@ -1,23 +1,5 @@
 https://www.math.net/primary-math
 
-# Formulas
-
-## Difference of Squares
-
-https://www.storyofmathematics.com/difference-of-squares/
-
-$a^2 – b^2 = (a + b) (a – b)$
-
-## Perfect Square Trinomial
-
-https://www.storyofmathematics.com/perfect-square-trinomial/
-
-$(a+b)(a+b)=a^2+2ab+b^2$
-
-$(a-b)(a-b)=a^2-2ab+b^2$
-
-$(a \pm b)(a \pm b)=a^2 \pm 2ab+b^2$
-
 # Division
 
 6 × 4 = 24, so 24 ÷ 4 = 6.
@@ -119,11 +101,11 @@ To check out examples
 
 ## C-Inverse
 
-$2 \times 5=10 \quad to \quad 5=10 \div 2 \quad also\; 5 = \frac{10}{2}$  
+$2 \times 5=10 \quad to \quad 5=10 \div 2 \quad also \; 5 = \frac{10}{2}$  
 
 Another one
 
-$2 \times 5=10 \quad to \quad 2=10 \div 5 \quad also \;2 = \frac{10}{5}$  
+$2 \times 5=10 \quad to \quad 2=10 \div 5 \quad also \; 2 = \frac{10}{5}$  
 
 <br/>
 
@@ -132,6 +114,12 @@ Algebra
 $2n=b \quad so \; n=\frac{b}{2}$
 
 # Fraction
+
+## Adding fractions
+
+### C-Adding fractions with whole number
+
+$3+\frac{49}{16}=\frac{3}{1}+\frac{49}{16}=\frac{48}{16}+\frac{49}{16}$
 
 ## Common fraction
 
@@ -152,10 +140,23 @@ We can divide fractions using the following steps:
 
 $\frac{5}{8} \div \frac{11}{2} = \frac{5}{8} \div \frac{2}{11}=\frac{5\times2}{8\times11}=\frac{10}{88}=\frac{5}{44}$
 
+Another form
+
+$$\frac{\frac{5}{8}}{\frac{11}{2}}$$
+
+
+OR
+
+$\frac{\frac{5}{8}}{11} \quad \frac{5}{\frac{11}{8}}$
+
+$\frac{5}{8} \div 11 \quad and \quad 5 \div \frac{11}{8}$
+
+Just turning into dividing fractions expanded, that would be easier a lot.
+
 ### Dividing fractions and whole numbers
 
 The whole number needs to be expressed as a fraction.  
-To express a whole number as a fraction, all we need to do is write the whole number over 1, since any number divided by 1 is itself.
+To express a whole number as a fraction, all we need to do is *write the whole number over 1*, since any number divided by 1 is itself.
 
 $\frac{3}{4}\div4=\frac{3}{4}\div\frac{4}{1}=\frac{3}{4}\times\frac{1}{4}=\frac{3}{16}$
 

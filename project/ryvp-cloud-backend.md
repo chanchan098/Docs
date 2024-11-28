@@ -11,6 +11,7 @@
   - [check out `pom.xml`](#check-out-pomxml)
   - [BaseDbUnitTest.java](#basedbunittestjava)
   - [unit-test.yaml](#unit-testyaml)
+- [Swagger](#swagger)
 - [Feature diagram](#feature-diagram)
 - [Jpa Testing](#jpa-testing)
   - [0. Create module for configuration and create config files](#0-create-module-for-configuration-and-create-config-files)
@@ -322,6 +323,11 @@ yudao:
 
 ```
 
+## Swagger
+
+https://springdoc.org/
+
+mvn dependency:tree
 
 ## Feature diagram
 

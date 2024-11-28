@@ -155,8 +155,6 @@ Issues:
 No concurrency; all transactions must wait for others to finish.  
 Can cause performance bottlenecks in high-traffic environments.
 
-
-
 ## 17.7.2.3 Consistent Nonlocking Reads
 
 A consistent read means that InnoDB uses multi-versioning to present to a query a snapshot of the
@@ -167,9 +165,6 @@ database at a point in time.
 
 InnoDB is a multi-version storage engine. It keeps information about `old versions of changed rows` to
 support transactional features such as **concurrency** and **rollback**.
-
-
-
 
 # 19 Replication 
 

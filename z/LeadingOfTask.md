@@ -1,17 +1,9 @@
 
-
-
-
+- Events grid
 
 - Attention
 
 - Evaluating advantages
-
-
-
-
-
-
 
 - thoughts spreading
 
@@ -26,6 +18,25 @@
   - Dive into examples 
   - Summary shortly 
   - Application 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,5 +71,6 @@
                                     a   a
                                     n   n
                                     k   k
+                                 foot   foot
 
 ```
