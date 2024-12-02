@@ -157,11 +157,35 @@ $x^2-\frac{7}{2}x=-3$
 
 4 Add $(\frac{b}{2})^2$ to both sides of the equation (to keep them equivalent):
 
-$x^2\frac{-7}{2}x=-3$
+$x^2-\frac{-7}{2}x=-3$
 
 $b=\frac{-7}{2}; \quad \frac{b}{2}=-\frac{7}{4}; \quad (\frac{b}{2})^2=(-\frac{7}{4})^2$
 
 $x^2-\frac{7}{2}x+(\frac{-7}{4})^2=-3+(\frac{-7}{4})^2$
 
-$x^2-\frac{7}{2}x+(\frac{-7}{4})^2=-3+\frac{49}{16}$
+$x^2-\frac{7}{2}x+(\frac{-7}{4})^2=-3+\frac{49}{16}=\frac{-3}{1}+\frac{49}{16}=\frac{-48}{16}+\frac{49}{16}$
 
+$x^2-\frac{7}{2}x+(\frac{-7}{4})^2=\frac{1}{16}$
+
+Factor the side with $x^2+bx+(\frac{b}{2})^2 \quad to \quad (x+\frac{b}{2})^2$
+
+$x^2-\frac{7}{2}x+(\frac{-7}{4})^2=\frac{1}{16}$
+
+$(x-\frac{7}{4})^2=\frac{1}{16}$
+
+Solve for x:
+
+$\sqrt{(x-\frac{7}{4})^2}=\sqrt{\frac{1}{16}}$
+
+$x-\frac{7}{4}=\pm\frac{1}{4}$
+
+$x=\frac{7}{4}\pm\frac{1}{4}$
+
+$x=2 \quad or \quad x=\frac{3}{2}$
+
+
+## Discriminant
+
+$b^2-4ac$
+
+If the discriminant is less than 0, then the quadratic has no real solution.
