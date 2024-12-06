@@ -1,17 +1,17 @@
 - [--Basic](#--basic)
 - [Soundmark](#soundmark)
-- [- Imperative verbs](#--imperative-verbs)
-- [- Imperative sentences](#--imperative-sentences)
-- [- Determiners](#--determiners)
-- [- Articles](#--articles)
+- [-Imperative verbs](#-imperative-verbs)
+- [-Imperative sentences](#-imperative-sentences)
+- [-Determiners](#-determiners)
+- [-Articles](#-articles)
 - [A or an?](#a-or-an)
 - [Take note: school/university, etc.](#take-note-schooluniversity-etc)
-- [- Personal forms](#--personal-forms)
-- [- Question forms](#--question-forms)
+- [-Personal forms](#-personal-forms)
+- [-Question forms](#-question-forms)
 - [Meaning and Use](#meaning-and-use)
 - [Asking questions with ‘how’](#asking-questions-with-how)
-- [- Comparatives and Superlatives](#--comparatives-and-superlatives)
-- [- State verbs and action verbs](#--state-verbs-and-action-verbs)
+- [-Comparatives and Superlatives](#-comparatives-and-superlatives)
+- [-State verbs and action verbs](#-state-verbs-and-action-verbs)
 - [meaning and use](#meaning-and-use-1)
 - [-Quantifiers: all, every, each, both, neither, either](#-quantifiers-all-every-each-both-neither-either)
 - [Meaning and use: all, every each](#meaning-and-use-all-every-each)
@@ -65,9 +65,12 @@
 - [5 \& 6, Followed by gerunds or infs in different meaning](#5--6-followed-by-gerunds-or-infs-in-different-meaning)
 - [13.Followed by a gerund or an infinitive](#13followed-by-a-gerund-or-an-infinitive)
 - [20.Gerund and infinitive forms](#20gerund-and-infinitive-forms)
-- [-Participle  clause](#-participle--clause)
+- [-Participle clause](#-participle-clause)
 - [Present participle clauses](#present-participle-clauses)
 - [Perfect participle clauses](#perfect-participle-clauses)
+- [Past participle clauses](#past-participle-clauses)
+- [Participle clauses replacing a relative clause](#participle-clauses-replacing-a-relative-clause)
+- [-E-Participle clause](#-e-participle-clause)
 - [Participle](#participle)
 
 ## --Basic
@@ -80,7 +83,7 @@ https://www.antimoon.com/how/pronunc-soundsipa.htm
 
 https://www.xdf.cn/zhuanti/bd-phonetic-alphabet-card/index.html
 
-## - Imperative verbs
+## -Imperative verbs
 
 https://www.grammarly.com/blog/imperative/
 
@@ -90,7 +93,7 @@ https://www.grammarly.com/blog/imperative-verbs/
 
 The imperative verb is an action a speaker or writer wants someone else to do. 
 
-## - Imperative sentences
+## -Imperative sentences
 
 https://www.grammarly.com/blog/imperative-sentences/
 
@@ -99,7 +102,7 @@ https://www.grammarly.com/blog/imperative-sentences/
 What is an imperative sentence?
 When you make a request, offer advice, issue a command, or give an instruction, you use the imperative mood. 
 
-## - Determiners
+## -Determiners
 
 <span style='font-size: 16px;font-weight: 500'>What is a determiner?</span>  
 
@@ -107,7 +110,7 @@ A determiner, also known as a limiting adjective, is a word that appears before 
 
 https://www.grammarly.com/blog/determiners/
 
-## - Articles
+## -Articles
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-8/tab/grammar
 
@@ -132,7 +135,7 @@ She was in hospital for three weeks.       Is there a shop in the hospital?
 
 If someone is at the place because they are a student / are sick / a prisoner, etc, we don't use the. If they are there for another reason, or we are talking about the building, we use the.
 
-## - Personal forms
+## -Personal forms
 
 https://en.wikipedia.org/wiki/English_personal_pronouns
 
@@ -157,7 +160,7 @@ https://en.wikipedia.org/wiki/English_personal_pronouns
 |                 **Third** |  they   |  them  |                  their                   |         theirs         | themselves |
 
 
-## - Question forms
+## -Question forms
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-1/tab/grammar
 
@@ -180,11 +183,11 @@ These questions cannot be answered with a yes or no.
 
 The question word how is usually combined with other words when asking for information, such as size, someone’s age, or the price of something.
 
-## - Comparatives and Superlatives
+## -Comparatives and Superlatives
 
 http://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-13/tab/grammar
 
-## - State verbs and action verbs
+## -State verbs and action verbs
 
 https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate/unit-25/tab/grammar
 
@@ -727,7 +730,7 @@ https://www.englishpage.com/gerunds/part_3.htm
 
 
 
-## -Participle  clause 
+## -Participle clause 
 
 https://www.grammaring.com/participle-clauses
 
@@ -741,6 +744,23 @@ but also could be different.
 
 ## Perfect participle clauses
 
+If we want to make it clear that an action happens before another one, we use a perfect participle for the earlier action:
+
+- *Having washed the car*, I noticed a small scratch on the front right fender. (After I washed the car, I noticed a small scratch on the front right fender.)
+
+Here the present participle (washing the car) would mean "while I was washing the car".
+
+
+<br/>
+
+
+If the two actions do not follow each other immediately or if the first action happens over a period of time, we use a perfect participle instead of a present participle for the earlier action:
+
+- *Having seen the film before*, I didn't want to go to the cinema.
+- Mark knew the town well, *having lived there all his life*.
+
+## Past participle clauses
+
 If we want to make it clear that an action happens before another one, we use a perfect participle for the earlier action.
   - *Shocked by the explosion*, the people ran for shelter. (The people were shocked by the explosion and ran for shelter.)
   - The musicians stood up, *surrounded by thunderous applause*. (The musicians stood up while they were surrounded by thunderous applause.)
@@ -748,6 +768,22 @@ If we want to make it clear that an action happens before another one, we use a 
 
 If we want to emphasise that an action happens before another one, we use a passive perfect participle:
   - *Having been nominated three times for an Oscar*, he is one of today's most acclaimed film directors.
+
+## Participle clauses replacing a relative clause
+
+A present participle clause can replace an active voice finite relative clause. The noun before the participle is the doer of the action:
+
+- The man *driving the car* was not injured. (The man *who was driving the car* was not injured.)
+
+Present participle clauses are possible even with verbs which are not normally used in the continuous form (state verbs):
+
+- If you think you have received an e-mail *containing* a virus, you should delete it immediately. (If you think you have received an e-mail *which contains* a virus, delete it immediately.)
+
+A past participle clause can replace a passive voice finite relative clause. The noun before the participle is its object:
+
+- This is the last photograph *taken of my grandmother*. (This is the last photograph *that was taken of my grandmother*.)
+
+## -E-Participle clause 
 
 ## Participle
 

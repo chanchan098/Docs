@@ -1,41 +1,8 @@
+# Reference
 
+https://kubernetes.io/docs/reference/
 
-- [-Reference](#-reference)
-- [API Overview](#api-overview)
-- [--API Access Control](#--api-access-control)
-- [Using RBAC Authorization](#using-rbac-authorization)
-  - [API objects](#api-objects)
-    - [Role and ClusterRole](#role-and-clusterrole)
-  - [RoleBinding and ClusterRoleBinding](#rolebinding-and-clusterrolebinding)
-- [-- Kubernetes API](#---kubernetes-api)
-- [Workload Resources](#workload-resources)
-  - [Pod](#pod)
-  - [PodTemplate](#podtemplate)
-  - [ReplicationController](#replicationcontroller)
-  - [Deployment](#deployment)
-  - [ReplicaSet](#replicaset)
-- [Service Resources](#service-resources)
-  - [Service](#service)
-- [Config and Storage Resources](#config-and-storage-resources)
-  - [Volume](#volume)
-- [Authentication Resources](#authentication-resources)
-  - [ServiceAccount](#serviceaccount)
-- [Common Definitions](#common-definitions)
-  - [LabelSelector](#labelselector)
-  - [ObjectMeta](#objectmeta)
-- [-Networking Reference](#-networking-reference)
-- [Virtual IPs and Service Proxies](#virtual-ips-and-service-proxies)
-- [E-Networking Reference](#e-networking-reference)
-- [-- Setup tools](#---setup-tools)
-- [Kubeadm](#kubeadm)
-- [-- Command line tool (kubectl)](#---command-line-tool-kubectl)
-- [-------------------------------------------------](#-------------------------------------------------)
-- [Api references](#api-references)
-
-# -Reference
-
-
-# API Overview
+## API Overview
 
 [link](https://kubernetes.io/docs/reference/using-api/)
 
@@ -43,13 +10,11 @@ The REST API is the fundamental fabric of Kubernetes. All operations and communi
 external user commands are REST API calls that the API Server handles. Consequently, everything in the Kubernetes  
 platform is treated as an API object and has a corresponding entry in the API.
 
-
-
-# --API Access Control
+## (S)API Access Control
 
 *Reference/API Access Control*
 
-# Using RBAC Authorization
+## Using RBAC Authorization
 
 https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
@@ -73,13 +38,11 @@ If you want to define a role within a namespace, use a Role; if you want to defi
 
 A role binding grants the permissions defined in a role to a user or set of users.
 
+## (E)API Access Control
 
+## (S)Kubernetes API
 
-
-
-# -- Kubernetes API
-
-# Workload Resources
+## -S-Workload Resources
 
 <https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/>
 
@@ -159,9 +122,9 @@ ReplicaSet ensures that a specified number of pod replicas are running at any gi
     - >Replicas is the number of desired replicas. 
     - >This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. 
 
-*Reference/Kubernetes API*
+## -E-Workload Resources
 
-# Service Resources
+## -S-Service Resources
 
 <https://kubernetes.io/docs/reference/kubernetes-api/service-resources/>
 
@@ -196,9 +159,9 @@ A middle line in front of an item start, marking it and with followers as an ite
   targetPort: 8080
 ```
 
-*Reference/Kubernetes API*
+## -E-Service Resources
 
-# Config and Storage Resources
+## -S-Config and Storage Resources
 
 ## Volume
 
@@ -206,7 +169,9 @@ A middle line in front of an item start, marking it and with followers as an ite
 
 Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
-# Authentication Resources 
+## -E-Config and Storage Resources
+
+## -S-Authentication Resources 
 
 ## ServiceAccount
 
@@ -219,8 +184,10 @@ Volume represents a named volume in a pod that may be accessed by any container 
     labels:
       account: details
   ```
-  
-# Common Definitions
+
+## -E-Authentication Resources 
+
+## -S-Common Definitions
 
 [doc](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/)
 
@@ -252,7 +219,6 @@ A null label selector matches <u>no objects</u>.
       whose key field is "`key`", the operator is "`In`", and the values array contains only "`value`".  
       The requirements are ANDed.
 
-
 ## ObjectMeta
 
 [ObjectMeta](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/object-meta/#ObjectMeta) is metadata that <u>all persisted resources must have</u>, which includes all objects users must create.
@@ -270,10 +236,11 @@ A null label selector matches <u>no objects</u>.
 - **labels** (map[string]string)
   - >Map of string keys and values that can be used to organize and categorize (scope and select) objects. 
 
+## -E-Common Definitions
 
-# -Networking Reference
+## (S)Networking Reference
 
-# Virtual IPs and Service Proxies
+## Virtual IPs and Service Proxies
 
 <span style='font-size: 16px;font-weight: 500'>kube-proxy</span>  
 
@@ -300,19 +267,21 @@ There is only one mode available for kube-proxy on Windows:
 - kernelspace
   - a mode where the kube-proxy configures packet forwarding rules in the Windows kernel
 
-# E-Networking Reference
+## (E)Networking Reference
 
-# -- Setup tools
+## Setup tools
 
-# Kubeadm
+### Kubeadm
 
-# -- Command line tool (kubectl) 
+[doc](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
+
+## Command line tool (kubectl) 
 
 [link](https://kubernetes.io/docs/reference/kubectl/)
 
-# -------------------------------------------------
+---
 
-# Api references
+## Api references
 
 [doc](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#api-overview)
 

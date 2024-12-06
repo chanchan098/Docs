@@ -1,62 +1,8 @@
-- [Command line execution](#command-line-execution)
-  - [source](#source)
-  - [eval](#eval)
-  - [xargs](#xargs)
-- [Disk management](#disk-management)
-  - [blkid (block ID)](#blkid-block-id)
-  - [df (disk free)](#df-disk-free)
-  - [du (disk usage)](#du-disk-usage)
-  - [fdisk (fixed disk)](#fdisk-fixed-disk)
-  - [lvextend (logical volume extend)](#lvextend-logical-volume-extend)
-  - [parted](#parted)
-  - [resize2fs](#resize2fs)
-  - [vgdisplay](#vgdisplay)
-- [Editor](#editor)
-  - [vim](#vim)
-  - [nano](#nano)
-- [File management](#file-management)
-  - [chown](#chown)
-  - [ln](#ln)
-  - [ls](#ls)
-  - [rm](#rm)
-  - [tar](#tar)
-  - [wget](#wget)
-- [HTTP CLIENT](#http-client)
-  - [curl](#curl)
-- [Log](#log)
-  - [tail](#tail)
-  - [journalctl](#journalctl)
-- [Package management](#package-management)
-  - [dpkg](#dpkg)
-  - [dpkg-query](#dpkg-query)
-- [Programming](#programming)
-  - [mapfile](#mapfile)
-- [echo](#echo)
-- [Remote file operation](#remote-file-operation)
-  - [scp](#scp)
-  - [sftp(client side)](#sftpclient-side)
-- [Network management](#network-management)
-  - [netstat](#netstat)
-- [Shell](#shell)
-  - [nohup](#nohup)
-  - [sort](#sort)
-- [String processing](#string-processing)
-  - [awk](#awk)
-  - [sed (stream editor)](#sed-stream-editor)
-- [System management](#system-management)
-  - [free, use for peek up memory](#free-use-for-peek-up-memory)
-  - [hostnamectl, use for querying kernal](#hostnamectl-use-for-querying-kernal)
-  - [lsof](#lsof)
-  - [ps](#ps)
-  - [systemctl](#systemctl)
-  - [sysctl](#sysctl)
-  - [timedatectl](#timedatectl)
-- [VBoxManage](#vboxmanage)
+# Cmd references
 
+## Command line execution
 
-# Command line execution
-
-## source
+### source
 
 ```shell
 source: source filename [arguments]
@@ -81,7 +27,7 @@ source: source filename [arguments]
   cd /home/user/dr/k8s
   ```
 
-## eval
+### eval
 
 `dpkg -l | grep nginx | awk '{print $2}' | xargs sudo dpkg --purge`
 
@@ -96,7 +42,7 @@ eval: eval [arg ...]
     Returns exit status of command or success if command is null.
 ```
 
-## xargs
+### xargs
 
 ```
 Usage: xargs [OPTION]... COMMAND [INITIAL-ARGS]...
@@ -149,9 +95,9 @@ you have no web access, by sending email to <bug-findutils@gnu.org>.
 ```
 
 
-# Disk management
+## Disk management
 
-## blkid (block ID)
+### blkid (block ID)
 
 ```
 Usage:
@@ -201,7 +147,7 @@ Arguments:
 For more details see blkid(8).
 ```
 
-## df (disk free)
+### df (disk free)
 
 ```
 Usage: df [OPTION]... [FILE]...
@@ -245,7 +191,7 @@ field names are: 'source', 'fstype', 'itotal', 'iused', 'iavail', 'ipcent',
 'size', 'used', 'avail', 'pcent', 'file' and 'target' (see info page).
 ```
 
-## du (disk usage)
+### du (disk usage)
 
 ```
 Usage: du [OPTION]... [FILE]...
@@ -313,7 +259,7 @@ or available locally via: info '(coreutils) du invocation'
 ```
 
 
-## fdisk (fixed disk)
+### fdisk (fixed disk)
 
 ```
 Usage:
@@ -357,7 +303,7 @@ Available output columns:
 For more details see fdisk(8).
 ```
 
-## lvextend (logical volume extend)
+### lvextend (logical volume extend)
 
 ```
 lvextend - Add space to a logical volume
@@ -422,7 +368,7 @@ lvextend - Add space to a logical volume
   Use --longhelp to show all options and advanced commands.
 ```
 
-## parted
+### parted
 
 ```
 Usage: parted [OPTION]... [DEVICE [COMMAND [PARAMETERS]...]...]
@@ -468,7 +414,7 @@ COMMANDs:
 Report bugs to bug-parted@gnu.org
 ```
 
-## resize2fs
+### resize2fs
 
 `resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv`
 
@@ -476,7 +422,7 @@ Report bugs to bug-parted@gnu.org
 Usage: resize2fs [-d debug_flags] [-f] [-F] [-M] [-P] [-p] device [-b|-s|new_size] [-S RAID-stride] [-z undo_file]
 ```
 
-## vgdisplay
+### vgdisplay
 
 ```
   vgdisplay - Display volume group information
@@ -526,18 +472,18 @@ Usage: resize2fs [-d debug_flags] [-f] [-F] [-M] [-P] [-p] device [-b|-s|new_siz
 ```
 
 
-# Editor
+## Editor
 
-## vim
+### vim
 
 https://linuxhandbook.com/vim/
 
-## nano
+### nano
 
 
-# File management
+## File management
 
-## chown
+### chown
 
 ```
 Usage: chown [OPTION]... [OWNER][:[GROUP]] FILE...
@@ -592,7 +538,7 @@ or available locally via: info '(coreutils) chown invocation'
 ```
 
 
-## ln
+### ln
 ```
 Usage: ln [OPTION]... [-T] TARGET LINK_NAME
   or:  ln [OPTION]... TARGET
@@ -646,7 +592,7 @@ Full documentation <https://www.gnu.org/software/coreutils/ln>
 or available locally via: info '(coreutils) ln invocation'
 ```
 
-## ls
+### ls
 
 ```
 Usage: ls [OPTION]... [FILE]...
@@ -773,7 +719,7 @@ or available locally via: info '(coreutils) ls invocation'
 ```
 
 
-## rm
+### rm
 ```
 Usage: rm [OPTION]... [FILE]...
 Remove (unlink) the FILE(s).
@@ -816,7 +762,7 @@ Full documentation <https://www.gnu.org/software/coreutils/rm>
 or available locally via: info '(coreutils) rm invocation'
 ```
 
-## tar
+### tar
 
 ```
 
@@ -825,9 +771,9 @@ GNU 'tar' saves many files together into a single tape or disk archive, and can
 restore individual files from the archive.
 
 Examples:
-  tar -cf archive.tar foo bar  # Create archive.tar from files foo and bar.
-  tar -tvf archive.tar         # List all files in archive.tar verbosely.
-  tar -xf archive.tar          # Extract all files from archive.tar.
+  tar -cf archive.tar foo bar  ## Create archive.tar from files foo and bar.
+  tar -tvf archive.tar         ## List all files in archive.tar verbosely.
+  tar -xf archive.tar          ## Extract all files from archive.tar.
 
  Main operation mode:
   -A, --catenate, --concatenate   append tar files to an archive
@@ -1149,7 +1095,7 @@ Valid arguments for the --quoting-style option are:
 ```
 
 
-## wget
+### wget
 
 ```
 GNU Wget 1.21.2, a non-interactive network retriever.
@@ -1362,9 +1308,9 @@ Email bug reports, questions, discussions to <bug-wget@gnu.org>
 and/or open issues at https://savannah.gnu.org/bugs/?func=additem&group=wget.
 ```
 
-# HTTP CLIENT
+## HTTP CLIENT
 
-## curl
+### curl
 
 ```
 Usage: curl [options...] <url>
@@ -1387,9 +1333,9 @@ For all options use the manual or "--help all".
 ```
 
 
-# Log
+## Log
 
-## tail
+### tail
 
 ```
 
@@ -1443,7 +1389,7 @@ or available locally via: info '(coreutils) tail invocation'
 
 
 
-# useradd
+## useradd
 Usage: useradd [options] LOGIN
        useradd -D
        useradd -D [options]
@@ -1485,14 +1431,14 @@ Options:
 
 ```
 
-## journalctl
+### journalctl
 
 https://www.man7.org/linux/man-pages/man1/journalctl.1.html
 
 
-# Package management
+## Package management
 
-## dpkg
+### dpkg
 
 ```
 Usage: dpkg [<option>...] <command>
@@ -1580,7 +1526,7 @@ Use 'apt' or 'aptitude' for user-friendly package management.
 ```
 
 
-## dpkg-query
+### dpkg-query
 
 ```
 Usage: dpkg-query [<option>...] <command>
@@ -1617,9 +1563,9 @@ Format syntax:
   case left alignment will be used.
 ```
 
-# Programming
+## Programming
 
-## mapfile
+### mapfile
 
 `mapfile -t pending < <(kubeadm config images list)`
 
@@ -1658,7 +1604,7 @@ mapfile: mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C c
     not an indexed array.
 ```
 
-# echo
+## echo
 
 ```
 
@@ -1699,9 +1645,13 @@ echo: echo [-neE] [arg ...]
 
 ```
 
-# Remote file operation
+## Remote file operation
 
-## scp
+### scp
+
+Graphic tool: WinScp
+
+https://linux.die.net/man/1/scp
 
 ```
 scp: unknown option -- -
@@ -1718,7 +1668,11 @@ usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
 `scp /home/user/documents/example.txt user@example.com:/home/user/remote_documents/`
 
 
-## sftp(client side)
+### sftp(client side)
+
+
+Graphic tool: WinScp
+
 
 https://man7.org/linux/man-pages/man1/sftp.1.html
 
@@ -1794,15 +1748,15 @@ sshpass -p '123456' sftp -b sftpbatch.txt 116@192.168.0.116
 ```
 
 
-# Network management
+## Network management
 
-## netstat
+### netstat
 
 https://www.man7.org/linux/man-pages/man8/netstat.8.html
 
-# Shell
+## Shell
 
-## nohup
+### nohup
 
 ```
 
@@ -1829,7 +1783,7 @@ or available locally via: info '(coreutils) nohup invocation'
 
 ```
 
-## sort
+### sort
 
 ```
 
@@ -1910,9 +1864,9 @@ or available locally via: info '(coreutils) sort invocation'
 
 
 
-# String processing
+## String processing
 
-## awk
+### awk
 
 https://linuxhandbook.com/awk-command-tutorial/#a-basic-usage-of-awk-command
 
@@ -1974,7 +1928,7 @@ Examples:
 
 ```
 
-## sed (stream editor)
+### sed (stream editor)
 
 ```
 
@@ -2023,9 +1977,9 @@ E-mail bug reports to: <bug-sed@gnu.org>.
 
 ```
 
-# System management
+## System management
 
-## free, use for peek up memory
+### free, use for peek up memory
 
 ```
 Usage:
@@ -2057,13 +2011,13 @@ Options:
 For more details see free(1).
 ```
 
-## hostnamectl, use for querying kernal
+### hostnamectl, use for querying kernal
 
-## lsof
+### lsof
 
 https://man7.org/linux/man-pages/man8/lsof.8.html
 
-## ps
+### ps
 
 `ps aux --sort=-rss`
 `ps aux --sort=-pid`
@@ -2153,11 +2107,11 @@ For more details see ps(1).
 ```
 
 
-## systemctl
+### systemctl
 
 https://www.man7.org/linux/man-pages/man1/systemctl.1.html
 
-## sysctl
+### sysctl
 
 ```
 Usage:
@@ -2189,7 +2143,7 @@ Options:
 For more details see sysctl(8).
 ```
 
-## timedatectl
+### timedatectl
 
 ```
 timedatectl [OPTIONS...] COMMAND ...
@@ -2225,7 +2179,7 @@ Options:
 See the timedatectl(1) man page for details.
 ```
 
-# VBoxManage
+## VBoxManage
 
 `VBoxManage startvm "ub-22.04-server-2" --type headless`
 

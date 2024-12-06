@@ -1,4 +1,4 @@
-# ops-2.0-image-proxy.md
+# Image proxy
 
 ## Containerd
 
@@ -15,13 +15,15 @@ Environment="NO_PROXY=127.0.0.1,10.96.0.0/12"
 
 `Environment="NO_PROXY=127.0.0.1,10.96.0.0/12"` for filtering cluster network.
 
-customed
 
-`/etc/systemd/system/containerd.service.d/reload.sh`
 
 ```shell
 sudo systemctl daemon-reload; systemctl restart containerd; systemctl show --property=Environment containerd
 ```
+
+
+coherent in `/etc/systemd/system/containerd.service.d/reload.sh`
+
 
 ### Local http
 
@@ -38,13 +40,14 @@ https://stackoverflow.com/questions/65724285/kubernetes-with-containerd-http-ser
 
 0. `mkdir /etc/systemd/system/docker.service.d`
 1. `vim /etc/systemd/system/docker.service.d/http-proxy.conf`
-2. ```
+2. 
+    ```
     [Service]
     Environment="HTTP_PROXY=http://192.168.0.117:10809"
     Environment="HTTPS_PROXY=http://192.168.0.117:10809"
-    Environment="NO_PROXY=NO_PROXY=127.0.0.1,10.96.0.0/12"
+    Environment="NO_PROXY=NO_PROXY=127.0.0.1,10.96.0.0/12,192.168.0.0/12"
     ```
 3. `sudo systemctl daemon-reload ; sudo systemctl restart docker`
 4. `docker info |grep Proxy`
 
-## [remote proxy](https://blog.csdn.net/u012206617/article/details/109744243)
+### [Remote proxy](https://blog.csdn.net/u012206617/article/details/109744243)

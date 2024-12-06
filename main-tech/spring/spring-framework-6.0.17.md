@@ -1,32 +1,69 @@
+- [-Core Technologies](#-core-technologies)
+- [Introduction to the Spring IoC Container and Beans](#introduction-to-the-spring-ioc-container-and-beans)
+- [Container Overview](#container-overview)
+  - [Configuration Metadata](#configuration-metadata)
+- [Bean Overview](#bean-overview)
+- [Annotation-based Container Configuration](#annotation-based-container-configuration)
+- [Java-based Container Configuration](#java-based-container-configuration)
+  - [Basic Concepts: @Bean and @Configuration](#basic-concepts-bean-and-configuration)
+- [Java Bean Validation](#java-bean-validation)
+  - [Configuring Custom Constraints](#configuring-custom-constraints)
+- [Spring Expression Language (SpEL)](#spring-expression-language-spel)
+- [-Aspect Oriented Programming with Spring](#-aspect-oriented-programming-with-spring)
+- [AOP Concepts](#aop-concepts)
+- [-@AspectJ support](#-aspectj-support)
+- [Enabling @AspectJ Support](#enabling-aspectj-support)
+- [Declaring an Aspect](#declaring-an-aspect)
+- [Declaring a Pointcut](#declaring-a-pointcut)
+- [Declaring Advice](#declaring-advice)
+- [Introductions](#introductions)
+- [An AOP Example](#an-aop-example)
+- [-E-@AspectJ support](#-e-aspectj-support)
+- [Proxying Mechanisms](#proxying-mechanisms)
+  - [Understanding AOP Proxies](#understanding-aop-proxies)
+- [-E-Aspect Oriented Programming with Spring](#-e-aspect-oriented-programming-with-spring)
+- [Advantages of the Spring Framework’s Transaction Support Model](#advantages-of-the-spring-frameworks-transaction-support-model)
+  - [Global Transactions](#global-transactions)
+  - [Local Transactions](#local-transactions)
+- [Understanding the Spring Framework Transaction Abstraction](#understanding-the-spring-framework-transaction-abstraction)
 - [Understanding the Spring Framework’s Declarative Transaction Implementation](#understanding-the-spring-frameworks-declarative-transaction-implementation)
 - [Using `@Transactional`](#using-transactional)
 - [Transaction Propagation](#transaction-propagation)
-  - [Understanding PROPAGATION\_REQUIRED](#understanding-propagation_required)
-  - [Understanding PROPAGATION\_REQUIRES\_NEW](#understanding-propagation_requires_new)
-  - [Understanding PROPAGATION\_NESTED](#understanding-propagation_nested)
-- [--E-Transaction Management](#--e-transaction-management)
+- [Understanding PROPAGATION\_REQUIRED](#understanding-propagation_required)
+- [Understanding PROPAGATION\_REQUIRES\_NEW](#understanding-propagation_requires_new)
+- [Understanding PROPAGATION\_NESTED](#understanding-propagation_nested)
+- [-E-Transaction Management](#-e-transaction-management)
+- [-E-Core Technologies](#-e-core-technologies)
+- [-------------------------------------------------------](#-------------------------------------------------------)
 - [-Web on Servlet Stack](#-web-on-servlet-stack)
 - [Spring Web MVC](#spring-web-mvc)
-- [DispatcherServlet](#dispatcherservlet)
-  - [Context Hierarchy](#context-hierarchy)
-- [Annotated Controllers](#annotated-controllers)
+- [-DispatcherServlet](#-dispatcherservlet)
+- [Context Hierarchy](#context-hierarchy)
 - [Interception](#interception)
-- [Exceptions](#exceptions)
+- [-E-DispatcherServlet](#-e-dispatcherservlet)
+- [-Annotated Controllers](#-annotated-controllers)
 - [Declaration(xml means)](#declarationxml-means)
 - [Request Mapping](#request-mapping)
   - [Explicit Registrations](#explicit-registrations)
-  - [Handler Methods](#handler-methods)
+- [-Handler Methods](#-handler-methods)
+- [Method Arguments](#method-arguments)
+- [Model](#model)
+- [-E-Handler Methods](#-e-handler-methods)
+- [Exceptions](#exceptions)
+- [-E-Annotated Controllers](#-e-annotated-controllers)
+- [-MVC Config](#-mvc-config)
 - [Message Converters](#message-converters)
 - [MVC Config API](#mvc-config-api)
-- [- Testing](#--testing)
-  - [TestContext Framework Support Classes](#testcontext-framework-support-classes)
+- [-E-MVC Config](#-e-mvc-config)
+- [-Testing](#-testing)
+- [TestContext Framework Support Classes](#testcontext-framework-support-classes)
 
 
 [api](https://docs.spring.io/spring-framework/docs/6.0.17/javadoc-api/index.html)
 
 [doc](https://docs.spring.io/spring-framework/reference/6.0/overview.html)
 
-
+## -Core Technologies
 
 ## Introduction to the Spring IoC Container and Beans
 
@@ -115,7 +152,7 @@ is a powerful expression language that supports querying and manipulating an obj
 
 
 
-## Aspect Oriented Programming with Spring
+## -Aspect Oriented Programming with Spring
 
 [docs](https://docs.spring.io/spring-framework/reference/core/aop.html)
 
@@ -184,7 +221,10 @@ Advice that surrounds a join point such as a method invocation.
   Around advice can perform custom behavior before and after the method invocation.  
   It is also responsible for choosing whether to proceed to the join point or to shortcut the advised method execution by returning its own return value or throwing an exception.
 
-<span style='font-size: 16px;font-weight: 500'>Example-AspectJ annotation</span>  
+<span style='font-size: 16px;font-weight: 500'>Examples</span>  
+
+- [PreAuthenticatedAspect.java](https://github.com/YunaiV/ruoyi-vue-pro/blob/v2.2.0(jdk17/21)/yudao-framework/yudao-spring-boot-starter-security/src/main/java/cn/iocoder/yudao/framework/security/core/aop/PreAuthenticatedAspect.java)
+- [IdempotentAspect.java](https://github1s.com/YunaiV/ruoyi-vue-pro/blob/v2.2.0(jdk17/21)/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/idempotent/core/aop/IdempotentAspect.java)
 
 ```java
 @Target({ElementType.METHOD})
@@ -254,17 +294,17 @@ public class AdderAfterReturnAspect {
 </aop:config>
 ```
 
-## @AspectJ support
+## -@AspectJ support
 
 https://docs.spring.io/spring-framework/reference/6.0/core/aop/ataspectj.html
 
 `@AspectJ` refers to a style of declaring aspects as regular Java classes annotated with annotations. 
 
-### Enabling @AspectJ Support - @AspectJ support
+## Enabling @AspectJ Support
 
 automatic support by spring boot.
 
-### Declaring an Aspect - @AspectJ support
+## Declaring an Aspect
 
 ```
 package com.xyz;
@@ -276,10 +316,21 @@ public class NotVeryUsefulAspect {
 }
 ```
 
-### Introductions - @AspectJ support
+## Declaring a Pointcut
+
+you can think of a pointcut as matching the execution of methods on Spring beans. 
+
+## Declaring Advice
+
+Advice is associated with a pointcut expression and runs before, after, or around method executions matched by the pointcut.  
+
+## Introductions
 
 Introductions (known as inter-type declarations in AspectJ) enable an aspect to declare that advised objects implement *a given interface*, and to provide `an implementation` of that interface on behalf of those objects.
 
+## An AOP Example
+
+## -E-@AspectJ support
 
 ## Proxying Mechanisms
 
@@ -287,6 +338,8 @@ https://docs.spring.io/spring-framework/reference/6.0/core/aop/proxying.html
 
 ### Understanding AOP Proxies
 
+
+## -E-Aspect Oriented Programming with Spring
 
 
 ## Advantages of the Spring Framework’s Transaction Support Model
@@ -324,7 +377,7 @@ public interface PlatformTransactionManager extends TransactionManager {
 ```
 
 
-# Understanding the Spring Framework’s Declarative Transaction Implementation
+## Understanding the Spring Framework’s Declarative Transaction Implementation
 
 [doc ](https://docs.spring.io/spring-framework/reference/6.0/data-access/transaction/declarative/tx-decl-explained.html)
 
@@ -336,9 +389,9 @@ The combination of AOP with transactional metadata <mark>yields</mark> an AOP pr
 
 *Data Access/Transaction Management/Declarative Transaction Management*
 
-# Using `@Transactional`
+## Using `@Transactional`
 
-# Transaction Propagation
+## Transaction Propagation
 
 
 https://docs.spring.io/spring-framework/docs/6.0.17/javadoc-api/org/springframework/transaction/annotation/Propagation.html
@@ -360,18 +413,23 @@ PROPAGATION_REQUIRES_NEW, in contrast to PROPAGATION_REQUIRED, always uses an in
 
 PROPAGATION_NESTED uses a single physical transaction with multiple savepoints that it can roll back to. 
 
-# --E-Transaction Management
+## -E-Transaction Management
 
-# -Web on Servlet Stack
+## -E-Core Technologies
 
-# Spring Web MVC
+## -------------------------------------------------------
+
+## -Web on Servlet Stack
+
+## Spring Web MVC
 
 [doc](https://docs.spring.io/spring-framework/reference/6.0/web.html)  
 
 
-*Web on Servlet Stack/Spring Web MVC*
-# DispatcherServlet 
-- Spring Web MVC - Web on Servlet Stack
+
+## -DispatcherServlet 
+
+https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-servlet.html
 
 [process progress](https://blog.csdn.net/anying5823/article/details/106308360)
 
@@ -394,37 +452,27 @@ functionality:
 
 ## Context Hierarchy
 
-*Web on Servlet Stack/Spring Web MVC*
-# Annotated Controllers
-
-# Interception
+## Interception
 
 https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-servlet/handlermapping-interceptor.html
 
 ResponseBodyAdvice 
 
-# Exceptions
+## -E-DispatcherServlet 
 
-https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-servlet/exceptionhandlers.html
+## -Annotated Controllers
 
+https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-controller.html
 
-[@ExceptionHandler](https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-controller/ann-exceptionhandler.html)
+## Declaration(xml means)
 
-Spring Web MVC - Web on Servlet Stack
-
-Spring MVC provides an annotation-based programming model where `@Controller` and `@RestController` components use annotations to express request mappings, request input, exception handling, and more.
-
-
-*Web on Servlet Stack/Spring Web MVC/Annotated Controllers*
-# Declaration(xml means)
-
-*Web on Servlet Stack/Spring Web MVC/Annotated Controllers*
-# Request Mapping 
+## Request Mapping 
 
 You can use the `@RequestMapping` annotation to map requests to controllers methods.  
 It has various attributes to match by URL, HTTP method, request parameters, headers, and media types.
 
-## Explicit Registrations
+
+### Explicit Registrations
 
 You can programmatically register handler methods, which you can use for dynamic registrations or for advanced cases,  
 such as different instances of the same handler under different URLs.  
@@ -448,22 +496,51 @@ public class MyConfig {
 }
 ```
 
-## Handler Methods
+
+## -Handler Methods
 
 `@RequestMapping` handler methods have a flexible signature and can choose from a range of supported  
 controller method arguments and return values.
 
 *[Web on Servlet Stack/Spring Web MVC/MVC Config/Message Converters](https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-config/message-converters.html)*
-# Message Converters
+
+## Method Arguments
+
+[check out table](https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-controller/ann-methods/arguments.html)
+
+## Model
+
+
+
+## -E-Handler Methods
+
+## Exceptions
+
+`@Controller` and `@ControllerAdvice` classes can have `@ExceptionHandler` methods to handle exceptions from controller methods, as the following example shows:
+
+
+https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-servlet/exceptionhandlers.html
+
+
+[@ExceptionHandler](https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-controller/ann-exceptionhandler.html)
+
+
+## -E-Annotated Controllers
+
+## -MVC Config
+
+## Message Converters
 
 In a Spring Boot application, the `WebMvcAutoConfiguration` adds any `HttpMessageConverter` beans it detects, in addition to default converters.
 
 [Web on Servlet Stack/Spring Web MVC/MVC Config/MVC Config API](https://docs.spring.io/spring-framework/reference/6.0/web/webmvc/mvc-config/customize.html)
-# MVC Config API
+## MVC Config API
 
 to customize mvc configs
 
-# - Testing
+## -E-MVC Config
+
+## -Testing
 
 *Spring TestContext Framework\*
 

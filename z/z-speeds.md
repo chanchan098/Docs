@@ -7,22 +7,32 @@ to check that speed ranges again.
 |   2   |    #25+    |  +3   |     #10-     |  -1   | 05-30 | 10-30  |
 |   3   |    #35+    |  +4   |     #20-     |  -2   | 15-40 | 20-40  |
 |   4   |    #45+    |  +5   |     #30-     |  -3   | 25-50 | 30-50  |
-|   5   |            |       |     #40-     |  -4   | 35-60 | 50-??  |
+|   5   |            |       |     #40-     |  -4   | 35-60 | 50---- |
 
 https://www.cnblogs.com/arxive/p/5551052.html
 
 https://www.yoojia.com/wenda/597250.html?fromtype=top1
 
 
+### Initial state checking 
+
+- rearview mirror: left, right, inside.
+- lights: headlight(dipped headlight, headlights on full beam), turn signal, clearance lamp, emergency light, fog light.
+- wiper wash, hand brake, gears
+- seatbelt
+
+### lights
+
+turn signal, up for right, down for left.
 
 ### shift gears
 
-0. to speed up or down via accelerator or break to a speeds wanted.
+0. to a speed wanted, to speed up or down via accelerator or break.
 1. releasing accelerator or break.
 2. to step clutch down.
 3. to move gear lever to target gear.
 4. releasing clutch.
-5. keeping speeds.
+5. keeping speed.
 
 
 ---
