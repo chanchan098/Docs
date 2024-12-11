@@ -1,11 +1,18 @@
 
+# move this file to istio root path
+# move this folder at the same level to istio root
+
 kubectl delete -f samples/addons
 istioctl uninstall -y --purge
 kubectl delete namespace istio-system
 kubectl label namespace default istio-injection-
+kubectl delete -f samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl delete -f samples/bookinfo/networking/bookinfo-gateway.yaml
 
+istioctl install --set profile=demo -y 
 
-istioctl install --set profile=demo -y
+# To add new gateway when done
+#istioctl install --set profile=demo -f gateway-secondary.yaml -y 
 
 kubectl label namespace default istio-injection=enabled
 

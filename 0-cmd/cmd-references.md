@@ -1435,6 +1435,8 @@ Options:
 
 https://www.man7.org/linux/man-pages/man1/journalctl.1.html
 
+`journalctl -u frr -n 10`
+
 
 ## Package management
 

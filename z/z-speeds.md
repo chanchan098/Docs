@@ -162,3 +162,88 @@ flowchart LR
 
 ### Weather estimation
 
+### Cost to car
+
+```javascript
+
+class CostOfCarForMaintainence {
+    constructor() {
+        this.insurance = 2000
+        this.parking = 400 * 12
+        this.maintain = 2000
+
+        this.costs = this.insurance + this.parking + this.maintain
+    }
+}
+
+class CostOfCarForWorking {
+    constructor() {
+        this.gasForHundredMiles = 7
+        this.priceOfLitre = 8
+
+        this.milesForWorkADay = 15
+        this.hundredMilesForWork = (this.milesForWorkADay * 20) / 100.0
+        this.gasForMonth = (this.hundredMilesForWork * this.gasForHundredMiles * this.priceOfLitre)
+        this.gasForYear = (this.gasForMonth * 12)
+
+        this.costs = this.gasForYear
+    }
+}
+
+
+class CostOfCarForGoingHome {
+    constructor() {
+        this.gasForHundredMiles = 7
+        this.priceOfLitre = 8
+
+        this.milesForATrip = 300
+        this.timesOfTrip = 4
+
+        this.costForToll = 150
+
+        this.costs = (((this.milesForATrip * this.timesOfTrip) / 100) * this.gasForHundredMiles * this.priceOfLitre) + (this.costForToll * this.timesOfTrip)
+    }
+}
+
+var costOfCarForMaintainence = new CostOfCarForMaintainence()
+var costOfCarForWorking = new CostOfCarForWorking()
+var costOfCarForGoingHome = new CostOfCarForGoingHome()
+
+console.log("costOfCarForMaintainence", costOfCarForMaintainence)
+console.log("costOfCarForWorking", costOfCarForWorking)
+console.log("costOfCarForGoingHome", costOfCarForGoingHome)
+
+console.log("all ￥：" + costOfCarForMaintainence.costs + costOfCarForWorking.costs + costOfCarForGoingHome.costs)
+
+// rent 
+
+class CostOfRentCarForSpringFestval {
+    constructor() {
+        this.days = 5
+        this.costOfADay = 310
+
+
+        this.gasForHundredMiles = 7
+        this.priceOfLitre = 8
+
+        this.milesForATrip = 300
+        this.timesOfTrip = 2
+
+        this.costOfAToll = 0
+
+        this.costOfToll = this.costOfAToll * this.timesOfTrip
+        this.costOfCar = this.days * this.costOfADay
+        this.costOfGas = (((this.milesForATrip * this.timesOfTrip) / 100) * this.gasForHundredMiles * this.priceOfLitre)
+        this.costs = this.costOfCar +
+            this.costOfGas +
+            this.costOfToll
+    }
+}
+
+var costOfRentCarForSpringFestval = new CostOfRentCarForSpringFestval()
+console.log(costOfRentCarForSpringFestval)
+
+
+
+
+```

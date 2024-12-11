@@ -1,0 +1,23 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-secondary-ingress
+spec:
+  components:
+    ingressGateways:
+      - name: istio-ingressgateway-secondary
+        enabled: true
+        namespace: istio-system
+        label:
+          custom: ingress-secondary
+        k8s:
+          service:
+            type: LoadBalancer
+            ports:
+              - name: http2
+                port: 80
+                targetPort: 8080
+              - name: https
+                port: 443
+                targetPort: 8443

@@ -1,0 +1,10 @@
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: p245
+  namespace: metallb-system
+spec:
+  myASN: 245
+  peerASN: 243
+  peerAddress: 192.168.0.243
+  bfdProfile: testbfdprofile

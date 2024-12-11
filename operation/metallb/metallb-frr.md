@@ -21,6 +21,8 @@ https://deb.frrouting.org/
 
 ### Config
 
+https://docs.frrouting.org/en/latest/bgp.html#bgp-router-configuration
+
 <span style='font-size: 16px;font-weight: 500'>242</span>  
 
 <details>

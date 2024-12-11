@@ -4,7 +4,7 @@
         "*.md": "default"
     },
     "workbench.colorTheme": "Visual Studio Light",
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "workbench.layoutControl.type": "both",
     "workbench.activityBar.location": "top",
     "window.commandCenter": false,
