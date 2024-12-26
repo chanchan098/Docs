@@ -1,10 +1,10 @@
 
 
-# -Install 
+# -S-Install 
 
-# Install with Istioctl
+## Install with Istioctl
 
-## Install Istio using the default profile
+### Install Istio using the default profile
 
 Various settings can be configured to modify the installations. For example, to enable access logs:
 
@@ -20,21 +20,10 @@ spec:
   meshConfig:
     accessLogFile: /dev/stdout
 EOF
+
+# update OR install, needed to be same profile.
 istioctl install -f my-config.yaml
 
 ```
 
-
-
-
-# E-Install 
-
-# -More Guides
-
-# Customizing the installation configuration
-
-## Prerequisites
-
-### Configure gateways
-
-# E-More Guides
+# -E-Install 

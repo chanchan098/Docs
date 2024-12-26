@@ -51,7 +51,7 @@ $GCF(4,6)=2$
 $$LCM(4,6)=\frac{4 \times 6}{2}=12$$
 
 
-### 短除
+### Short division
 
 ```
 
@@ -119,7 +119,7 @@ $2n=b \quad so \; n=\frac{b}{2}$
 
 ### C-Adding fractions with whole number
 
-$3+\frac{49}{16}=\frac{3}{1}+\frac{49}{16}=\frac{48}{16}+\frac{49}{16}$
+$3+\frac{49}{16}=\frac{3}{1}=\frac{3\times16}{1\times16}+\frac{49}{16}=\frac{48}{16}+\frac{49}{16}$
 
 ## Common fraction
 
@@ -129,7 +129,7 @@ https://www.math.net/common-fraction
 
 We can divide fractions using the following steps:
 
-1. When dividing two fractions, first determine which fraction is the dividend (the number being divided),  
+1. first determine which fraction is the dividend (the number being divided),  
    and which fraction is the divisor (number the dividend is divided by)
 2. Switch the positions of the numerator and denominator of the divisor; this is called taking the reciprocal
 3. Multiply the numerators of the dividend and the reciprocated divisor
@@ -183,9 +183,10 @@ $2\frac{3}{4} \times \frac{7}{9}$
 <br/>
 
 To convert this into an improper fraction, we multiply the denominator, 4, by 2, and then add the numerator.  
+
 $2\times4+3=11$
 
-$\frac{4}{4}+\frac{4}{4}+\frac{3}{4}$
+$\frac{4}{4}+\frac{4}{4}+\frac{3}{4}=\frac{11}{4}$  
 
 so $\;2\frac{3}{4}=\frac{11}{4}$
 
@@ -196,7 +197,7 @@ $\frac{11}{4} \times \frac{7}{9} = \frac{77}{36}$
 
 The reciprocal of a number is *1 divided by the number*. All numbers have a reciprocal, except for 0, since the reciprocal of 0 is undefined.
 
-The reciprocal of a non-zero integer such as 5 is: $5$ < = > $ \frac{1}{5}$
+The reciprocal of a non-zero integer such as 5 is: $5$ --> $ \frac{1}{5}$
 
 Notice that if you take the reciprocal of a reciprocal, you get the *original number* (1/5 is the reciprocal of 5 and vice versa). 
 

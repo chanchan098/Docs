@@ -679,13 +679,13 @@ A Secret is an object that contains a small amount of sensitive data such as a p
 
 ## -Service Accounts
 
-## What are service accounts? 
+### What are service accounts? 
 
 provides <u>a distinct identity</u> in a Kubernetes cluster.
 
 Application Pods, system components, and entities inside and outside the cluster can use a specific ServiceAccount's credentials to identify as that `ServiceAccount`. 
 
-### Default service accounts 
+#### Default service accounts 
 
 <span style='font-size: 15px;'>**need permissions**</span>  
 The default service accounts in each namespace get no permissions by default other than the [default API discovery permissions](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings) that Kubernetes grants to all authenticated principals if role-based access control (RBAC) is enabled.
@@ -693,9 +693,13 @@ The default service accounts in each namespace get no permissions by default oth
 <span style='font-size: 15px;'>**default assignment**</span>  
 If you deploy a Pod in a namespace, and you don't manually assign a ServiceAccount to the Pod, Kubernetes assigns the default `ServiceAccount` for that namespace to the Pod.
 
-## Use cases for Kubernetes service accounts 
+### Use cases for Kubernetes service accounts 
 
 https://kubernetes.io/docs/concepts/security/service-accounts/#use-cases
+
+### How to use service accounts
+
+#### Grant permissions to a ServiceAccount 
 
 ## -E-Security 
 

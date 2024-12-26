@@ -292,7 +292,7 @@ spec:
     app: productpage
 ---
 apiVersion: v1
-kind: ServiceAccount
+kind: ServiceAccount      
 metadata:
   name: bookinfo-productpage
   labels:

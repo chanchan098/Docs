@@ -189,3 +189,23 @@ $x=2 \quad or \quad x=\frac{3}{2}$
 $b^2-4ac$
 
 If the discriminant is less than 0, then the quadratic has no real solution.
+
+# Exponents
+
+An exponent is a number that tells us how many times the base it is attached to is used as a factor.
+
+this context, and we can read $5^3$ as "five to the power of three," which works out to:
+
+$5^3=5\times5\times5=125$
+
+<br/>
+
+In the case of a negative exponent,  
+we can rearrange the expression by taking the reciprocal, then raising it to a positive exponent, as long as the base is a non-zero real number.
+
+$5^{-3}=\frac{1}{5^3}=\frac{1}{125}$
+
+<br/>
+
+If an exponent is not an integer, and is positive, we take the $n^{th}$ root of the base, where n is the exponent.
+

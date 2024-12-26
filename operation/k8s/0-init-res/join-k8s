@@ -1,0 +1,14 @@
+set -x
+
+echo y|kubeadm reset --cleanup-tmp-dir
+
+rm -rf /etc/cni/net.d
+rm -rf /var/lib/cni/
+
+sleep 1
+
+$1 --node-name 243
+
+systemctl restart containerd
+
+set +x

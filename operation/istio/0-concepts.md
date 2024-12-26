@@ -22,11 +22,10 @@ To populate its own service registry, Istio connects to a service discovery syst
 
 ## Virtual services
 
-<span style='font-size: 16px;font-weight: 500'>What is it?</span>  
+<span style='font-size: 16px;font-weight: 600'>What is it?</span>  
 
-Virtual services, along with destination rules, are the key building blocks of Istio’s traffic routing functionality.  
-
-A virtual service lets you configure how requests are routed to a service within an Istio service mesh,   building on the basic connectivity and discovery provided by Istio and your platform.
+Virtual services, along with destination rules, are the key building blocks of Istio’s traffic routing functionality.   
+A virtual service lets you configure how requests are routed to a service within an Istio service mesh, building on the basic connectivity and discovery provided by Istio and your platform.
 
 ## Why use virtual services?
 

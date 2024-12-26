@@ -1,0 +1,28 @@
+#wget -nc https://github.com/projectcalico/calico/raw/master/manifests/calico.yaml -O calico-master.yaml
+
+wget -nc https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml -O metallb-native-v0.14.5.yaml
+systemctl restart kubelet
+
+echo y|kubeadm reset --cleanup-tmp-dir
+rm -rf /etc/cni/net.d
+#rm -rf $HOME/.kube/config
+#ipvsadm --clear
+
+sleep 1
+
+kubeadm init \
+--kubernetes-version=v1.29.1 \
+--image-repository registry.aliyuncs.com/google_containers \
+--pod-network-cidr 10.244.0.0/16 \
+--v=5
+
+kubectl apply -f kube-flannel.yml
+kubectl apply -f metallb-native-v0.14.5.yaml
+
+#sleep 10
+
+# IMPORTANT https://github.com/coredns/coredns/issues/3300
+systemctl restart containerd
+
+$allpods
+$allsvcs

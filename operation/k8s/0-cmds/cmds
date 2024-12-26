@@ -1,0 +1,14 @@
+# used at /etc/profile
+# . /home/user/dr/k8s/cmds
+
+export allpods="kubectl get pods --all-namespaces"
+export allsvcs="kubectl get svc --all-namespaces"
+export def="kubectl delete -f "
+export dek="kubectl delete -k "
+export apf="kubectl apply -f "
+export apk="kubectl apply -k "
+export des="kubectl describe "
+export kc="kubectl "
+export podsn="kubectl get pods -n "
+export nodes="kubectl get nodes"
+export svcsn="kubectl get svc -n "
