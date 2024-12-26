@@ -192,6 +192,8 @@ If the discriminant is less than 0, then the quadratic has no real solution.
 
 # Exponents
 
+## Exponents
+
 An exponent is a number that tells us how many times the base it is attached to is used as a factor.
 
 this context, and we can read $5^3$ as "five to the power of three," which works out to:
@@ -209,3 +211,6 @@ $5^{-3}=\frac{1}{5^3}=\frac{1}{125}$
 
 If an exponent is not an integer, and is positive, we take the $n^{th}$ root of the base, where n is the exponent.
 
+$5^{\frac{1}{3}}=\sqrt[3]{5}$
+
+### Exponent properties
