@@ -214,3 +214,22 @@ If an exponent is not an integer, and is positive, we take the $n^{th}$ root of 
 $5^{\frac{1}{3}}=\sqrt[3]{5}$
 
 ### Exponent properties
+
+Any non-zero base raised to the power of 0 is 1.  
+$123456789^0 = 1$
+
+<br/>
+
+$0^0$ is a special case that does not have a definite answer; it is most commonly said to equal 1, or is said to be undefined.
+
+<br/>
+
+0 taken to any power greater than 0 is 0. 0 taken to a negative exponent is undefined.  
+$0^12345678=0$  
+$0^{-5}=\frac{1}{0^5}=\frac{1}{0}=undefined$
+
+<br/>
+
+Any number taken to the power of 1 equals itself. 1 taken to the power of any number equals 1.  
+$n^1 = n$  
+$1^n = 1$
