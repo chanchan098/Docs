@@ -194,6 +194,8 @@ If the discriminant is less than 0, then the quadratic has no real solution.
 
 ## Exponents
 
+https://www.math.net/exponent
+
 An exponent is a number that tells us how many times the base it is attached to is used as a factor.
 
 this context, and we can read $5^3$ as "five to the power of three," which works out to:
@@ -233,3 +235,17 @@ $0^{-5}=\frac{1}{0^5}=\frac{1}{0}=undefined$
 Any number taken to the power of 1 equals itself. 1 taken to the power of any number equals 1.  
 $n^1 = n$  
 $1^n = 1$
+
+## Basic power properties
+
+If the power is a positive integer, then the power tells us how many times to multiply the base by itself.  
+$5^2=5\times5=25$
+
+<br/>
+
+If the power is a negative integer, -n, and b is a non-zero real number, we take the reciprocal of the base raised to the power of n.  
+$b{-n}=\frac{1}{b^n}$  
+$5^{-2}=\frac{1}{5^2}=\frac{1}{25}=0.04$
+
+<br/>
+
