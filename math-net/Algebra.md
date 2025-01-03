@@ -236,7 +236,16 @@ Any number taken to the power of 1 equals itself. 1 taken to the power of any nu
 $n^1 = n$  
 $1^n = 1$
 
-## Basic power properties
+## Negative exponents
+
+A negative exponent is equal to the reciprocal of the base of the negative exponent raised to the positive power.  
+
+$b^{-n}=\frac{1}{b^n}$
+
+
+## Power
+
+### Basic power properties
 
 If the power is a positive integer, then the power tells us how many times to multiply the base by itself.  
 $5^2=5\times5=25$
@@ -248,4 +257,13 @@ $b{-n}=\frac{1}{b^n}$
 $5^{-2}=\frac{1}{5^2}=\frac{1}{25}=0.04$
 
 <br/>
+
+Anything raised to the power of 0 is 1. $0^0$ is a special case that is either considered 1 or undefined.  
+$136^0=1$
+
+<br/>
+
+If the power is a fraction, we take the $n^th$ root of the base, where n is the number in the denominator of the fraction.  
+$2^{\frac{2}{3}}=\sqrt[3]{2^2}=\sqrt[3]{4}$
+
 
