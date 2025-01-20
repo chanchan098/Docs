@@ -16,6 +16,8 @@
 
 to remove `configRoot/config/eval`
 
+ctrl+shift+f, sougouinput
+
 ## linux
 
 [env](https://blog.csdn.net/weixin_36296538/article/details/83044639)

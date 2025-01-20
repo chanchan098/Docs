@@ -78,6 +78,12 @@ Together with an operation and equality symbol (in this case addition (+) and eq
 
 The associative property of addition states that how the numbers in an addition problem are grouped doesn't change the sum.
 
+## C-Inverse
+
+$8+2=10$  
+$2=10-8$  
+$8=10-2$
+
 # Multiplication
 
 Multiplication can be explained by using several different situations. Some of these situations are repeated addition, array, area, and combinations.
@@ -96,6 +102,8 @@ Multiplication can be explained by using several different situations. Some of t
 - Negative * Positive = Negative
 
 ## Partial products
+
+https://www.math.net/partial-products
 
 To check out examples
 
