@@ -10,15 +10,6 @@ as 2021.1.1.23-windows
 
 jdk 1.8-211
 
-
-### Important components
-
-#### smack-tcp
-
-- org.jivesoftware.smack.tcp
-  - XMPPTCPConnection.java
-    - Creates a socket connection to an XMPP server.
-
 #### build.gradler
 
 from
@@ -148,6 +139,8 @@ SecurityMode.required;
 
 #### XMPPTCPConnection
 
+or use `XMPPTCPConnection` from library.
+
 ```java
 ConnectionConfiguration.SecurityMode.legacy 
 ```
@@ -166,6 +159,216 @@ to
 ```java
 //bookmarkManager.cleanCache();
 ```
+
+### Important components
+
+#### XMPPTCPConnection.java#connection#reading#writing
+
+- `org.jivesoftware.smack.tcp`
+  - `XMPPTCPConnection.java`
+    - Creates a socket connection to an XMPP server.
+    - `protected class PacketReader`
+      - Reading data from input stream of socket by binding `packetReader.parser = PacketParserUtils.newXmppParser(reader)` and  
+        reading `parser.next();` 
+    - `protected class PacketWriter`
+      - Pending packets sent to block queue, blocking read to packets from the queue by `nextStreamElement()`, then send to server  
+        check out `PacketWriter-writePackets()`
+
+#### XMPPTCPConnection.java#send-data
+
+PacketWriter initialization see also   
+[connect-to-server](#connect-to-server-1)
+
+```mermaid
+sequenceDiagram
+    AbstractXMPPConnection->>AbstractXMPPConnection: sendStanza(Stanza stanza)
+    AbstractXMPPConnection->>XMPPTCPConnection: sendStanzaInternal(Stanza packet)
+    Note right of PacketWriter: writing data at writePackets()
+    loop queue.take
+        PacketWriter->>PacketWriter: writePackets()
+    end
+    
+    XMPPTCPConnection->>PacketWriter: queue.put(element)    
+```
+
+`XMPPTCPConnection.java#PacketWriter`
+```java
+private void writePackets() {
+    //...
+    openStream();
+    while (!done()) {
+        Element element = nextStreamElement();
+        //...
+    }
+    //...
+}
+
+private Element nextStreamElement() {
+    //...
+    packet = queue.take();
+    //...
+    return packet;
+}
+```
+
+
+
+#### XMPPTCPConnection.java#read-data
+
+`XMPPTCPConnection.java`
+```java
+private void initReaderAndWriter() throws IOException {
+    //...
+    InputStream is = socket.getInputStream();
+    reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+    //...
+}
+```
+
+
+```java
+//Resets the parser using the latest connection's reader.
+void openStream() throws SmackException, InterruptedException {
+    //...
+    packetReader.parser = PacketParserUtils.newXmppParser(reader);
+    //...
+}
+```
+
+<br/>  
+
+`XMPPTCPConnection.java#PacketReader`
+```java
+private void parsePackets() {
+    //...
+    int eventType = parser.getEventType();
+    while (!done) {   
+        eventType = parser.next();
+    }
+    //...
+}
+```
+
+
+### Important app components 
+
+- `OnPacketListener (com.xabber.android.data.connection.listeners)`
+    - `VCardManager (com.xabber.android.data.extension.vcard)`
+    - `AvatarManager (com.xabber.android.data.extension.avatar)`
+    - `AttentionManager (com.xabber.android.data.extension.attention)`
+    - `NextMamManager (com.xabber.android.data.extension.mam)`
+    - `XTokenManager (com.xabber.android.data.extension.xtoken)`
+    - `ChatMarkerManager (com.xabber.android.data.extension.chat_markers)`
+    - `ReceiptManager (com.xabber.android.data.message)`
+    - `SSNManager (com.xabber.android.data.extension.ssn)`
+    - `PushManager (com.xabber.android.data.push)`
+    - `MUCManager (com.xabber.android.data.extension.muc)`
+    - `XMPPAuthManager (com.xabber.android.data.xaccount)`
+    - `PresenceManager (com.xabber.android.data.roster)`
+    - `ChatStateManager (com.xabber.android.data.extension.cs)`
+    - `LastActivityInteractor (com.xabber.android.data.extension.iqlast)`
+    - `MessageManager (com.xabber.android.data.message)`
+
+- `com.xabber.android.data.message.AbstractChat.java`
+  - Chat instance
+
+- `com.xabber.android.data.connection.ConnectionItem.java`
+- `com.xabber.android.data.account.AccountItem.java`
+
+
+### Connect to server 
+
+[accept client connection](#accept-client-connection)
+
+#### create connection
+
+```mermaid
+sequenceDiagram
+    ConnectionItem->>ConnectionItem: ConnectionItem( , ...)
+    ConnectionItem->>ConnectionItem: createConnection()
+    ConnectionItem->>ConnectionBuilder: build( , )
+    ConnectionBuilder->>XMPPTCPConnection: new(config)
+    XMPPTCPConnection->>XMPPTCPConnection: super(config)
+    XMPPTCPConnection->>XMPPTCPConnection: return this
+```
+
+---
+
+#### connect to server
+```mermaid
+sequenceDiagram
+    ConnectionItem->>ConnectionItem: connect()
+    ConnectionItem->>ConnectionThread: start()
+    ConnectionThread->>Thread: start()
+    Thread->>Thread: run()
+    Thread->>ConnectionThread: connectAndLogin()
+    ConnectionThread->>AbstractXMPPConnection: connect()
+    AbstractXMPPConnection->>AbstractXMPPConnection: connectInternal()
+    AbstractXMPPConnection->>AbstractXMPPConnection: connectUsingConfiguration()
+    AbstractXMPPConnection->>AbstractXMPPConnection: initConnection()
+    AbstractXMPPConnection->>AbstractXMPPConnection: initReaderAndWriter()
+    AbstractXMPPConnection->>PacketWriter & Reader: new()
+    AbstractXMPPConnection->>PacketWriter & Reader: .init();
+    AbstractXMPPConnection->>AbstractXMPPConnection: socket<br>.connect(<br>new InetSocketAddress(inetAddress, port), <br>timeout)
+    ConnectionThread->>AbstractXMPPConnection: login()
+```
+
+---
+
+#### login
+
+https://datatracker.ietf.org/doc/html/rfc4422#autoid-6
+
+```
+C: Request authentication exchange
+S: Initial challenge
+C: Initial response
+<additional challenge/response messages>
+S: Outcome of authentication exchange
+```
+
+```
+
+15:15:43.620 com.xabber.android.beta I/Smack: 
+SENT (1): <auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='SCRAM-SHA-1'>biwsbj1waG9uZTEscj1AXEppJX1TXFM9b1RrWXJkVUoqQVZfVD9ES0o3QTV9Vw==</auth>
+
+15:15:43.722 com.xabber.android.beta I/Smack: 
+RECV (1): <challenge xmlns="urn:ietf:params:xml:ns:xmpp-sasl">cj1AXEppJX1TXFM9b1RrWXJkVUoqQVZfVD9ES0o3QTV9V2NhMGY1ZmM3LTY2NDItNGY1Zi05ZDg2LWNmMGM0ZDlkNTIyMSxzPWJTWnk3L25SMHdQMjNuSE5JaWRPZXZLeTl0WVJ2YjNqLGk9NDA5Ng==</challenge>
+
+15:15:43.747 com.xabber.android.beta I/Smack: 
+SENT (1): <response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>Yz1iaXdzLHI9QFxKaSV9U1xTPW9Ua1lyZFVKKkFWX1Q/REtKN0E1fVdjYTBmNWZjNy02NjQyLTRmNWYtOWQ4Ni1jZjBjNGQ5ZDUyMjEscD11a25Xc2V6dk9Fd3ExdlFObFN2ZWFkdzEyOW89</response>
+
+15:15:43.765 com.xabber.android.beta I/Smack: 
+RECV (1): <success xmlns="urn:ietf:params:xml:ns:xmpp-sasl">dj1qeE91TmE3ZytJTlBtZjBJMjJ3YlltUFA5UG89</success>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+15:15:46.962 org.jivesoftware.openfire.nio.NettyConnectionHandler - Handler on /192.168.0.113:5222--/192.168.0.35:51616 
+received: <auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='SCRAM-SHA-1'>biwsbj1waG9uZTEscj1AXEppJX1TXFM9b1RrWXJkVUoqQVZfVD9ES0o3QTV9Vw==</auth>
+
+15:15:46.974 org.jivesoftware.openfire.nio.NettyConnection - 
+Sending: <challenge xmlns="urn:ietf:params:xml:ns:xmpp-sasl">cj1AXEppJX1TXFM9b1RrWXJkVUoqQVZfVD9ES0o3QTV9V2NhMGY1ZmM3LTY2NDItNGY1Zi05ZDg2LWNmMGM0ZDlkNTIyMSxzPWJTWnk3L25SMHdQMjNuSE5JaWRPZXZLeTl0WVJ2YjNqLGk9NDA5Ng==</challenge>
+
+15:15:47.035 org.jivesoftware.openfire.nio.NettyConnectionHandler - Handler on /192.168.0.113:5222--/192.168.0.35:51616 
+received: <response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>Yz1iaXdzLHI9QFxKaSV9U1xTPW9Ua1lyZFVKKkFWX1Q/REtKN0E1fVdjYTBmNWZjNy02NjQyLTRmNWYtOWQ4Ni1jZjBjNGQ5ZDUyMjEscD11a25Xc2V6dk9Fd3ExdlFObFN2ZWFkdzEyOW89</response>
+
+15:15:47.040 org.jivesoftware.openfire.nio.NettyConnection - 
+Sending: <success xmlns="urn:ietf:params:xml:ns:xmpp-sasl">dj1qeE91TmE3ZytJTlBtZjBJMjJ3YlltUFA5UG89</success>    
+```
+
+
+
+```mermaid
+sequenceDiagram
+    ConnectionThread->>AbstractXMPPConnection: login()
+    AbstractXMPPConnection->>AbstractXMPPConnection: login(username, password, resource)
+    AbstractXMPPConnection->>XMPPTCPConnection: loginInternal(usedUsername, <br>usedPassword, <br>usedResource)
+    XMPPTCPConnection->>SASLAuthentication: authenticate( , , , )
+    SASLAuthentication->>SASLMechanism: authenticate( , , , )
+    SASLMechanism->>SASLMechanism: authenticate()
+    SASLMechanism->>XMPPTCPConnection: sendNonza()
+```
+
 
 
 
@@ -191,54 +394,6 @@ sequenceDiagram
     AccountManager->>AccountManager: onLoad()
 ```
 
-### Connect to server 
-
-create connection
-
-```mermaid
-sequenceDiagram
-    ConnectionItem->>ConnectionItem: ConnectionItem( , ...)
-    ConnectionItem->>ConnectionItem: createConnection()
-    ConnectionItem->>ConnectionBuilder: build( , )
-    ConnectionBuilder->>XMPPTCPConnection: new(config)
-    XMPPTCPConnection->>XMPPTCPConnection: super(config)
-    XMPPTCPConnection->>XMPPTCPConnection: return this
-```
-
----
-
-connect to server
-```mermaid
-sequenceDiagram
-    ConnectionItem->>ConnectionItem: connect()
-    ConnectionItem->>ConnectionThread: start()
-    ConnectionThread->>Thread: start()
-    Thread->>Thread: run()
-    Thread->>ConnectionThread: connectAndLogin()
-    ConnectionThread->>AbstractXMPPConnection: connect()
-    AbstractXMPPConnection->>AbstractXMPPConnection: connectInternal()
-    AbstractXMPPConnection->>AbstractXMPPConnection: connectUsingConfiguration()
-    AbstractXMPPConnection->>AbstractXMPPConnection: socket<br>.connect(<br>new InetSocketAddress(inetAddress, port), <br>timeout)
-    ConnectionThread->>AbstractXMPPConnection: login()
-```
-
----
-
-login
-
-```mermaid
-sequenceDiagram
-    ConnectionThread->>AbstractXMPPConnection: login()
-    AbstractXMPPConnection->>AbstractXMPPConnection: login(username, password, resource)
-    AbstractXMPPConnection->>XMPPTCPConnection: loginInternal(usedUsername, <br>usedPassword, <br>usedResource)
-    XMPPTCPConnection->>SASLAuthentication: authenticate( , , , )
-    SASLAuthentication->>SASLMechanism: authenticate( , , , )
-    SASLMechanism->>SASLMechanism: authenticate()
-    SASLMechanism->>XMPPTCPConnection: sendNonza()
-```
-
-
-
 ## netty
 
 `import java.nio.channels.Selector;`
@@ -257,10 +412,19 @@ branch: 4.9.0
 
 by file upload
 
+#### Message retraction
+
 ### Environment
 
 mvn 3.6.3  
 jdk 17.09  
+
+
+### Protocols 
+
+[SASL](https://datatracker.ietf.org/doc/html/rfc4422)
+
+[XMPP](https://datatracker.ietf.org/doc/html/rfc3920#autoid-1)
 
 ### Server Bootstrap with Netty & Messages handling
 
@@ -272,48 +436,52 @@ https://github.com/igniterealtime/Openfire/blob/main/documentation/diagrams/nett
 
 ### Important components
 
-- org.jivesoftware.openfire
-  - XMPPServer.java
+- `org.jivesoftware.openfire`
+  - `XMPPServer.java`
     - The main XMPP server that will load, initialize and start all the server's modules. 
   - net    
-    - StanzaHandler.java  
-        A StanzaHandler is the main responsible for handling incoming stanzas.
+    - `StanzaHandler.java`
+      - A StanzaHandler is the main responsible for handling incoming stanzas.
   - nio
-    - NettyConnection.java  
-        Represents a connection on the server
-    - NettyConnectionHandler.java  
-        A NettyConnectionHandler is responsible for creating new sessions, destroying sessions   
+    - `NettyConnection.java`
+      - Represents a connection on the server
+    - `NettyConnectionHandler.java`
+      - A NettyConnectionHandler is responsible for creating new sessions, destroying sessions   
         and delivering received XML stanzas to the proper StanzaHandler.
   - spi
-    - NettyConnectionAcceptor.java  
-        Responsible for accepting new (socket) connections, using Java NIO implementation provided by the Netty framework.
-    - NettyServerInitializer.java  
-        Creates a newly configured ChannelPipeline for a new channel.
+    - `NettyConnectionAcceptor.java`
+      - Responsible for accepting new (socket) connections, using Java NIO implementation provided by the Netty framework.
+    - `NettyServerInitializer.java`
+      - Creates a newly configured `ChannelPipeline` for a new channel.
  
 
 ### Packets receiving
 
-`org.jivesoftware.openfire.nio.NettyConnectionHandler#129#channelRead0(ChannelHandlerContext ctx, String message)`
+`org.jivesoftware.openfire.nio.NettyConnectionHandler.java`
+- `#129#channelRead0(ChannelHandlerContext ctx, String message)`
 
-### User authentication
+### Responses writing
 
-```mermaid
-sequenceDiagram
-    StanzaHandler->>StanzaHandler: processStanza( , )
-    StanzaHandler->>StanzaHandler: else if ("auth".equals(tag))
-    StanzaHandler->>SASLAuthentication: handle(session, doc)
-    SASLAuthentication->>SASLAuthentication: case AUTH:
-    Note right of SASLAuthentication: Create SASLServer<br> and bound to session
-```
+`org.jivesoftware.openfire.nio.NettyConnection.java`
+- `#285#deliver(Packet packet)`
+- `#325#deliverRawText(String text)`
 
-### Connection establishment
+### Accept client connection
 
-Client connection
+[connect-to-server](#connect-to-server)
+
+#### Connection establishment
 
 ```mermaid
 sequenceDiagram
+    NettyServerInitializer->>NettyServerInitializer: initChannel(ch)
+    NettyServerInitializer->>NettyServerInitializer: NettyConnectionHandlerFactory<br>.createConnectionHandler(configuration)
+    NettyServerInitializer->>NettyServerInitializer: ch.pipeline()
+    Note over NettyServerInitializer: add a series of packets handlers
+    
     activate NettyConnectionHandler
     NettyConnectionHandler->>NettyConnectionHandler: handlerAdded(ctx)
+
     NettyConnectionHandler->>NettyClientConnectionHandler: createNettyConnection(ctx)
 
     activate NettyClientConnectionHandler
@@ -325,7 +493,30 @@ sequenceDiagram
 ```
 
 
-### Create client session
+#### User authentication
+
+```mermaid
+sequenceDiagram
+    StanzaHandler->>StanzaHandler: processStanza( , )
+    StanzaHandler->>StanzaHandler: else if ("auth".equals(tag))
+    StanzaHandler->>SASLAuthentication: handle(session, doc)
+    SASLAuthentication->>SASLAuthentication: case AUTH:
+    Note right of SASLAuthentication: Create SASLServer<br> and bound to session
+    SASLAuthentication->>SASLAuthentication: case RESPONSE:
+    SASLAuthentication->>ScramSha1SaslServer: evaluateResponse()
+    Note right of SASLAuthentication: Create a challenge<br> by user's name, salt etc
+    ScramSha1SaslServer->>ScramSha1SaslServer: case INITIAL:
+    ScramSha1SaslServer->>ScramSha1SaslServer: generateServerFirstMessage()
+    ScramSha1SaslServer->>ScramSha1SaslServer: getSalt(username)
+    ScramSha1SaslServer->>ScramSha1SaslServer: AuthFactory.getSalt(username)
+    ScramSha1SaslServer->>DefaultAuthProvider: getSalt(username)
+    DefaultAuthProvider->>DefaultAuthProvider: getUserInfo(username)
+    DefaultAuthProvider->>DefaultAuthProvider: getUserInfo(username, false)
+    
+```
+
+
+#### Create client session
 
 ```mermaid
 sequenceDiagram
