@@ -174,7 +174,7 @@ to
       - Pending packets sent to block queue, blocking read to packets from the queue by `nextStreamElement()`, then send to server  
         check out `PacketWriter-writePackets()`
 
-#### XMPPTCPConnection.java#send-data
+##### Send data
 
 PacketWriter initialization see also   
 [connect-to-server](#connect-to-server-1)
@@ -211,9 +211,7 @@ private Element nextStreamElement() {
 }
 ```
 
-
-
-#### XMPPTCPConnection.java#read-data
+##### Read data
 
 `XMPPTCPConnection.java`
 ```java
