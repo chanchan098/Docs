@@ -1,3 +1,15 @@
+## xmpp
+
+- https://xmpp.org/extensions/
+- [ping xep-0199](https://xmpp.org/extensions/xep-0199.html)
+
+
+<br/>
+
+
+- [Core](https://datatracker.ietf.org/doc/html/rfc3920)
+- [Instant Messaging and Presence](https://datatracker.ietf.org/doc/html/rfc6121)
+
 ## x
 
 ### Branch
@@ -10,7 +22,7 @@ as 2021.1.1.23-windows
 
 jdk 1.8-211
 
-#### build.gradler
+- build.gradle r
 
 from
 ```gradle
@@ -86,7 +98,7 @@ allprojects {
 
 ```
 
-#### build.gradlea
+#### build.gradle a
 
 from
 ```gradle
@@ -250,28 +262,32 @@ private void parsePackets() {
 
 ### Important app components 
 
+- `BaseManagerInterface.java (com.xabber.android.data)`
 - `OnPacketListener (com.xabber.android.data.connection.listeners)`
-    - `VCardManager (com.xabber.android.data.extension.vcard)`
-    - `AvatarManager (com.xabber.android.data.extension.avatar)`
-    - `AttentionManager (com.xabber.android.data.extension.attention)`
-    - `NextMamManager (com.xabber.android.data.extension.mam)`
-    - `XTokenManager (com.xabber.android.data.extension.xtoken)`
-    - `ChatMarkerManager (com.xabber.android.data.extension.chat_markers)`
-    - `ReceiptManager (com.xabber.android.data.message)`
-    - `SSNManager (com.xabber.android.data.extension.ssn)`
-    - `PushManager (com.xabber.android.data.push)`
-    - `MUCManager (com.xabber.android.data.extension.muc)`
-    - `XMPPAuthManager (com.xabber.android.data.xaccount)`
-    - `PresenceManager (com.xabber.android.data.roster)`
-    - `ChatStateManager (com.xabber.android.data.extension.cs)`
-    - `LastActivityInteractor (com.xabber.android.data.extension.iqlast)`
-    - `MessageManager (com.xabber.android.data.message)`
+  - `VCardManager (com.xabber.android.data.extension.vcard)`
+  - `AvatarManager (com.xabber.android.data.extension.avatar)`
+  - `AttentionManager (com.xabber.android.data.extension.attention)`
+  - `NextMamManager (com.xabber.android.data.extension.mam)`
+  - `XTokenManager (com.xabber.android.data.extension.xtoken)`
+  - `ChatMarkerManager (com.xabber.android.data.extension.chat_markers)`
+  - `ReceiptManager (com.xabber.android.data.message)`
+  - `SSNManager (com.xabber.android.data.extension.ssn)`
+  - `PushManager (com.xabber.android.data.push)`
+  - `MUCManager (com.xabber.android.data.extension.muc)`
+  - `XMPPAuthManager (com.xabber.android.data.xaccount)`
+  - `PresenceManager (com.xabber.android.data.roster)`
+    - Process contact's presence information.
+  - `ChatStateManager (com.xabber.android.data.extension.cs)`
+  - `LastActivityInteractor (com.xabber.android.data.extension.iqlast)`
+    - Receive Last Activity for user.
+  - `MessageManager (com.xabber.android.data.message)`
 
-- `com.xabber.android.data.message.AbstractChat.java`
+
+- `AbstractChat.java (com.xabber.android.data.message)`
   - Chat instance
 
-- `com.xabber.android.data.connection.ConnectionItem.java`
-- `com.xabber.android.data.account.AccountItem.java`
+- `ConnectionItem.java (com.xabber.android.data.connection)`
+- `AccountItem.java (com.xabber.android.data.account)`
 
 
 ### Connect to server 
@@ -368,8 +384,18 @@ sequenceDiagram
 ```
 
 
+### Add contacts
 
+#### components
 
+- `com.xabber.android.data.roster`
+  - `AccountRosterListener.java`
+  - `GroupManager.java`
+  - `PresenceManager.java`
+  - `RosterManager.java`
+
+- `com.xabber.android.data.extension.iqlast`
+  - `LastActivityInteractor.java`
 
 ### Add account
 
@@ -437,6 +463,9 @@ https://github.com/igniterealtime/Openfire/blob/main/documentation/diagrams/nett
 - `org.jivesoftware.openfire`
   - `XMPPServer.java`
     - The main XMPP server that will load, initialize and start all the server's modules. 
+  - handler
+    - `IQHandler.java`
+      - Check out those `subclasses`
   - net    
     - `StanzaHandler.java`
       - A StanzaHandler is the main responsible for handling incoming stanzas.
@@ -489,7 +518,6 @@ sequenceDiagram
     NettyClientConnectionHandler->>NettyConnection: new()
     deactivate NettyClientConnectionHandler
 ```
-
 
 #### User authentication
 
@@ -563,6 +591,38 @@ sequenceDiagram title Message Handling
     NettyConnection->>+ChannelHandlerContext: writeAndFlush("<stanza />")
 
 ```
+
+### IQ packets routing
+
+```mermaid
+sequenceDiagram
+    StanzaHandler->>StanzaHandler: process(stanza, reader)<br>processStanza(stanza, reader)<br><br>process(doc)<br>else if ("iq".equals(tag))
+    StanzaHandler->>StanzaHandler: processIQ(packet)
+    StanzaHandler->>PacketRouterImpl: route(packet)
+    PacketRouterImpl->>IQRouter: route(packet)
+    IQRouter->>IQHandler: process(Packet packet)
+    Note over IQPingHandler: Example
+    IQHandler->>IQPingHandler: handleIQ(IQ packet)
+    IQPingHandler->>IQPingHandler: return<br>IQ.createResultIQ(packet);
+    IQPingHandler->>IQHandler: deliverer.deliver(reply)
+```
+
+### Packets delivery 
+
+```mermaid
+sequenceDiagram
+    Note over IQPingHandler: by deliverer.deliver(reply)
+    IQPingHandler->>PacketDelivererImpl: deliver(reply)
+    PacketDelivererImpl->>SocketPacketWriteHandler: process(packet)
+    SocketPacketWriteHandler->>RoutingTableImpl: L65<br>routePacket(<br>recipient, packet)
+    RoutingTableImpl->>RoutingTableImpl: routeToLocalDomain(jid, packet)
+    Note over LocalSession: by L405<br>localRoutingTable<br>.getRoute(jid)<br>.process(packet);
+    RoutingTableImpl->>LocalSession: process(Packet packet)
+    LocalSession->>LocalClientSession: deliver(packet)
+    LocalClientSession->>NettyConnection: deliver(Packet packet)
+    
+```
+see also [responses-writing](#responses-writing)
 
 ### Add contacts
 
