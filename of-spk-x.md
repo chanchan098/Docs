@@ -592,7 +592,7 @@ sequenceDiagram title Message Handling
 
 ```
 
-### IQ packets routing
+### IQ packets routing to handler
 
 ```mermaid
 sequenceDiagram
@@ -611,8 +611,8 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    Note over IQPingHandler: by deliverer.deliver(reply)
-    IQPingHandler->>PacketDelivererImpl: deliver(reply)
+    Note over IQHandler: by deliverer.deliver(reply)
+    IQHandler->>PacketDelivererImpl: deliver(reply)
     PacketDelivererImpl->>SocketPacketWriteHandler: process(packet)
     SocketPacketWriteHandler->>RoutingTableImpl: L65<br>routePacket(<br>recipient, packet)
     RoutingTableImpl->>RoutingTableImpl: routeToLocalDomain(jid, packet)
