@@ -88,6 +88,8 @@ $\sqrt{96}=\sqrt{16} \times \sqrt{6}=4\sqrt{6}$
 
 $\sqrt{\frac{5}{9}}=\sqrt{\frac{1}{9}} \times \sqrt{5}=\frac{1}{3}\sqrt{5}$ OR $\sqrt{\frac{5}{9}}=\frac{\sqrt{5}}{\sqrt{9}}=\frac{\sqrt{5}}{3}$
 
+$\sqrt{\frac{5}{8}}=\frac{\sqrt{5}}{\sqrt{2\times4}}=\frac{\sqrt{5}}{2\sqrt{2}}=\frac{\sqrt{5}\times\sqrt{2}}{2\sqrt{2}\times\sqrt{2}}=\frac{\sqrt{10}}{4}$
+
 ## Square root
 
 A square root is a number that can be multiplied by itself to give us the value under the radical symbol (also referred to as the radix).

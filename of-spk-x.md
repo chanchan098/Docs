@@ -1,14 +1,27 @@
-## xmpp
+## Protocols 
+
+### [Core](https://datatracker.ietf.org/doc/html/rfc3920)
+
+#### 9.  XML Stanzas
+
+#### 9.2.3.  IQ Semantics
+
+### [Instant Messaging and Presence](https://datatracker.ietf.org/doc/html/rfc6121)
+ 
+## xmpp extensions
 
 - https://xmpp.org/extensions/
-- [ping xep-0199](https://xmpp.org/extensions/xep-0199.html)
+
+
+### [Service Discovery xep-0030](https://xmpp.org/extensions/xep-0030.html)
+### [Stream Management xep-0198](https://xmpp.org/extensions/xep-0198.html)
+### [XMPP Ping xep-0199](https://xmpp.org/extensions/xep-0199.html)
 
 
 <br/>
 
 
-- [Core](https://datatracker.ietf.org/doc/html/rfc3920)
-- [Instant Messaging and Presence](https://datatracker.ietf.org/doc/html/rfc6121)
+
 
 ## x
 
@@ -247,6 +260,50 @@ void openStream() throws SmackException, InterruptedException {
 
 <br/>  
 
+
+When to `openStream`
+
+Initialize stream
+```java
+private void writePackets() {
+    try {
+        openStream();
+    }
+}
+```
+<br/>
+
+Reset stream
+```java
+private void parsePackets() {
+    try {
+        while (!done) {
+            switch (eventType) {
+                case XmlPullParser.START_TAG:
+                    switch (name) {
+                        case "proceed":
+                            // L1059 Secure the connection by negotiating TLS
+                            openStream();
+                            break;                            
+                        case Success.ELEMENT:
+                            // L1099
+                            openStream();
+                            break;
+                        case Compressed.ELEMENT:
+                            // L1110
+                            openStream();
+                            break;
+                    }
+            }
+        }
+    }
+}
+
+```
+
+
+<br/>  
+
 `XMPPTCPConnection.java#PacketReader`
 ```java
 private void parsePackets() {
@@ -384,6 +441,20 @@ sequenceDiagram
 ```
 
 
+### Packets receiving
+
+```mermaid
+sequenceDiagram
+    XMPPTCPConnection->>XMPPTCPConnection: init()<br>parsePackets()
+    XMPPTCPConnection->>AbstractXMPPConnection: parseAndProcessStanza(parser)
+    AbstractXMPPConnection->>AbstractXMPPConnection: processStanza(stanza)
+    AbstractXMPPConnection->>AbstractXMPPConnection: invokeStanzaCollectorsAndNotifyRecvListeners(stanza)
+    Note right of AbstractXMPPConnection: for <iq></iq>
+    AbstractXMPPConnection->>AbstractXMPPConnection: if (packet instanceof IQ)
+    Note right of AbstractXMPPConnection: for <message></message>
+    AbstractXMPPConnection->>AbstractXMPPConnection: L1198<br>listener.processStanza(packet)
+```
+
 ### Add contacts
 
 #### components
@@ -438,17 +509,21 @@ by file upload
 
 #### Message retraction
 
+### Add a new feature
+
+- read protocols
+- Sending & parsing data at client side  
+- Receiving & responding data at server side
+
 ### Environment
 
 mvn 3.6.3  
 jdk 17.09  
 
+### Load config
 
-### Protocols 
+`xmppserver/src/main/java/org/jivesoftware/util/JiveGlobals.java`
 
-[SASL](https://datatracker.ietf.org/doc/html/rfc4422)
-
-[XMPP](https://datatracker.ietf.org/doc/html/rfc3920#autoid-1)
 
 ### Server Bootstrap with Netty & Messages handling
 
@@ -463,6 +538,10 @@ https://github.com/igniterealtime/Openfire/blob/main/documentation/diagrams/nett
 - `org.jivesoftware.openfire`
   - `XMPPServer.java`
     - The main XMPP server that will load, initialize and start all the server's modules. 
+  - `PacketDeliverer.java`
+    - Delivers packets to locally connected streams. 
+  - `SessionManager.java`
+    - Manages the sessions associated with an account.
   - handler
     - `IQHandler.java`
       - Check out those `subclasses`
@@ -493,6 +572,89 @@ https://github.com/igniterealtime/Openfire/blob/main/documentation/diagrams/nett
 - `#285#deliver(Packet packet)`
 - `#325#deliverRawText(String text)`
 
+### Server Bootstrap with modules
+
+```mermaid
+sequenceDiagram
+    XMPPServer->>XMPPServer: start()
+    Note over XMPPServer: load managers<br>load handlers
+    XMPPServer->>XMPPServer: loadModules()
+```
+
+#### XMPPServer code snippets
+
+<details>
+<summary>XMPPServer</summary>
+
+```java
+private void loadModules() {
+        // Load boot modules
+        loadModule(RoutingTableImpl.class.getName());
+        loadModule(AuditManagerImpl.class.getName());
+        loadModule(RosterManager.class.getName());
+        loadModule(PrivateStorage.class.getName());
+        // Load core modules
+        loadModule(PresenceManagerImpl.class.getName());
+        loadModule(SessionManager.class.getName());
+        loadModule(PacketRouterImpl.class.getName());
+        loadModule(IQRouter.class.getName());
+        loadModule(MessageRouter.class.getName());
+        loadModule(PresenceRouter.class.getName());
+        loadModule(MulticastRouter.class.getName());
+        loadModule(PacketTransporterImpl.class.getName());
+        loadModule(PacketDelivererImpl.class.getName());
+        loadModule(TransportHandler.class.getName());
+        loadModule(OfflineMessageStrategy.class.getName());
+        loadModule(OfflineMessageStore.class.getName());
+        loadModule(VCardManager.class.getName());
+        // Load standard modules
+        loadModule(IQBindHandler.class.getName());
+        loadModule(IQSessionEstablishmentHandler.class.getName());
+        loadModule(IQPingHandler.class.getName());
+        loadModule(IQBlockingHandler.class.getName());
+        loadModule(IQPrivateHandler.class.getName());
+        loadModule(IQRegisterHandler.class.getName());
+        loadModule(IQRosterHandler.class.getName());
+        loadModule(IQEntityTimeHandler.class.getName());
+        loadModule(IQvCardHandler.class.getName());
+        loadModule(IQVersionHandler.class.getName());
+        loadModule(IQLastActivityHandler.class.getName());
+        loadModule(PresenceSubscribeHandler.class.getName());
+        loadModule(PresenceUpdateHandler.class.getName());
+        loadModule(IQOfflineMessagesHandler.class.getName());
+        loadModule(IQPEPHandler.class.getName());
+        loadModule(IQPEPOwnerHandler.class.getName());
+        loadModule(MulticastDNSService.class.getName());
+        loadModule(IQSharedGroupHandler.class.getName());
+        loadModule(AdHocCommandHandler.class.getName());
+        loadModule(IQPrivacyHandler.class.getName());
+        loadModule(DefaultFileTransferManager.class.getName());
+        loadModule(FileTransferProxy.class.getName());
+        loadModule(MediaProxyService.class.getName());
+        loadModule(PubSubModule.class.getName());
+        loadModule(IQDiscoInfoHandler.class.getName());
+        loadModule(IQDiscoItemsHandler.class.getName());
+        loadModule(UpdateManager.class.getName());
+        loadModule(InternalComponentManager.class.getName());
+        loadModule(MultiUserChatManager.class.getName());
+        loadModule(IQMessageCarbonsHandler.class.getName());
+        loadModule(ArchiveManager.class.getName());
+        loadModule(CertificateStoreManager.class.getName());
+        loadModule(EntityCapabilitiesManager.class.getName());
+        loadModule(SoftwareVersionManager.class.getName());
+        loadModule(SoftwareServerVersionManager.class.getName());
+
+        // Load this module always last since we don't want to start listening for clients
+        // before the rest of the modules have been started
+        loadModule(ConnectionManagerImpl.class.getName());
+        loadModule(ClusterMonitor.class.getName());
+        // Keep a reference to the internal component manager
+        componentManager = getComponentManager();
+    }
+```
+
+</details>
+
 ### Accept client connection
 
 [connect-to-server](#connect-to-server)
@@ -519,6 +681,129 @@ sequenceDiagram
     deactivate NettyClientConnectionHandler
 ```
 
+
+#### Create client session
+
+```mermaid
+sequenceDiagram
+
+    activate StanzaHandler
+    StanzaHandler->>StanzaHandler: process( , )<br>initiateSession( , )<br>createSession(parser)
+    StanzaHandler->>ClientStanzaHandler: createSession( , , )
+    deactivate StanzaHandler
+
+    activate ClientStanzaHandler
+    ClientStanzaHandler->>LocalClientSession: createSession( , , )
+    deactivate ClientStanzaHandler
+
+    activate LocalClientSession
+    LocalClientSession->>SessionManager: createClientSession( , , )
+    LocalClientSession->>LocalClientSession: start xml stream
+    deactivate LocalClientSession
+```
+
+
+#### Start xml stream (client side log)
+
+  
+Smack: SENT (0):
+```xml
+<stream:stream xmlns='jabber:client' to='d113' xmlns:stream='http://etherx.jabber.org/streams' version='1.0' from='phone1@d113' xml:lang='en'>
+```
+
+Smack: RECV (0):
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<stream:stream xmlns:stream="http://etherx.jabber.org/streams" from="d113" id="3minndt7yt"
+    version="1.0" xmlns="jabber:client" xml:lang="en">
+    <stream:features>
+        <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls" />
+        <limits xmlns="urn:xmpp:stream-limits:0">
+            <max-bytes>1048576</max-bytes>
+            <idle-seconds>360</idle-seconds>
+        </limits>
+        <mechanisms xmlns="urn:ietf:params:xml:ns:xmpp-sasl">
+            <mechanism>PLAIN</mechanism>
+            <mechanism>SCRAM-SHA-1</mechanism>
+            <mechanism>CRAM-MD5</mechanism>
+            <mechanism>DIGEST-MD5</mechanism>
+        </mechanisms>
+        <compression xmlns="http://jabber.org/features/compress">
+            <method>zlib</method>
+        </compression>
+        <ver xmlns="urn:xmpp:features:rosterver" />
+        <register xmlns="http://jabber.org/features/iq-register" />
+        <c hash="sha-1" node="https://www.igniterealtime.org/projects/openfire/"
+            ver="8xOPs4AQRdWosQy5ksVjA9//vFo="
+            xmlns="http://jabber.org/protocol/caps" />
+        <limits xmlns="urn:xmpp:stream-limits:0">
+            <max-bytes>1048576</max-bytes>
+            <idle-seconds>360</idle-seconds>
+        </limits>
+    </stream:features>
+```
+
+Smack: SENT (0):
+```xml
+<starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'></starttls>
+```
+
+Smack: RECV (0):
+```xml
+<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+```
+
+Smack: SENT (0):
+```xml
+<stream:stream xmlns='jabber:client' to='d113' xmlns:stream='http://etherx.jabber.org/streams' version='1.0' from='phone1@d113' xml:lang='en'>
+```
+
+Smack: RECV (0):
+
+reset stream
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<stream:stream xmlns:stream="http://etherx.jabber.org/streams" from="d113" id="3minndt7yt"
+    version="1.0" xmlns="jabber:client" xml:lang="en">
+    <stream:features>
+        <mechanisms xmlns="urn:ietf:params:xml:ns:xmpp-sasl">
+            <mechanism>PLAIN</mechanism>
+            <mechanism>SCRAM-SHA-1</mechanism>
+            <mechanism>CRAM-MD5</mechanism>
+            <mechanism>DIGEST-MD5</mechanism>
+        </mechanisms>
+        <compression xmlns="http://jabber.org/features/compress">
+            <method>zlib</method>
+        </compression>
+        <ver xmlns="urn:xmpp:features:rosterver" />
+        <register xmlns="http://jabber.org/features/iq-register" />
+        <c hash="sha-1" node="https://www.igniterealtime.org/projects/openfire/"
+            ver="8xOPs4AQRdWosQy5ksVjA9//vFo="
+            xmlns="http://jabber.org/protocol/caps" />
+        <limits xmlns="urn:xmpp:stream-limits:0">
+            <max-bytes>1048576</max-bytes>
+            <idle-seconds>360</idle-seconds>
+        </limits>
+    </stream:features>
+```
+
+
+Smack: XMPPConnection connected (XMPPTCPConnection[phone1@d113/xabber-android-oXAQLcl3] (0))
+
+#### Close stream
+
+```java
+private void writePackets() {
+    //L1464
+    try {
+        writer.write("</stream:stream>");
+        writer.flush();
+    }
+}
+```
+
+
 #### User authentication
 
 ```mermaid
@@ -540,33 +825,6 @@ sequenceDiagram
     DefaultAuthProvider->>DefaultAuthProvider: getUserInfo(username, false)
     
 ```
-
-
-#### Create client session
-
-```mermaid
-sequenceDiagram
-    autonumber
-    activate NettyConnectionHandler
-    NettyConnectionHandler->>NettyConnectionHandler: channelRead0()
-    NettyConnectionHandler->>StanzaHandler: process()
-    deactivate NettyConnectionHandler
-
-    activate StanzaHandler
-    StanzaHandler->>StanzaHandler: initiateSession()
-    StanzaHandler->>StanzaHandler: createSession(parser)
-    StanzaHandler->>ClientStanzaHandler: createSession( , , )
-    deactivate StanzaHandler
-
-    activate ClientStanzaHandler
-    ClientStanzaHandler->>LocalClientSession: createSession( , , )
-    deactivate ClientStanzaHandler
-
-    activate LocalClientSession
-    LocalClientSession->>SessionManager: createClientSession( , , )
-    deactivate LocalClientSession
-```
-
 
 
 ### Openfire Message Handling with Netty
@@ -630,7 +888,21 @@ see also [responses-writing](#responses-writing)
 <iq id='cAvaB-331' type='set'><query xmlns='jabber:iq:roster'><item jid='116@d113' name='' subscription='none'></item></query></iq>
 ```
 
+### Plugin httpfileupload
 
+#### TODOS
+
+- User authentication
+
+#### Setting local repo
+
+`plugins/openfire-httpFileUpload-plugin/src/java/org/igniterealtime/openfire/plugins/httpfileupload/HttpFileUploadPlugin.java#getFileRepoFromProperties()`
+
+at `distribution/src/conf/openfire.xml`
+
+## opfe admin 
+
+### Add user 
 
 ## spk
 
@@ -643,6 +915,14 @@ last commit: SPARK-2122: Add DOAP file for project
 - maven 3.6.3
 - jdk 11
  
+ #### open smack debugger
+
+ from code `core/src/main/java/org/jivesoftware/gui/LoginUIPanel.java#L752`
+
+
+
+ from configuration file `C:\Users\{Username}\AppData\Roaming\Spark\spark.properties`, modify `debuggerEnabled=false` to `debuggerEnabled=true`  
+`core/src/main/resources/default.properties` `DEBUGGER_ENABLED = false` to `DEBUGGER_ENABLED = true`
 
 ### Login
 
@@ -707,6 +987,26 @@ sequenceDiagram
     SparkTrustManager->>SparkTrustManager: loadKeyStores()
     SparkTrustManager->>SparkTrustManager: certControll.loadKeyStores()
 ```
+
+### Load ext plugin
+
+```mermaid
+sequenceDiagram
+    LoginUIPanel->>LoginUIPanel: login()<br>afterLogin()
+    LoginUIPanel->>PluginManager: loadPlugins()    
+    PluginManager->>PluginManager: loadPublicPlugins()
+    PluginManager->>PluginManager: loadPlugin()
+    PluginManager->>PluginManager: loadPublicPlugin( File pluginDir )
+    Note right of PluginManager: Check information, set dependencies, register  
+    PluginManager->>PluginManager: registerPlugin( pluginClass )
+
+```
+
+#### Add upload file btn
+
+Loading `SparkFileUploadPlugin` from `.jar` at `C:\Users\{user}\AppData\Roaming\Spark\plugins`
+
+`src/main/java/org/jivesoftware/spark/plugin/fileupload/SparkFileUploadPlugin.java#chatRoomOpened()`
 
 
 ### Logout
@@ -888,6 +1188,129 @@ sequenceDiagram
 
 ### fileupload
 
+```mermaid
+sequenceDiagram
+    ChatRoomDecorator->>ChatRoomDecorator: fileuploadButton<br>.addActionListener{e -> }
+    ChatRoomDecorator->>ChatRoomDecorator: getUploadUrl<br>(room, Message.Type.chat)
+    ChatRoomDecorator->>ChatRoomDecorator: handleUpload<br>(file, room, type)
+    Note right of ChatRoomDecorator: when putUrl is avaliable
+    ChatRoomDecorator->>ChatRoomDecorator: uploadFile(file, response, room, type);
+```
+
+### toXML()
+
+#### target
+```xml
+<iq xmlns='jabber:client' id='RKI49-1' type='get'>
+    <request xmlns='urn:xmpp:http:upload:0'>
+        <size>111</size>
+        <filename>test.txt</filename>
+    </request>
+</iq>
+```
+
+#### example class, from spark
+```java
+public class UploadRequest extends IQ {
+    public static final String NAMESPACE = "urn:xmpp:http:upload:0";
+
+    private String filename;
+    private long filesize;
+
+    public String getUrl = null;
+    public String putUrl = null;
+
+    public UploadRequest(){super( "request", NAMESPACE );}
+
+    public UploadRequest(String filename, long filesize){
+        super( "request", NAMESPACE );
+        this.filename = filename;
+        this.filesize = filesize;
+    }
+
+    @Override
+    protected IQChildElementXmlStringBuilder getIQChildElementBuilder( IQChildElementXmlStringBuilder buf ){
+        buf.rightAngleBracket();
+        buf.element("size", Long.toString( filesize ));
+        buf.element("filename", filename);
+        return buf;
+    }
+    //...
+}
+```
+
+```mermaid
+sequenceDiagram
+    main()->>UploadRequest: new UploadRequest("test.txt", 111)
+    UploadRequest->>IQ: super( "request", NAMESPACE )
+    IQ->>IQ: this(IqData.EMPTY, <br>childElementName, <br>childElementNamespace)
+    IQ->>IQ: this.childElementName <br>= childElementName<br><br>this.childElementNamespace <br>= childElementNamespace
+    main()->>Element: uploadRequest.toXML();
+    Element->>Element: toXML(XmlEnvironment.EMPTY)
+    Element->>IQ: toXML(XmlEnvironment)
+```
+
+```mermaid
+sequenceDiagram
+    IQ->>IQ: toXML(XmlEnvironment)
+    IQ->>XmlStringBuilder: new (this, <br>enclosingXmlEnvironment)
+    XmlStringBuilder->>XmlStringBuilder: this( , , , )
+    XmlStringBuilder->>XmlStringBuilder: halfOpenElement
+    Note right of XmlStringBuilder:  sb.append('<').append(name) 
+    XmlStringBuilder->>XmlStringBuilder: xmlnsAttribute(xmlNs);
+    Note right of XmlStringBuilder:  append namespace;
+    IQ->>IQ: appendInnerXml(buf)
+    IQ->>IQ: new IQChildElementXmlStringBuilder(<br>getChildElementName(), <br>getChildElementNamespace(), <br>null, xml.getXmlEnvironment())
+    IQ->>IQ: xml.closeElement(iqChildElement.element);
+    IQ->>IQ: buf.closeElement(IQ_ELEMENT);
+```
+
+#### parse xml
+
+```xml
+<iq type="result" id="GHKEU-415" from="httpfileupload.d113" to="117@d113/Spark">
+    <slot xmlns="urn:xmpp:http:upload:0">
+        <put url="https://d117:7443/httpfileupload/o6TAo87Xw-1IzjxhX204zYxTYOI/0test"/>
+        <get url="https://d117:7443/httpfileupload/o6TAo87Xw-1IzjxhX204zYxTYOI/0test"/>
+    </slot>
+</iq>
+```
+
+```java
+public class UploadRequest extends IQ {
+    //...
+    public static class Provider extends IQProvider<UploadRequest>  {
+        public Provider() { super(); }
+
+        public UploadRequest parse(XmlPullParser parser, int i, XmlEnvironment xmlEnvironment) throws XmlPullParserException, IOException {
+            final UploadRequest uploadRequest = new UploadRequest();
+
+            boolean done = false;
+            while ( !done ) {
+                XmlPullParser.Event eventType = parser.next();
+
+                if ( eventType == XmlPullParser.Event.START_ELEMENT ) {
+                    if ( parser.getName().equals( "put" ) ) {
+                        uploadRequest.putUrl = parser.getAttributeValue(null, "url");
+                    }
+                    else if ( parser.getName().equals( "get" ) ) {
+                        uploadRequest.getUrl = parser.getAttributeValue(null, "url");
+                    }
+                }
+
+                else if ( eventType == XmlPullParser.Event.END_ELEMENT ) {
+                    if ( parser.getName().equals( "slot" ) ) {
+                        done = true;
+                    }
+                }
+            }
+            return uploadRequest;
+        }
+    }
+}
+```
+
+
 ### messages saving
 
 
@@ -896,7 +1319,7 @@ sequenceDiagram
 
 
 
-## Spk res to HL
+## Spk res to AD
 
 
 when importing code of spark, cause gradle doesn't import any packages about swing, naming, so it has to be done by repacking jar.
