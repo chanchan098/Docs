@@ -238,12 +238,16 @@ Any number taken to the power of 1 equals itself. 1 taken to the power of any nu
 $n^1 = n$  
 $1^n = 1$
 
+## Fractional exponents
+
 ## Negative exponents
 
 A negative exponent is equal to the reciprocal of the base of the negative exponent raised to the positive power.  
 
 $b^{-n}=\frac{1}{b^n}$
 
+
+## Exponent rules
 
 ## Power
 
@@ -269,3 +273,57 @@ If the power is a fraction, we take the $n^th$ root of the base, where n is the 
 $2^{\frac{2}{3}}=\sqrt[3]{2^2}=\sqrt[3]{4}$
 
 
+# Polynomial
+
+https://www.math.net/polynomial
+
+## binomial theorem
+
+### Summation
+
+### Combinations
+
+
+
+# Logarithm
+
+## Log rules
+
+## ln
+
+# Factoring
+
+## How to factor
+
+### C-Cross Factorization Method
+
+$x^2+5x+6$
+
+Find intergers of $p, q$ then: $p+q=5,p×q=6$  
+$p=2,q=3$
+
+so
+
+$x^2+5x+6=(x+2)(x+3)$
+
+## Factoring polynomials
+
+## Prime factors
+
+A prime factor is a factor that is a prime quantity, meaning that it can only be formed as the product of 1 and itself. For example, $3 × 7 = 21$. In this problem, $3$ and $7$ are prime factors,
+
+## Prime factorization
+
+### Trial division
+
+### Factor tree
+
+# Complex numbers
+
+## Imaginary numbers
+
+# Sequence
+
+## Arithmetic sequence
+
+## Summation

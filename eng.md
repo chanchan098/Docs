@@ -52,10 +52,6 @@
 - [Future Conditionals](#future-conditionals)
   - [Future Real Conditional](#future-real-conditional)
   - [Future Unreal Conditional](#future-unreal-conditional)
-- [Zero conditional](#zero-conditional)
-- [First conditional(Future real conditional)](#first-conditionalfuture-real-conditional)
-- [Second conditional](#second-conditional)
-- [Third conditional](#third-conditional)
 - [Mixed third/second conditional form](#mixed-thirdsecond-conditional-form)
 - [Passive form](#passive-form)
 - [E--Basic](#e--basic)
@@ -416,7 +412,7 @@ The past real conditional describes what you used to do in particular real-life 
 [If / When ... simple past ..., ... simple past ...]  
 [... simple past... if / when ... simple past ...]
 
-Verb of if part and main part are <u>simple past</u>.
+Verbs of if part and main part are <u>simple past</u>.
 
 Examples:
 - If I went to a friend's house for dinner, I usually took a bottle of wine or some flowers. I don't do that anymore.
@@ -578,71 +574,6 @@ Native speakers use Form 3 to emphasize that the conditional form is a plan or p
 [... would be + present participle ... if ... were going to + verb ...]
 
 Verb of if part is `were were going to do`, verb of main part is `would be present participle`.
-
-## Zero conditional
-
-We use the zero conditional to talk about things which <u>always happen</u> if a particular action takes place. These can be scientific facts, or things we believe are always true.
-
-- When you take exercise, your heart beats faster.
-- If I drink milk, I get stomach ache.
-
-We can use if or when with the same meaning:  
-- If you take exercise, your heart beats faster.
-- When I drink milk, I get stomach ache.
-
-[zero & first](http://www.bbc.co.uk/learningenglish/english/course/intermediate/unit-5/tab/grammar)
-
-## First conditional(Future real conditional)
-
-We use the first conditional to talk about things which <u>might happen</u> if an action takes place.  
-We use if for things which are likely to happen and when for things which are certain to happen.
-
-- If I see Freddy later, I’ll give him the book. (I’m not certain I’ll see him.)
-- When I see Freddy later, I’ll give him the book. (I’m certain I’ll see him.)
- 
-- If we go to the beach, I’ll take my swimsuit. (It isn’t certain we’ll go to the beach.)
-- When we go to the beach, I’ll take my swimsuit. (It is certain we’ll go to the beach.)
-
-## Second conditional
-
-We use the second conditional in English when we want to talk about <u>unreal situations</u> or things we don’t think will happen.  
-We use it to talk about the <u>possible results</u> of these situations. It is made like this:
-
-A conditional sentence has two parts. The if part tells us about the unreal or unlikely situation.  
-The would part tells us the possible results of this situation.
-
-<u>if + past simple, … would + infinitive</u>
-
-examples:  
-- If we all recycled more, there would be a lot less waste in the world.
-- If I lived by the sea, I’d go swimming every day.
-- If I had more free time, I would be more relaxed.
-- I would be more relaxed if I had more free time.
-
-A conditional sentence has two parts. The `if` part tells us about the unreal or unlikely situation.  
-The `would` part tells us the possible results of this situation.
-
-
-We use the past simple in the `if` part – but second conditional sentences aren’t about the past.  
-We use the past form to show that the situation isn’t real. The `would` part tells us the result of this imaginary situation.
-
-## Third conditional
-
-We use the third conditional to talk about <u>imagined past events</u>: things that might have happened in the past, but didn’t happen.
-
-examples:  
-- If I’d known it was your birthday, I’d have bought you a present.
-- If the taxi had arrived on time, he wouldn’t have missed the plane.
-
-
-the `if` part is the imaginary situation in the past, and the `main` part is what could have happened (but didn’t happen) as a result.  
-We make the third conditional with <u>if + past perfect</u>, and <u>would have + past participle</u>.
-
-We use the past perfect in the `if` part to show the situation is imaginary and didn’t actually happen.  
-The `main` part of the sentence tells us the imaginary result of this situation.
-
-- If there had been any snow, we’d have gone skiing. (There wasn’t any snow; we didn’t go skiing.)
-- If it hadn’t been raining, we’d have had a picnic.(It was raining; we didn’t have a picnic.)
 
 ## Mixed third/second conditional form
 

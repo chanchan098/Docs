@@ -11,6 +11,7 @@ https://www.math.net/primary-math
 
 # Number
 
+https://www.math.net/number
 
 ## Even numbers
 
@@ -64,6 +65,20 @@ $$LCM(4,6)=\frac{4 \times 6}{2}=12$$
 ```
 
 
+## Real numbers
+
+Denoted by ℝ
+
+## Rational numbers
+
+![alt](https://www.math.net/img/a/primary-math/numbers/rational-numbers/q.svg)
+
+- rational numbers: Q
+- real numbers: R
+- integers: Z
+- natural numbers: N
+
+
 # Addition
 
 ## Addend
@@ -78,11 +93,28 @@ Together with an operation and equality symbol (in this case addition (+) and eq
 
 The associative property of addition states that how the numbers in an addition problem are grouped doesn't change the sum.
 
-## C-Inverse
+## :spiral_notepad: Inverse
 
 $8+2=10$  
 $2=10-8$  
 $8=10-2$
+
+## :spiral_notepad: With minus
+
+$-5+10=10-5=5$
+
+$-8+3=-(8-3)=-5$
+
+
+# Subtraction
+
+## C-Inverse
+
+$10-4=6$  
+$10-6=4$  
+
+$6+4=10$  
+$4+6=10$  
 
 # Multiplication
 
@@ -205,7 +237,7 @@ $\frac{11}{4} \times \frac{7}{9} = \frac{77}{36}$
 
 The reciprocal of a number is *1 divided by the number*. All numbers have a reciprocal, except for 0, since the reciprocal of 0 is undefined.
 
-The reciprocal of a non-zero integer such as 5 is: $5$ --> $ \frac{1}{5}$
+The reciprocal of a non-zero integer such as 5 is: $5 \rightarrow \frac{1}{5}$
 
 Notice that if you take the reciprocal of a reciprocal, you get the *original number* (1/5 is the reciprocal of 5 and vice versa). 
 
@@ -216,7 +248,7 @@ we can confirm that $\frac{1}{5}$  is the reciprocal of 5. Multiplying any expre
 
 **Example**  
 
-$\frac{12}{7} $; reciprocal is $\frac{7}{12}$
+$\frac{12}{7}$; reciprocal is $\frac{7}{12}$
 
 1.25; reciprocal is $\frac{1}{1.25}=0.8$, cause $1.25 \times 0.8=1$
 
