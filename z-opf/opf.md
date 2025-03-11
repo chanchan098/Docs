@@ -450,6 +450,18 @@ sequenceDiagram
 ```
 see also [responses-writing](#responses-writing)
 
+
+### Create user
+
+```mermaid
+sequenceDiagram
+    user-create.jsp->>UserManager: createUser( , , , )
+    UserManager->>DefaultUserProvider: createUser( , , , )
+    DefaultUserProvider->>AuthFactory: setPassword( , )
+    AuthFactory->>DefaultAuthProvider: setPassword( , )
+```
+
+
 ### Add contacts
 
 ```xml

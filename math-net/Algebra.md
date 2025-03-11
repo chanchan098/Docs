@@ -38,7 +38,7 @@ $x = 4$
 
 ## Equality
 
-
+## Substitution
 
 # Radical
 
@@ -123,6 +123,20 @@ For a quadratic of the form $x^2 + bx + c$, the coefficent of $x$ is already $b$
 If $2n = b$, then $n = \frac{b}{2}$. Therefore, the binomial used to complete the square is: $x \pm \frac{b}{2}$  
 If we square this binomial, the perfect square trinomial needed to complete the square will equal:
 
+---
+
+$(a+b)^2=a^2+2ab+b^2$
+
+$(3+4)^2$  
+$=3^2+2\times3\times4+4^2$, ALSO $3^2+(2\times3)\times4+4^2$, ALSO $3^2+(2\times4)\times3+4^2$    
+$=9+24+16$
+
+<br/>
+
+$2b=k$, $b=\frac{k}{2}$; $2\times4=8$, $4=\frac{8}{2}$
+
+---
+
 $(x+\frac{b}{2})^2=x^2+bx+(\frac{b}{2})^2$  
 OR  
 $(x-\frac{b}{2})^2=x^2-bx+(\frac{b}{2})^2$  
@@ -191,6 +205,90 @@ $x=2 \quad or \quad x=\frac{3}{2}$
 $b^2-4ac$
 
 If the discriminant is less than 0, then the quadratic has no real solution.
+
+## System of equations
+
+### Graphing method
+
+by tools
+
+### Substitution method
+
+replacing a variable in one equation with the equivalent of that variable
+
+Variables with coefficients of 1 are the easiest to solve
+
+Example
+
+Get y from a variable  
+$3x + y = 31	→	y = -3x + 31$  
+
+$2x - 5y = 15	→	-5y = 15 - 2x$  
+$y=\frac{-2x+15}{-5}$
+
+Next  
+$2x - 5(-3x + 31) = 15$
+
+Then  
+$2x - 5 (-3x + 31) = 15$  
+$2x + 15x - 155 = 15$  
+$17x = 170$  
+$x = 10$  
+
+The remaining variable  
+$x = 10$  
+$2(10) - 5y = 15$  
+$-5y = -5$  
+$y = 1$  
+
+You can check your answers by plugging the x- and y-values  
+$x = 10$  
+$3x + y = 31$  
+$3(10) + (1) = 31$  
+$31 = 31$  
+
+$y = 1$  
+$2x - 5y = 15$  
+$2(10) - 5(1) = 15$  
+$15 = 15$  
+
+### Elimination method
+
+Example
+
+$
+\begin{cases}
+6x + 2y= 18\\
++5x + 4y= 22
+\end{cases}
+$
+
+$
+\begin{cases}
+-2(6x + 2y)= 18\\
++5x + 4y= 22
+\end{cases}
+$
+
+$
+\begin{cases}
+-12x-4y=-36\\
++5x+4y= 22
+\end{cases}
+$  
+$=\;\; -7x + 0=-14$
+
+Then solve for x!  
+$-7x= -14$  
+$\quad\; x= 2$
+
+Next, plug the value of x into one of the original equations to find the value of y.
+
+$x= 2$  
+$5(2)+ 4y= 22$  
+$4y= 12$  
+$y= 3$  
+
 
 # Exponents
 
@@ -327,3 +425,86 @@ A prime factor is a factor that is a prime quantity, meaning that it can only be
 ## Arithmetic sequence
 
 ## Summation
+
+# Inequality
+
+## Properties of inequalities--inside
+
+## Inequality symbols
+
+# Variable
+
+In algebra, a variable is usually a letter or other symbol that stands for a number or quantity that may vary.
+
+## Direct variation
+
+
+## Inverse variation
+
+
+## Constant of proportionality
+
+
+## Dependent variable
+
+Real world examples of a dependent variable include:  
+the height of a plant as a function of the amount that it is watered, where the amount it is watered is the independent variable;  
+
+the score on a test a student achieves as a function of the amount that they studied, where the independent variable is the amount of time that they studied;  
+
+the amount of money you earn as a function of the amount of time worked, where the amount of time worked is the independent variable.
+
+# Function
+
+A function is a relation between two sets in which each member of the first set is paired with one, and only one, member of the second set.
+
+A function rule is a rule that explains the relationship between two sets.
+
+## Absolute value
+
+
+## Domain and range
+
+the domain is the set of values that we can plug into a function that will result in a real y-value; 
+
+the range is the set of values that the function takes on as a result of plugging in an x value within the domain of the function
+
+
+### Interval notation
+
+
+### Set notation
+
+
+### Even and odd functions
+
+#### How to tell if a function is even or odd
+
+Event function: $f(x)=f(-x)$
+
+Odd function: $f(-x)=-f(x)$
+
+#### Properties of even and odd functions
+
+##### Addition and subtraction properties
+
+##### Multiplication and division properties
+
+## hyperbola
+
+https://www.storyofmathematics.com/hyperbola/
+
+## Parabola
+
+https://www.math.net/parabola
+
+### Standard form of a parabola
+
+$(x−h)^2=4p(y−k)$  
+
+see also [Identity property](./PrimaryMath.md#identity-property)  
+calculate y  
+$\frac{(x−h)^2}{4p}=y−k$  
+$\frac{(x−h)^2}{4p}+k=y−k+k$  
+$\frac{(x−h)^2}{4p}+k=y$  
+$y=\frac{(x−h)^2}{4p}+k$

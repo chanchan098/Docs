@@ -543,6 +543,22 @@ describes what you think you will do in a specific situation in the future.
 
 Verb of if\when part is <u>simple present</u>, verb of main part is <u>simple future</u>.
 
+
+Examples:
+
+- If I go to my friend's house for dinner tonight, I will take a bottle of wine or some flowers.
+  - I am still not sure if I will go to his house or not.
+- When I have a day off from work, I am going to go to the beach.
+  - I have to wait until I have a day off.
+- If the weather is nice, she is going to walk to work.
+  - It depends on the weather.
+- Jerry will help me with my homework when he has time.
+  - I have to wait until he has time.
+- I am going to read if there is nothing on TV.
+  - It depends on the TV schedule.
+- A: What are you going to do if it rains?
+- B: I am going to stay at home.
+
 ### Future Unreal Conditional
 
 <span style='font-size: 16px;font-weight: 500'>FORM 1 (Most Common Form)</span>  
@@ -580,10 +596,6 @@ Verb of if part is `were were going to do`, verb of main part is `would be prese
 https://www.bbc.co.uk/learningenglish/english/course/upper-intermediate/unit-8/tab/grammar
 
 https://www.englishpage.com/conditional/mixedconditional.html
-
-Sometimes *<u>unreal conditional</u>* sentences are mixed.
-
-
 
 ## Passive form
 

@@ -401,6 +401,23 @@ BODMAS: Brackets, order, division, multiplication, addition, subtraction
 
 Notice that multiplication and division are in different positions in PE(MD)AS and BO(DM)AS; this is because multiplication and division, and addition and subtraction, can be performed in either order
 
+
+### Commutative property
+
+The commutative property states that changing the order in which two numbers are added or multiplied does not change the result.
+
+$a + b = b + a$
+
+$a × b = b × a$
+
+### Associative property
+
+The associative property states that changing the way that numbers are grouped in addition and multiplication does not change the result.
+
+$(a + b) + c = a + (b + c)$
+
+$(a × b) × c = a × (b × c)$
+
 ### Distributive property
 
 The distributive property states that multiplying a group of numbers that are being added is the same as multiplying by each number individually, then adding them together.
@@ -428,6 +445,13 @@ $6 × 5	=	30$
 $30 ÷ 5	=	6$
 
 As shown above, multiplication and division essentially cancel each other out, which is why they are inverse operations
+
+## Identity property
+
+An identity element is a number that, when used in an operation with another number, results in the same number.
+
+## Transitive property
+
 
 # Ratios and proportions
 
