@@ -317,6 +317,11 @@ Another way
 $y = 3x^2 + 9x + 4$  
 $y=3(x^2+3x)+4$  
 
+
+<mark style="">when no commom factors  
+$y = 3x^2 + 10x + 4$  
+$y=3(x^2+\frac{10}{3}x)+4$</mark>  
+
 Get square number by coefficient 3  
 $(\frac{3}{2})^2=\frac{9}{4}$
 
