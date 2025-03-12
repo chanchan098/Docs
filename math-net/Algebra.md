@@ -220,13 +220,15 @@ Variables with coefficients of 1 are the easiest to solve
 
 Example
 
-Get y from a variable  
+Get $y$ from a variable  
 $3x + y = 31	→	y = -3x + 31$  
 
 $2x - 5y = 15	→	-5y = 15 - 2x$  
 $y=\frac{-2x+15}{-5}$
 
 Next  
+$y = -3x + 31$  
+$2x - 5y = 15$  
 $2x - 5(-3x + 31) = 15$
 
 Then  
@@ -263,6 +265,11 @@ $
 \end{cases}
 $
 
+
+If uses $6x$, that would be difficult.  
+$-\frac{5}{6} \times 6x=-5x$
+
+
 $
 \begin{cases}
 -2(6x + 2y)= 18\\
@@ -289,6 +296,39 @@ $5(2)+ 4y= 22$
 $4y= 12$  
 $y= 3$  
 
+## Vertex form
+
+### Converting from standard form to vertex form
+
+Example
+
+$y = 3x^2 + 9x + 4$  
+$y - 4 = 3x^2 + 9x$  
+$y - 4 = 3(x^2 + 3x)$  
+$y - 4 + 3(?) = 3(x^2 + 3x + ?)$  
+$y - 4 + 3(\frac{9}{4}) = 3(x^2 + 3x + \frac{9}{4})$  
+$y - \frac{16}{4}+\frac{27}{4}=3(x + \frac{3}{2})^2$  
+$y = 3(x + \frac{3}{2})^2-\frac{11}{4}$  
+
+---
+
+Another way  
+
+$y = 3x^2 + 9x + 4$  
+$y=3(x^2+3x)+4$  
+
+Get square number by coefficient 3  
+$(\frac{3}{2})^2=\frac{9}{4}$
+
+And make it keep identical  
+**Add a square and substract a square when completing square**  
+
+$x^2+3x=(x+\frac{3}{2})^2-\frac{9}{4}$  
+$y=3((x+\frac{3}{2})^2-\frac{9}{4})+4$  
+$y=3(x+\frac{3}{2})^2-3\times\frac{9}{4}+4$  
+$y=3(x+\frac{3}{2})^2-\frac{27}{4}+4$  
+$y=3(x+\frac{3}{2})^2-\frac{27}{4}+\frac{16}{4}$  
+$y=3(x+\frac{3}{2})^2-\frac{11}{4}$  
 
 # Exponents
 

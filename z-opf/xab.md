@@ -465,6 +465,23 @@ sequenceDiagram
     AccountManager->>AccountManager: onLoad()
 ```
 
+
+
+### Send message in single chat
+
+```mermaid
+sequenceDiagram
+    ChatFragment->>ChatFragment: R.id.button_send_message<br>OnClick()<br><br>sendMessage()
+    ChatFragment->>ChatFragment: sendMessage(text)
+    ChatFragment->>MessageManager: sendMessage( , ,)
+    MessageManager->>MessageManager: getOrCreateChat<br>(account, user)
+    MessageManager->>MessageManager: sendMessage(text, chat)
+    MessageManager->>AbstractChat: sendMessages(messageItem)
+    AbstractChat->>StanzaSender: sendStanza( , , )
+    StanzaSender->>StanzaSender: sendStanza( , )<br>xmppConnection.sendStanza(stanza)
+```
+
+
 ## Spk res to AD
 
 

@@ -40,6 +40,97 @@ by file upload
 
 #### Message retraction
 
+
+#### Message archive 
+
+ConversationManager.java, Modifications to messages saving 
+
+---
+
+是的，XMPP 通过 **XEP（XMPP Extension Protocols）扩展协议** 支持 **消息混合（图文、文件、消息引用等）**，常见的相关协议如下：  
+
+## **1. 富文本消息（图文混合）** - **XEP-0393: Message Styling**  
+**支持 Markdown / HTML 样式的消息格式**，可以用于 **图文混合**。  
+```xml
+<message from="alice@example.com" to="bob@example.com" type="chat">
+    <body>Hello, Bob! Check this out:</body>
+    <html xmlns="http://jabber.org/protocol/xhtml-im">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Hello, <b>Bob</b>!</p>
+            <img src="https://example.com/image.png" alt="Example Image"/>
+        </body>
+    </html>
+</message>
+```
+- `<body>`：普通文本消息  
+- `<html>`：带有 HTML 格式的富文本（支持 `<img>`）  
+
+📌 **相关协议**：
+- **XEP-0071: XHTML-IM**（早期的富文本支持）
+- **XEP-0393: Message Styling**（新式文本格式化）
+
+---
+
+## **2. 文件传输（文字+文件）** - **XEP-0363: HTTP File Upload**  
+XMPP 不直接传输文件，而是通过 **HTTP 方式上传和分享**。  
+```xml
+<message from="alice@example.com" to="bob@example.com" type="chat">
+    <body>Here is the document:</body>
+    <attachment xmlns="urn:xmpp:http:upload:0">
+        <file url="https://files.example.com/document.pdf" size="12345" content-type="application/pdf"/>
+    </attachment>
+</message>
+```
+- 先用 **XEP-0363** 上传文件，获取 `URL`，然后发送给对方。  
+- 也可以用 **XEP-0096（Jingle File Transfer）** 进行点对点传输（更复杂）。  
+
+📌 **相关协议**：
+- **XEP-0363: HTTP File Upload**（推荐）
+- **XEP-0096: SI File Transfer**（较旧）
+
+---
+
+## **3. 消息引用（回复某条消息）** - **XEP-0372: References**  
+支持 **消息引用 / 回复**，类似于 QQ、微信的“回复”功能。  
+```xml
+<message from="bob@example.com" to="alice@example.com" type="chat">
+    <body>I agree with this!</body>
+    <reference xmlns="urn:xmpp:reference:0" type="reply" begin="0" end="14" uri="xmpp:alice@example.com?message-id=12345"/>
+</message>
+```
+- `type="reply"` 表示这是对某条消息的引用。  
+- `uri="xmpp:alice@example.com?message-id=12345"` 指定引用的消息 ID。  
+
+📌 **相关协议**：
+- **XEP-0372: References**（标准引用机制）
+
+---
+
+## **4. 消息编辑 / 撤回** - **XEP-0308: Last Message Correction**  
+支持 **消息修改（编辑）**，类似微信的“撤回并编辑”功能。  
+```xml
+<message from="alice@example.com" to="bob@example.com" type="chat">
+    <replace xmlns="urn:xmpp:message-correct:0" id="12345"/>
+    <body>Sorry, I meant "Hello, Bob!"</body>
+</message>
+```
+- `<replace>` 指定 **要替换的消息 ID**，客户端显示时会自动更新。  
+
+📌 **相关协议**：
+- **XEP-0308: Last Message Correction**（标准消息编辑）
+
+---
+
+## **总结**
+| 功能              | 相关 XEP           | 说明                             |
+| ----------------- | ------------------ | -------------------------------- |
+| **图文混合**      | XEP-0393, XEP-0071 | 发送富文本，支持 HTML & Markdown |
+| **文字+文件**     | XEP-0363, XEP-0096 | HTTP 上传文件或 P2P 文件传输     |
+| **消息引用**      | XEP-0372           | 支持回复某条消息                 |
+| **消息编辑/撤回** | XEP-0308           | 编辑或撤回已发送的消息           |
+
+**👉 结论**：XMPP 本身是轻量级的，但通过 **XEP 扩展**，可以实现 **富文本、文件传输、消息引用、编辑撤回等功能**，并适用于聊天应用的各种需求！ 🚀
+
 ### Debugging plugin
 
 #### Remvoe appendix for assembly
@@ -493,6 +584,7 @@ sequenceDiagram
     InterceptorManager->>ArchiveInterceptor: interceptPacket<br>(packet, session,<br> read, processed)
     ArchiveInterceptor->>ConversationManager: processMessage(, , , , );
     ConversationManager->>Archiver: archive(conversation)
+    Archiver->>MessageArchivingRunnable: store(workQueue)
 ```
 
 
