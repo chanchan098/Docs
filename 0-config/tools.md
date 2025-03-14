@@ -168,9 +168,10 @@ WHERE email LIKE '%@example.com';
 
 ### markdown preview enhanced 
 
+
 ## windows
 
-### Boot app when launched
+### Boot apps when launched
 
 `C:\Users\116\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 

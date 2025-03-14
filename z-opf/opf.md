@@ -49,7 +49,7 @@ ConversationManager.java, Modifications to messages saving
 
 是的，XMPP 通过 **XEP（XMPP Extension Protocols）扩展协议** 支持 **消息混合（图文、文件、消息引用等）**，常见的相关协议如下：  
 
-## **1. 富文本消息（图文混合）** - **XEP-0393: Message Styling**  
+#### **1. 富文本消息（图文混合）** - **XEP-0393: Message Styling**  
 **支持 Markdown / HTML 样式的消息格式**，可以用于 **图文混合**。  
 ```xml
 <message from="alice@example.com" to="bob@example.com" type="chat">
@@ -71,7 +71,7 @@ ConversationManager.java, Modifications to messages saving
 
 ---
 
-## **2. 文件传输（文字+文件）** - **XEP-0363: HTTP File Upload**  
+#### **2. 文件传输（文字+文件）** - **XEP-0363: HTTP File Upload**  
 XMPP 不直接传输文件，而是通过 **HTTP 方式上传和分享**。  
 ```xml
 <message from="alice@example.com" to="bob@example.com" type="chat">
@@ -90,7 +90,7 @@ XMPP 不直接传输文件，而是通过 **HTTP 方式上传和分享**。
 
 ---
 
-## **3. 消息引用（回复某条消息）** - **XEP-0372: References**  
+#### **3. 消息引用（回复某条消息）** - **XEP-0372: References**  
 支持 **消息引用 / 回复**，类似于 QQ、微信的“回复”功能。  
 ```xml
 <message from="bob@example.com" to="alice@example.com" type="chat">
@@ -106,7 +106,7 @@ XMPP 不直接传输文件，而是通过 **HTTP 方式上传和分享**。
 
 ---
 
-## **4. 消息编辑 / 撤回** - **XEP-0308: Last Message Correction**  
+#### **4. 消息编辑 / 撤回** - **XEP-0308: Last Message Correction**  
 支持 **消息修改（编辑）**，类似微信的“撤回并编辑”功能。  
 ```xml
 <message from="alice@example.com" to="bob@example.com" type="chat">
@@ -121,7 +121,7 @@ XMPP 不直接传输文件，而是通过 **HTTP 方式上传和分享**。
 
 ---
 
-## **总结**
+#### **总结**
 | 功能              | 相关 XEP           | 说明                             |
 | ----------------- | ------------------ | -------------------------------- |
 | **图文混合**      | XEP-0393, XEP-0071 | 发送富文本，支持 HTML & Markdown |
@@ -506,6 +506,7 @@ sequenceDiagram
     ClientStanzaHandler->>StanzaHandler: processMessage<br>(packet)
     StanzaHandler->>PacketRouterImpl: route(packet)
     PacketRouterImpl->>MessageRouter: route(packet)
+    MessageRouter->>InterceptorManager: invokeInterceptors<br>(packet, session, true, true)
 ```
 
 
@@ -559,6 +560,9 @@ sequenceDiagram
 <iq id='cAvaB-331' type='set'><query xmlns='jabber:iq:roster'><item jid='116@d113' name='' subscription='none'></item></query></iq>
 ```
 
+
+
+
 ### Plugin httpfileupload
 
 #### TODOS
@@ -572,6 +576,19 @@ sequenceDiagram
 at `distribution/src/conf/openfire.xml`
 
 ### Plugin monitoring
+
+
+#### Create conversation
+
+```mermaid
+sequenceDiagram
+    InterceptorManager->>InterceptorManager: invokeInterceptors<br>(packet, session, true, true)
+    InterceptorManager->>InterceptorManager: invokeInterceptors<br>(globalInterceptors, , , ,)
+    InterceptorManager->>ArchiveInterceptor: interceptPacket( , , , )
+    ArchiveInterceptor->>ConversationManager: processMessage( , , , , )
+    ConversationManager->>ConversationDAO: createConversation( , , , )
+    ConversationDAO->>ConversationDAO: insertIntoDb(conversation)
+```
 
 #### Message archive 
 

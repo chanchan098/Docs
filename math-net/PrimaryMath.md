@@ -1,6 +1,6 @@
 https://www.math.net/primary-math
 
-# Division
+## Division
 
 6 × 4 = 24, so 24 ÷ 4 = 6.
 
@@ -9,19 +9,19 @@ https://www.math.net/primary-math
 - 6 is the quotient.
 
 
-# Number
+## Number
 
 https://www.math.net/number
 
-## Even numbers
+### Even numbers
 
 An even number is an integer that can be divided by 2 such that there is a remainder of 0.
 
-## Least common multiple
+### Least common multiple
 
 https://www.math.net/lcm
 
-### Euclid's algorithm
+#### Euclid's algorithm
 
 
 1. Divide the larger number by the smaller number. If the remainder is 0, the divisor is the GCF, if not continue to the next step.
@@ -52,7 +52,7 @@ $GCF(4,6)=2$
 $$LCM(4,6)=\frac{4 \times 6}{2}=12$$
 
 
-### Short division
+#### Short division
 
 ```
 
@@ -65,11 +65,11 @@ $$LCM(4,6)=\frac{4 \times 6}{2}=12$$
 ```
 
 
-## Real numbers
+### Real numbers
 
 Denoted by ℝ
 
-## Rational numbers
+### Rational numbers
 
 ![alt](https://www.math.net/img/a/primary-math/numbers/rational-numbers/q.svg)
 
@@ -79,9 +79,9 @@ Denoted by ℝ
 - natural numbers: N
 
 
-# Addition
+## Addition
 
-## Addend
+### Addend
 
 https://www.math.net/addend
 
@@ -89,26 +89,26 @@ An addend (also summand) is any of the numbers that are added to form the sum in
 Together with an operation and equality symbol (in this case addition (+) and equals (=))
 
 
-## Associative property of addition
+### Associative property of addition
 
 The associative property of addition states that how the numbers in an addition problem are grouped doesn't change the sum.
 
-## :spiral_notepad: Inverse
+### :spiral_notepad: Inverse
 
 $8+2=10$  
 $2=10-8$  
 $8=10-2$
 
-## :spiral_notepad: With minus
+### :spiral_notepad: With minus
 
 $-5+10=10-5=5$
 
 $-8+3=-(8-3)=-5$
 
 
-# Subtraction
+## Subtraction
 
-## C-Inverse
+### C-Inverse
 
 $10-4=6$  
 $10-6=4$  
@@ -116,30 +116,30 @@ $10-6=4$
 $6+4=10$  
 $4+6=10$  
 
-# Multiplication
+## Multiplication
 
 Multiplication can be explained by using several different situations. Some of these situations are repeated addition, array, area, and combinations.
 
-## How to multiply
+### How to multiply
 
-### Long multiplication
+#### Long multiplication
 
-## Product
+### Product
 
-### Product of integers
+#### Product of integers
 
 - Positive * Positive = Positive
 - Negative * Negative = Positive
 - Positive * Negative = Negative
 - Negative * Positive = Negative
 
-## Partial products
+### Partial products
 
 https://www.math.net/partial-products
 
 To check out examples
 
-## C-Inverse
+### C-Inverse
 
 $2 \times 5=10 \quad to \quad 5=10 \div 2 \quad also \; 5 = \frac{10}{2}$  
 
@@ -153,19 +153,37 @@ Algebra
 
 $2n=b \quad so \; n=\frac{b}{2}$
 
-# Fraction
+## Division
 
-## Adding fractions
+Division is the inverse, or opposite, operation of multiplication. It "undoes" multiplication.
 
-### C-Adding fractions with whole number
+All of the notations below read as "a divided by b."
+
+$\frac{a}{b}$  
+$a\; /\; b$  
+$a \div b$
+
+### N-Inverse
+
+$10\div2=5$
+
+$10\div5=2$
+
+$2\times5=10$
+
+## Fraction
+
+### Adding fractions
+
+#### C-Adding fractions with whole number
 
 $3+\frac{49}{16}=\frac{3}{1}=\frac{3\times16}{1\times16}+\frac{49}{16}=\frac{48}{16}+\frac{49}{16}$
 
-## Common fraction
+### Common fraction
 
 https://www.math.net/common-fraction
 
-## Dividing fractions
+### Dividing fractions
 
 We can divide fractions using the following steps:
 
@@ -193,26 +211,26 @@ $\frac{5}{8} \div 11 \quad and \quad 5 \div \frac{11}{8}$
 
 Just turning into dividing fractions expanded, that would be easier a lot.
 
-### Dividing fractions and whole numbers
+#### Dividing fractions and whole numbers
 
 The whole number needs to be expressed as a fraction.  
 To express a whole number as a fraction, all we need to do is *write the whole number over 1*, since any number divided by 1 is itself.
 
 $\frac{3}{4}\div4=\frac{3}{4}\div\frac{4}{1}=\frac{3}{4}\times\frac{1}{4}=\frac{3}{16}$
 
-## Multiplying fractions
+### Multiplying fractions
 
 Examples:  
 $\frac{2}{5} \times  \frac{4}{7} = \frac{8}{35}$
 
-### Multiplying fractions and whole numbers
+#### Multiplying fractions and whole numbers
 
 To represent a whole number in fraction form, we can simply treat the whole number as the numerator of the fraction while putting a 1 in the denominator.
 
 Examples:  
 $12\times\frac{3}{4}=\frac{12}{1}\times\frac{3}{4}=\frac{36}{4}=9$
 
-### Multiplying mixed fractions
+#### Multiplying mixed fractions
 
 requires that we convert the mixed fraction into an improper fraction before multiplying.
 
@@ -233,7 +251,7 @@ so $\;2\frac{3}{4}=\frac{11}{4}$
 $\frac{11}{4} \times \frac{7}{9} = \frac{77}{36}$
 
 
-## Reciprocal
+### Reciprocal
 
 The reciprocal of a number is *1 divided by the number*. All numbers have a reciprocal, except for 0, since the reciprocal of 0 is undefined.
 
@@ -264,13 +282,13 @@ $1.25=\frac{1.25}{1}=\frac{125}{100}=\frac{25}{20}=\frac{5}{4}$
 The reciprocal is therefore $\frac{4}{5}$, which is equal to 0.8.
 
 
-# Percentage
+## Percentage
 
 https://www.math.net/percentage
 
-## Percentages as decimals and fractions
+### Percentages as decimals and fractions
 
-### As a fraction
+#### As a fraction
 
 10% = $\frac{10}{100}$ = $\frac{1}{10}$
 
@@ -278,7 +296,7 @@ https://www.math.net/percentage
 
 83% = $\frac{83}{100}$
 
-### As a decimal
+#### As a decimal
 
 To express a percent as a decimal, move the decimal point *two places to the left*.
 
@@ -292,9 +310,9 @@ any percentage can be converted to a decimal by dividing by 100 (or shifting the
 36% = 0.36  
 83% = 0.83
 
-## Percentages in everyday life
+### Percentages in everyday life
 
-### Sales tax
+#### Sales tax
 
 Sales tax is a tax on certain goods and services.  
 For example, given a sales tax of 8.25%, you would have to pay *an additional 8.25%* of the price of the goods you purchase.
@@ -310,7 +328,7 @@ Multiplying either the fraction or decimal by 12 tells us what 8.25% of 12 is:
 This means that you would have to pay an additional 99 cents on top of the \$12, for a total of \$12.99.  
 <u>We also could've multiplied 12 by 1.0825 to get the same result.</u>
 
-### Discounts
+#### Discounts
 
 Understanding percentages allows us to calculate how much we will save when purchasing discounted things.
 
@@ -323,7 +341,7 @@ $\frac{20}{100} \times 15 = \frac{20}{100} \times \frac{15}{1} = \frac{300}{100}
 
 Therefore, a 20% discount results in $3 of savings.
 
-## Percent change
+### Percent change
 
 https://www.math.net/percent-change
 
@@ -346,7 +364,7 @@ $\frac{12\;-\;5}{|5|}=1.4 \times 100\% = 140\%$
 
 So, 12 is a 140% increase of 5.
 
-## Percent to decimal
+### Percent to decimal
 
 Converting a percent to a decimal involves simply shifting the decimal place by dividing the percent by 100.
 
@@ -358,11 +376,11 @@ Say we want to convert 8.25% to a decimal. We need to shift the decimal place tw
 So, 8.25% in decimal form is 0.0825.
 
 
-# Data and graphs
+## Data and graphs
 
-## Range
+### Range
 
-### Range (interval) in mathematics
+#### Range (interval) in mathematics
 
 The term range is commonly used in mathematics to refer to an interval.  
 An interval in this context is the set of real numbers that lie between two numbers.
@@ -389,11 +407,11 @@ It can also be written as (0, 100).
 We could also have a range of (0, 100] or 0 < n ≤ 100 and [0, 100) or 0 ≤ n < 100.
 
 
-# Rules and properties
+## Rules and properties
 
-## Basic mathematical properties
+### Basic mathematical properties
 
-### Order of operations
+#### Order of operations
 
 PEMDAS: Parentheses, exponents, multiplication, division, addition, subtraction
 
@@ -402,7 +420,7 @@ BODMAS: Brackets, order, division, multiplication, addition, subtraction
 Notice that multiplication and division are in different positions in PE(MD)AS and BO(DM)AS; this is because multiplication and division, and addition and subtraction, can be performed in either order
 
 
-### Commutative property
+#### Commutative property
 
 The commutative property states that changing the order in which two numbers are added or multiplied does not change the result.
 
@@ -410,7 +428,7 @@ $a + b = b + a$
 
 $a × b = b × a$
 
-### Associative property
+#### Associative property
 
 The associative property states that changing the way that numbers are grouped in addition and multiplication does not change the result.
 
@@ -418,15 +436,15 @@ $(a + b) + c = a + (b + c)$
 
 $(a × b) × c = a × (b × c)$
 
-### Distributive property
+#### Distributive property
 
 The distributive property states that multiplying a group of numbers that are being added is the same as multiplying by each number individually, then adding them together.
 
 $a × (b + c) = a × b + a × c$
 
-## Inverse
+### Inverse
 
-### Addition and subtraction
+#### Addition and subtraction
 
 Addition and subtraction are inverses in that the sign is reversed between operations.
 
@@ -435,7 +453,7 @@ $4 + 3	=	7$
 $7 - 3	=	4$  
 As can be seen, adding 3 to 4 and then subtracting 3 from the sum leaves us where we started, with 4. 
 
-### Multiplication and division
+#### Multiplication and division
 
 The inverse operation of multiplication is division, where in either case, reciprocating results in the other operation.
 
@@ -446,24 +464,24 @@ $30 ÷ 5	=	6$
 
 As shown above, multiplication and division essentially cancel each other out, which is why they are inverse operations
 
-## Identity property
+### Identity property
 
 An identity element is a number that, when used in an operation with another number, results in the same number.
 
-## Transitive property
+### Transitive property
 
 
-# Ratios and proportions
+## Ratios and proportions
 
 A ratio is a comparison between quantities. 
 
 A proportion is a set of ratios that are equal.
 
 
-## Ratios
+### Ratios
 
 
-## Proportions
+### Proportions
 
 Proportions are equations made up of two equivalent ratios. The following are all proportions:
 
@@ -485,4 +503,4 @@ $\frac{2\;apples}{1\;student}=\frac{\#\;apples}{30\;students}$
 
 $2 × 30 = 1 × \#$
 
-$\# = 60$
+$\## = 60$

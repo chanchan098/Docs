@@ -14,8 +14,39 @@ https://www.rapidtables.com/electric/Electric_units.html
 
 - [Resistance](https://www.rapidtables.com/electric/Resistance.html)
 
----
 
-- [Electric power]
-  - Mean square
-  - [Root mean square](https://en.wikipedia.org/wiki/Root_mean_square)
+### Joule
+
+https://en.wikipedia.org/wiki/Joule
+
+One joule is equal to the amount of work done when a force of one newton displaces a body through a distance of one metre in the direction of that force. 
+
+$1J = 1 kg ⋅ m^2 / s^2$
+
+
+### Farad
+
+Farad is the unit of capacitance. It represents the amount of electric charge in coulombs that is stored per 1 volt.
+
+$1F = 1C / 1V$
+
+### Hertz (Hz)
+
+Hertz is the unit of frequency. It measures the number of cycles per second.
+
+$1 Hz = 1 cycles / s$
+
+
+### Henry (H)
+
+Henry is the unit of inductance.
+
+$1H = 1Wb / 1A$
+
+## Supplement
+
+### Work
+
+https://en.wikipedia.org/wiki/Work_(physics)
+
+work is the energy transferred to or from an object via the application of force along a displacement.

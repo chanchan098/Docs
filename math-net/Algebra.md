@@ -553,3 +553,72 @@ $\frac{(x−h)^2}{4p}=y−k$
 $\frac{(x−h)^2}{4p}+k=y−k+k$  
 $\frac{(x−h)^2}{4p}+k=y$  
 $y=\frac{(x−h)^2}{4p}+k$
+
+## Inverse function
+
+Inverse functions are a way to "undo" a function. In the original function, plugging in x gives back y, but in the inverse function, plugging in y (as the input) gives back x (as the output).
+
+To find the inverse of a function, you need to do the opposite of what the original function does to x.
+
+**Example**
+
+Original function  
+$f(x)=3x-5$
+
+First multiply by 3  
+Then subtract 5
+
+Inverse function  
+$f^{-1}(x)=\frac{x+5}{3}$
+
+First add 5  
+Then divide by 3
+
+Another way  
+$y=3x-5$  
+$x=3y-5$  
+$x+5=3y$  
+
+Get expression for y  
+$y=\frac{x+5}{3}$
+
+
+$x+5=3y$ and $y=\frac{x+5}{3}$, They are the same.
+
+---
+
+Not all functions have inverses.
+
+**Example**
+
+1\. In the original equation, replace f(x) with y:
+
+$f(x)=5\sqrt{x+4}-3$  
+
+$y=5\sqrt{x+4}-3$  
+
+2\. Replace every x in the original equation with a y and every y in the original equation with an x
+
+$y=5\sqrt{x+4}-3$  
+
+$x=5\sqrt{y+4}-3$  
+
+3\. Solve for y:
+
+$x=5\sqrt{y+4}-3$  
+
+$x+3=5\sqrt{y+4}$  
+
+$\frac{x+3}{5}=\sqrt{y+4}$  
+
+$(\frac{x+3}{5})^2=y+4$  
+
+$y=(\frac{x+3}{5})^2-4$; $-4$ to cancel $+4$ in $y+4$  
+
+4\. Change y to $f^{-1}(x)$:
+
+$f^{-1}(x)=(\frac{x+3}{5})^2-4$
+
+
+5\. Apply domain restrictions as necessary.
+
