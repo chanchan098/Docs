@@ -578,6 +578,7 @@ Another way
 $y=3x-5$  
 $x=3y-5$  
 $x+5=3y$  
+$\frac{x+5}{3}=\frac{3y}{3}$  
 
 Get expression for y  
 $y=\frac{x+5}{3}$

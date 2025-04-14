@@ -1,14 +1,5 @@
 https://www.math.net/primary-math
 
-## Division
-
-6 × 4 = 24, so 24 ÷ 4 = 6.
-
-- 24 is the dividend.
-- 4 is the divisor.
-- 6 is the quotient.
-
-
 ## Number
 
 https://www.math.net/number
@@ -154,6 +145,12 @@ Algebra
 $2n=b \quad so \; n=\frac{b}{2}$
 
 ## Division
+
+6 × 4 = 24, so 24 ÷ 4 = 6.
+
+- 24 is the dividend.
+- 4 is the divisor.
+- 6 is the quotient.
 
 Division is the inverse, or opposite, operation of multiplication. It "undoes" multiplication.
 
@@ -480,6 +477,11 @@ A proportion is a set of ratios that are equal.
 
 ### Ratios
 
+A ratio describes how many of one quantity we have relative to another.  
+
+Example:  
+>$10:2=5$
+>10 relative to 2 by 5, and 2 relative to 10 also by 5
 
 ### Proportions
 

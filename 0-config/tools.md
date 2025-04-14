@@ -120,6 +120,11 @@ using `tags` and inner `style`
 
 <https://github.com/ikatyang/emoji-cheat-sheet>
 
+
+### markdown custom css for preview
+
+`C:\Users\116\.vscode\extensions`
+
 ## postman 
 
 postman `joey4567@gmail.com`  

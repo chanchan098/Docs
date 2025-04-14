@@ -1,12 +1,23 @@
+param(
+    [int]$seconds,
+    [string]$filePath
+)
 [Console]::InputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-#2024-11-28
-#count: 30
+#2025-04-14
+#count: 13
+
+# powershell 5.1 $PSVersionTable.PSVersion
+
+# from zero line
+$MdateLine = 7 - 1
+$MCountLine = 8 - 1
+
 #========================================================================
-$filePath = "D:\liaoyj\Developer\counting.ps1"
+# .\counting.ps1 -filePath D:\liaoyj\Developer\counting.ps1 -seconds 600
+
 $msgs = @("STOP: 0x00000024 (0x00190203,0x8A5FC900,0xC0000102,0x00000000)","The program can't start because MSVCP110.dll is missing from your computer. Try reinstalling the program to fix this problem.", "The system detected an overrun of a stack based buffer in this application. This overrun could potentially allow a malicious user to gaming control of this application.")
-$MdateLine = 2
-$MCountLine = 3
+
 
 # to read date written down
 $content = Get-Content $filePath
@@ -72,9 +83,9 @@ function Start-Countdown {
     [Win32]::MessageBox([IntPtr]::Zero, $msg, "System error", 0x00000000 + 0x00000010 + 0x00001000)
 
     # Wait for any key press to confirm execution
-    Write-Host "Press any key to execute"
+    Write-Host "Press any key to continue"
     [System.Console]::ReadKey($true) | Out-Null
-    Invoke-Expression "$filePath"
+    Invoke-Expression "$filePath -seconds $seconds  -filePath $filePath"
 }
 
-Start-Countdown -Seconds 300
+Start-Countdown -Seconds $seconds

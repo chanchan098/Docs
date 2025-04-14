@@ -1663,9 +1663,11 @@ usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
 
 ```
 
-`scp -r local_directory_path username@remote_host:remote_directory_path`
+`scp  local_directory_path username@remote_host:remote_directory_path`
 
-`scp -r username@remote_host:remote_directory_path local_directory_path`
+`scp  username@remote_host:remote_directory_path local_directory_path`
+
+windows to linux example: `scp $master:C:/Users/116/Downloads/libjiagu_64.so_Fix ./libjiagu_64.so_Fix`
 
 `scp /home/user/documents/example.txt user@example.com:/home/user/remote_documents/`
 

@@ -89,3 +89,103 @@ explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
 ### 总结
 
 通过以上路径和工具，你可以查看和管理 Windows 系统中的自动启动项。希望这些信息能帮到你！如果有其他问题或需要进一步的帮助，请随时提问。
+
+
+## Input method
+
+In order to prevent conflicts of hot keys between code editor and input method, use both 微软拼音 and 搜狗输入法 at the same time. 
+
+must be chosen the config `允许我为每个应用窗囗使用不同的输入法`, located at `设置 > 时间和语言 > 语言 > 键盘 > `
+
+### Cut off network for sougou
+
+```powershell   
+param (
+    [string]$TargetFolder,  # 目标文件夹（必须提供）
+    [string]$Action,        # "add" 代表添加规则，"remove" 代表删除规则
+    [string]$RulePrefix = "Block_"  # 规则前缀，默认 "Block_"
+)
+
+# 定义日志文件
+$LogFile = "$PSScriptRoot\blocked_apps.txt"
+
+# 清空或创建日志文件
+Set-Content -Path $LogFile -Value "" -Encoding UTF8
+
+# 检查是否提供了目标文件夹
+if (-not $TargetFolder) {
+    Write-Host "❌ 请输入 -TargetFolder 参数，例如: -TargetFolder 'C:\Program Files\MyApp'"
+    exit 1
+}
+
+# 规范化目标文件夹路径（去掉末尾 `\`）
+$TargetFolder = (Get-Item $TargetFolder).FullName.TrimEnd('\')
+
+# 检查目标文件夹是否存在
+if (-not (Test-Path $TargetFolder)) {
+    Write-Host "❌ 目标文件夹不存在: $TargetFolder"
+    exit 1
+}
+
+# 统一路径分隔符（Windows `\` -> `/`）
+function ConvertTo-RelativeUnixPath {
+    param ([string]$FullPath)
+    return $FullPath -replace [regex]::Escape($TargetFolder + "\"), "" -replace "\\", "/"
+}
+
+# 添加防火墙规则，阻止 .exe 联网
+function Block-ExeInFirewall {
+    param ([string]$folder)
+
+    Get-ChildItem -Path $folder -Recurse -Filter "*.exe" -File | ForEach-Object {
+        $RelativePath = ConvertTo-RelativeUnixPath -FullPath $_.FullName  # 转换为相对路径
+        $ruleName = "$RulePrefix$RelativePath"
+        
+        if (-not (Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue)) {
+            Write-Host "🚫 阻止：$($_.FullName)"
+            New-NetFirewallRule -DisplayName $ruleName -Direction Outbound -Program $_.FullName -Action Block
+            
+            # 记录到 txt 文件，Clash 规则设为 REJECT
+            $ClashRule = "'PROCESS-PATH,$($_.FullName -replace '\\', '\\'),REJECT',"
+            Add-Content -Path $LogFile -Value $ClashRule
+        } else {
+            Write-Host "⚠️ 规则已存在: $ruleName"
+        }
+    }
+}
+
+# 删除防火墙规则，允许 .exe 联网
+function Unblock-ExeInFirewall {
+    param ([string]$folder)
+
+    Get-ChildItem -Path $folder -Recurse -Filter "*.exe" -File | ForEach-Object {
+        $RelativePath = ConvertTo-RelativeUnixPath -FullPath $_.FullName  # 转换为相对路径
+        $ruleName = "$RulePrefix$RelativePath"
+        
+        if (Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue) {
+            Write-Host "✅ 解除阻止：$($_.FullName)"
+            Remove-NetFirewallRule -DisplayName $ruleName
+            Add-Content -Path $LogFile -Value $_.Name  # 记录到 txt 文件
+        } else {
+            Write-Host "⚠️ 找不到规则: $ruleName"
+        }
+    }
+}
+
+# 执行操作
+if ($Action -eq "add") {
+    Block-ExeInFirewall -folder $TargetFolder
+} elseif ($Action -eq "remove") {
+    Unblock-ExeInFirewall -folder $TargetFolder
+} else {
+    Write-Host "❌ 无效参数: 请输入 -Action 'add' 或 -Action 'remove'"
+    exit 1
+}
+
+```
+
+
+
+###  Cut off network for 微软拼音
+
+`C:\Windows\System32\InputMethod\CHS\ChsIME.exe`

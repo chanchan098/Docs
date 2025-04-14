@@ -1,0 +1,9 @@
+- 工具集
+  - https://github.com/WuFengXue/android-reverse?tab=readme-ov-file
+- apktool
+- ida
+- leidian as root
+  - settings: to disks, make it writeable; to network, bridge mode.
+- jadx-ui
+- jdb
+  - https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdb.html
