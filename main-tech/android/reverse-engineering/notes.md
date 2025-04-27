@@ -1,3 +1,15 @@
+## Retrieving ui tree
+
+https://github.com/alexal1/Insomniac/wiki/UI-Automator-Viewer:-What-Is-It-And-How-To-Use-It
+
+
+MUST use java8, by `set java_exe=` at `androidsdk\tools\bin\uiautomatorviewer.bat`
+
+
+## Find current `Activity`
+
+`adb shell dumpsys activity activities | findstr mResumedActivity`
+
 ## IDA7.7+leidian .so调试，android_server的问题
 
 1\. 查询模拟器架构
@@ -46,3 +58,9 @@ adb jdwp
 adb forward tcp:12345 jdwp:2958
 jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=12345
 ```
+
+## 脱壳
+
+- [FART](https://github.com/hanbinglengyue/FART)
+- [frida_dump](https://github.com/lasting-yang/frida_dump)
+- [frida_dump](https://github.com/hluwa/frida-dexdump)

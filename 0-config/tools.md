@@ -73,7 +73,7 @@ https://stackoverflow.com/questions/60155443/vscode-preview-markdown-by-default
 
 ### markdown math
 
-<https://freeopen.github.io/mathjax/>
+<https://freeopen.github.io/blog/mathjax>
 
 ### quick hints
 
@@ -128,7 +128,7 @@ using `tags` and inner `style`
 ## postman 
 
 postman `joey4567@gmail.com`  
-delete p3 p4
+d ...
 
 
 older than 10.17.0 can use scratch pad mode.
@@ -191,3 +191,7 @@ WHERE email LIKE '%@example.com';
 ### office 
 
 https://zhuanlan.zhihu.com/p/629538463
+
+### Input methods
+
+https://bbs.pcbeta.com/viewthread-1859553-1-1.html

@@ -26,6 +26,28 @@ v3.9.1
 
 Dashboard > Devices > Select a devices > Click Edit > Device profile > Mobile dashboard
 
-## Flutter app
+## Build flutter app
+
+### Environments
+
+flutter-stable: 3.27.0  
+jdk: 17  
+
+### Build `.aab`
+
+https://thingsboard.io/docs/mobile/release/
 
 
+### Extract `.apk` from `.aab`
+
+
+
+`keytool -genkeypair   -v   -keystore my-release-key.keystore   -alias my-key-alias   -keyalg RSA   -keysize 2048   -validity 10000`
+
+
+https://github.com/google/bundletool/releases
+
+`java -jar bundletool-all-1.18.1.jar build-apks   --bundle=app-release-mine.aab   --output=thingsboardapk-mine.apks   --ks=my-release-key.keystore   --ks-key-alias=my-key-alias   --ks-pass=pass:123456   --key-pass=pass:123456 --mode=universal`
+
+
+java -jar bundletool-all-1.18.1.jar build-apks   --bundle=app-release.aab   --output=thingsboardapk-1.4.apks   --ks=my-release-key.keystore   --ks-key-alias=my-key-alias   --ks-pass=pass:123456   --key-pass=pass:123456 --mode=universal

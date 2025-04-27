@@ -1,4 +1,3 @@
-# android.md
 
 ## Gradle
 
@@ -483,3 +482,8 @@ task clean(type: Delete) {
 
 
 ```
+
+
+## Projection screen
+
+https://github.com/barry-ran/QtScrcpy

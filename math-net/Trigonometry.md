@@ -1,10 +1,10 @@
 https://www.math.net/trigonometry
 
-# Trigonometry
+## Trigonometry
 
-## Trigonometric functions
+### Trigonometric functions
 
-### Right triangle definition
+#### Right triangle definition
 
 The output of a trigonometric function is a ratio of the lengths of two sides of a right triangle.
 
@@ -15,7 +15,7 @@ The output of a trigonometric function is a ratio of the lengths of two sides of
 - Opposite: the side opposite θ.
 - Hypotenuse: the longest side of the triangle opposite the right angle.
 
-### Reciprocal identities
+#### Reciprocal identities
 
 $sin(θ)=\frac{opposite}{hypotenuse}$  
 
@@ -29,10 +29,10 @@ $sec(θ)=\frac{hypotenuse}{adjacent}$
 
 $cot(θ)=\frac{adjacent}{opposite}$
 
-### Quotient identities
+#### Quotient identities
 
 
-### Cofunction identities
+#### Cofunction identities
 
 $sin(\frac{\pi}{2}-θ)=cos(θ)$
 
@@ -78,9 +78,9 @@ $sin(60^\circ)=\frac{a}{c}=\frac{\frac{\sqrt{3}}{2}}{1}$
 
 $sin(60^\circ)=\frac{\sqrt{3}}{2}$
 
-## Trigonometric identities
+### Trigonometric identities
 
-### Reciprocal identities
+#### Reciprocal identities
 
 [reciprocal](./PrimaryMath.md#reciprocal)
 
@@ -99,13 +99,25 @@ $cot(θ)=\frac{1}{tan(θ)}$
 $tan(θ)·cot(θ) = 1$  
 
 
-# Unit circle 
+## Unit circle 
 
 https://www.math.net/unit-circle
 
 A unit circle is a circle with a radius of 1.
 
-# Trigonometric functions
+
+### :pencil: Notes
+
+$2\Pi =360° \qquad\to by  \qquad 2\Pi·R = 360° \qquad \{R=1\}$  
+
+$\pi=180° \qquad\to by \qquad \frac{2\pi}{2}=\pi$
+
+## Degrees to radians
+
+$\frac{\Pi}{180°}$
+
+
+## Trigonometric functions
 
 https://www.math.net/trigonometric-functions
 

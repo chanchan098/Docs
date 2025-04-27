@@ -1,12 +1,12 @@
-# Formulas
+## Formulas
 
-## Difference of Squares
+### Difference of Squares
 
 https://www.storyofmathematics.com/difference-of-squares/
 
 $a^2 – b^2 = (a + b) (a – b)$
 
-## Perfect Square Trinomial
+### Perfect Square Trinomial
 
 https://www.storyofmathematics.com/perfect-square-trinomial/
 
@@ -16,9 +16,9 @@ $(a-b)(a-b)=a^2-2ab+b^2$
 
 $(a \pm b)^2=a^2 \pm 2ab+b^2$
 
-# Expressions and equations
+## Expressions and equations
 
-## Expressions vs. Equations
+### Expressions vs. Equations
 
 An expression is a combination of variables and numbers that undergo operations such as addition, subtraction, multiplication, division, and more.  
 Below are some examples of expressions:
@@ -36,11 +36,11 @@ $x + 3x = 12 + 4$
 $4x = 16$  
 $x = 4$  
 
-## Equality
+### Equality
 
-## Substitution
+### Substitution
 
-# Radical
+## Radical
 
 A radical expression, also referred to as an $n^{th}$ root, or simply radical, is an expression that involves a root.
 
@@ -56,7 +56,7 @@ Note that radicals and exponents are closely related, and a radical can be writt
 
 $$\sqrt[n]{x}=x^{\frac{1}{n}}$$
 
-## Properties of radicals
+### Properties of radicals
 
 $\sqrt[n]{xy}$ = $\sqrt[n]{x}\times\sqrt[n]{y}$
 
@@ -77,7 +77,7 @@ $\sqrt[n]{x^n}=|x|$; (when x < 0 and n is even)
 
 $\sqrt[n]{x^m}=(\sqrt[n]{x})^m$
 
-## Simplifying radicals
+### Simplifying radicals
  
 Simplifying square root radicals involves using the following property of radicals:  
 $\sqrt{xy}=\sqrt{x} \times \sqrt{y}$
@@ -90,7 +90,7 @@ $\sqrt{\frac{5}{9}}=\sqrt{\frac{1}{9}} \times \sqrt{5}=\frac{1}{3}\sqrt{5}$ OR $
 
 $\sqrt{\frac{5}{8}}=\frac{\sqrt{5}}{\sqrt{2\times4}}=\frac{\sqrt{5}}{2\sqrt{2}}=\frac{\sqrt{5}\times\sqrt{2}}{2\sqrt{2}\times\sqrt{2}}=\frac{\sqrt{10}}{4}$
 
-## Square root
+### Square root
 
 A square root is a number that can be multiplied by itself to give us the value under the radical symbol (also referred to as the radix).
 
@@ -108,9 +108,9 @@ $x^2-4=0$
 $\sqrt{x^2}=\sqrt{4}$  
 $x=\pm\sqrt{4}=\pm2$
 
-# Solving equations
+## Solving equations
 
-## Completing the square
+### Completing the square
 
 see also [Perfect Square Trinomial](#perfect-square-trinomial)
 
@@ -200,19 +200,19 @@ $x=\frac{7}{4}\pm\frac{1}{4}$
 $x=2 \quad or \quad x=\frac{3}{2}$
 
 
-## Discriminant
+### Discriminant
 
 $b^2-4ac$
 
 If the discriminant is less than 0, then the quadratic has no real solution.
 
-## System of equations
+### System of equations
 
-### Graphing method
+#### Graphing method
 
 by tools
 
-### Substitution method
+#### Substitution method
 
 replacing a variable in one equation with the equivalent of that variable
 
@@ -254,7 +254,7 @@ $2x - 5y = 15$
 $2(10) - 5(1) = 15$  
 $15 = 15$  
 
-### Elimination method
+#### Elimination method
 
 Example
 
@@ -296,9 +296,9 @@ $5(2)+ 4y= 22$
 $4y= 12$  
 $y= 3$  
 
-## Vertex form
+### Vertex form
 
-### Converting from standard form to vertex form
+#### Converting from standard form to vertex form
 
 Example
 
@@ -335,9 +335,9 @@ $y=3(x+\frac{3}{2})^2-\frac{27}{4}+4$
 $y=3(x+\frac{3}{2})^2-\frac{27}{4}+\frac{16}{4}$  
 $y=3(x+\frac{3}{2})^2-\frac{11}{4}$  
 
-# Exponents
-
 ## Exponents
+
+### Exponents
 
 https://www.math.net/exponent
 
@@ -360,7 +360,7 @@ If an exponent is not an integer, and is positive, we take the $n^{th}$ root of 
 
 $5^{\frac{1}{3}}=\sqrt[3]{5}$
 
-### Exponent properties
+#### Exponent properties
 
 Any non-zero base raised to the power of 0 is 1.  
 $123456789^0 = 1$
@@ -381,20 +381,20 @@ Any number taken to the power of 1 equals itself. 1 taken to the power of any nu
 $n^1 = n$  
 $1^n = 1$
 
-## Fractional exponents
+### Fractional exponents
 
-## Negative exponents
+### Negative exponents
 
 A negative exponent is equal to the reciprocal of the base of the negative exponent raised to the positive power.  
 
 $b^{-n}=\frac{1}{b^n}$
 
 
-## Exponent rules
+### Exponent rules
 
-## Power
+### Power
 
-### Basic power properties
+#### Basic power properties
 
 If the power is a positive integer, then the power tells us how many times to multiply the base by itself.  
 $5^2=5\times5=25$
@@ -416,29 +416,83 @@ If the power is a fraction, we take the $n^th$ root of the base, where n is the 
 $2^{\frac{2}{3}}=\sqrt[3]{2^2}=\sqrt[3]{4}$
 
 
-# Polynomial
+## Polynomial
 
 https://www.math.net/polynomial
 
-## binomial theorem
+### binomial theorem
 
-### Summation
+#### Summation
 
-### Combinations
+#### Combinations
 
 
 
-# Logarithm
+## Logarithm
 
-## Log rules
+A logarithm is the inverse function of exponentiation.  
+A logarithm tells us the power, y, that a base, b, needs to be raised to in order to equal x.  
 
-## ln
+This is written as:
 
-# Factoring
+$\log_b \; (x)=y$
 
-## How to factor
 
-### C-Cross Factorization Method
+Example
+
+$10^3=1000; \quad so \quad \log_{10}(1000)=3$
+
+### Log rules
+
+### ln
+
+### :pencil: e
+
+#### 1\. The calculation is carried out through series expansion
+
+$$e=\sum_ {n=0}^\infty \frac{1}{n!}$$
+
+#### 2\. Calculate through limit definition
+
+$$e = \lim_ {n \to \infty} (1+\frac{1}{n})^n	\approx 2.71828$$
+
+$$e^x = \lim_ {n \to \infty} (1+\frac{x}{n})^n$$
+
+#### 3\. Through continuous compound interest calculation
+
+$$A = P(1 + \frac{r}{n})^n$$
+
+
+- 𝐴 It's the final amount.
+- 𝑃 It is the initial principal
+- 𝑟 It is the annual interest rate (for example, 5% is 0.05).
+- 𝑛 It is the number of times compound interest is added (say compound interest once a year, 𝑛=1;) Compound interest per month, 𝑛=12)
+
+---
+
+When 𝑛=1 ：
+$A = P(1 + \frac{1}{1})^1 \approx 2$
+
+When 𝑛=100 ：
+$A = P(1 + \frac{1}{100})^100 \approx 2.70481$
+
+When 𝑛=10000 ：
+$A = P(1 + \frac{1}{10000})^10000 \approx 2.71815$
+
+---
+
+`var n = 100; Math.pow((1 +(1 / n)), n)`
+
+推导过程：计算 𝑒
+当 𝑛 趋向于无穷大时，$(1 + \frac{1}{n})^n$的值会越来越接近 2.71828...，这就是常数 𝑒 的近似值。
+
+$$e = \lim_ {n \to \infty} (1+\frac{1}{n})^n	\approx 2.71828$$
+
+## Factoring
+
+### How to factor
+
+#### C-Cross Factorization Method
 
 $x^2+5x+6$
 
@@ -449,48 +503,48 @@ so
 
 $x^2+5x+6=(x+2)(x+3)$
 
-## Factoring polynomials
+### Factoring polynomials
 
-## Prime factors
+### Prime factors
 
 A prime factor is a factor that is a prime quantity, meaning that it can only be formed as the product of 1 and itself. For example, $3 × 7 = 21$. In this problem, $3$ and $7$ are prime factors,
 
-## Prime factorization
+### Prime factorization
 
-### Trial division
+#### Trial division
 
-### Factor tree
+#### Factor tree
 
-# Complex numbers
+## Complex numbers
 
-## Imaginary numbers
+### Imaginary numbers
 
-# Sequence
+## Sequence
 
-## Arithmetic sequence
+### Arithmetic sequence
 
-## Summation
+### Summation
 
-# Inequality
+## Inequality
 
-## Properties of inequalities--inside
+### Properties of inequalities--inside
 
-## Inequality symbols
+### Inequality symbols
 
-# Variable
+## Variable
 
 In algebra, a variable is usually a letter or other symbol that stands for a number or quantity that may vary.
 
-## Direct variation
+### Direct variation
 
 
-## Inverse variation
+### Inverse variation
 
 
-## Constant of proportionality
+### Constant of proportionality
 
 
-## Dependent variable
+### Dependent variable
 
 Real world examples of a dependent variable include:  
 the height of a plant as a function of the amount that it is watered, where the amount it is watered is the independent variable;  
@@ -499,51 +553,51 @@ the score on a test a student achieves as a function of the amount that they stu
 
 the amount of money you earn as a function of the amount of time worked, where the amount of time worked is the independent variable.
 
-# Function
+## Function
 
 A function is a relation between two sets in which each member of the first set is paired with one, and only one, member of the second set.
 
 A function rule is a rule that explains the relationship between two sets.
 
-## Absolute value
+### Absolute value
 
 
-## Domain and range
+### Domain and range
 
 the domain is the set of values that we can plug into a function that will result in a real y-value; 
 
 the range is the set of values that the function takes on as a result of plugging in an x value within the domain of the function
 
 
-### Interval notation
+#### Interval notation
 
 
-### Set notation
+#### Set notation
 
 
-### Even and odd functions
+#### Even and odd functions
 
-#### How to tell if a function is even or odd
+##### How to tell if a function is even or odd
 
 Event function: $f(x)=f(-x)$
 
 Odd function: $f(-x)=-f(x)$
 
-#### Properties of even and odd functions
+##### Properties of even and odd functions
 
-##### Addition and subtraction properties
+###### Addition and subtraction properties
 
-##### Multiplication and division properties
+###### Multiplication and division properties
 
-## hyperbola
+### hyperbola
 
 https://www.storyofmathematics.com/hyperbola/
 
-## Parabola
+### Parabola
 
 https://www.math.net/parabola
 
-### Standard form of a parabola
+#### Standard form of a parabola
 
 $(x−h)^2=4p(y−k)$  
 
@@ -554,7 +608,7 @@ $\frac{(x−h)^2}{4p}+k=y−k+k$
 $\frac{(x−h)^2}{4p}+k=y$  
 $y=\frac{(x−h)^2}{4p}+k$
 
-## Inverse function
+### Inverse function
 
 Inverse functions are a way to "undo" a function. In the original function, plugging in x gives back y, but in the inverse function, plugging in y (as the input) gives back x (as the output).
 
