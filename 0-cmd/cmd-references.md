@@ -1672,6 +1672,10 @@ windows to linux example: `scp $master:C:/Users/116/Downloads/libjiagu_64.so_Fix
 `scp /home/user/documents/example.txt user@example.com:/home/user/remote_documents/`
 
 
+`winPath='D:\liaoyj\Developer\Docs\main-tech\shell.sh'`  
+`scp $master:${winPath//\\//} ./shell.sh`
+
+
 ### sftp(client side)
 
 

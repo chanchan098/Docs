@@ -281,8 +281,9 @@ flowchart LR
 
 ```
 
-https://www.grammarly.com/blog/verb-tenses/
+https://www.grammarly.com/blog/parts-of-speech/verb-tenses/
 
+<div align="center">
 
 |              ASPECTS \ TIMES | PAST                    | PRESENT                    | FUTURE                    | FUTURE IN THE PAST   |
 | ---------------------------: | :---------------------- | :------------------------- | :------------------------ | :------------------- |
@@ -298,6 +299,7 @@ https://www.grammarly.com/blog/verb-tenses/
 |                   **PERFECT** | had done       | have done       | will have done       | would have done       |
 |               **CONTINUOUTS** | was\were doing | doing           | will be doing        | would be doing        |
 | **PERFECT <BR/> CONTINUOUTS** | had been doing | have been doing | will have been doing | would have been doing |
+</div>
 
 ## Past tenses
 
@@ -366,7 +368,7 @@ to talk about something that started in the past and is continuing at the presen
 
 ### Simple future
 
-https://www.grammarly.com/blog/simple-future/
+https://www.grammarly.com/blog/grammar/simple-future/
 
 actions that have not happened yet but will later. 
 
@@ -378,14 +380,14 @@ shows an action that will be completed in the future by a specified time.
 
 [will] + [be] + [present participle]
 
-Use the future continuous tense for future actions happening over a period of time, especially when a specific time is mentioned.  
+Use the future continuous tense for future actions happening <u>over a period of time</u>, especially when a specific time is mentioned.  
 The future continuous tense also shows more certainty and likelihood than the simple future. 
 
 ### Future perfect continuous
 
 [will] + [have] + [been] + [present participle]
 
-The future perfect continuous depicts future ongoing actions that continue up until a certain point. Like the future perfect and future continuous, it’s used with a specified time.
+The future perfect continuous depicts future ongoing actions that continue up <u>until a certain point</u>. Like the future perfect and future continuous, it’s used with a specified time.
 
 ## Future in the past
 

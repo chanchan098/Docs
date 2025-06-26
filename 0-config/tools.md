@@ -125,6 +125,8 @@ using `tags` and inner `style`
 
 `C:\Users\116\.vscode\extensions`
 
+`C:\Users\116\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.18\crossnote\styles\preview_theme`
+
 ## postman 
 
 postman `joey4567@gmail.com`  

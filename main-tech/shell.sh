@@ -71,15 +71,22 @@ flowsTrying(){
         echo "没有符合的条件"
     fi
 
-    # str1="hello"
-    # str2="world"
+    str1="hello"
+    str2="world"
 
     # # 使用 [[]] 进行字符串判断
-    # if [[ "$str1" == "$str2" ]]; then
-    # echo "Strings are equal"
-    # else
-    # echo "Strings are not equal"
-    # fi
+    if [[ "$str1" == "$str2" ]]; then
+    echo "Strings are equal by [[]]"
+    else
+    echo "Strings are not equal by [[]]"
+    fi
+
+    # 使用 [] 进行字符串判断
+    if [ "$str1" == "$str2" ]; then
+    echo "Strings are equal by []"
+    else
+    echo "Strings are not equal by []"
+    fi
 
     echo "Using (( expression )) as conditional expression. Can't use to compare string."
     if (( $a == $b ))
@@ -88,7 +95,7 @@ flowsTrying(){
     elif (( $a > $b ))
     then
         echo "a 大于 b"
-    elif (( $a < $b ))
+    elif (( $a <= $b ))
     then
         echo "a 小于 b"
     else
@@ -180,6 +187,9 @@ stringExtracting(){
         
         pull=$(echo "ctictl pull $res")        
         tag=$(echo "ctr -n k8s.io i tag $res $p")
+        echo "$pull" 
+        echo "$tag"
+        echo ""
         # echo "$pull" >> res.txt
         # echo "$tag" >> k8s__temp_res.txt
 
@@ -205,15 +215,16 @@ cmdVarsTrying(){
 
 argsTest(){    
     echo $1
+    echo $2
     echo "A string from fun"
 }
-argsTest $1
+# argsTest $1 $2
 
 # stringExtracting
 # forLoopTrying
 #  variablesTrying
 # arrayTrying
-# flowsTrying
+flowsTrying
 
 # funTrying 12 34
 # echo "Getting returned value: $?"

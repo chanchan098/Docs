@@ -437,14 +437,31 @@ This is written as:
 
 $\log_b \; (x)=y$
 
-
 Example
 
 $10^3=1000; \quad so \quad \log_{10}(1000)=3$
 
 ### Log rules
 
+#### Product rule
+
+$log_b (mn) = log_b(m) + log_b(n)$
+
+#### Quotient rule
+
+$log_b(\frac{m}{n}) = log_b(m) - log_b(n)$
+
+#### Power rule
+
+$log_b(m^n) = n·log_b(m)$
+
 ### ln
+
+see also [natural-log](../math-gfg/logarithm.md#natural-log)
+
+$ln(x)$ also $log_e(x)$
+
+$\ln(e^x) = x$
 
 ### :pencil: e
 
@@ -474,10 +491,10 @@ When 𝑛=1 ：
 $A = P(1 + \frac{1}{1})^1 \approx 2$
 
 When 𝑛=100 ：
-$A = P(1 + \frac{1}{100})^100 \approx 2.70481$
+$A = P(1 + \frac{1}{100})^{100} \approx 2.70481$
 
 When 𝑛=10000 ：
-$A = P(1 + \frac{1}{10000})^10000 \approx 2.71815$
+$A = P(1 + \frac{1}{10000})^{10000} \approx 2.71815$
 
 ---
 
@@ -492,7 +509,41 @@ $$e = \lim_ {n \to \infty} (1+\frac{1}{n})^n	\approx 2.71828$$
 
 ### How to factor
 
-#### C-Cross Factorization Method
+#### Finding common factors
+
+#### FOIL method
+
+FOIL is a method for factoring that involves using the FOIL method of binomial expansion, backwards.
+
+Set up a product of binomials. 
+
+1. Write 2 empty parentheses that will be filled with 2 binomials that are equivalent to the original equation.
+2. Write values for the first term in each binomial such that the product of the values <u>is equal to the first term</u> of the expression being factored.
+3. Find a product of two values that <u>is equal to the third term</u> in the expression being factored, <u>that when added, equals the coefficient of the second term</u> in the equation. Write each value as the second term in each binomial with the appropriate sign.
+
+**Example**  
+
+Factor $x^2+3x-28$:  
+
+1.	$(  )  (  )$
+2.	$(x  )  (x  )$
+3.	$(x + 7) (x - 4)$
+
+
+<br/>
+<br/>
+
+:pencil: **Example**  
+$(x+2)(x+3)$  
+F（First）： $x × x = x²$  
+O（Outer）： $x × 3 = 3x$  
+I（Inner）： $2 × x = 2x$  
+L（Last）： $2 × 3 = 6$  
+
+then  
+$x^2+3x+2x+6=x^2+5x+6$
+
+#### :pencil: Cross Factorization Method
 
 $x^2+5x+6$
 
@@ -523,7 +574,82 @@ A prime factor is a factor that is a prime quantity, meaning that it can only be
 
 ### Arithmetic sequence
 
+the difference between each term in the following sequence is 3
+
+2, 5, 8, 11, 14, 17, 20 ...
+
+$a_n = a_1 + (n - 1)d$  
+$a_n = 2 + 3n - 3 = 3n - 1$
+
+#### Arithmetic sequence vs arithmetic series
+
+An arithmetic series is the sum of a finite part of an arithmetic sequence.
+
+$$\frac{n}{2}(2a_1+(n-1)d)$$
+
+**Example**  
+Find the sum of the first 7 terms in the arithmetic sequence 1, 7, 13, 19, 25, ...
+
+
+the sequence is 6  
+The first 7 terms are:  1, 7, 13, 19, 25, 31, 37
+
+The sum of these terms is:  
+$\frac{n}{2}(2a_1+(n-1)d)$  
+
+$\quad\frac{7}{2}(2a_1+(7-1)6)$  
+$=\frac{7}{2}(2+36)$  
+$=133$
+
+
+
+### Geometric sequence
+
+each subsequent term after the first term is determined by multiplying the previous term by a constant (not 1), which is referred to as the common ratio.
+
+
+To determine the nth term of the sequence, the following formula can be used:  
+$$a_n=ar^{n-1}$$
+
+where $a_n$ is the nth term in the sequence,  
+$r$ is the common ratio,  
+and $a$ is the value of the first term.
+
+<br/>
+
+**Example**  
+Find the 12th term of the geometric series: 1, 3, 9, 27, 81, ...
+
+$a_n = ar^{n-1} = 1(3^{(12 - 1)}) = 3^11 = 177,147$
+
+#### Geometric sequence vs geometric series
+
+$$\frac{a(1-r^n)}{1-r}$$
+
+**Example**  
+Find the sum of the first 12 terms in the geometric series: 1, 3, 9, 27, 81,...
+
+$\frac{a(1-r^n)}{1-r} = \frac{1(1-3^12)}{1-3} = 265,720$
+
 ### Summation
+
+#### Sigma notation
+
+For example, the sum of the integers 1, 2, 3, 4, and 5 can be expressed in sigma notation as:  
+$$\sum_{n=1}^5 n$$
+
+Expanding the above summation:  
+$$\sum_{n=1}^5 n = 1+2+3+4+5=15$$
+
+Examples:  
+
+$$\sum_{n=1}^6 n^2$$
+$$\sum_{n=1}^6 n^2 = 1^2+2^2 ... = 91$$
+
+---
+
+$$\sum_{n=1}^3 2n+1$$
+$$\sum_{n=1}^3 2n+1 = (2·1+1) + (2·2+1) + (2·3+1) = 15 $$
 
 ## Inequality
 
@@ -571,6 +697,22 @@ the range is the set of values that the function takes on as a result of pluggin
 
 #### Interval notation
 
+##### Interval notation symbols
+
+- [] - brackets denote a closed interval
+- () - parenthesis denote an open interval
+- ∪ - union represents the joining together of two sets
+- ∩ - intersection represents the overlap between two sets
+
+##### Interval notation: union and intersection
+
+
+(-∞, 1) ∪ (1, ∞)  
+Intersection is used to denote the interval over which two sets overlap.
+
+(-∞, 4] ∩ [2, 22]  
+The above reads as "the intersection between the sets (-∞, 4] and [2, 22]," which is [2, 4].
+
 
 #### Set notation
 
@@ -606,13 +748,28 @@ calculate y
 $\frac{(x−h)^2}{4p}=y−k$  
 $\frac{(x−h)^2}{4p}+k=y−k+k$  
 $\frac{(x−h)^2}{4p}+k=y$  
-$y=\frac{(x−h)^2}{4p}+k$
+$y=\frac{(x−h)^2}{4p}+k$  
 
 ### Inverse function
+
+see also [gfg](https://www.geeksforgeeks.org/inverse-functions/#conditions-for-inverse-function)
 
 Inverse functions are a way to "undo" a function. In the original function, plugging in x gives back y, but in the inverse function, plugging in y (as the input) gives back x (as the output).
 
 To find the inverse of a function, you need to do the opposite of what the original function does to x.
+
+Not all functions have inverses.
+
+---
+
+:pencil: Note
+
+If functions f(x) and g(x) are inverses of each other, then f(x) = y only if g(y) = x. 
+
+
+$g(f(x)) = x$
+
+---
 
 **Example**
 
@@ -628,7 +785,7 @@ $f^{-1}(x)=\frac{x+5}{3}$
 First add 5  
 Then divide by 3
 
-Another way  
+Details to get inverse function  
 $y=3x-5$  
 $x=3y-5$  
 $x+5=3y$  
@@ -640,15 +797,36 @@ $y=\frac{x+5}{3}$
 
 $x+5=3y$ and $y=\frac{x+5}{3}$, They are the same.
 
+
+```js
+var f = (x) => { return 3 * x - 5 }
+var inf = (x) => { return (x + 5) / 3 }
+var x = 123
+console.log(inf(f(x)))
+//123
+```
+
 ---
-
-Not all functions have inverses.
-
 **Example**
 
+The logarithmic function is the inverse of the exponential function.
+
+$e^x = y\;$  < >  $\;\ln(y)=x$
+
+$e^6=403.428793492735$  
+$\ln(403.428793492735)=6$
+
+```javascript
+var y = Math.pow(Math.E,6)
+//403.428793492735
+var x = Math.log(y)
+// 6
+```
+
+**Example**  
 1\. In the original equation, replace f(x) with y:
 
-$f(x)=5\sqrt{x+4}-3$  
+$f(x)=5\sqrt{x+4}-3$   
 
 $y=5\sqrt{x+4}-3$  
 
@@ -676,4 +854,312 @@ $f^{-1}(x)=(\frac{x+3}{5})^2-4$
 
 
 5\. Apply domain restrictions as necessary.
+
+## Linear equations
+
+### Intro
+
+#### Forms of linear equations
+
+**Slope-intercept form**  
+
+$y = mx + b$
+
+where m is the slope, and b is the y-intercept.
+
+**Point-slope form**  
+
+it is based on some point on the line.
+
+$y - y_1 = m(x - x_1)$
+
+where $(x_1, y_1)$ represent a point on the line, and m is the slope. 
+
+**Standard form**  
+
+$Ax + By = C$
+
+### Slope
+
+Slope is a value that describes the steepness and direction of a line. The slope formula is as follows:
+
+$$m = \frac{change in y}{change in x} = \frac{rise}{run} = \frac{y_2-y_1}{x_2-x_1}$$
+
+#### Rise over run
+
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope/ror.png)
+
+</div>
+
+**Example**  
+Given the following points:
+
+(-2, 3) and (4, 1)
+
+$\frac{y_2-y_1}{x_2-x_1} = \frac{(1)-(3)}{(4)-(-2)} = \frac{-2}{6} = \frac{-1}{3}$
+
+#### Positive slope
+
+Slope also indicates the direction of a line.  
+A line with a positive slope, said to be increasing, runs upwards from left to right.
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope/sl1.png)
+
+</div>
+
+$$y=\frac{1}{2}x-3$$
+
+#### Negative slope
+
+A line with a negative slope, said to be decreasing, runs downwards from left to right.
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope/sl2.png)
+
+</div>
+
+$$y=-5x+2$$
+
+#### Horizontal line slope
+
+A horizontal line has a slope of zero because y does not change:
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope/sl3.png)
+
+</div>
+
+$$y=2$$
+
+#### Vertical line slope
+
+A vertical line has an undefined slope because you cannot divide by zero (x does not change).
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope/sl4.png)
+
+</div>
+
+$$x = 3$$
+
+#### Parallel line slope
+
+$y = 2x + 3$ and $y = 2x - 4$ both have a slope of 2, so they are parallel, as shown below:
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope/parallel.png)
+
+</div>
+
+#### Perpendicular line slope
+
+Perpendicular lines have slopes that are "opposite reciprocals" of each other.  
+In this context, "opposite" refers to the change in sign from + to - or vice versa. "Reciprocal" refers to flipping the numerator and denominator of the value.
+
+
+$-3x - 2$ has a slope of -3, and $y = \frac{1}{3}x + 1$ has a slope of $\frac{1}{3}$. -3 and $\frac{1}{3}$ are opposite reciprocals, so the equations are perpendicular:
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope/perpendicular.png)
+
+</div>
+
+### Intercept
+
+The x-intercept is the point at which a line crosses the x-axis and the y-intercept is the point at which a line crosses the y-axis. 
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/intercept/int.svg)
+
+</div>
+
+Given the equation of a line, it is possible to find the x and y-intercepts by plugging in 0 for either x or y.  
+Plugging 0 in for x then solving for y yields the y-intercept.  
+Plugging 0 in for y then solving for x yields the x-intercept.
+
+**Example**  
+
+Find the x and y-intercepts of line $2x - 8y = 16$.
+
+Substituting 0 in for x:  
+$2(0) - 8y = 16$  
+$-8y = 16$  
+$y = -2$  
+
+The y-intercept is at (0, -2).
+
+<br/>
+
+Substituting 0 in for y:  
+$2x - 8(0) = 16$  
+$2x = 16$  
+$x = 8$  
+
+The x-intercept is at (8, 0).
+
+Since we know two points on the line (the intercepts) we can plot the line, as shown below.
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/intercept/line.svg)
+
+</div>
+
+
+### Slope formula
+
+The slope of a line, "m" in the equation for a line of the form $y = mx + b$, can be found using the slope formula as long as at least two points on the line are known.
+
+$$Slope = \frac{change in y}{change in x} = \frac{y_2 - y_1}{x_2 - x_1}$$
+
+
+**Example**  
+Given two points, (1, 3) and (4, 7), we can plug them into the formula to find the slope:  
+$Slope = \frac{7-3}{4-1} = \frac{4}{3}$
+
+The slope is $\frac{4}{3}$  which means that for every increase of 4 units in y, there is an increase of 3 units in x.   
+Change in y is sometimes referred to as "rise" while change in x is referred to as "run."
+
+<br/>
+
+Note that even though we chose to use (4, 7) as x2 and y2, we could've also used it as x1 and y1 to achieve the same result:  
+$Slope = \frac{3-7}{1-4} = \frac{-4}{-3} = \frac{4}{3}$
+
+### Slope intercept form
+
+$y = mx + b$
+
+m is the slope, and b is the y-intercept. 
+
+**Example**  
+Given m = 3 and the point (3, 5), find b, and write the equation of the line in slope-intercept form.
+
+$y = mx + b$  
+$(5) = (3)(3) + b$  
+$b = 5 - 9 = -4$  
+$y = 3x - 4$  
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/slope-intercept-form/sif.png)
+
+
+#### How to find the slope and the y-intercept
+
+Given at least two points on a line, the slope of the line can be found using the slope formula:
+
+$$\frac{change in y}{change in x} = \frac{rise}{run} = \frac{y_2-y_1}{x_2-x_1}$$
+
+<br/>
+For example, given the that (1, 5) and (-2, 7) are points on the same line, the slope of the line can be found as follows:
+
+$$m = \frac{7-5}{-2-1} = -\frac{2}{3}$$
+
+#### Other forms of linear equations
+
+##### Point-slope form
+
+$y - y_1 = m(x - x_1)$
+
+##### Standard form
+
+$Ax + By = C$
+
+#### Converting between different forms
+
+##### Standard to slope-intercept form
+
+Converting from standard form to slope-intercept form involves manipulating an equation in standard form so as to isolate y on one side of the equation such that the coefficient on the y is 1.
+
+**Example**  
+Convert $2x - 5y + 6 = 0$ to slope-intercept form.
+
+$5y = 2x + 6$
+
+$y = \frac{2x}{5} + \frac{6}{5}$
+
+The slope is therefore $\frac{2}{5}$, and the y-intercept is at $(0, \frac{6}{5})$.
+
+##### Point-slope to slope-intercept form
+
+Converting from point-slope form to slope-intercept form is relatively simple since both already include a slope, so all we need to do is convert the equation such that we can read off the y-intercept, rather than some other point on the line.
+
+**Example**  
+Convert $y - 7 = \frac{1}{2}(x - 4)$ to slope-intercept form.
+
+$y = \frac{1}{2}x - \frac{4}{2} + 7$
+
+$y = \frac{1}{2}x + 5$
+
+### Point slope form
+
+$y - y_1 = m(x - x_1)$
+
+where m is the slope of the line,  
+(x1, y1) is a point on the line,  
+and x and y are variables representing other points on the line.
+
+Notice that point-slope form is more or less a rearranged form of the slope formula, $y = mx + b$:
+
+$$m = \frac{y_2-y_1}{x_2-x_1}$$
+$$(x_2-x_1)m = \frac{y_2-y_1}{x_2-x_1}(x_2-x_1)$$
+$$m(x_2-x_1) = (y_2-y_1)$$
+$$(y_2-y_1) = m(x_2-x_1)$$
+
+
+### Standard form
+
+
+$$Ax + By = C$$
+
+where A, B, and C are constants.
+
+<br/>
+
+
+**Find intercepts**  
+Standard form is useful because the x- and y-intercepts of the line can be easily found by setting x or y equal to 0, then solving for the desired variable.
+
+Doing so results in the general formulas for finding the x and y-intercept given a linear equation in standard form:
+
+$$x-intercept = \frac{C}{A}$$
+
+$$y-intercept = \frac{C}{B}$$
+
+
+Example:  
+
+$3x + 2y = 6$
+
+$3x + 2(0) = 6$  
+$3x = 6$  
+$x = 2$  
+
+x-intercept at (2, 0)
+
+<br/>
+
+$3(0) + 2y = 6$  
+$2y = 6$  
+$y = 3$  
+
+y-intercept at (0, 3)
+
+<div align="center">
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/standard-form/stf.png)
+
+</div>
+
+
+##### Converting to standard form
 
