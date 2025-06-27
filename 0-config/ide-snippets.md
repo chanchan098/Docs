@@ -1,6 +1,6 @@
-# ide-snippets.md
+## Vscode markdown.json
 
-mardown.json
+markdown.json
 
 ```json
 {
@@ -30,7 +30,7 @@ mardown.json
 			"```",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block"
 	},
@@ -40,7 +40,7 @@ mardown.json
 			"```ini",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block ini"
 	},
@@ -50,7 +50,7 @@ mardown.json
 			"```javascript",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block JavaScript"
 	},
@@ -60,7 +60,7 @@ mardown.json
 			"```typescript",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block TypeScript"
 	},
@@ -70,7 +70,7 @@ mardown.json
 			"```java",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block Java"
 	},
@@ -80,17 +80,17 @@ mardown.json
 			"```docker",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block docker"
-	},	
+	},
 	"code block html": {
 		"prefix": "coh",
 		"body": [
 			"```html",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block html"
 	},
@@ -100,7 +100,7 @@ mardown.json
 			"```shell",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block shell"
 	},
@@ -110,7 +110,7 @@ mardown.json
 			"```sql",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block sql"
 	},
@@ -120,18 +120,17 @@ mardown.json
 			"```nginx",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block nginx"
 	},
-
 	"code block yaml": {
 		"prefix": "coy",
 		"body": [
 			"```yaml",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block nginx"
 	},
@@ -141,7 +140,7 @@ mardown.json
 			"```mermaid",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block mermaid"
 	},
@@ -149,11 +148,9 @@ mardown.json
 		"prefix": "cop",
 		"body": [
 			"```plantuml",
-			"@startuml"
-			"$1",
-			"@enduml"
-			"```",
-			"",			
+			"@startuml""$1",
+			"@enduml""```",
+			"",
 		],
 		"description": "code block plantuml"
 	},
@@ -163,7 +160,7 @@ mardown.json
 			"```vue",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block vue"
 	},
@@ -173,7 +170,7 @@ mardown.json
 			"```xml",
 			"$1",
 			"```",
-			"",			
+			"",
 		],
 		"description": "code block xml"
 	},
@@ -185,7 +182,18 @@ mardown.json
 			"",
 			"$2",
 			"",
-			"</details>",			
+			"</details>",
+		],
+		"description": "collapsed block"
+	},
+	"centered block": {
+		"prefix": "cb",
+		"body": [
+			"<div align='center'>",
+			"",
+			"$1",
+			"",
+			"</div>"
 		],
 		"description": "collapsed block"
 	},
@@ -197,10 +205,10 @@ mardown.json
 			"",
 			"![alt]($1)",
 			"",
-			"</details>",			
+			"</details>",
 		],
 		"description": "diagram collapsed block"
-	},	
+	},
 	"doc mark": {
 		"prefix": "book",
 		"body": [
@@ -254,29 +262,28 @@ mardown.json
 	"left and right blocks": {
 		"prefix": "lr",
 		"body": [
-		"<div style=\"display: flex;\">",
-        "  <div style=\"flex: 1; padding-right: 20px;\">",
-		"",
-		"  <p><b>$1 &nbsp;</b></p>",
-        "",
-        "  $2",
-        "",
-        "  </div>",
-        "  <div style=\"flex: 1;\">",
-        "",
-		"  <p><b>$3 &nbsp;</b></p>",
-		""
-        "  $4",
-        "",
-        "  </div>",
-      	"</div>"
+			"<div style=\"display: flex;\">",
+			"  <div style=\"flex: 1; padding-right: 20px;\">",
+			"",
+			"  <p><b>$1 &nbsp;</b></p>",
+			"",
+			"  $2",
+			"",
+			"  </div>",
+			"  <div style=\"flex: 1;\">",
+			"",
+			"  <p><b>$3 &nbsp;</b></p>",
+			"""  $4",
+			"",
+			"  </div>",
+			"</div>"
 		],
 		"description": "left and right blocks"
 	},
 	"mark": {
 		"prefix": "m",
 		"body": [
-			"<mark>$1</mark>"			
+			"<mark>$1</mark>"
 		],
 		"description": "key concept"
 	},
@@ -286,17 +293,17 @@ mardown.json
 			"  "
 		],
 		"description": "next line"
-	},	
+	},
 	"other headings": {
 		"prefix": "oh",
 		"body": [
-			"<font style=\"font-size:20px;\">$1</font>"			
+			"<font style=\"font-size:20px;\">$1</font>"
 		],
 		"description": "greater than h2, other headings"
 	},
 	"sub heading commom": {
 		"prefix": "sh",
-		"body": [			
+		"body": [
 			"",
 			"<span style='font-size: 16px;font-weight: 500'>$1</span>  ",
 			"$2",
@@ -307,8 +314,7 @@ mardown.json
 	"sub heading": {
 		"prefix": "shd",
 		"body": [
-			"---"
-			"",
+			"---""",
 			"<span style='font-size: 16px;font-weight: 500'>$1</span>  ",
 			"$2",
 			""
@@ -326,14 +332,14 @@ mardown.json
 	"task": {
 		"prefix": "ts",
 		"body": [
-			"- [ ] $1",		
+			"- [ ] $1",
 		],
 		"description": "task"
 	},
 	"task done": {
 		"prefix": "tsd",
 		"body": [
-			"- [x] $1",		
+			"- [x] $1",
 		],
 		"description": "task done"
 	},
@@ -353,3 +359,4 @@ mardown.json
 	}
 }
 ```
+

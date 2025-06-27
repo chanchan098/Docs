@@ -1089,6 +1089,15 @@ $y = \frac{2x}{5} + \frac{6}{5}$
 
 The slope is therefore $\frac{2}{5}$, and the y-intercept is at $(0, \frac{6}{5})$.
 
+
+:pencil: Note:  
+$2x - 5y + 6 = 0$  
+
+$−5y=−2x−6$  
+$y = \frac{-2x-6}{-5}$  
+$y = \frac{2}{5}x + \frac{6}{5}$  
+
+
 ##### Point-slope to slope-intercept form
 
 Converting from point-slope form to slope-intercept form is relatively simple since both already include a slope, so all we need to do is convert the equation such that we can read off the y-intercept, rather than some other point on the line.
@@ -1115,6 +1124,9 @@ $$(x_2-x_1)m = \frac{y_2-y_1}{x_2-x_1}(x_2-x_1)$$
 $$m(x_2-x_1) = (y_2-y_1)$$
 $$(y_2-y_1) = m(x_2-x_1)$$
 
+### Slope of a line
+
+[Slope](#slope)
 
 ### Standard form
 
@@ -1161,5 +1173,67 @@ y-intercept at (0, 3)
 </div>
 
 
-##### Converting to standard form
+#### Converting to standard form
 
+Converting from point-slope or slope-intercept form to standard form involves moving all the variables to one side of the equation, moving the constant to the other side,  
+then manipulating the equation as necessary such that the coefficients of the terms of the equation are integers.
+
+
+**Examples**  
+Convert the following linear equations to standard form.
+
+1\. $y = -\frac{3}{4}x + 2$:
+
+$\frac{3}{4}x + y = 2$  
+$3x + 4y = 8$
+
+
+2\. $y - 2 = \frac{3}{4}(x - 8)$:
+
+$y - 2 = \frac{3}{4}x - 6$  
+$-\frac{3}{4}x + y = 4$  
+$-3x + 4y = 16$
+
+
+### Midpoint formula
+
+Given a line segment with endpoints A and B, the midpoint is the point located exactly between A and B, meaning that it is the same distance from A and B, as in the figure below.
+
+<div align='center'>
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/midpoint-formula/mp.svg)
+
+</div>
+
+
+The midpoint formula can be used when two points on a graph in the coordinate plane are known.  
+Given two points $(x1, y1)$ and $(x2, y2)$, their midpoint $M$ is:
+
+$$M = (\frac{x1+x2}{2}, \frac{y1+y2}{2})$$
+
+<br/>
+
+Notice that the midpoint formula involves taking an average of the x- and y-values of two coordinates. 
+
+**Example**  
+
+$(x,y) \rightarrow (-3, 5) \qquad (x1,y1) \rightarrow (-1, 3)$  
+
+<br/>
+
+$M = (\frac{x1+x2}{2},\frac{y1+y2}{2})$  
+$=(\frac{(-3)+(-1)}{2}, \frac{(-5)+(3)}{2})$  
+$=(\frac{-4}{2}, \frac{-2}{2})$  
+$=(-2,-1)$
+
+
+
+<div align='center'>
+
+Midpoint at (-2, -1)
+
+![alt](https://www.math.net/img/a/algebra/linear-equations/midpoint-formula/mf.png)
+
+</div>
+
+$\hat{y}=b_0+b_1x$

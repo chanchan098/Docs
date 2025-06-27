@@ -56,7 +56,7 @@ see also doc
 
 #### Importing Dependencies
 
-projects can import managed dependencies from other projects.
+ projects can import managed dependencies from other projects. This is accomplished by declaring a POM artifact as a dependency with a scope of "import".
 
 Project B:
 ```xml
