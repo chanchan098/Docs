@@ -91,6 +91,10 @@ explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
 通过以上路径和工具，你可以查看和管理 Windows 系统中的自动启动项。希望这些信息能帮到你！如果有其他问题或需要进一步的帮助，请随时提问。
 
 
+## Centered toolbar
+
+https://github.com/ChrisAnd1998/TaskbarX
+
 ## Input method
 
 In order to prevent conflicts of hot keys between code editor and input method, use both 微软拼音 and 搜狗输入法 at the same time. 

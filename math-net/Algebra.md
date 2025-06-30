@@ -883,7 +883,7 @@ $Ax + By = C$
 
 Slope is a value that describes the steepness and direction of a line. The slope formula is as follows:
 
-$$m = \frac{change in y}{change in x} = \frac{rise}{run} = \frac{y_2-y_1}{x_2-x_1}$$
+$$m = \frac{change\;in\;y}{change\;in\;x} = \frac{rise}{run} = \frac{y_2-y_1}{x_2-x_1}$$
 
 #### Rise over run
 
@@ -989,7 +989,6 @@ Plugging 0 in for x then solving for y yields the y-intercept.
 Plugging 0 in for y then solving for x yields the x-intercept.
 
 **Example**  
-
 Find the x and y-intercepts of line $2x - 8y = 16$.
 
 Substituting 0 in for x:  

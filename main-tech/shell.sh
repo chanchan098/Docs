@@ -13,17 +13,17 @@ variablesTrying(){
 
     echo ""
 
-    readonly name
-    name="Chandler"
-
-    echo "Trying to set ${name} to Chandler, but failed because of being an immutable value."
-    echo ""
-
     echo 'Cannot use variables in a pair of single quote, eg: ${name}.'
     echo ""
 
     echo "Getting length of a string via \${#string}, eg: \${#name}:${#name}"
     echo ""
+
+    readonly name
+    echo "Trying to set ${name} to Chandler, but failed because of being an immutable value."
+    name="Chandler"
+    echo ""
+    
 }
 
 
@@ -222,7 +222,7 @@ argsTest(){
 
 # stringExtracting
 # forLoopTrying
-#  variablesTrying
+# variablesTrying
 # arrayTrying
 flowsTrying
 
