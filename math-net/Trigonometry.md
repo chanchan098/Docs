@@ -200,7 +200,9 @@ $= 12.787$
 
 $a=\sqrt{12.787}=3.576$
 
+## Trigonometric functions
 
+[Trigonometric functions](./Trigonometry-functions.md)
 
 ## Unit circle 
 

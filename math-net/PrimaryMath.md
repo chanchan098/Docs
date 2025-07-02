@@ -160,13 +160,18 @@ $\frac{a}{b}$
 $a\; /\; b$  
 $a \div b$
 
-### N-Inverse
+### :pencil: Inverse
 
 $10\div2=5$
 
 $10\div5=2$
 
 $2\times5=10$
+
+
+### :pencil: By fraction
+
+$$\frac{10}{2}=5$$
 
 ## Fraction
 
