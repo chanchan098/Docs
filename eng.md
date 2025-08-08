@@ -46,6 +46,10 @@
     - [IMPORTANT Used to](#important-used-to)
     - [IMPORTANT If / When](#important-if--when)
   - [Past Unreal Conditional](#past-unreal-conditional)
+  - [Past Unreal Conditional-Patch](#past-unreal-conditional-patch)
+    - [Could have + past participle](#could-have--past-participle)
+    - [Should have + past participle](#should-have--past-participle)
+    - [Would have + past participle](#would-have--past-participle)
 - [Present Conditionals](#present-conditionals)
   - [Present Real Conditional](#present-real-conditional)
   - [Present Unreal Conditional](#present-unreal-conditional)
@@ -70,7 +74,7 @@
 - [Participle](#participle)
 
 ## --Basic
-
+a
 ## Soundmark
 
 https://pronunciationstudio.com/english-ipa-chart/
@@ -137,6 +141,8 @@ https://en.wikipedia.org/wiki/English_personal_pronouns
 
 <span style='font-size: 16px;font-weight: 500'>Singular</span>  
 
+<div align='center'>
+
 | Person (gender) \ pronoun | Subject | Object | Dependent possessive <br/> (determiner) | Independent possessive | Reflexive |
 | ------------------------: | :-----: | :----: | :-------------------------------------: | :--------------------: | :-------: |
 |                 **First** |    I    |   me   |                   my                    |          mine          |  myself   |
@@ -146,8 +152,11 @@ https://en.wikipedia.org/wiki/English_personal_pronouns
 |          **Third-Neuter** |   it    |   it   |                   its                   |          its           |  itself   |
 |         **Third-Epicene** |  they   |  them  |                  their                  |         theirs         | themself  |
 
+</div>
 
 <span style='font-size: 16px;font-weight: 500'>Plural</span>  
+
+<div align='center'>
 
 | Person (gender) \ pronoun | Subject | Object | Dependent possessive <br/>  (determiner) | Independent possessive | Reflexive  |
 | ------------------------: | :-----: | :----: | :--------------------------------------: | :--------------------: | :--------: |
@@ -155,6 +164,7 @@ https://en.wikipedia.org/wiki/English_personal_pronouns
 |                **Second** |   you   |  you   |                   your                   |         yours          | yourselves |
 |                 **Third** |  they   |  them  |                  their                   |         theirs         | themselves |
 
+</div>
 
 ## -Question forms
 
@@ -210,6 +220,34 @@ Quantifiers are words that give us information about the number or amount of som
 All, every and each mean the whole number of something in a group, but there are differences in how we use them. 
 
 <u>All</u> or <u>All the</u> is followed by a plural or uncountable noun. <u>Every</u> and <u>each</u> are followed by a singular noun.
+
+- All my plants have died.
+- Cars were coming from all directions.
+- All five men are hard workers.
+
+<br/>
+
+- All wood tends to shrink.
+- He has lost all his money.
+- All this mail must be answered.
+
+---
+
+- She knows every student in the school.
+- I could hear every word they said.
+- We enjoyed every minute of our stay.
+- Every day seemed the same to him.
+- I read every last article in the newspaper (= all of them) .
+
+<br/>
+
+- Each answer is worth 20 points.
+- Each of the answers is worth 20 points.
+- The answers are worth 20 points each.
+- ‘Red or blue?’ ‘I'll take one of each, please.
+- We each have our own car.
+- There aren't enough books for everyone to have one each.
+- They lost $40 each.
 
 ## Meaning and use of both, neither, either
 
@@ -452,12 +490,76 @@ Examples:
 - I *would have read* more as a child if I *hadn't watched* so much TV. Unfortunately, I did watch a lot of TV, so I never read for entertainment.
 - Mary *would have gotten* the job and moved to Japan if she *had studied* Japanese in school instead of French.
 - If Jack *had worked* harder, he *would have earned* more money. Unfortunately, he was lazy and he didn't earn much.  
-  A: What *would you have done* if you had won the lottery last week?  
+- A: What *would you have done* if you had won the lottery last week?  
   B: I would have bought a house.  
-  A: What city would you have chosen if you had decided to move to the United States?  
+- A: What city would you have chosen if you had decided to move to the United States?  
   B: I would have chosen Seattle.  
 
+### Past Unreal Conditional-Patch
 
+https://www.perfect-english-grammar.com/could-have-should-have-would-have.html
+
+These past modal verbs are all used hypothetically, to talk about things that didn't really happen in the past.
+
+#### Could have + past participle
+
+1: Could have + past participle means that something was possible in the past, or you had the ability to do something in the past, but that you didn't do it. (See also modals of ability.)
+
+- I could have stayed up late, but I decided to go to bed early.
+- They could have won the race, but they didn't try hard enough.
+- Julie could have bought the book, but she borrowed it from the library instead.
+- He could have studied harder, but he was too lazy and that's why he failed the exam.
+
+Couldn't have + past participle means that something wasn't possible in the past, even if you had wanted to do it.
+- I couldn't have arrived any earlier. There was a terrible traffic jam (= it was impossible for me to have arrived any earlier).
+- He couldn't have passed the exam, even if he had studied harder. It's a really, really difficult exam.
+  
+2: We use could have + past participle when we want to make a guess about something that happened in the past. (See also modals of probability.) In this case, we don't know if what we're saying is true or not true. We're just talking about our opinion of what maybe happened.
+
+Why is John late?
+- He could have got stuck in traffic.
+- He could have forgotten that we were meeting today.
+- He could have overslept.
+
+We can also choose to use might have + past participle to mean the same thing:
+- He might have got stuck in traffic.
+- He might have forgotten that we were meeting today.
+- He might have overslept.
+
+#### Should have + past participle
+
+1: Should have + past participle can mean something that would have been a good idea, but that you didn't do it. It's like giving advice about the past when you say it to someone else, or regretting what you did or didn't do when you're talking about yourself.
+
+Shouldn't have + past participle means that something wasn't a good idea, but you did it anyway.
+- I should have studied harder! (= I didn't study very hard and so I failed the exam. I'm sorry about this now.)
+- I should have gone to bed early (= I didn't go to bed early and now I'm tired).
+- I shouldn't have eaten so much cake! (= I did eat a lot of cake and now I don't feel good.)
+- You should have called me when you arrived (= you didn't call me and I was worried. I wish that you had called me).
+- John should have left early, then he wouldn't have missed the plane (= but he didn't leave early and so he did miss the plane).
+
+2: We can also use should have + past participle to talk about something that, if everything is normal and okay, we think has already happened. But we're not certain that everything is fine, so we use 'should have' and not the present perfect or past simple. It's often used with 'by now'.
+- His plane should have arrived by now (= if everything is fine, the plane has arrived).
+- John should have finished work by now (= if everything is normal, John has finished work).
+
+We can also use this to talk about something that would have happened if everything was fine, but hasn't happened.
+- Lucy should have arrived by now, but she hasn't.
+  
+####  Would have + past participle
+
+1: Part of the third conditional.
+- If I had had enough money, I would have bought a car (but I didn't have enough money, so I didn't buy a car).
+
+2: Because 'would' (and will) can also be used to show if you want to do something or not (volition), we can also use would have + past participle to talk about something you wanted to do but didn't. This is very similar to the third conditional, but we don't need an 'if clause'.
+
+- I would have gone to the party, but I was really busy.  
+(= I wanted to go to the party, but I didn't because I was busy. If I hadn't been so busy, I would have gone to the party.)
+
+- I would have called you, but I didn't know your number.  
+(= I wanted to call you but I didn't know your number, so I didn't call you.)
+
+-A: Nobody volunteered to help us with the fair  
+B: I would have helped you. I didn't know you needed help.  
+(= If I had known that you needed help, I would have helped you.)
 
 
 ## Present Conditionals
@@ -509,15 +611,15 @@ Verb of if part is <u>simple past</u>, verb of main part is <u>would do</u>
 
 Examples:
 
-If I owned a car, I would drive to work. But I don't own a car.
-She would travel around the world if she had more money. But she doesn't have much money.
-I would read more if I didn't watch so much TV.
-Mary would move to Japan if she spoke Japanese.
-If they worked harder, they would earn more money.
-A: What would you do if you won the lottery?
-B: I would buy a house.
-A: Where would you live if you moved to the U.S.?
-B: I would live in Seattle.
+- If I owned a car, I would drive to work. But I don't own a car.
+- She would travel around the world if she had more money. But she doesn't have much money.
+- I would read more if I didn't watch so much TV.
+- Mary would move to Japan if she spoke Japanese.
+- If they worked harder, they would earn more money.
+- A: What would you do if you won the lottery?  
+  B: I would buy a house.
+- A: Where would you live if you moved to the U.S.?  
+  B: I would live in Seattle.
 
 <br/>
 
@@ -573,6 +675,17 @@ is used to talk about <u>imaginary situations</u> in the future.
 
 Verb of if part is `simple past`, verb of main part is `would do`.
 
+<br/>
+
+- If I had a day off from work next week, I would go to the beach.  
+I don't have a day off from work.
+- I am busy next week. If I had time, I would come to your party.  
+I can't come.
+- Jerry would help me with my homework tomorrow if he didn't have to work.  
+He does have to work tomorrow.
+
+<br/>
+
 <span style='font-size: 16px;font-weight: 500'>FORM 2</span>  
 
 [If ... were + present participle ..., ... would be + present participle ...]
@@ -580,6 +693,17 @@ Verb of if part is `simple past`, verb of main part is `would do`.
 [... would be + present participle ... if ... were + present participle ...]
 
 Verb of if part is `were present participle`, verb of main part is `would be present participle`.
+
+<br/>
+
+- If I were going to Fiji next week, I would be taking my scuba diving gear with me. In if-clause and result  
+I am not going to go to Fiji and I am not going to take my scuba gear with me.
+- If I were not visiting my grandmother tomorrow, I would help you study. In if-clause  
+I am going to visit my grandmother tomorrow.
+- I am busy next week. If I had time, I would be coming to your party. In result  
+I am not going to come to your party.
+
+<br/>
 
 <span style='font-size: 16px;font-weight: 500'>FORM 3</span>  
 
@@ -592,6 +716,15 @@ Native speakers use Form 3 to emphasize that the conditional form is a plan or p
 [... would be + present participle ... if ... were going to + verb ...]
 
 Verb of if part is `were were going to do`, verb of main part is `would be present participle`.
+
+<br/>
+
+- If I were going to go to Fiji next week, I would be taking my scuba diving gear with me.  
+I am not going to go to Fiji and I am not going to take my scuba gear with me.
+- If I were not going to visit my grandmother tomorrow, I would help you study.  
+I am going to visit my grandmother tomorrow.
+
+<br/>
 
 ## Mixed third/second conditional form
 

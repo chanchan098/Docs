@@ -24,4 +24,5 @@ default namespace `k8s.io`
 
 ## go into inside 
 
-kubectl exec -it my-pod-name -- powershell
+kubectl exec -it <pod-name> -n <namespace> -- /bin/bash
+

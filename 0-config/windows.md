@@ -95,6 +95,158 @@ explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
 
 https://github.com/ChrisAnd1998/TaskbarX
 
+## Open cmd here
+
+
+<details>
+<summary>Add_Command_Prompt_Open_here_context_menu.reg</summary>
+
+```
+Windows Registry Editor Version 5.00
+
+; Created by: Shawn Brink
+; Created on: June 14, 2020
+; Updated on: January 26, 2021
+; Tutorial: https://www.tenforums.com/tutorials/158472-add-remove-command-prompt-open-here-context-menu-windows-10-a.html
+
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt]
+"Icon"="imageres.dll,-5323"
+"MUIVerb"="Command Prompt"
+"Extended"=-
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd1]
+@="@shell32.dll,-8506"
+"MUIVerb"="Open here"
+"Icon"="imageres.dll,-5323"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd1\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd2]
+@="Open here as administrator"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5324"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd2\command]
+@="cmd /c echo|set/p=\"%V\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+
+
+
+[HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt]
+"Icon"="imageres.dll,-5323"
+"MUIVerb"="Command Prompt"
+"Extended"=-
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd1]
+@="@shell32.dll,-8506"
+"MUIVerb"="Open here"
+"Icon"="imageres.dll,-5323"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd1\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd2]
+@="Open here as administrator"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5324"
+
+[HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd2\command]
+@="cmd /c echo|set/p=\"%L\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+
+
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt]
+"Icon"="imageres.dll,-5323"
+"MUIVerb"="Command Prompt"
+"Extended"=-
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd1]
+@="@shell32.dll,-8506"
+"MUIVerb"="Open here"
+"Icon"="imageres.dll,-5323"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd1\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd2]
+@="Open here as administrator"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5324"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd2\command]
+@="cmd /c echo|set/p=\"%V\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+
+
+
+[HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt]
+"Icon"="imageres.dll,-5323"
+"MUIVerb"="Command Prompt"
+"Extended"=-
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd1]
+@="@shell32.dll,-8506"
+"MUIVerb"="Open here"
+"Icon"="imageres.dll,-5323"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd1\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd2]
+@="Open here as administrator"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5324"
+
+[HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd2\command]
+@="cmd /c echo|set/p=\"%L\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+
+
+
+[-HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt]
+
+```
+
+</details>
+
+
+<details>
+<summary>Remove_Command_Prompt_Open_here_context_menu.reg</summary>
+
+```
+Windows Registry Editor Version 5.00
+
+; Created by: Shawn Brink
+; Created on: June 14, 2020
+; Tutorial: https://www.tenforums.com/tutorials/158472-add-remove-command-prompt-open-here-context-menu-windows-10-a.html
+
+
+[-HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt]
+
+[-HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt]
+
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt]
+
+[-HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt]
+
+[-HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt]
+
+```
+
+</details>
+
+
 ## Input method
 
 In order to prevent conflicts of hot keys between code editor and input method, use both 微软拼音 and 搜狗输入法 at the same time. 

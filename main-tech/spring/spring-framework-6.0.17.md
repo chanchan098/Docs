@@ -226,6 +226,9 @@ Advice that surrounds a join point such as a method invocation.
 - [PreAuthenticatedAspect.java](https://github.com/YunaiV/ruoyi-vue-pro/blob/v2.2.0(jdk17/21)/yudao-framework/yudao-spring-boot-starter-security/src/main/java/cn/iocoder/yudao/framework/security/core/aop/PreAuthenticatedAspect.java)
 - [IdempotentAspect.java](https://github1s.com/YunaiV/ruoyi-vue-pro/blob/v2.2.0(jdk17/21)/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/idempotent/core/aop/IdempotentAspect.java)
 
+<br/>
+
+As a label
 ```java
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
@@ -241,10 +244,8 @@ public @interface PreAuthenticated {
 @Slf4j
 public class PreAuthenticatedAspect {
 
-    //@Pointcut("@annotation(preAuthenticated)")
-    //public void preAuthenticated() {}
-
-  //@advice type(predicate)            
+    //@advice type(predicate)            
+    // point cut
     @Around("@annotation(preAuthenticated)")
     // @Around("preAuthenticated()")
     public Object around(ProceedingJoinPoint joinPoint, PreAuthenticated preAuthenticated) throws Throwable {

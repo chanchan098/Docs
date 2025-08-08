@@ -213,7 +213,8 @@ A unit circle is a circle with a radius of 1.
 
 ### :pencil: Notes
 
-$2\Pi =360° \qquad\to by  \qquad (perimeter)2\Pi·R = 360° \qquad \{R=1\}$  
+$2\pi =360° \qquad\to by  \qquad (perimeter)2\pi·R = 360° = 2\pi \qquad \{R=1\}$  
+$rad=deg \times \frac{\pi}{180} \qquad deg=rad \times \frac{180}{\pi}$
 
 $\pi=180° \qquad\to by \qquad \frac{2\pi}{2}=\pi$
 

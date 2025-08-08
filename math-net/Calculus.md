@@ -4,7 +4,7 @@
 
 A limit is the value that a function approaches as its input value approaches some value.
 
-It provides information about a function's behavior near a point, rather than at that point.
+It provides information about <u>a function's behavior near a point, rather than at that point.</u>
 
 ### Continuity
 

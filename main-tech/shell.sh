@@ -218,6 +218,40 @@ argsTest(){
     echo $2
     echo "A string from fun"
 }
+
+
+pipeline(){
+
+: <<'EOF'
+
+kubectl get pods -A --no-headers
+kube-flannel     kube-flannel-ds-8xfds          1/1   Running   0               11m
+kube-flannel     kube-flannel-ds-hsc78          1/1   Running   1 (3h19m ago)   5h15m
+kube-flannel     kube-flannel-ds-p7mv4          1/1   Running   0               5h16m
+kube-system      coredns-86566ff76-ddbd2        1/1   Running   0               5h16m
+kube-system      coredns-86566ff76-s5cht        1/1   Running   0               5h16m
+kube-system      etcd-user                      1/1   Running   129             5h17m
+kube-system      kube-apiserver-user            1/1   Running   1               5h17m
+kube-system      kube-controller-manager-user   1/1   Running   1               5h17m
+kube-system      kube-proxy-9bszh               1/1   Running   0               5h16m
+kube-system      kube-proxy-mxsll               1/1   Running   1 (3h19m ago)   5h15m
+kube-system      kube-proxy-n95ph               1/1   Running   0               11m
+kube-system      kube-scheduler-user            1/1   Running   1               5h17m
+metallb-system   controller-654858564f-58dks    1/1   Running   0               6m2s
+metallb-system   speaker-9v2jm                  1/1   Running   2 (3h18m ago)   5h15m
+metallb-system   speaker-rkdqn                  1/1   Running   0               11m
+metallb-system   speaker-sntlk                  1/1   Running   0               5h16m
+
+EOF
+
+: <<'EOF'
+
+kubectl  get pods -A --no-headers | while read -r ns pod ready rest; do   echo "==> $ns / $pod / $ready";   done
+
+EOF
+
+}
+
 # argsTest $1 $2
 
 # stringExtracting
