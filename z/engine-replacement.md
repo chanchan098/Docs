@@ -1,7 +1,0 @@
-- An engine
-- An elevator
-- A palce to put things.
-- Tools 
-- Two persons
-- Two days
-- A lot knowledge
